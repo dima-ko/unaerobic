@@ -1,6 +1,7 @@
 package com.kovalenych;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,12 +22,13 @@ public class ArticlesActivity extends Activity {
 
     ListView lv;
     ArrayList<Article> artList;
+    Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         artList = new ArrayList<Article>();
-
+        context = this;
         fillList();
         // http://www.aidainternational.org/freediving/history
         setContentView(R.layout.articles);
@@ -54,7 +56,7 @@ public class ArticlesActivity extends Activity {
         artList.add(new Article("Hydrodinamics in finning and gliding", "by Jeremy Meyer", "http://www.freediveinternational.com/allarticles/Hydrodynamic.htm"));
         artList.add(new Article("Static Tables", "by anonymous", "http://freedivingexplained.blogspot.com/2008/03/freediving-training-static-tables.html"));
         artList.add(new Article("Alkaline diet for freedivers", "by William Trubridge", "http://www.anneliepompe.com/articles/alkaline_diet.htm"));
-        artList.add(new Article("Patrick Musimu and Herbert Nitsch" , "By Jimmy Muzzone", "http://www.patrykkruk.com/2011/02/interviews-with-patrick-musimu-and.html"));
+        artList.add(new Article("Patrick Musimu and Herbert Nitsch", "By Jimmy Muzzone", "http://www.patrykkruk.com/2011/02/interviews-with-patrick-musimu-and.html"));
     }
 
     private void invalidateList() {
@@ -82,14 +84,14 @@ public class ArticlesActivity extends Activity {
         return items;
     }
 
-      @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menushka, menu);
         return true;
     }
 
-     @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
 
@@ -109,6 +111,13 @@ public class ArticlesActivity extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(context, MenuActivity.class);
+        startActivity(intent);
     }
 
 }

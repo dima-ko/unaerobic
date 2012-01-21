@@ -109,6 +109,12 @@ public class NostraVideoActivity extends Activity {
         super.onDestroy();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(context, MenuActivity.class);
+        startActivity(intent);
+    }
 
     class ItemAdapter extends BaseAdapter {
 
