@@ -4,6 +4,7 @@
     <string name="articles">Articles</string>
     <string name="videos">Videos</string>
     <string name="ranking">Ranking</string>
+    <string name="info_title">Info</string>
     <string name="info">- Press Menu to find more interesting on web\n
         - Press \"+\" button to add new table or cycle\n
         - Long press on timer circle to start it immediately\n
@@ -34,7 +35,6 @@
     <string name="new_cycle">New cycle</string>
     <string name="hold_s">hold, s</string>
     <string name="breath_s">breath, s</string>
-    <string name="breath_time">breath, s</string>
     <string name="breathe_time">breathe\n time</string>
     <string name="hold_time">hold\n time</string>
 

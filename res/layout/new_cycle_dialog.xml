@@ -44,7 +44,7 @@
             android:layout_width="110px"
             android:layout_height="80px"
             android:textSize="20px"
-            android:text="breath, s"
+            android:text="@string/breath_s"
             android:layout_below="@id/breath_edit"
             android:layout_alignParentLeft="true"
             />
@@ -52,7 +52,7 @@
             android:layout_width="110px"
             android:layout_height="80px"
             android:textSize="20px"
-            android:text="hold, s"
+            android:text="@string/hold_s"
             android:gravity="right"
             android:layout_below="@id/hold_edit"
             android:layout_alignParentRight="true"

@@ -126,7 +126,7 @@ public class MenuActivity extends Activity {
         delDialog.setContentView(R.layout.delete_dialog);
 
         newDialog = new Dialog(ptr);
-        newDialog.setTitle("New table");
+        newDialog.setTitle(getResources().getString(R.string.new_table));
         newDialog.setCancelable(true);
         newDialog.setContentView(R.layout.new_table_dialog);
 

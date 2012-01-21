@@ -65,7 +65,7 @@ public class TableActivity extends Activity implements Soundable {
 
 
         newDialog = new Dialog(ptr);
-        newDialog.setTitle("New cycle");
+        newDialog.setTitle(getResources().getString(R.string.new_cycle));
         newDialog.setCancelable(true);
         newDialog.setContentView(PlatformResolver.getNewCycleDialogLayout());
 
@@ -234,7 +234,7 @@ public class TableActivity extends Activity implements Soundable {
 
                 voiceDialog = new Dialog(ptr);
                 voiceDialog.setCancelable(true);
-                voiceDialog.setTitle("Voices");
+                voiceDialog.setTitle(getResources().getString(R.string.voices));
                 voiceDialog.setContentView(PlatformResolver.getVoicesLayout());
                 setVoiceRadios();
                 voiceDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {

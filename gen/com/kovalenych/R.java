@@ -152,33 +152,32 @@ public final class R {
         public static final int to5sec=0x7f05000b;
     }
     public static final class string {
-        public static final int afterstart=0x7f080011;
+        public static final int afterstart=0x7f080012;
         public static final int app_name=0x7f080000;
         public static final int articles=0x7f080001;
-        public static final int breath_s=0x7f080017;
-        public static final int breath_time=0x7f080018;
-        public static final int breathe=0x7f080012;
+        public static final int breath_s=0x7f080018;
+        public static final int breathe=0x7f080013;
         public static final int breathe_time=0x7f080019;
-        public static final int credits=0x7f080006;
-        public static final int hold_s=0x7f080016;
+        public static final int credits=0x7f080007;
+        public static final int hold_s=0x7f080017;
         public static final int hold_time=0x7f08001a;
-        public static final int info=0x7f080004;
-        public static final int info_word=0x7f08001b;
-        public static final int minutes1=0x7f080007;
-        public static final int minutes2=0x7f080008;
-        public static final int minutes3=0x7f080009;
-        public static final int minutes4=0x7f08000a;
-        public static final int minutes5=0x7f08000b;
-        public static final int new_cycle=0x7f080015;
-        public static final int new_table=0x7f080014;
-        public static final int noConnect=0x7f080005;
+        public static final int info=0x7f080005;
+        public static final int info_title=0x7f080004;
+        public static final int minutes1=0x7f080008;
+        public static final int minutes2=0x7f080009;
+        public static final int minutes3=0x7f08000a;
+        public static final int minutes4=0x7f08000b;
+        public static final int minutes5=0x7f08000c;
+        public static final int new_cycle=0x7f080016;
+        public static final int new_table=0x7f080015;
+        public static final int noConnect=0x7f080006;
         public static final int ranking=0x7f080003;
-        public static final int seconds10=0x7f08000d;
-        public static final int seconds30=0x7f08000c;
-        public static final int seconds5=0x7f08000e;
-        public static final int start=0x7f08000f;
-        public static final int tostart=0x7f080010;
+        public static final int seconds10=0x7f08000e;
+        public static final int seconds30=0x7f08000d;
+        public static final int seconds5=0x7f08000f;
+        public static final int start=0x7f080010;
+        public static final int tostart=0x7f080011;
         public static final int videos=0x7f080002;
-        public static final int voices=0x7f080013;
+        public static final int voices=0x7f080014;
     }
 }
