@@ -10,6 +10,16 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             />
+
+    <ListView
+            android:id="@+id/tables_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="30px"
+            android:cacheColorHint="#00000000"
+            />
     <Button
             android:id="@+id/add_table"
             android:layout_alignParentRight="true"
@@ -27,25 +37,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/info_action"
             />
-    <!--<ScrollView-->
-    <!--android:id="@+id/tables_scroll"-->
-    <!--android:layout_above="@id/info"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:layout_marginLeft="20px"-->
-
-    <!-->-->
-    <ListView
-            android:id="@+id/tables_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="30px"
-            android:cacheColorHint="#00000000"
-            />
-    <!--</ScrollView>-->
-
 
 </RelativeLayout>
 
