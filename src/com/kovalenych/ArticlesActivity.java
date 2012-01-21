@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -100,7 +99,7 @@ public class ArticlesActivity extends Activity {
                 startActivity(intent);
                 return true;
             case R.id.videos:
-                Intent intent2 = new Intent(lv.getContext(), VideoActivity.class);
+                Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
                 startActivity(intent2);
                 return true;
             case R.id.ranking:

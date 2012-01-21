@@ -1,13 +1,11 @@
 package com.kovalenych;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 import com.nostra13.universalimageloader.imageloader.DisplayImageOptions;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
@@ -28,6 +26,35 @@ public class NostraVideoActivity extends Activity {
         }
     };
 
+    //    private List<? extends Map<String, ?>> createCyclesList() {
+//
+//        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
+//
+//        for (int i = 0; i < videoList.size(); i++) {
+//            Map<String, Object> map = new HashMap<String, Object>();
+//            map.put("title", videoList.get(i).getTitle());
+//            map.put("picture", videoList.get(i).getPictureUri());
+//            items.add(map);
+//        }
+//
+//        return items;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        videoList = new ArrayList<Video>();
+        context = this;
+        fillList();
+
+        setContentView(R.layout.videos);
+
+        ((ListView) findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
+        ((ListView) findViewById(R.id.video_list)).setOnItemClickListener(listener);
+    }
+
+    Context context;
+
+
     private void fillList() {
         videoList.add(new Video("TEDxVienna - Herbert Nitsch - Breathless", "http://www.youtube.com/watch?v=INqG2YtgU08"));
         videoList.add(new Video("Intervew with Herbert 83m CNF", "http://www.youtube.com/watch?v=2exs67Npnas"));
@@ -42,20 +69,8 @@ public class NostraVideoActivity extends Activity {
         videoList.add(new Video("Record mundial de apnea \"No Limits\" - Herbert Nitsch -214 m", "http://www.youtube.com/watch?v=WBNaGscqcyc"));
     }
 
-
-//    private List<? extends Map<String, ?>> createCyclesList() {
-//
-//        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
-//
-//        for (int i = 0; i < videoList.size(); i++) {
-//            Map<String, Object> map = new HashMap<String, Object>();
-//            map.put("title", videoList.get(i).getTitle());
-//            map.put("picture", videoList.get(i).getPictureUri());
-//            items.add(map);
-//        }
-//
-//        return items;
 //    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,43 +79,29 @@ public class NostraVideoActivity extends Activity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle item selection
-//
-//        switch (item.getItemId()) {
-//            case R.id.articles:
-//                Intent intent = new Intent(lv.getContext(), ArticlesActivity.class);
-//                startActivity(intent);
-//                return true;
-//            case R.id.videos:
-//                Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
-//                startActivity(intent2);
-//                return true;
-//            case R.id.ranking:
-//                Intent intent3 = new Intent(lv.getContext(), RankingActivity.class);
-//                startActivity(intent3);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+        switch (item.getItemId()) {
+            case R.id.articles:
+                Intent intent = new Intent(context, ArticlesActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.videos:
+                Intent intent2 = new Intent(context, NostraVideoActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.ranking:
+                Intent intent3 = new Intent(context, RankingActivity.class);
+                startActivity(intent3);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public ImageLoader imageLoader = ImageLoader.getInstance();
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        videoList = new ArrayList<Video>();
-
-        fillList();
-
-        setContentView(R.layout.videos);
-
-        ((ListView) findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
-        ((ListView) findViewById(R.id.video_list)).setOnItemClickListener(listener);
-    }
 
     @Override
     protected void onDestroy() {
@@ -141,15 +142,15 @@ public class NostraVideoActivity extends Activity {
             View view = convertView;
             final ViewHolder holder;
             if (convertView == null) {
-                view = getLayoutInflater().inflate(R.layout.list_item, null);
+                view = getLayoutInflater().inflate(R.layout.video_item, null);
                 holder = new ViewHolder();
-                holder.text = (TextView) view.findViewById(R.id.text);
-                holder.image = (ImageView) view.findViewById(R.id.image);
+                holder.text = (TextView) view.findViewById(R.id.video_text);
+                holder.image = (ImageView) view.findViewById(R.id.video_image);
                 view.setTag(holder);
             } else
                 holder = (ViewHolder) view.getTag();
 
-            holder.text.setText("Item " + position);
+            holder.text.setText(videoList.get(position).getTitle());
 
             // Full "displayImage" method using.
             // You can use simple call:
@@ -173,7 +174,7 @@ public class NostraVideoActivity extends Activity {
 
                 @Override
                 public void onLoadingComplete() {
-                    holder.text.setText("Item " + position);
+                    holder.text.setText(videoList.get(position).getTitle());
                 }
             });
 

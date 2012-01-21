@@ -251,7 +251,7 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
                 return true;
             case R.id.videos:
-                Intent intent2 = new Intent(lv.getContext(), VideoActivity.class);
+                Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
                 startActivity(intent2);
                 return true;
             case R.id.ranking:

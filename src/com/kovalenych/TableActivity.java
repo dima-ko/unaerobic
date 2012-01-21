@@ -325,14 +325,6 @@ public class TableActivity extends Activity implements Soundable {
         O2.add(new Cycle(240, 300));
         O2.add(new Cycle(300, 360));
         return O2;
-//        O2.add(new Cycle(60, 60));
-//        O2.add(new Cycle(120, 75));
-//        O2.add(new Cycle(120, 90));
-//        O2.add(new Cycle(120, 105));
-//        O2.add(new Cycle(120, 120));
-//        O2.add(new Cycle(120, 135));
-//        O2.add(new Cycle(120, 150));
-//        O2.add(new Cycle(120, 150));
 
     }
 
@@ -372,7 +364,7 @@ public class TableActivity extends Activity implements Soundable {
                 startActivity(intent);
                 return true;
             case R.id.videos:
-                Intent intent2 = new Intent(lv.getContext(), VideoActivity.class);
+                Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
                 startActivity(intent2);
                 return true;
             case R.id.ranking:
@@ -403,16 +395,3 @@ public class TableActivity extends Activity implements Soundable {
 
 }
 
-//java.lang.NullPointerException
-//at com.kovalenych.TableActivity.getVoiceRadios(TableActivity.java:271)
-//at com.kovalenych.TableActivity.access$100(TableActivity.java:25)
-//at com.kovalenych.TableActivity$3$1.onCancel(TableActivity.java:215)
-//at android.app.Dialog$ListenersHandler.handleMessage(Dialog.java:1050)
-//at android.os.Handler.dispatchMessage(Handler.java:99)
-//at android.os.Looper.loop(Looper.java:123)
-//at android.app.ActivityThread.main(ActivityThread.java:4627)
-//at java.lang.reflect.Method.invokeNative(Native Method)
-//at java.lang.reflect.Method.invoke(Method.java:521)
-//at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:858)
-//at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
-//at dalvik.system.NativeStart.main(Native Method)
