@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unaerobic</string>
+    <string name="articles">Articles</string>
+    <string name="videos">Videos</string>
+    <string name="ranking">Ranking</string>
+    <string name="info">- Press Menu to find more interesting on web\n
+        - Press \"+\" button to add new table or cycle\n
+        - Long press on timer circle to start it immediately\n
+        - Press volume icon to customize voice alarms\n
+        - Long press on cycle or table to remove\n
+        If you wish your language to be added, please
+        send articles, sounds and translated text.
+        Or exciting youtube clips. \n
+        \t\t Good luck in your dive
+    </string>
+    <string name="noConnect">Sorry,you must be connected to internet</string>
+    <string name="credits">For propositions and critics write on: \ninsomniac.robot@gmail.com</string>
+
+    <string name="minutes1">minute</string>
+    <string name="minutes2">2 minutes</string>
+    <string name="minutes3">3 minutes</string>
+    <string name="minutes4">4 minutes</string>
+    <string name="minutes5">5 minutes</string>
+    <string name="seconds30">30 seconds</string>
+    <string name="seconds10">10 seconds</string>
+    <string name="seconds5">5 seconds</string>
+    <string name="start">start</string>
+    <string name="tostart">TO START</string>
+    <string name="afterstart">AFTER START</string>
+    <string name="breathe">breathe</string>
+    <string name="voices">Voices</string>
+    <string name="new_table">New table</string>
+    <string name="new_cycle">New cycle</string>
+    <string name="hold_s">hold, s</string>
+    <string name="breath_s">breath, s</string>
+    <string name="breath_time">breath, s</string>
+    <string name="breathe_time">breathe\n time</string>
+    <string name="hold_time">hold\n time</string>
+
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+        >
+    <ImageView
+            android:src="@drawable/nitsch_hvga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            />
+    <Button
+            android:id="@+id/add_table"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/plus_action"
+            />
+
+    <Button
+            android:id="@+id/info"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/info_action"
+            />
+    <!--<ScrollView-->
+    <!--android:id="@+id/tables_scroll"-->
+    <!--android:layout_above="@id/info"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:layout_marginLeft="20px"-->
+
+    <!-->-->
+    <ListView
+            android:id="@+id/tables_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="30px"
+            android:cacheColorHint="#00000000"
+            />
+    <!--</ScrollView>-->
+
+
+</RelativeLayout>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="60px"
+                android:padding="2px"
+        >
+    <TextView
+            android:id="@+id/art_name"
+            android:layout_width="fill_parent"
+            android:layout_height="25px"
+            android:textSize="18px"
+            android:layout_alignParentLeft="true"
+            />
+
+    <TextView
+            android:id="@+id/art_author"
+            android:layout_width="wrap_content"
+            android:layout_height="18px"
+            android:textSize="12px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            />
+    <TextView
+            android:id="@+id/art_domain"
+            android:layout_width="fill_parent"
+            android:layout_height="18px"
+            android:textSize="12px"
+            android:layout_below="@id/art_name"
+            />
+
+
+</RelativeLayout>

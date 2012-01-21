@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unaerobic</string>
+    <string name="articles">Artículos</string>
+    <string name="videos">Videos</string>
+    <string name="ranking">Clasificación</string>
+    <string name="info">- Pulse Menú para encontrar más interesantes en la web\n
+        - Pulse \"+\" botón para agregar la nueva tabla o en ciclo\n
+        - Pulsación larga en el círculo de temporizador para comenzar de inmediato\n
+        - Pulse el icono de volumen para personalizar las alarmas de voz\n
+        - Pulsación larga en el ciclo o la tabla para eliminar\n
+        Si desea que su idioma que se añade, por favor
+        enviar artículos, sonidos y texto traducido.
+        O emocionante clips de YouTube.          \n
+        \t\t Buena suerte en la inmersión
+
+
+    </string>
+    <string name="noConnect">Lo sentimos, usted debe estar conectado a internet</string>
+    <string name="credits">De proposiciones y críticos que escriben sobre: \ninsomniac.robot@gmail.com
+
+
+    </string>
+
+    <string name="info_word">Información</string>
+</resources>
