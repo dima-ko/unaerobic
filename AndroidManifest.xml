@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.kovalenych"
-      android:versionCode="10"
-      android:versionName="1.11653">
+          package="com.kovalenych"
+          android:versionCode="10"
+          android:versionName="1.11653">
     <supports-screens android:resizeable="true"
-                  android:smallScreens="true"
-                  android:normalScreens="true"
-                  android:largeScreens="true"
-                  android:anyDensity="true" />
+                      android:smallScreens="true"
+                      android:normalScreens="true"
+                      android:largeScreens="true"
+                      android:anyDensity="true"/>
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-       <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="7"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="7"/>
     <application android:label="Unaerobic" android:icon="@drawable/icon"
-            android:theme="@android:style/Theme.NoTitleBar" android:debuggable="true">
+                 android:theme="@android:style/Theme.NoTitleBar" android:debuggable="true"
+                 android:name=".UnaeroApplication">
         <activity android:name=".MenuActivity"
                   android:label="@string/app_name"
-                android:screenOrientation="portrait" >
+                  android:screenOrientation="portrait">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-         <activity android:name=".TableActivity"  android:screenOrientation="portrait"/>
-         <activity android:name=".ClockActivity"  android:screenOrientation="landscape" android:configChanges="orientation" />
-         <activity android:name=".ArticlesActivity"  android:screenOrientation="portrait"/>
-         <activity android:name=".VideoActivity"  android:screenOrientation="portrait"/>
-         <activity android:name=".RankingActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".TableActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ClockActivity" android:screenOrientation="landscape"
+                  android:configChanges="orientation"/>
+        <activity android:name=".ArticlesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".VideoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RankingActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest> 
