@@ -113,11 +113,11 @@ public class ArticlesActivity extends Activity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(context, MenuActivity.class);
-        startActivity(intent);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Intent intent = new Intent(context, MenuActivity.class);
+//        startActivity(intent);
+//    }
 
 }

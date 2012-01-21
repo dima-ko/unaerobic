@@ -57,6 +57,9 @@ public class NostraVideoActivity extends Activity {
 
     private void fillList() {
         videoList.add(new Video("TEDxVienna - Herbert Nitsch - Breathless", "http://www.youtube.com/watch?v=INqG2YtgU08"));
+        videoList.add(new Video("Sea Bed Hunting On One Breath", "http://www.youtube.com/watch?feature=player_embedded&v=MgRpwESWPLM"));
+        videoList.add(new Video("No Bubbles Allowed (Freediving epic movie, Eilat)", "http://www.youtube.com/watch?feature=player_embedded&v=24wuz4OP5io#!"));
+        videoList.add(new Video("TEDxVienna - Herbert Nitsch - Breathless", "http://www.youtube.com/watch?v=INqG2YtgU08"));
         videoList.add(new Video("Intervew with Herbert 83m CNF", "http://www.youtube.com/watch?v=2exs67Npnas"));
         videoList.add(new Video("Freediver Blackout", "http://www.youtube.com/watch?v=PBnEIMTrgFk"));
         videoList.add(new Video("Carlos Coste Black Out WC Italy 2011", "http://www.youtube.com/watch?v=rS3wYUOBxgo&feature=related"));
@@ -109,12 +112,12 @@ public class NostraVideoActivity extends Activity {
         super.onDestroy();
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(context, MenuActivity.class);
-        startActivity(intent);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Intent intent = new Intent(context, MenuActivity.class);
+//        startActivity(intent);
+//    }
 
     class ItemAdapter extends BaseAdapter {
 
