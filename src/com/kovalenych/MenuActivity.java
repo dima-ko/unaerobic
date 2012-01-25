@@ -17,6 +17,8 @@ import android.widget.*;
 
 import java.util.*;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 
 public class MenuActivity extends Activity {
 
@@ -35,6 +37,7 @@ public class MenuActivity extends Activity {
     Spinner spinner;
     private View menu;
     private PlatformResolver pr;
+    GoogleAnalyticsTracker tracker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,7 @@ public class MenuActivity extends Activity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                tracker.trackEvent("Clicks",   "Button",  "clicked",  7 );
                 Intent intent = new Intent(lv.getContext(), com.kovalenych.TableActivity.class);
                 Bundle bun = new Bundle();
                 bun.putString("name", tableList.get(position));
@@ -101,6 +105,11 @@ public class MenuActivity extends Activity {
         info_button = (Button) findViewById(R.id.info);
 
         setButtonListeners();
+
+        tracker = GoogleAnalyticsTracker.getInstance();
+
+        // Start the tracker in manual dispatch mode...
+        tracker.startNewSession("UA-28633429-1", this);
     }
 
     private void resolvePlatform() {
@@ -186,9 +195,11 @@ public class MenuActivity extends Activity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.add_table:
+                    tracker.trackEvent("Clicks",   "Button",  "clicked",  4 );
                     newDialog.show();
                     break;
                 case R.id.info:
+                    tracker.trackEvent("Clicks",   "Button",  "clicked",  5 );
                     infoDialog.show();
                     break;
                 case R.id.delete_button:
@@ -201,6 +212,7 @@ public class MenuActivity extends Activity {
                     if (!name.equals("")) {
                         tableList.add(name);
                         invalidateList();
+                        tracker.trackEvent("Clicks",   "Button",  "clicked",  6 );
                     }
                     newDialog.dismiss();
                     break;
@@ -249,19 +261,24 @@ public class MenuActivity extends Activity {
             case R.id.articles:
                 Intent intent = new Intent(lv.getContext(), ArticlesActivity.class);
                 startActivity(intent);
+                tracker.trackEvent("Clicks",   "Button",  "clicked",  1 );
                 return true;
             case R.id.videos:
                 Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
                 startActivity(intent2);
+                tracker.trackEvent("Clicks",   "Button",  "clicked",  2 );
                 return true;
             case R.id.ranking:
                 Intent intent3 = new Intent(lv.getContext(), RankingActivity.class);
                 startActivity(intent3);
+                tracker.trackEvent("Clicks",   "Button",  "clicked",  3 );
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
     /**
      * @return boolean return true if the application can access the internet
@@ -278,4 +295,9 @@ public class MenuActivity extends Activity {
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        tracker.stopSession();
+    }
 }
