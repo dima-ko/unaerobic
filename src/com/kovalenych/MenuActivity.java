@@ -110,6 +110,7 @@ public class MenuActivity extends Activity {
 
         // Start the tracker in manual dispatch mode...
         tracker.startNewSession("UA-28633429-1", this);
+        tracker.setAnonymizeIp(true);
     }
 
     private void resolvePlatform() {
