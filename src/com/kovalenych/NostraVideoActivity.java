@@ -56,6 +56,8 @@ public class NostraVideoActivity extends Activity {
 
 
     private void fillList() {
+        videoList.add(new Video("TANYA STREETER: Shark Therapy", "http://www.youtube.com/watch?feature=player_embedded&v=T1knyXu4QuQ"));
+        videoList.add(new Video("FreeDive.mov", "http://www.youtube.com/watch?feature=player_embedded&v=wuVgrY4FjY0"));
         videoList.add(new Video("Sea Bed Hunting On One Breath", "http://www.youtube.com/watch?feature=player_embedded&v=MgRpwESWPLM"));
         videoList.add(new Video("TEDxVienna - Herbert Nitsch - Breathless", "http://www.youtube.com/watch?v=INqG2YtgU08"));
         videoList.add(new Video("Intervew with Herbert 83m CNF", "http://www.youtube.com/watch?v=2exs67Npnas"));

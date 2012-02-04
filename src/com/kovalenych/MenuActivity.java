@@ -196,11 +196,11 @@ public class MenuActivity extends Activity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.add_table:
-                    tracker.trackEvent("Clicks",   "Button",  "clicked",  4 );
+                    tracker.trackPageView("/addTable");
                     newDialog.show();
                     break;
                 case R.id.info:
-                    tracker.trackEvent("Clicks",   "Button",  "clicked",  5 );
+                    tracker.trackPageView("/info");
                     infoDialog.show();
                     break;
                 case R.id.delete_button:
@@ -213,7 +213,6 @@ public class MenuActivity extends Activity {
                     if (!name.equals("")) {
                         tableList.add(name);
                         invalidateList();
-                        tracker.trackEvent("Clicks",   "Button",  "clicked",  6 );
                     }
                     newDialog.dismiss();
                     break;
@@ -262,17 +261,17 @@ public class MenuActivity extends Activity {
             case R.id.articles:
                 Intent intent = new Intent(lv.getContext(), ArticlesActivity.class);
                 startActivity(intent);
-                tracker.trackEvent("Clicks",   "Button",  "clicked",  1 );
+                tracker.trackPageView("/articles");
                 return true;
             case R.id.videos:
                 Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
                 startActivity(intent2);
-                tracker.trackEvent("Clicks",   "Button",  "clicked",  2 );
+                tracker.trackPageView("/videos");
                 return true;
             case R.id.ranking:
                 Intent intent3 = new Intent(lv.getContext(), RankingActivity.class);
                 startActivity(intent3);
-                tracker.trackEvent("Clicks",   "Button",  "clicked",  3 );
+                tracker.trackPageView("/ranking");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -299,6 +298,7 @@ public class MenuActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        tracker.dispatch();
         tracker.stopSession();
     }
 }
