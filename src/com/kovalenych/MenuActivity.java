@@ -14,10 +14,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import java.util.*;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 
 public class MenuActivity extends Activity {
@@ -43,6 +42,11 @@ public class MenuActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ptr = this;
+
+        Log.d("language", Locale.getDefault().getLanguage());
+        if (Locale.getDefault().getLanguage().equals("fr")) {
+
+        }
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         resolvePlatform();
@@ -81,7 +85,7 @@ public class MenuActivity extends Activity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                tracker.trackEvent("Clicks",   "Button",  "clicked",  7 );
+                tracker.trackEvent("Clicks", "Button", "clicked", 7);
                 Intent intent = new Intent(lv.getContext(), com.kovalenych.TableActivity.class);
                 Bundle bun = new Bundle();
                 bun.putString("name", tableList.get(position));
@@ -277,7 +281,6 @@ public class MenuActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 
     /**
