@@ -167,7 +167,7 @@ public class ClockActivity extends Activity implements Soundable {
         if (keyCode == KeyEvent.KEYCODE_BACK &&
                 event.getAction() == KeyEvent.ACTION_DOWN) {
             timer.stopThread();
-            Intent intent = new Intent(ClockActivity.this, TableActivity.class);
+            Intent intent = new Intent(ClockActivity.this, CyclesActivity.class);
             setResult(2, intent);
 
             ClockActivity.this.finish();

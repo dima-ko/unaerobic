@@ -19,14 +19,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TableActivity extends Activity implements Soundable {
+public class CyclesActivity extends Activity implements Soundable {
 
     ListView lv;
 
     Table curTable;
     int curCycleId;
 
-    private static final String LOG_TAG = "TableActivity";
+    private static final String LOG_TAG = "CyclesActivity";
     String name;
     Button add_button, ok_button, melody;
     Dialog newDialog;

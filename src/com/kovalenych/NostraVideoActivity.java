@@ -116,7 +116,7 @@ public class NostraVideoActivity extends Activity {
 //    @Override
 //    public void onBackPressed() {
 //        super.onBackPressed();
-//        Intent intent = new Intent(context, MenuActivity.class);
+//        Intent intent = new Intent(context, TablesActivity.class);
 //        startActivity(intent);
 //    }
 

@@ -19,7 +19,7 @@ import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import java.util.*;
 
 
-public class MenuActivity extends Activity {
+public class TablesActivity extends Activity {
 
     ArrayList<String> tableList;
 
@@ -86,7 +86,7 @@ public class MenuActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 tracker.trackEvent("Clicks", "Button", "clicked", 7);
-                Intent intent = new Intent(lv.getContext(), com.kovalenych.TableActivity.class);
+                Intent intent = new Intent(lv.getContext(), CyclesActivity.class);
                 Bundle bun = new Bundle();
                 bun.putString("name", tableList.get(position));
                 intent.putExtras(bun);
