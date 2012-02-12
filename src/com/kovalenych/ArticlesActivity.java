@@ -84,40 +84,6 @@ public class ArticlesActivity extends Activity {
         return items;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menushka, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-
-        switch (item.getItemId()) {
-            case R.id.articles:
-                Intent intent = new Intent(lv.getContext(), ArticlesActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.videos:
-                Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
-                startActivity(intent2);
-                return true;
-            case R.id.ranking:
-                Intent intent3 = new Intent(lv.getContext(), RankingActivity.class);
-                startActivity(intent3);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        Intent intent = new Intent(context, TablesActivity.class);
-//        startActivity(intent);
-//    }
 
 }

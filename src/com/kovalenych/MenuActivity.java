@@ -15,7 +15,12 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_menu);
-
+        findViewById(R.id.menu_art).setOnClickListener(activListener);
+        findViewById(R.id.menu_heart).setOnClickListener(activListener);
+        findViewById(R.id.menu_info).setOnClickListener(activListener);
+        findViewById(R.id.menu_rank).setOnClickListener(activListener);
+        findViewById(R.id.menu_tables).setOnClickListener(activListener);
+        findViewById(R.id.menu_videos).setOnClickListener(activListener);
 
     }
 

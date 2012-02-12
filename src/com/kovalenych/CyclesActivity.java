@@ -342,39 +342,8 @@ public class CyclesActivity extends Activity implements Soundable {
         return CO2;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menushka, menu);
-        return true;
-    }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-
-        if (!haveInternet()) {
-            Toast.makeText(ptr, R.string.noConnect, 2000).show();
-            return false;
-        }
-        switch (item.getItemId()) {
-            case R.id.articles:
-                Intent intent = new Intent(lv.getContext(), ArticlesActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.videos:
-                Intent intent2 = new Intent(lv.getContext(), NostraVideoActivity.class);
-                startActivity(intent2);
-                return true;
-            case R.id.ranking:
-                Intent intent3 = new Intent(lv.getContext(), RankingActivity.class);
-                startActivity(intent3);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
 
     /**

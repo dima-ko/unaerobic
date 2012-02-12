@@ -3,12 +3,12 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical"
+              android:background="@drawable/nitsch"
         >
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#FF123445"
             android:orientation="horizontal"
             >
 
@@ -16,7 +16,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FF000000"
                 android:orientation="vertical"
                 android:id="@+id/menu_art"
                 >
@@ -41,7 +40,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FF000000"
                 android:orientation="vertical"
                 android:id="@+id/menu_rank"
                 >
@@ -69,7 +67,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#FF123445"
             android:orientation="horizontal"
             >
 
@@ -78,14 +75,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FF000000"
                 android:orientation="vertical"
                 >
             <ImageView
                     android:id="@+id/table_image"
                     android:layout_height="120px"
                     android:layout_width="120px"
-                    android:src="@drawable/camcorder_sm"
+                    android:src="@drawable/vidos"
                     android:layout_centerInParent="true"
                     />
             <TextView
@@ -103,7 +99,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FF000000"
                 android:orientation="vertical"
                 android:id="@+id/menu_tables"
                 >
@@ -131,7 +126,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#FF123445"
             android:orientation="horizontal"
             >
 
@@ -139,7 +133,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FF000000"
                 android:orientation="vertical"
                 android:id="@+id/menu_heart"
                 >
@@ -164,7 +157,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FF000000"
                 android:orientation="vertical"
                 android:id="@+id/menu_info"
                 >

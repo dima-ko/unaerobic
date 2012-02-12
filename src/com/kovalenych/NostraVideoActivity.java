@@ -26,18 +26,6 @@ public class NostraVideoActivity extends Activity {
         }
     };
 
-    //    private List<? extends Map<String, ?>> createCyclesList() {
-//
-//        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
-//
-//        for (int i = 0; i < videoList.size(); i++) {
-//            Map<String, Object> map = new HashMap<String, Object>();
-//            map.put("title", videoList.get(i).getTitle());
-//            map.put("picture", videoList.get(i).getPictureUri());
-//            items.add(map);
-//        }
-//
-//        return items;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,34 +64,7 @@ public class NostraVideoActivity extends Activity {
 //    }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menushka, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-
-        switch (item.getItemId()) {
-            case R.id.articles:
-                Intent intent = new Intent(context, ArticlesActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.videos:
-                Intent intent2 = new Intent(context, NostraVideoActivity.class);
-                startActivity(intent2);
-                return true;
-            case R.id.ranking:
-                Intent intent3 = new Intent(context, RankingActivity.class);
-                startActivity(intent3);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     public ImageLoader imageLoader = ImageLoader.getInstance();
 
