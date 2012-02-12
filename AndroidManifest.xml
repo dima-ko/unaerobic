@@ -17,15 +17,16 @@
     <application android:label="Unaerobic" android:icon="@drawable/icon"
                  android:theme="@android:style/Theme.NoTitleBar" android:debuggable="true"
                  android:name=".UnaeroApplication">
-        <activity android:name=".TablesActivity"
+        <activity android:name=".MenuActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".TablesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".CyclesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ClockActivity" android:screenOrientation="landscape"
                   android:configChanges="orientation"/>

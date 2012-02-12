@@ -30,7 +30,7 @@ public class TablesActivity extends Activity {
     Dialog infoDialog;
     Dialog delDialog;
     Activity ptr;
-    Button add_button, info_button, ok_button, del_button;
+    Button add_button/*, info_button*/, ok_button, del_button;
     EditText edit;
     int chosenTable;
     Spinner spinner;
@@ -106,7 +106,7 @@ public class TablesActivity extends Activity {
 
         add_button = (Button) findViewById(R.id.add_table);
 
-        info_button = (Button) findViewById(R.id.info);
+//        info_button = (Button) findViewById(R.id.info);
 
         setButtonListeners();
 
@@ -227,7 +227,7 @@ public class TablesActivity extends Activity {
     public void setButtonListeners() {
 
         add_button.setOnClickListener(buttonListener);
-        info_button.setOnClickListener(buttonListener);
+//        info_button.setOnClickListener(buttonListener);
         del_button.setOnClickListener(buttonListener);
         ok_button.setOnClickListener(buttonListener);
     }
@@ -242,7 +242,7 @@ public class TablesActivity extends Activity {
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
         add_button.setVisibility(View.INVISIBLE);
-        info_button.setVisibility(View.INVISIBLE);
+//        info_button.setVisibility(View.INVISIBLE);
         return super.onMenuOpened(featureId, menu);
     }
 
@@ -250,7 +250,7 @@ public class TablesActivity extends Activity {
     public void onOptionsMenuClosed(Menu menu) {
         if (add_button.getVisibility() == View.INVISIBLE) {
             add_button.setVisibility(View.VISIBLE);
-            info_button.setVisibility(View.VISIBLE);
+//            info_button.setVisibility(View.VISIBLE);
         }
     }
 
