@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
-              android:layout_height="80px"
+              android:layout_height="60px"
               android:padding="5px"
         >
     <TextView
             android:id="@+id/ranking_country"
-            android:layout_width="80px"
+            android:layout_width="60px"
             android:layout_height="fill_parent"
             android:textSize="22px"
             />

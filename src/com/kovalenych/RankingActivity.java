@@ -1,12 +1,23 @@
 package com.kovalenych;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +28,9 @@ public class RankingActivity extends Activity {
     ListView lv;
     ArrayList<Record> recordsList;
     Context context;
+    private Dialog filterDialog;
+    protected URL url;
+    protected HttpURLConnection conn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,14 +49,28 @@ public class RankingActivity extends Activity {
 
 
     private void fillList() {
-        recordsList.add(new Record("breath-hold divers (Ama)", "Tamaki H & co", "http://www.ncbi.nlm.nih.gov/pubmed/20737928?dopt=Abstract"));
+
+        filterDialog = new Dialog(context);
+        filterDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        filterDialog.setCancelable(true);
+        filterDialog.setContentView(R.layout.filter_dialog);
+        initDialog();
+        filterDialog.show();
+
+
+        recordsList.add(new Record("Goran", "Colak", "273", "CR", "101"));
+    }
+
+    private void initDialog() {
+
+
     }
 
     private void invalidateList() {
 
-        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), R.layout.ranking,
+        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), R.layout.record_item,
                 new String[]{"flag", "name", "result"},
-                new int[]{R.id.art_name, R.id.art_author, R.id.art_domain});
+                new int[]{R.id.ranking_country, R.id.ranking_name_surname, R.id.ranking_result});
         adapter.setViewBinder(new ArticleViewBinder());
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
@@ -62,5 +90,86 @@ public class RankingActivity extends Activity {
 
         return items;
     }
+
+    public void getFromApneaCZ() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 100);
+
+    }
+
+    protected void start() throws IOException {
+        url = new URL("http://apnea.cz/ranking.html?");
+        conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        setTypicalRequestProps();
+//        conn.setRequestProperty("Referer", kyivstar_referer_uri);
+//        sendInitGet();
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+    }
+
+    protected void setTypicalRequestProps() {
+        conn.setDoInput(true);
+        conn.setDoOutput(true);
+        conn.setAllowUserInteraction(true);
+
+        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux i686; rv:2.0) Gecko/20100101 Firefox/4.0");
+        conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+        conn.setRequestProperty("Accept-Language", "en-us,en;q=0.5");
+        conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
+        conn.setRequestProperty("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.7");
+        conn.setRequestProperty("Keep-Alive", "300");
+        conn.setRequestProperty("Connection", "keep-alive");
+
+
+    }
+
+//    POST /ranking.html? HTTP/1.1
+//    Host: apnea.cz
+//    User-Agent: Mozilla/5.0 (Ubuntu; X11; Linux i686; rv:9.0.1) Gecko/20100101 Firefox/9.0.1
+//    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+//    Accept-Language: en-us,en;q=0.5
+//    Accept-Encoding: gzip, deflate
+//    Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+//    Connection: keep-alive
+//    Referer: http://apnea.cz/ranking.html?DYN+md:best
+//    Cookie: htscallerid=e4f7b64c05ecfc836c12109d584c52e8
+//    Content-Type: multipart/form-data; boundary=---------------------------457964961466790513485958903
+//    Content-Length: 4158
+//    -----------------------------457964961466790513485958903
+//    Content-Disposition: form-data; name="Lang"
+
+    protected void sendPost(String content) throws IOException {
+        DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+//        Log.d(LOG_TAG + "zzzzzzlength", "" + content.length());
+        System.out.println(content);
+        out.writeBytes(content);
+        out.flush();
+        out.close();
+
+        System.out.println("zzPost" + conn.getResponseCode());
+        System.out.println("zzPost" + conn.getResponseMessage());
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line = "";
+        int i = 0;
+//        while ((line = in.readLine()) != null) {
+//            if (haveSendConfirmation && line.contains("прийнято"))
+//                Toast.makeText(this, R.string.succesfulySend, 2000).show();
+//            Log.d("zzzPostResponce", line);
+//            i++;
+//        }
+        in.close();
+//        if (!haveSendConfirmation)
+//            Toast.makeText(this, R.string.succesfulySend, 2000).show();
+
+    }
+
 
 }
