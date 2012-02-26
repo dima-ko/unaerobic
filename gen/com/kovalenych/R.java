@@ -12,6 +12,7 @@ public final class R {
         public static final int rotate_anim=0x7f040000;
     }
     public static final class array {
+        public static final int disciplines=0x7f060001;
         public static final int languages=0x7f060000;
     }
     public static final class attr {
@@ -169,33 +170,34 @@ public final class R {
         public static final int to5sec=0x7f05000b;
     }
     public static final class string {
-        public static final int afterstart=0x7f090013;
+        public static final int afterstart=0x7f090014;
         public static final int app_name=0x7f090000;
         public static final int articles=0x7f090001;
-        public static final int breath_s=0x7f090019;
-        public static final int breathe=0x7f090014;
-        public static final int breathe_time=0x7f09001a;
+        public static final int breath_s=0x7f09001a;
+        public static final int breathe=0x7f090015;
+        public static final int breathe_time=0x7f09001b;
         public static final int credits=0x7f090007;
-        public static final int hold_s=0x7f090018;
-        public static final int hold_time=0x7f09001b;
+        public static final int disipline_prompt=0x7f090009;
+        public static final int hold_s=0x7f090019;
+        public static final int hold_time=0x7f09001c;
         public static final int info=0x7f090005;
         public static final int info_title=0x7f090004;
-        public static final int minutes1=0x7f090009;
-        public static final int minutes2=0x7f09000a;
-        public static final int minutes3=0x7f09000b;
-        public static final int minutes4=0x7f09000c;
-        public static final int minutes5=0x7f09000d;
-        public static final int new_cycle=0x7f090017;
-        public static final int new_table=0x7f090016;
+        public static final int minutes1=0x7f09000a;
+        public static final int minutes2=0x7f09000b;
+        public static final int minutes3=0x7f09000c;
+        public static final int minutes4=0x7f09000d;
+        public static final int minutes5=0x7f09000e;
+        public static final int new_cycle=0x7f090018;
+        public static final int new_table=0x7f090017;
         public static final int noConnect=0x7f090006;
         public static final int ranking=0x7f090003;
-        public static final int seconds10=0x7f09000f;
-        public static final int seconds30=0x7f09000e;
-        public static final int seconds5=0x7f090010;
-        public static final int start=0x7f090011;
-        public static final int tostart=0x7f090012;
+        public static final int seconds10=0x7f090010;
+        public static final int seconds30=0x7f09000f;
+        public static final int seconds5=0x7f090011;
+        public static final int start=0x7f090012;
+        public static final int tostart=0x7f090013;
         public static final int under_construction=0x7f090008;
         public static final int videos=0x7f090002;
-        public static final int voices=0x7f090015;
+        public static final int voices=0x7f090016;
     }
 }

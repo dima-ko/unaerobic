@@ -3,4 +3,16 @@
         <item>English</item>
         <item>Russian</item>
     </string-array>
+
+
+    <string-array name="disciplines">
+        <item>STA</item>
+        <item>DYN</item>
+        <item>DNF</item>
+        <item>CWT</item>
+        <item>FIM</item>
+        <item>CNF</item>
+        <item>NL</item>
+    </string-array>
+
 </resources>

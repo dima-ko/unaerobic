@@ -8,9 +8,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -62,7 +60,11 @@ public class RankingActivity extends Activity {
     }
 
     private void initDialog() {
-
+        Spinner s = (Spinner) filterDialog.findViewById(R.id.discipline_spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                this, R.array.disciplines, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
 
     }
 

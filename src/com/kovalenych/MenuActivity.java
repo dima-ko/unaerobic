@@ -18,7 +18,7 @@ import java.util.Locale;
 
 public class MenuActivity extends Activity {
 
-    GoogleAnalyticsTracker tracker;
+//    GoogleAnalyticsTracker tracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +89,8 @@ public class MenuActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        tracker.dispatch();
-        tracker.stopSession();
+//        tracker.dispatch();
+//        tracker.stopSession();
     }
 
     private void resolvePlatform() {
