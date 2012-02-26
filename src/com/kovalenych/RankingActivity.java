@@ -53,7 +53,7 @@ public class RankingActivity extends Activity {
         filterDialog = new Dialog(context);
         filterDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         filterDialog.setCancelable(true);
-        filterDialog.setContentView(R.layout.filter_dialog);
+        filterDialog.setContentView(PlatformResolver.getFilterDialogLayout());
         initDialog();
         filterDialog.show();
 

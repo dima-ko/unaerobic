@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="310px"
+              android:layout_height="fill_parent"
+              android:padding="10dp"
+              android:gravity="center"
+              android:background="#00000000"
+        >
+    <Spinner
+            android:layout_marginTop="5px"
+            android:id="@+id/discipline_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="5px"
+            />
+
+    <Spinner
+            android:layout_marginTop="5px"
+            android:id="@+id/discipline_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="5px"
+            />
+    <Spinner
+            android:layout_marginTop="5px"
+            android:id="@+id/discipline_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="5px"
+            />
+    <LinearLayout
+            android:layout_height="50px"
+            android:layout_width="fill_parent"
+            >
+        <TextView
+                android:layout_marginLeft="30px"
+                android:layout_height="wrap_content"
+                android:layout_width="210px"
+                android:text="women"
+
+                />
+        <CheckBox android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_height="80px"
+            android:layout_width="fill_parent"
+            >
+        <TextView
+                android:layout_marginLeft="30px"
+                android:layout_height="wrap_content"
+                android:layout_width="210px"
+                android:text="men"
+
+                />
+        <CheckBox android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                />
+    </LinearLayout>
+
+    <Button
+            android:text="Show"
+            android:layout_height="wrap_content"
+            android:layout_width="200px"
+            />
+
+</LinearLayout>

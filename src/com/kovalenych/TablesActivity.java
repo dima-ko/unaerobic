@@ -35,22 +35,18 @@ public class TablesActivity extends Activity {
     int chosenTable;
     Spinner spinner;
     private View menu;
-    private PlatformResolver pr;
-    GoogleAnalyticsTracker tracker;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ptr = this;
 
-        Log.d("language", Locale.getDefault().getLanguage());
-        if (Locale.getDefault().getLanguage().equals("fr")) {
-
-        }
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        resolvePlatform();
-        menu = inflater.inflate(pr.getMenuLayout(), null);
+
+        menu = inflater.inflate(PlatformResolver.getMenuLayout(), null);
 
         setContentView(menu);
         _preferedTables = getSharedPreferences("sharedTables", MODE_PRIVATE);
@@ -85,7 +81,7 @@ public class TablesActivity extends Activity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                tracker.trackEvent("Clicks", "Button", "clicked", 7);
+//                tracker.trackEvent("Clicks", "Button", "clicked", 7);
                 Intent intent = new Intent(lv.getContext(), CyclesActivity.class);
                 Bundle bun = new Bundle();
                 bun.putString("name", tableList.get(position));
@@ -110,28 +106,14 @@ public class TablesActivity extends Activity {
 
         setButtonListeners();
 
-        tracker = GoogleAnalyticsTracker.getInstance();
-
-        // Start the tracker in manual dispatch mode...
-        tracker.startNewSession("UA-28633429-1", this);
-        tracker.setAnonymizeIp(true);
+//        tracker = GoogleAnalyticsTracker.getInstance();
+//
+//        // Start the tracker in manual dispatch mode...
+//        tracker.startNewSession("UA-28633429-1", this);
+//        tracker.setAnonymizeIp(true);
     }
 
-    private void resolvePlatform() {
 
-        pr = new PlatformResolver(this);
-
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        if (metrics.heightPixels == 480)
-            PlatformResolver.isHVGA = true;
-
-        if (metrics.heightPixels == 400)
-            PlatformResolver.isHVGA400 = true;
-
-        if (Build.VERSION.SDK_INT < 5)
-            PlatformResolver.isDONUT = true;
-    }
 
     void initDialogs() {
         delDialog = new Dialog(ptr);
@@ -160,7 +142,7 @@ public class TablesActivity extends Activity {
 
     private void invalidateList() {
 
-        SimpleAdapter adapter = new SimpleAdapter(this, createTablesList(), pr.getTableItemLayout(),
+        SimpleAdapter adapter = new SimpleAdapter(this, createTablesList(), PlatformResolver.getTableItemLayout(),
                 new String[]{"text"},
                 new int[]{R.id.table_name});
 
@@ -200,11 +182,11 @@ public class TablesActivity extends Activity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.add_table:
-                    tracker.trackPageView("/addTable");
+//                    tracker.trackPageView("/addTable");
                     newDialog.show();
                     break;
                 case R.id.info:
-                    tracker.trackPageView("/info");
+//                    tracker.trackPageView("/info");
                     infoDialog.show();
                     break;
                 case R.id.delete_button:
@@ -239,22 +221,5 @@ public class TablesActivity extends Activity {
     /**
      * @return boolean return true if the application can access the internet
      */
-    private boolean haveInternet() {
-        NetworkInfo info = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        if (info == null || !info.isConnected()) {
-            return false;
-        }
-        if (info.isRoaming()) {
-            // here is the roaming option you can change it if you want to disable internet while roaming, just return false
-            return true;
-        }
-        return true;
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        tracker.dispatch();
-        tracker.stopSession();
-    }
 }
