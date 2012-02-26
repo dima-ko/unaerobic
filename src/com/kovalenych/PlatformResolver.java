@@ -83,6 +83,15 @@ public class PlatformResolver {
             return R.layout.filter_dialog;
     }
 
+    static public int getRecordItemLayout() {
+        if (isHVGA)
+            return R.layout.record_item_hwga;
+//        if (isHVGA400)
+//            return R.layout.filter_dialog_hwga;
+        else
+            return R.layout.record_item;
+    }
+
 
     static public int getCycleItemLayout() {
         if (isHVGA)

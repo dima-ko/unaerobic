@@ -68,7 +68,7 @@ public class RankingActivity extends Activity {
 
     private void invalidateList() {
 
-        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), R.layout.record_item,
+        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), PlatformResolver.getRecordItemLayout(),
                 new String[]{"flag", "name", "result"},
                 new int[]{R.id.ranking_country, R.id.ranking_name_surname, R.id.ranking_result});
         adapter.setViewBinder(new ArticleViewBinder());

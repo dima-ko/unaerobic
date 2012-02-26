@@ -141,17 +141,18 @@ public final class R {
         public static final int new_table_dialog_hvga=0x7f030017;
         public static final int ranking=0x7f030018;
         public static final int record_item=0x7f030019;
-        public static final int table=0x7f03001a;
-        public static final int table_400=0x7f03001b;
-        public static final int table_hvga=0x7f03001c;
-        public static final int table_item=0x7f03001d;
-        public static final int table_item_400=0x7f03001e;
-        public static final int table_item_hvga=0x7f03001f;
-        public static final int video_item=0x7f030020;
-        public static final int videos=0x7f030021;
-        public static final int voice=0x7f030022;
-        public static final int voice_400=0x7f030023;
-        public static final int voice_hvga=0x7f030024;
+        public static final int record_item_hwga=0x7f03001a;
+        public static final int table=0x7f03001b;
+        public static final int table_400=0x7f03001c;
+        public static final int table_hvga=0x7f03001d;
+        public static final int table_item=0x7f03001e;
+        public static final int table_item_400=0x7f03001f;
+        public static final int table_item_hvga=0x7f030020;
+        public static final int video_item=0x7f030021;
+        public static final int videos=0x7f030022;
+        public static final int voice=0x7f030023;
+        public static final int voice_400=0x7f030024;
+        public static final int voice_hvga=0x7f030025;
     }
     public static final class raw {
         public static final int after1min=0x7f050000;
