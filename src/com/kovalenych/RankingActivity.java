@@ -30,6 +30,7 @@ public class RankingActivity extends Activity {
     protected URL url;
     protected HttpURLConnection conn;
     private String cookie;
+    private String postMessage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,23 @@ public class RankingActivity extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
 
+        filterDialog.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fillPost();
+                try {
+                    sendPost(postMessage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                filterDialog.dismiss();
+            }
+        });
+
+    }
+
+    private void fillPost() {
+       postMessage = getString(R.string.post);
     }
 
     private void invalidateList() {
@@ -128,19 +146,7 @@ public class RankingActivity extends Activity {
 //        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     }
 
-    protected void setTypicalRequestProps() {
-        conn.setDoInput(true);
-        conn.setDoOutput(true);
-        conn.setAllowUserInteraction(true);
 
-        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux i686; rv:2.0) Gecko/20100101 Firefox/4.0");
-        conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-        conn.setRequestProperty("Accept-Language", "en-us,en;q=0.5");
-        conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
-        conn.setRequestProperty("Connection", "keep-alive");
-
-
-    }
 
     protected void sendInitGet() throws IOException {
 
@@ -155,59 +161,57 @@ public class RankingActivity extends Activity {
                 System.out.println("zzzzcookie" + cookie);
             }
         }
+    }
 
-//        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//        String line = "";
-//        int i = 0;
-//        while ((line = in.readLine()) != null) {
-//
-//            System.out.println("zzGet" + line);
-//            i++;
-//        }
-//        in.close();
+    String boundary = "boundary=---------------------------1397366148113562428080587968";
+
+    protected void setTypicalRequestProps() {
+        conn.setDoInput(true);
+        conn.setDoOutput(true);
+        conn.setAllowUserInteraction(true);
+
+        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux i686; rv:2.0) Gecko/20100101 Firefox/4.0");
+        conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+        conn.setRequestProperty("Accept-Language", "en-us,en;q=0.5");
+        conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
+        conn.setRequestProperty("Connection", "keep-alive");
 
 
     }
+    protected void setTypicalRequestPropsForPost() {
+        conn.setRequestProperty("Referer", "http://apnea.cz/ranking.html?STA");
+        conn.setRequestProperty("Cookie", cookie);
+        conn.setRequestProperty("Content-Type", "multipart/form-data; " + boundary);
+        conn.setRequestProperty("Content-Length", Integer.toString(postMessage.length()));
+//        Referer: http://apnea.cz/ranking.html?STA
+//        Cookie: htscallerid=12a14ac343c799cf87cadbd3778b45d1
 
-//    POST /ranking.html? HTTP/1.1
-//    Host: apnea.cz
-//    User-Agent: Mozilla/5.0 (Ubuntu; X11; Linux i686; rv:9.0.1) Gecko/20100101 Firefox/9.0.1
-//    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-//    Accept-Language: en-us,en;q=0.5
-//    Accept-Encoding: gzip, deflate
-//    Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
-//    Connection: keep-alive
-//    Referer: http://apnea.cz/ranking.html?DYN+md:best
-//    Cookie: htscallerid=e4f7b64c05ecfc836c12109d584c52e8
-//    Content-Type: multipart/form-data; boundary=---------------------------457964961466790513485958903
-//    Content-Length: 4158
-//    -----------------------------457964961466790513485958903
-//    Content-Disposition: form-data; name="Lang"
+    }
 
-//    protected void sendPost(String content) throws IOException {
-//        DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-////        Log.d(LOG_TAG + "zzzzzzlength", "" + content.length());
-//        System.out.println(content);
-//        out.writeBytes(content);
-//        out.flush();
-//        out.close();
-//
-//        System.out.println("zzPost" + conn.getResponseCode());
-//        System.out.println("zzPost" + conn.getResponseMessage());
-//        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//        String line = "";
-//        int i = 0;
-////        while ((line = in.readLine()) != null) {
-////            if (haveSendConfirmation && line.contains("прийнято"))
-////                Toast.makeText(this, R.string.succesfulySend, 2000).show();
-////            Log.d("zzzPostResponce", line);
-////            i++;
-////        }
-//        in.close();
-////        if (!haveSendConfirmation)
-////            Toast.makeText(this, R.string.succesfulySend, 2000).show();
-//
-//    }
+    protected void sendPost(String content) throws IOException {
+        url = new URL("http://apnea.cz/ranking.html?");
+        conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        setTypicalRequestProps();
+        setTypicalRequestPropsForPost();
+        DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+        System.out.println(content);
+        out.writeBytes(content);
+        out.flush();
+        out.close();
+
+        System.out.println("zzPost" + conn.getResponseCode());
+        System.out.println("zzPost" + conn.getResponseMessage());
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line = "";
+        int i = 0;
+        while ((line = in.readLine()) != null) {
+            Log.d("zzzPostResponce", line);
+            i++;
+        }
+        in.close();
+
+    }
 
 
 }

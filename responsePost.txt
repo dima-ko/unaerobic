@@ -1,0 +1,732 @@
+02-27 23:34:27.558: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+02-27 23:34:27.558: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <html>
+02-27 23:34:27.558: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  <head>
+02-27 23:34:27.558: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <title>APNEA.cz ranking</title>
+02-27 23:34:27.558: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+02-27 23:34:27.558: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="verify-v1" content="kM1WLDZCtKXeYxbz/j3128G0ol9SvA8Aq0dbNWjgjWk=" />
+02-27 23:34:27.568: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="google-site-verification" content="FeW1iRUqGPAVJGG0YrgzL1TBnD9gAQ9EqqGbcSkHO4g" />
+02-27 23:34:27.568: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="description" content="Ranking and statistics of freediving competitions. We list as well AIDA competitions, as CMAS, FFESSM, FIPSAS, FEDAS, and events of diverse other freediving federations" />
+02-27 23:34:27.568: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="keywords" content="freediving competitions competitors ranking position top top10 best statistics tables overview blackouts dynamic apnea static depth STA DYN DNF CWT CWF FIM NLT VWT AIDA CMAS FFESSM" />
+02-27 23:34:27.568: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="robots" content="index,follow" />
+02-27 23:34:27.568: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="language" content="EN" />
+02-27 23:34:27.628: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta property="og:image" content="http://profile.ak.fbcdn.net/hprofile-ak-snc4/hs335.snc4/41801_134519316581665_6776_n.jpg" />
+02-27 23:34:27.628: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta property="fb:admins" content="100000949034609" />
+02-27 23:34:27.628: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="copyright" content="copyright (c) 2005 - 2012 Ivo Truxa, truXoft" />
+02-27 23:34:27.628: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ------------------------------------------------------------------
+02-27 23:34:27.638: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    Copyright (c) 2005 - 2012 Ivo Truxa, truXoft
+02-27 23:34:27.638: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    No part of the HTML, JavaScript, CSS, Miva Script, and Java code, and no
+02-27 23:34:27.638: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    original artwork may be reused without prior written permission from
+02-27 23:34:27.648: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    truXoft! Please use our contact form in case of any questions.
+02-27 23:34:27.648: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   ----------------------------------------------------------------------- -->
+02-27 23:34:27.648: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="shortcut icon" href="/pic/apnea.ico" type="image/x-icon" />
+02-27 23:34:27.648: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/css/main.css?date=2011_03_19" />
+02-27 23:34:27.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/css/redmond/jquery-ui.css?date=2011_03_28" />
+02-27 23:34:27.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/css/ranking.css?date=2011_03_28" />
+02-27 23:34:27.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/highslide/highslide.css" />
+02-27 23:34:27.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Blog" href="http://rss.apnea.cz/?blog=u2" />
+02-27 23:34:27.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Forum" href="http://rss.apnea.cz/?forum=1" />
+02-27 23:34:27.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Competition Calendar" href="http://rss.apnea.cz/?cat=comp" />
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Freediving News" href="http://rss.apnea.cz/" />
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: News from Freediving Forums" href="http://rss.apnea.cz/?cat=forum" />
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Freediving twitter News" href="http://rss.apnea.cz/?cat=twitter" />
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: New Freediving Videos" href="http://rss.apnea.cz/?cat=video" />
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/en.js?date=2011_03_19"></script>
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/jquery/jquery.js?date=2011_03_25"></script>
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/jquery/jquery-ui.js?date=2011_03_25"></script>
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/ranking.js?date=2011_03_25"></script>
+02-27 23:34:27.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/json/json2.js?date=2011_03_25"></script>
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/swfobject.js?date=2011_03_25"></script>
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/highslide/highslide-full.packed.js"></script>
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript">
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.graphicsDir = "/highslide/graphics/";
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.outlineType = "rounded-white";
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.showCredits = false;
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.dimmingOpacity = 0.75;
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </script>
+02-27 23:34:27.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/modules/mvcall.mvc" id="statusJS"></script>
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!--[if lt IE 7]>
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <script type="text/javascript" src="/scripts/jquery/jquery.js"></script>
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <script type="text/javascript" src="/scripts/jquery.dropdown.js"></script>
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <![endif]-->
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <style type="text/css" media="screen"><!--
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .highslide-dimming {background:black;}
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .noprint {display:block}
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .printonly {display:none}
+02-27 23:34:27.688: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   --></style><style type="text/css" media="print"><!--
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .noprint,.footer {display:none}
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .printonly {display:block}
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   --></style>
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  </head>
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  <body scroll="no" onload="animBanner(0); resizeScroll(); blurSelects()" ondragenter="fnNoDef()" ondragover="fnNoDef()" ondrop="fnGetInfo()" onmouseover="blurSelect()">
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script type="text/javascript">getWinSz();</script>
+02-27 23:34:27.698: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <div id="fmShowImg" style="display:none"><img id="fmShowPic" src="/pic/spc.gif" onClick="fmFullImg(null)" /><div id="fmShowCapt"></div><div id="fmShowCtrl"></div></div>
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <!-- +++++++ PROGRESS STATUS POPUP ++++++++ -->
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div align="center" style="position:fixed; width:100%; z-index:100"><div id="statusWin" style="display:none" align="center">
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <h1 id="statusTitleTop">Apnea Media Base</h1>
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <h2 id="statusTitle">Transferring Data</h2>
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <span id="msgLn">&nbsp;</span>
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <small id="statusLn">&nbsp;</small>
+02-27 23:34:29.598: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <div style="border:1px inset; width:90%" align="left"><div id="statusBar" style="background-color:darkblue; height:16px; width:0%;" align="left"></div></div>
+02-27 23:34:29.608: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <small id="timeLn">&nbsp;</small>
+02-27 23:34:29.608: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div></div><!-- 2x statusWin -->
+02-27 23:34:29.608: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <script type="text/javascript">statusInit();</script>
+02-27 23:34:29.628: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <!-- ++++ end of PROGRESS STATUS POPUP ++++ -->
+02-27 23:34:29.628: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.638: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <script type="text/javascript">statusWindow(false)</script>
+02-27 23:34:29.638: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.638: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.648: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ======== HEADER ========= -->
+02-27 23:34:29.648: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div id="header"><div class="inner">
+02-27 23:34:29.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="animHdr">
+02-27 23:34:29.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.658: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <img src="pic/girl.png" id="bannerImg" width="395" height="80" alt="Click me on!" onClick="animBanner(0)" />
+02-27 23:34:29.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.668: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.678: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div id="adLbl">advertisement    </div><!-- adLbl -->
+02-27 23:34:29.718: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div id="ad">
+02-27 23:34:29.718: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.718: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <script type="text/javascript">var adWidth = new Array(234,468,234); setTimeout("swapAds(7,3)",10500);</script>
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <div id="adSlot1" style="display:block; position:relative; background-color:#6ac" class="textAd"><p style="text-align:center; font-size:15px; line-height:15px;"><strong>Start advertising on APNEA.cz</strong></p>
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <p style="text-align:center; color:#ffcc00; font-family:'arial black','avant garde'; font-size:20px; line-height:22px;"><strong>NOW and FREE!</strong></p>
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <p style="text-align:center; color:#00ffff; font-size:12px">no mandatory charges &bull; setup in 30s</p><a href="http://apnea.cz/modules/ads.mvc?id=17&md=1da4eee431e3455108d42d559ca2c013&tm=1330378015" target="_blank"><img src="/pic/spc.gif" width="234" height="60" border="0" alt="advertisement" style="position:absolute; top:0; left:0;"></a>     </div>
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <span id="adSlot2" style="display:none"><a href="http://apnea.cz/modules/ads.mvc?id=129&md=1da4eee431e3455108d42d559ca2c013&tm=1330378015" target="_blank"><img src="/ads/frv.jpg" alt="advertisement" width="468" height="60" border="0"></a>     </span>
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <span id="adSlot3" style="display:none"><a href="http://apnea.cz/modules/ads.mvc?id=147&md=1da4eee431e3455108d42d559ca2c013&tm=1330378015" target="_blank"><img src="/ads/apneaman_shop_03_EN.jpg" alt="advertisement" width="234" height="60" border="0"></a>     </span>
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div><!-- ad -->
+02-27 23:34:29.728: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </div><!-- animHdr -->
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <a href="index.html"><img src="/pic/apnea.png" alt="APNEA.cz" width="253" height="68" border="0" style="position:relative; top:6px; left:10px;" /></a>
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <ul class="dropdown">
+02-27 23:34:29.738: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="index.html?" title="Freediving and Apnea Resources" class="dir">Home</a>
+02-27 23:34:29.748: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:29.748: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="features.html?" title="Feature List" class="dir">Features</a>
+02-27 23:34:29.748: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.748: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="features.html?" title="Feature List">Apnea.cz features</a></li>
+02-27 23:34:29.748: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="account_types.html?" title="Account Types Comparison">Account types</a></li>
+02-27 23:34:29.748: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="teamdoc.html?" title="Teams Explained">Free club websites</a></li>
+02-27 23:34:29.748: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><span title="Software tools and gadgets for freedivers" class="dir">Gadgets</span>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="gadgets.html?" title="Sea Watch Vista Sidebar Gadget">Vista/Win7 Gadgets</a></li>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="embedcal.html?" title="Competition Calendar">competition calendar</a></li>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="feeds.html?" title="News Feeds">News Feeds</a></li>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://www.picbadges.com/apnea-cz/483734/" title="Facebook Badge">Facebook Badge</a></li>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="usermap.html?" title="APNEA.cz Members" class="dir">members</a>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="usermap.html?" title="Freediving Buddies Map">members map</a></li>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://apnea.cz/?faces" title="Members Photo Gallery">members photos</a></li>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="hosts.html?" title="Hosting Freedivers Worldwide">Hosting Freedivers</a></li>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><span title="Teams" class="dir">teams</span>
+02-27 23:34:29.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?simple+team" title="Team Ranking">Internal Team Ranking</a></li>
+02-27 23:34:29.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?teams" title="Ranking of Teams" class="dir">Ranking of Teams</a>
+02-27 23:34:29.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>           <ul>
+02-27 23:34:29.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+STA" title="Static Apnea Ranking of Teams">Static Apnea</a></li>
+02-27 23:34:29.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+DYN" title="Static Apnea Ranking of Teams">Dynamic Apnea</a></li>
+02-27 23:34:29.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+DNF" title="Static Apnea Ranking of Teams">Dynamic Apnea No Fins</a></li>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+CWT" title="Static Apnea Ranking of Teams">Constant Weight</a></li>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+CNF" title="Static Apnea Ranking of Teams">Constant Weight No Fins</a></li>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+FIM" title="Static Apnea Ranking of Teams">Free Immersion</a></li>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>           </ul>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          </li>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="teamdoc.html?link" title="Teams Explained">Teams explained</a></li>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="country_stats.html?" title="Freediving Country Statistics">country statistics</a></li>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="media.html?" title="Freediving Media Base" class="dir">Media</a>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="media.html?" title="Apnea and Freediving Media Base" class="dir">Media Base</a>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?documents+medical" title="Scientific Papers on Freediving Physiology">Freediving Physiology</a></li>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?books" title="Freediving Books">Books</a></li>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?magazines" title="Freediving Magazines">Magazines</a></li>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?movies" title="Freediving Movies">Movies</a></li>
+02-27 23:34:29.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?video" title="Freediving Video">Video</a></li>
+02-27 23:34:29.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?software" title="Freedving Software">Software</a></li>
+02-27 23:34:29.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?websites" title="Freedving Websites">Websites</a></li>
+02-27 23:34:29.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="add.html?" title="Add a New Record to Apnea Media Base">Add New</a></li>
+02-27 23:34:29.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="docs.html?" title="Documents">Documents</a></li>
+02-27 23:34:29.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="inmedia.html?" title="APNEA.cz in the Media">Apnea.cz in the Media</a></li>
+02-27 23:34:29.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:29.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:29.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="training.html?" title="Apnea Training Manager" class="dir">Training</a>
+02-27 23:34:29.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:29.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="training.html?" title="Apnea Training Manager">Apnea Training Manager</a></li>
+02-27 23:34:29.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="monofin.html?" title="Monofin Training Tutorial">Monofin Tutorial</a></li>
+02-27 23:34:29.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="safety.html?" title="Freediving & Safety">Safety</a></li>
+02-27 23:34:29.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:29.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:29.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="forum.html?" title="User Forum" class="dir">Forum</a>
+02-27 23:34:29.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:29.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="forum.html?fmTab=PUBLIC" title=": Public Forum">Public Forum</a></li>
+02-27 23:34:29.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="forum.html?fmTab=TEAM" title=": Team Private Forum">Private Team Forum</a></li>
+02-27 23:34:29.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="blog.html?" title="Blog">Blog</a></li>
+02-27 23:34:29.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:29.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:29.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="ranking.html?" title="Ranking" class="dir">Ranking</a>
+02-27 23:34:29.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?simple" title="Quick Ranking List">Simple Ranking</a></li>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?all" title="Freediving Disciplines Ranking Reports" class="dir">Disciplines</a>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?STA+md:best" title="Static Apnea Ranking">Static Apnea</a></li>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?DYN+md:best" title="Dynamic Apnea Ranking">Dynamic Apnea</a></li>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?DNF+md:best" title="Ranking for Dynamic Apnea without Fins">Dynamic Apnea No Fins</a></li>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?CWT+md:best" title="Constant Weight">Constant Weight</a></li>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?CNF+md:best" title="Ranking for Constant Weight without Fins">Constant Weight No Fins</a></li>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?FIM+md:best" title="Free Immersion Ranking">Free Immersion</a></li>
+02-27 23:34:29.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?VWT+md:best" title="Variable Weight Ranking">Variable Weight</a></li>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?NLT+md:best" title="No Limits Ranking">No Limits</a></li>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?JMB+md:best" title="Jump Blue (the Cube) Ranking">Jump Blue</a></li>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?16x50+md:best" title="16 x 50m Speed Apnea Ranking">16 x 50m</a></li>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><span title="Ranking for Discipline Combinations" class="dir">Combinations</span>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?pool+md:best" title="Combined Ranking for Pool Disciplines">Pool Disciplines</a></li>
+02-27 23:34:29.918: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?depth+md:best" title="Combined Ranking for Depth Disciplines">Depth Disciplines</a></li>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?mix+md:best" title="Combined Ballanced Ranking (STA + DYN/DNF + CWT/CNF/FIM)">Trimix (sta+dyn+depth)</a></li>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?comb+md:best" title="Complete Combined Ranking (STA+DYN+DNF+CWT+CNF+FIM)">sixpack (all 6 disciplines)</a></li>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?awards" title="World's Absolute Freediver Awards (WAFA)" class="dir">absolute awards</a>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="wafa2010.html?" title="WAFA 2010">press release 2010</a></li>
+02-27 23:34:29.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?md:cmp" title="Past Freediving Competitions" class="dir">Competition List</a>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://apnea.cz/ranking.html?2012+md:cmp+srt:beg+cmpn:?" title="Pending Competitions">Pending Competitions</a></li>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?missing" title="Competitions with Missing Results">Missing Competitions</a></li>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://ical.apnea.cz/?cat=comp" title="Competition Calendar for Importing">i-Calendar</a></li>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="statistics.html?" title="Competitive Freediving Statistics" class="dir">Statistics</a>
+02-27 23:34:29.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranklinks.html?" title="Ranking Permalinks">most popular reports</a></li>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?md:grow" title="Statistics of Freediving Evolution">Growth Statistics</a></li>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?md:ctr+srt:best" title="Ranking Country Statistics">Country Statistics</a></li>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?memorial" title="Memorial Page">memorial page</a></li>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="compsheet.html?" title="Competition Worksheet">Competiton Worksheet</a></li>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:29.948: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="equipment.html?" title="Equipment" class="dir">Equipment</a>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="http://www.freedivingshop.cz/index.php?af=tx&id_lang=1" title="">Apneaman Freedive Shop</a></li>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="fins.html?" title="Collection of Weird Fins">Weird Fins</a></li>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="computers.html?" title="Review of Computers">Review of Computers</a></li>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="support.html?" title="Support" class="dir">Support</a>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:29.958: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="faq.html?" title="Frequently Asked Questions">FAQ</a></li>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="changelog.html?" title="Change Log">Changelog</a></li>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ads.html?" title="Free Advertisement" class="dir">Free Advertising</a>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ads.html?" title="Submit a Free Advertisement Banner">Submit your ad</a></li>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="advertisers.html?" title="All Advertisers">Current Advertisers</a></li>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="http://www.facebook.com/#!/pages/APNEAcz/106356216067099" title="APNEA.cz Page on Facebook">Apnea.cz @ Facebook</a></li>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="http://twitter.com/#!/APNEA_cz" title="APNEA.cz Page on Twitter">Apnea.cz @ Twitter</a></li>
+02-27 23:34:29.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="contact.html?" title="Contact Information">Contact</a></li>
+02-27 23:34:29.978: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="sitemap.html?" title="Site Map">Site Map</a></li>
+02-27 23:34:29.978: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="donate.html?" title="About Us / Sponsoring">About Us / Donate</a></li>
+02-27 23:34:29.978: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:29.978: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:29.978: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </ul>
+02-27 23:34:29.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div align="right" id="siteLang">
+02-27 23:34:29.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <img src="image/country/fr.gif" alt="French / français" width="16" height="11" border="0" onClick="document.mainForm.Lang.value='FR'; document.mainForm.submit()" />
+02-27 23:34:29.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <img src="image/country/cz.gif" alt="Czech / česky" width="16" height="11" border="0" onClick="document.mainForm.Lang.value='CZ'; document.mainForm.submit()" />
+02-27 23:34:29.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </div>
+02-27 23:34:30.008: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.008: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="debug"></div><!-- debug -->
+02-27 23:34:30.008: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <!-- preloading footer images -->
+02-27 23:34:30.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <img src="pic/paypal.gif" border="0" height="1" width="1" style="display:none" alt="-" />
+02-27 23:34:30.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <img src="pic/donate.gif" border="0" height="1" width="1" style="display:none" alt="-" />
+02-27 23:34:30.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <script type="text/javascript">statusWindow(false)</script>
+02-27 23:34:30.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.028: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div></div><!-- 2x header -->
+02-27 23:34:30.028: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ===== end of HEADER ===== -->
+02-27 23:34:30.028: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <a href="/restricted/" style="display:none">admin</a>
+02-27 23:34:30.028: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.038: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ======== PAGE BODY ======= -->
+02-27 23:34:30.038: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div id="page"><div class="inner">
+02-27 23:34:30.038: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <form action="http://apnea.cz/ranking.html?" method="post" enctype="multipart/form-data" name="mainForm" id="mainForm">
+02-27 23:34:30.038: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <noscript><div id="jsWarning" align="center">
+02-27 23:34:30.038: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <h1 class="err">JavaScript disabled!</h1>
+02-27 23:34:30.048: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       Please enable JavaScript in your browser for better functionality.
+02-27 23:34:30.048: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div></noscript>
+02-27 23:34:30.048: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.048: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="Lang" value="EN">
+02-27 23:34:30.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <h1>Freediving Ranking Reports</h1>
+02-27 23:34:30.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div align="center">
+02-27 23:34:30.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <input type="submit" name="menu" value="go to the ranking" onClick="document.mainForm.rnkReport.value='MENU';">
+02-27 23:34:30.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     &nbsp;&nbsp;&nbsp; <b>Quick Access:</b> &nbsp;&nbsp;
+02-27 23:34:30.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?STA"><b>STA</b></a> &nbsp;
+02-27 23:34:30.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?DYN"><b>DYN</b></a> &nbsp;
+02-27 23:34:30.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?DNF"><b>DNF</b></a> &nbsp;
+02-27 23:34:30.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?CWT"><b>CWT</b></a> &nbsp;
+02-27 23:34:30.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?CNF"><b>CNF</b></a> &nbsp;
+02-27 23:34:30.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?FIM"><b>FIM</b></a> &nbsp;
+02-27 23:34:30.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div>
+02-27 23:34:30.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <img src="/pic/Kimmo_Lahtinen _10.jpg" alt="FreeWC 09 © Kimmo Lahtinen" width="210" height="320" hspace="10" vspace="10" border="1" align="left">
+02-27 23:34:30.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>APNEA.cz Ranking was built to help freedivers getting better, and more complete overview and analysis of their performances. It contains not only data from the official <a href="http://www.aidaregister.org">AIDA Result Register</a>, but also from many other sources: <a href="http://freedivecentral.com/" target="_blank">Freedive Central</a>, <a href="http://apneamania.com/" target="_blank">Apnea Mania</a>, <a href="http://apnee.ffessm.fr/" target="_blank">FFESSM</a>, <a href="http://www.cmas2000.org/" target="_blank">CMAS</a>, <a href="http://portale.fipsas.it/" target="_blank">FIPSAS</a>, <a href="http://www.divingfree.org/" target="_blank">F.R.E.E.</a>, and also directly from competition organizers. Currently it contains <b>44208</b> performances from <b>880</b><small>&#8239;</small> freediving competitions, and many hundreds of individual records attempts. Data from external sources was not blindly imported, but carefully analyzed, and many duplicate entries, misspellings, false name assignments, and other discrepancies were removed. Besides others, <b>2825</b> duplicate and misspelled names of competitors were fixed. Redundant data from several sources helped correcting many mistakes, corrupted, and incomplete data.</p>
+02-27 23:34:30.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>Credits and thanks go to authors of all data collections used in APNEA.cz ranking - beginning with AIDA Excel ranking lists, over the Result Register by Simo Kurra, Freedive Central by Paulo Nóbrega and Francisco Gautier, to Apnea Mania developed by the team of Bill Strömberg. Credits and thanks belong also to Bill Strömberg, Christian Engelbrecht, Jonas Andersson, Pim Vermeulen, and others who participated on the data harvesting and maintenance of the original sources. And I want to send special thanks to Simo for adding an API to the AIDA Result Register, allowing so easier access to the part of the data AIDA already had.</p>
+02-27 23:34:30.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>Newly, I also included data of several previously unavailable freediving competitions from Russian speaking countries. This could be done thank to the amazing database of a Russian freediver with the alias "Tema". Big thanks belong also to Igor Migunov who provided the tip, and who continuously helps with completing missing data, and reporting errors and other problems in the ranking!</p>
+02-27 23:34:30.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>The system of ranking offers many different reports - from official ranking, over ranking combining data from AIDA, together with data of other AIDA competitions from other sources, to ranking including national, local, or unofficial competitions, and even performances from competitions of other organizations (for example the CMAS or the FFESSM). It is up to the user to choose the data to work with. And of course, if you know about data that are not yet in the APNEA.cz database, do not hesitate to contact me.</p>
+02-27 23:34:30.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <img src="/pic/Kimmo_Lahtinen _08.jpg" alt="FreeWC 09 © Kimmo Lahtinen" width="320" height="213" hspace="10" vspace="10" border="1" align="right">
+02-27 23:34:30.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>Besides the usual global rankings per discipline, there are also many other types of reports, including some that were done just for fun, or to feed data and statistics junkies like myself. So you can find reports based on the total time spent in apnea; the total distance swam under water (both vertically and horizontally), ranking by number of blackouts, and disqualifications; ranking using dynamically adjusted point values; and many others. And then, each of the reports can be run not only in the global scope, but also on continental, regional, national, local, or club level. And you can also compare continents, regions, nations, cities, clubs, or federations among each other.</p>
+02-27 23:34:30.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>If you are a member of a freediving club, you can get it listed automatically in the ranking. Simply register at APNEA.cz (if you did not yet), and found a "team" on the <a href="/teams.html">Teams page</a>. This function is currently reserved to paying members only, but if your club cannot afford paying the one-time fee, please contact me. Otherwise, if you want to upgrade your free account, you can do it on the <a href="/profile.html">Profile page</a> - just click the "upgrade" link below your user name, at the top of the form. All other members of the club can join it with the plain free account. The APNEA.cz team will then not only appear in the ranking, but it comes also with many other features, including an own website with advanced club management features, forum, gallery, own ranking, blog, and <a href="/teamdoc.html">much more</a>.</p>
+02-27 23:34:30.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div align="center"><input type="submit" name="menu" value="go to the ranking" onClick="document.mainForm.rnkReport.value='MENU';"></div>
+02-27 23:34:30.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="sort" value="">
+02-27 23:34:30.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="start" value="">
+02-27 23:34:30.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkReport" value="">
+02-27 23:34:30.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkScope" value="">
+02-27 23:34:30.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkCompr" id="rnkCompr" value="">
+02-27 23:34:30.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkCompn" id="rnkCompn" value="">
+02-27 23:34:30.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkOrgNm" value="">
+02-27 23:34:30.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkRelative" value="">
+02-27 23:34:30.148: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkAllDisc" value="">
+02-27 23:34:30.148: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkRgn2" value="">
+02-27 23:34:30.148: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkFed2" value="">
+02-27 23:34:30.148: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.148: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <input type="hidden" name="admin" value=""><input type="hidden" name="pageID" value=""><input type="hidden" name="pg" value=""><input type="hidden" name="sid" value=""><input type="hidden" name="lastSearch" value=""><input type="hidden" name="cleanText" value=""><input type="hidden" name="url" value=""><input type="hidden" name="origLocation" value=""><input type="hidden" name="origPageID" value=""><input type="hidden" name="logOut" value=""><input type="hidden" name="logInNow" value=""><input type="hidden" name="mediaTp" value=""><input type="hidden" name="langSel" value=""><input type="hidden" name="catSel" value=""><input type="hidden" name="pageSzt" value="">
+02-27 23:34:30.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div><!-- pageTop -->
+02-27 23:34:30.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </form>
+02-27 23:34:30.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div></div><!-- 2x page -->
+02-27 23:34:30.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ====== end of PAGE BODY ====== -->
+02-27 23:34:30.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ========== FOOTER ========== -->
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div align="center" id="footer"><div class="inner">
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="donation">
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <table border="0" cellspacing="4" cellpadding="0"><tr><td nowrap>
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="cmd" value="_xclick" />
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="business" value="paypal@apnea.cz" />
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="item_name" value="APNEA.cz DONATION" />
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="item_number" value="sponsorship" />
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="no_shipping" value="1" />
+02-27 23:34:30.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="no_note" value="1" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="return" value="http://apnea.cz/paid.html" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="cancel_return" value="http://apnea.cz/unpaid.html" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="currency_code" value="EUR" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="tax" value="0" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="bn" value="PP-DonationsBF" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="rm" value="2" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="on0" value="sid" />
+02-27 23:34:30.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="os0" value="" />
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="on1" value="uid" />
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="os1" value="2" />
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="image" src="pic/paypal.gif" border="0" height="31" width="62" name="submit" alt="THANK YOU!" />
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </td><td><div id="donStatus">status:<br />20 €</div></td>
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <td valign="middle">&nbsp;&nbsp;</td>
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </tr></table>
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </form>
+02-27 23:34:30.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="counter"><a href="sitestat.html?" title="Site Statistics">page hits: <b>802.9</b>&nbsp;k</a></div>
+02-27 23:34:30.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <input type="button" id="logIn" name="loginBtn" value="log in" onclick="document.mainForm.logInNow.value=1; document.mainForm.submit();" >
+02-27 23:34:30.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div class="txtMenu"><a href="index.html?"  title="APNEA.cz - Freediving and Apnea Resources">Home</a>|<a href="media.html?"  title="APNEA.cz - Freediving Media Base">Media</a>|<a href="training.html?"  title="APNEA.cz - Apnea Training Manager">Training</a>|<a href="forum.html?" title="APNEA.cz - User Forum">Forum</a>|<span>Ranking</span>|<a href="equipment.html?"  title="APNEA.cz - Equipment">Equipment</a>|<a href="contact.html?"  title="APNEA.cz - Contact Form">Contact</a>|<a href="support.html?"  title="APNEA.cz - Support">Support</a>|<a href="privacy.html?"  title="APNEA.cz - Privacy Policy">Privacy</a>|<a href="sitemap.html">Site Map</a></div><!-- txtMenu -->
+02-27 23:34:30.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="expressHint" style="display:none" onMouseOver="fnExpressHint(2)" onMouseOut="fnExpressHint(0)">
+02-27 23:34:30.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <h3>Lazy?</h3>
+02-27 23:34:30.218: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <h4>Try our <span>Express Drag&#39;n&#39;Drop Submission</span>&trade;</h4>
+02-27 23:34:30.218: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <p>Simply drag and drop an URL-icon from another browser window anywhere on the APNEA.cz page.</p>
+02-27 23:34:30.218: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div align="center"><a href="faq.html?faq=med001">See more details in the FAQ</a></div>
+02-27 23:34:30.228: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </div><!-- expressHInt -->
+02-27 23:34:30.228: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.228: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:30.238: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <a href="/copyright.html%SID%" class="copyright"><b>copyright 2005 - 2012 &copy; truXoft</b>&nbsp;&nbsp; all rights reserved</a>
+02-27 23:34:30.238: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div></div><!-- 2x footer -->
+02-27 23:34:30.238: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ======= end of FOOTER ======= -->
+02-27 23:34:30.238: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  </body>
+02-27 23:34:30.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> </html>
+02-27 23:34:35.748: INFO/System.out(30229): zzPost200
+02-27 23:34:35.748: INFO/System.out(30229): zzPostOK
+02-27 23:34:35.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+02-27 23:34:35.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <html>
+02-27 23:34:35.758: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  <head>
+02-27 23:34:35.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <title>APNEA.cz ranking</title>
+02-27 23:34:35.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+02-27 23:34:35.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="verify-v1" content="kM1WLDZCtKXeYxbz/j3128G0ol9SvA8Aq0dbNWjgjWk=" />
+02-27 23:34:35.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="google-site-verification" content="FeW1iRUqGPAVJGG0YrgzL1TBnD9gAQ9EqqGbcSkHO4g" />
+02-27 23:34:35.768: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="description" content="Ranking and statistics of freediving competitions. We list as well AIDA competitions, as CMAS, FFESSM, FIPSAS, FEDAS, and events of diverse other freediving federations" />
+02-27 23:34:35.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="keywords" content="freediving competitions competitors ranking position top top10 best statistics tables overview blackouts dynamic apnea static depth STA DYN DNF CWT CWF FIM NLT VWT AIDA CMAS FFESSM" />
+02-27 23:34:35.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="robots" content="index,follow" />
+02-27 23:34:35.778: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="language" content="EN" />
+02-27 23:34:35.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta property="og:image" content="http://profile.ak.fbcdn.net/hprofile-ak-snc4/hs335.snc4/41801_134519316581665_6776_n.jpg" />
+02-27 23:34:35.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta property="fb:admins" content="100000949034609" />
+02-27 23:34:35.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <meta name="copyright" content="copyright (c) 2005 - 2012 Ivo Truxa, truXoft" />
+02-27 23:34:35.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ------------------------------------------------------------------
+02-27 23:34:35.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    Copyright (c) 2005 - 2012 Ivo Truxa, truXoft
+02-27 23:34:35.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    No part of the HTML, JavaScript, CSS, Miva Script, and Java code, and no
+02-27 23:34:35.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    original artwork may be reused without prior written permission from
+02-27 23:34:35.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    truXoft! Please use our contact form in case of any questions.
+02-27 23:34:35.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   ----------------------------------------------------------------------- -->
+02-27 23:34:35.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="shortcut icon" href="/pic/apnea.ico" type="image/x-icon" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/css/main.css?date=2011_03_19" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/css/redmond/jquery-ui.css?date=2011_03_28" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/css/ranking.css?date=2011_03_28" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="stylesheet" type="text/css" href="/highslide/highslide.css" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Blog" href="http://rss.apnea.cz/?blog=u2" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Forum" href="http://rss.apnea.cz/?forum=1" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Competition Calendar" href="http://rss.apnea.cz/?cat=comp" />
+02-27 23:34:35.848: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Freediving News" href="http://rss.apnea.cz/" />
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: News from Freediving Forums" href="http://rss.apnea.cz/?cat=forum" />
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: Freediving twitter News" href="http://rss.apnea.cz/?cat=twitter" />
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <link rel="alternate" type="application/rss+xml" title="APNEA.cz: New Freediving Videos" href="http://rss.apnea.cz/?cat=video" />
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/en.js?date=2011_03_19"></script>
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/jquery/jquery.js?date=2011_03_25"></script>
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/jquery/jquery-ui.js?date=2011_03_25"></script>
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/ranking.js?date=2011_03_25"></script>
+02-27 23:34:35.858: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/json/json2.js?date=2011_03_25"></script>
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/scripts/swfobject.js?date=2011_03_25"></script>
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/highslide/highslide-full.packed.js"></script>
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript">
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.graphicsDir = "/highslide/graphics/";
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.outlineType = "rounded-white";
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.showCredits = false;
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     hs.dimmingOpacity = 0.75;
+02-27 23:34:35.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </script>
+02-27 23:34:35.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script language="JavaScript" type="text/javascript" src="/modules/mvcall.mvc" id="statusJS"></script>
+02-27 23:34:35.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+02-27 23:34:35.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!--[if lt IE 7]>
+02-27 23:34:35.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <script type="text/javascript" src="/scripts/jquery/jquery.js"></script>
+02-27 23:34:35.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <script type="text/javascript" src="/scripts/jquery.dropdown.js"></script>
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <![endif]-->
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <style type="text/css" media="screen"><!--
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .highslide-dimming {background:black;}
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .noprint {display:block}
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .printonly {display:none}
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   --></style><style type="text/css" media="print"><!--
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .noprint,.footer {display:none}
+02-27 23:34:35.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     .printonly {display:block}
+02-27 23:34:35.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   --></style>
+02-27 23:34:35.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  </head>
+02-27 23:34:35.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:35.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  <body scroll="no" onload="animBanner(0); resizeScroll(); blurSelects()" ondragenter="fnNoDef()" ondragover="fnNoDef()" ondrop="fnGetInfo()" onmouseover="blurSelect()">
+02-27 23:34:35.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <script type="text/javascript">getWinSz();</script>
+02-27 23:34:35.928: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.788: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <div id="fmShowImg" style="display:none"><img id="fmShowPic" src="/pic/spc.gif" onClick="fmFullImg(null)" /><div id="fmShowCapt"></div><div id="fmShowCtrl"></div></div>
+02-27 23:34:37.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <!-- +++++++ PROGRESS STATUS POPUP ++++++++ -->
+02-27 23:34:37.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div align="center" style="position:fixed; width:100%; z-index:100"><div id="statusWin" style="display:none" align="center">
+02-27 23:34:37.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <h1 id="statusTitleTop">Apnea Media Base</h1>
+02-27 23:34:37.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <h2 id="statusTitle">Transferring Data</h2>
+02-27 23:34:37.798: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <span id="msgLn">&nbsp;</span>
+02-27 23:34:37.808: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <small id="statusLn">&nbsp;</small>
+02-27 23:34:37.808: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <div style="border:1px inset; width:90%" align="left"><div id="statusBar" style="background-color:darkblue; height:16px; width:0%;" align="left"></div></div>
+02-27 23:34:37.808: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <small id="timeLn">&nbsp;</small>
+02-27 23:34:37.808: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div></div><!-- 2x statusWin -->
+02-27 23:34:37.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <script type="text/javascript">statusInit();</script>
+02-27 23:34:37.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <!-- ++++ end of PROGRESS STATUS POPUP ++++ -->
+02-27 23:34:37.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.818: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <script type="text/javascript">statusWindow(false)</script>
+02-27 23:34:37.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ======== HEADER ========= -->
+02-27 23:34:37.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div id="header"><div class="inner">
+02-27 23:34:37.828: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="animHdr">
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <img src="pic/girl.png" id="bannerImg" width="395" height="80" alt="Click me on!" onClick="animBanner(0)" />
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div id="adLbl">advertisement    </div><!-- adLbl -->
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div id="ad">
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.838: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <script type="text/javascript">var adWidth = new Array(234,468,234); setTimeout("swapAds(7,3)",10500);</script>
+02-27 23:34:37.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <div id="adSlot1" style="display:block; position:relative; background-color:#6ac" class="textAd"><p style="text-align:center; font-size:15px; line-height:15px;"><strong>Start advertising on APNEA.cz</strong></p>
+02-27 23:34:37.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <p style="text-align:center; color:#ffcc00; font-family:'arial black','avant garde'; font-size:20px; line-height:22px;"><strong>NOW and FREE!</strong></p>
+02-27 23:34:37.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <p style="text-align:center; color:#00ffff; font-size:12px">no mandatory charges &bull; setup in 30s</p><a href="http://apnea.cz/modules/ads.mvc?id=17&md=e264a994fe354313c6fce8aff2aac9a6&tm=1330378025" target="_blank"><img src="/pic/spc.gif" width="234" height="60" border="0" alt="advertisement" style="position:absolute; top:0; left:0;"></a>     </div>
+02-27 23:34:37.868: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <span id="adSlot2" style="display:none"><a href="http://apnea.cz/modules/ads.mvc?id=129&md=e264a994fe354313c6fce8aff2aac9a6&tm=1330378025" target="_blank"><img src="/ads/frv.jpg" alt="advertisement" width="468" height="60" border="0"></a>     </span>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <span id="adSlot3" style="display:none"><a href="http://apnea.cz/modules/ads.mvc?id=146&md=e264a994fe354313c6fce8aff2aac9a6&tm=1330378025" target="_blank"><img src="/ads/apneaman_shop_02_EN.jpg" alt="advertisement" width="234" height="60" border="0"></a>     </span>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div><!-- ad -->
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </div><!-- animHdr -->
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <a href="index.html"><img src="/pic/apnea.png" alt="APNEA.cz" width="253" height="68" border="0" style="position:relative; top:6px; left:10px;" /></a>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.878: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <ul class="dropdown">
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="index.html?" title="Freediving and Apnea Resources" class="dir">Home</a>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="features.html?" title="Feature List" class="dir">Features</a>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="features.html?" title="Feature List">Apnea.cz features</a></li>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="account_types.html?" title="Account Types Comparison">Account types</a></li>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="teamdoc.html?" title="Teams Explained">Free club websites</a></li>
+02-27 23:34:37.888: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><span title="Software tools and gadgets for freedivers" class="dir">Gadgets</span>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="gadgets.html?" title="Sea Watch Vista Sidebar Gadget">Vista/Win7 Gadgets</a></li>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="embedcal.html?" title="Competition Calendar">competition calendar</a></li>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="feeds.html?" title="News Feeds">News Feeds</a></li>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://www.picbadges.com/apnea-cz/483734/" title="Facebook Badge">Facebook Badge</a></li>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:37.898: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="usermap.html?" title="APNEA.cz Members" class="dir">members</a>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="usermap.html?" title="Freediving Buddies Map">members map</a></li>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://apnea.cz/?faces" title="Members Photo Gallery">members photos</a></li>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="hosts.html?" title="Hosting Freedivers Worldwide">Hosting Freedivers</a></li>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><span title="Teams" class="dir">teams</span>
+02-27 23:34:37.908: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:37.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?simple+team" title="Team Ranking">Internal Team Ranking</a></li>
+02-27 23:34:37.938: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?teams" title="Ranking of Teams" class="dir">Ranking of Teams</a>
+02-27 23:34:37.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>           <ul>
+02-27 23:34:37.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+STA" title="Static Apnea Ranking of Teams">Static Apnea</a></li>
+02-27 23:34:37.968: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+DYN" title="Static Apnea Ranking of Teams">Dynamic Apnea</a></li>
+02-27 23:34:37.978: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+DNF" title="Static Apnea Ranking of Teams">Dynamic Apnea No Fins</a></li>
+02-27 23:34:37.978: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+CWT" title="Static Apnea Ranking of Teams">Constant Weight</a></li>
+02-27 23:34:37.988: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+CNF" title="Static Apnea Ranking of Teams">Constant Weight No Fins</a></li>
+02-27 23:34:37.988: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>            <li><a href="ranking.html?teams+FIM" title="Static Apnea Ranking of Teams">Free Immersion</a></li>
+02-27 23:34:37.988: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>           </ul>
+02-27 23:34:37.988: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          </li>
+02-27 23:34:37.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="teamdoc.html?link" title="Teams Explained">Teams explained</a></li>
+02-27 23:34:37.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:37.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:37.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="country_stats.html?" title="Freediving Country Statistics">country statistics</a></li>
+02-27 23:34:37.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:37.998: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:38.008: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="media.html?" title="Freediving Media Base" class="dir">Media</a>
+02-27 23:34:38.008: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:38.008: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="media.html?" title="Apnea and Freediving Media Base" class="dir">Media Base</a>
+02-27 23:34:38.008: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:38.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?documents+medical" title="Scientific Papers on Freediving Physiology">Freediving Physiology</a></li>
+02-27 23:34:38.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?books" title="Freediving Books">Books</a></li>
+02-27 23:34:38.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?magazines" title="Freediving Magazines">Magazines</a></li>
+02-27 23:34:38.018: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?movies" title="Freediving Movies">Movies</a></li>
+02-27 23:34:38.028: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?video" title="Freediving Video">Video</a></li>
+02-27 23:34:38.058: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?software" title="Freedving Software">Software</a></li>
+02-27 23:34:38.058: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="media.html?websites" title="Freedving Websites">Websites</a></li>
+02-27 23:34:38.058: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="add.html?" title="Add a New Record to Apnea Media Base">Add New</a></li>
+02-27 23:34:38.058: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="docs.html?" title="Documents">Documents</a></li>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="inmedia.html?" title="APNEA.cz in the Media">Apnea.cz in the Media</a></li>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="training.html?" title="Apnea Training Manager" class="dir">Training</a>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:38.068: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="training.html?" title="Apnea Training Manager">Apnea Training Manager</a></li>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="monofin.html?" title="Monofin Training Tutorial">Monofin Tutorial</a></li>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="safety.html?" title="Freediving & Safety">Safety</a></li>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="forum.html?" title="User Forum" class="dir">Forum</a>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="forum.html?fmTab=PUBLIC" title=": Public Forum">Public Forum</a></li>
+02-27 23:34:38.078: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="forum.html?fmTab=TEAM" title=": Team Private Forum">Private Team Forum</a></li>
+02-27 23:34:38.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="blog.html?" title="Blog">Blog</a></li>
+02-27 23:34:38.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:38.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:38.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="ranking.html?" title="Ranking" class="dir">Ranking</a>
+02-27 23:34:38.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:38.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?simple" title="Quick Ranking List">Simple Ranking</a></li>
+02-27 23:34:38.088: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?all" title="Freediving Disciplines Ranking Reports" class="dir">Disciplines</a>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?STA+md:best" title="Static Apnea Ranking">Static Apnea</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?DYN+md:best" title="Dynamic Apnea Ranking">Dynamic Apnea</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?DNF+md:best" title="Ranking for Dynamic Apnea without Fins">Dynamic Apnea No Fins</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?CWT+md:best" title="Constant Weight">Constant Weight</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?CNF+md:best" title="Ranking for Constant Weight without Fins">Constant Weight No Fins</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?FIM+md:best" title="Free Immersion Ranking">Free Immersion</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?VWT+md:best" title="Variable Weight Ranking">Variable Weight</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?NLT+md:best" title="No Limits Ranking">No Limits</a></li>
+02-27 23:34:38.098: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?JMB+md:best" title="Jump Blue (the Cube) Ranking">Jump Blue</a></li>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?16x50+md:best" title="16 x 50m Speed Apnea Ranking">16 x 50m</a></li>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><span title="Ranking for Discipline Combinations" class="dir">Combinations</span>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?pool+md:best" title="Combined Ranking for Pool Disciplines">Pool Disciplines</a></li>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?depth+md:best" title="Combined Ranking for Depth Disciplines">Depth Disciplines</a></li>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?mix+md:best" title="Combined Ballanced Ranking (STA + DYN/DNF + CWT/CNF/FIM)">Trimix (sta+dyn+depth)</a></li>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?comb+md:best" title="Complete Combined Ranking (STA+DYN+DNF+CWT+CNF+FIM)">sixpack (all 6 disciplines)</a></li>
+02-27 23:34:38.108: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?awards" title="World's Absolute Freediver Awards (WAFA)" class="dir">absolute awards</a>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="wafa2010.html?" title="WAFA 2010">press release 2010</a></li>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?md:cmp" title="Past Freediving Competitions" class="dir">Competition List</a>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://apnea.cz/ranking.html?2012+md:cmp+srt:beg+cmpn:?" title="Pending Competitions">Pending Competitions</a></li>
+02-27 23:34:38.118: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?missing" title="Competitions with Missing Results">Missing Competitions</a></li>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="http://ical.apnea.cz/?cat=comp" title="Competition Calendar for Importing">i-Calendar</a></li>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="statistics.html?" title="Competitive Freediving Statistics" class="dir">Statistics</a>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranklinks.html?" title="Ranking Permalinks">most popular reports</a></li>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?md:grow" title="Statistics of Freediving Evolution">Growth Statistics</a></li>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ranking.html?md:ctr+srt:best" title="Ranking Country Statistics">Country Statistics</a></li>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:38.128: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:38.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ranking.html?memorial" title="Memorial Page">memorial page</a></li>
+02-27 23:34:38.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="compsheet.html?" title="Competition Worksheet">Competiton Worksheet</a></li>
+02-27 23:34:38.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:38.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:38.138: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="equipment.html?" title="Equipment" class="dir">Equipment</a>
+02-27 23:34:38.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:38.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="http://www.freedivingshop.cz/index.php?af=tx&id_lang=1" title="">Apneaman Freedive Shop</a></li>
+02-27 23:34:38.158: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="fins.html?" title="Collection of Weird Fins">Weird Fins</a></li>
+02-27 23:34:38.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="computers.html?" title="Review of Computers">Review of Computers</a></li>
+02-27 23:34:38.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:38.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:38.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <li><a href="support.html?" title="Support" class="dir">Support</a>
+02-27 23:34:38.168: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <ul>
+02-27 23:34:38.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="faq.html?" title="Frequently Asked Questions">FAQ</a></li>
+02-27 23:34:38.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="changelog.html?" title="Change Log">Changelog</a></li>
+02-27 23:34:38.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="ads.html?" title="Free Advertisement" class="dir">Free Advertising</a>
+02-27 23:34:38.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         <ul>
+02-27 23:34:38.178: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="ads.html?" title="Submit a Free Advertisement Banner">Submit your ad</a></li>
+02-27 23:34:38.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>          <li><a href="advertisers.html?" title="All Advertisers">Current Advertisers</a></li>
+02-27 23:34:38.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>         </ul>
+02-27 23:34:38.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        </li>
+02-27 23:34:38.188: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="http://www.facebook.com/#!/pages/APNEAcz/106356216067099" title="APNEA.cz Page on Facebook">Apnea.cz @ Facebook</a></li>
+02-27 23:34:38.198: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="http://twitter.com/#!/APNEA_cz" title="APNEA.cz Page on Twitter">Apnea.cz @ Twitter</a></li>
+02-27 23:34:38.198: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="contact.html?" title="Contact Information">Contact</a></li>
+02-27 23:34:38.198: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="sitemap.html?" title="Site Map">Site Map</a></li>
+02-27 23:34:38.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>        <li><a href="donate.html?" title="About Us / Sponsoring">About Us / Donate</a></li>
+02-27 23:34:38.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       </ul>
+02-27 23:34:38.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </li>
+02-27 23:34:38.208: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </ul>
+02-27 23:34:38.238: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div align="right" id="siteLang">
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <img src="image/country/fr.gif" alt="French / français" width="16" height="11" border="0" onClick="document.mainForm.Lang.value='FR'; document.mainForm.submit()" />
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <img src="image/country/cz.gif" alt="Czech / česky" width="16" height="11" border="0" onClick="document.mainForm.Lang.value='CZ'; document.mainForm.submit()" />
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </div>
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="debug"></div><!-- debug -->
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <!-- preloading footer images -->
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <img src="pic/paypal.gif" border="0" height="1" width="1" style="display:none" alt="-" />
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <img src="pic/donate.gif" border="0" height="1" width="1" style="display:none" alt="-" />
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <script type="text/javascript">statusWindow(false)</script>
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div></div><!-- 2x header -->
+02-27 23:34:38.248: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ===== end of HEADER ===== -->
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <a href="/restricted/" style="display:none">admin</a>
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ======== PAGE BODY ======= -->
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div id="page"><div class="inner">
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <form action="http://apnea.cz/ranking.html?" method="post" enctype="multipart/form-data" name="mainForm" id="mainForm">
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <noscript><div id="jsWarning" align="center">
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       <h1 class="err">JavaScript disabled!</h1>
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>       Please enable JavaScript in your browser for better functionality.
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div></noscript>
+02-27 23:34:38.258: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.268: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="Lang" value="EN">
+02-27 23:34:38.268: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.268: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.268: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <h1>Freediving Ranking Reports</h1>
+02-27 23:34:38.268: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div align="center">
+02-27 23:34:38.268: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <input type="submit" name="menu" value="go to the ranking" onClick="document.mainForm.rnkReport.value='MENU';">
+02-27 23:34:38.268: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     &nbsp;&nbsp;&nbsp; <b>Quick Access:</b> &nbsp;&nbsp;
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?STA"><b>STA</b></a> &nbsp;
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?DYN"><b>DYN</b></a> &nbsp;
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?DNF"><b>DNF</b></a> &nbsp;
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?CWT"><b>CWT</b></a> &nbsp;
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?CNF"><b>CNF</b></a> &nbsp;
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <a href="ranking.html?FIM"><b>FIM</b></a> &nbsp;
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div>
+02-27 23:34:38.278: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <img src="/pic/Kimmo_Lahtinen _10.jpg" alt="FreeWC 09 © Kimmo Lahtinen" width="210" height="320" hspace="10" vspace="10" border="1" align="left">
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>APNEA.cz Ranking was built to help freedivers getting better, and more complete overview and analysis of their performances. It contains not only data from the official <a href="http://www.aidaregister.org">AIDA Result Register</a>, but also from many other sources: <a href="http://freedivecentral.com/" target="_blank">Freedive Central</a>, <a href="http://apneamania.com/" target="_blank">Apnea Mania</a>, <a href="http://apnee.ffessm.fr/" target="_blank">FFESSM</a>, <a href="http://www.cmas2000.org/" target="_blank">CMAS</a>, <a href="http://portale.fipsas.it/" target="_blank">FIPSAS</a>, <a href="http://www.divingfree.org/" target="_blank">F.R.E.E.</a>, and also directly from competition organizers. Currently it contains <b>44208</b> performances from <b>880</b><small>&#8239;</small> freediving competitions, and many hundreds of individual records attempts. Data from external sources was not blindly imported, but carefully analyzed, and many duplicate entries, misspellings, false name assignments, and other discrepancies were removed. Besides others, <b>2825</b> duplicate and misspelled names of competitors were fixed. Redundant data from several sources helped correcting many mistakes, corrupted, and incomplete data.</p>
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>Credits and thanks go to authors of all data collections used in APNEA.cz ranking - beginning with AIDA Excel ranking lists, over the Result Register by Simo Kurra, Freedive Central by Paulo Nóbrega and Francisco Gautier, to Apnea Mania developed by the team of Bill Strömberg. Credits and thanks belong also to Bill Strömberg, Christian Engelbrecht, Jonas Andersson, Pim Vermeulen, and others who participated on the data harvesting and maintenance of the original sources. And I want to send special thanks to Simo for adding an API to the AIDA Result Register, allowing so easier access to the part of the data AIDA already had.</p>
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>Newly, I also included data of several previously unavailable freediving competitions from Russian speaking countries. This could be done thank to the amazing database of a Russian freediver with the alias "Tema". Big thanks belong also to Igor Migunov who provided the tip, and who continuously helps with completing missing data, and reporting errors and other problems in the ranking!</p>
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>The system of ranking offers many different reports - from official ranking, over ranking combining data from AIDA, together with data of other AIDA competitions from other sources, to ranking including national, local, or unofficial competitions, and even performances from competitions of other organizations (for example the CMAS or the FFESSM). It is up to the user to choose the data to work with. And of course, if you know about data that are not yet in the APNEA.cz database, do not hesitate to contact me.</p>
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <img src="/pic/Kimmo_Lahtinen _08.jpg" alt="FreeWC 09 © Kimmo Lahtinen" width="320" height="213" hspace="10" vspace="10" border="1" align="right">
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>Besides the usual global rankings per discipline, there are also many other types of reports, including some that were done just for fun, or to feed data and statistics junkies like myself. So you can find reports based on the total time spent in apnea; the total distance swam under water (both vertically and horizontally), ranking by number of blackouts, and disqualifications; ranking using dynamically adjusted point values; and many others. And then, each of the reports can be run not only in the global scope, but also on continental, regional, national, local, or club level. And you can also compare continents, regions, nations, cities, clubs, or federations among each other.</p>
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <p>If you are a member of a freediving club, you can get it listed automatically in the ranking. Simply register at APNEA.cz (if you did not yet), and found a "team" on the <a href="/teams.html">Teams page</a>. This function is currently reserved to paying members only, but if your club cannot afford paying the one-time fee, please contact me. Otherwise, if you want to upgrade your free account, you can do it on the <a href="/profile.html">Profile page</a> - just click the "upgrade" link below your user name, at the top of the form. All other members of the club can join it with the plain free account. The APNEA.cz team will then not only appear in the ranking, but it comes also with many other features, including an own website with advanced club management features, forum, gallery, own ranking, blog, and <a href="/teamdoc.html">much more</a>.</p>
+02-27 23:34:38.288: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div align="center"><input type="submit" name="menu" value="go to the ranking" onClick="document.mainForm.rnkReport.value='MENU';"></div>
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="sort" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="start" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkReport" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkScope" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkCompr" id="rnkCompr" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkCompn" id="rnkCompn" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkOrgNm" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkRelative" value="">
+02-27 23:34:38.298: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkAllDisc" value="">
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkRgn2" value="">
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> <input type="hidden" name="rnkFed2" value="">
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <input type="hidden" name="admin" value=""><input type="hidden" name="pageID" value=""><input type="hidden" name="pg" value=""><input type="hidden" name="sid" value=""><input type="hidden" name="lastSearch" value=""><input type="hidden" name="cleanText" value=""><input type="hidden" name="url" value=""><input type="hidden" name="origLocation" value=""><input type="hidden" name="origPageID" value=""><input type="hidden" name="logOut" value=""><input type="hidden" name="logInNow" value=""><input type="hidden" name="mediaTp" value=""><input type="hidden" name="langSel" value=""><input type="hidden" name="catSel" value=""><input type="hidden" name="pageSzt" value="">
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </div><!-- pageTop -->
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </form>
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div></div><!-- 2x page -->
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ====== end of PAGE BODY ====== -->
+02-27 23:34:38.308: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.318: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.318: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ========== FOOTER ========== -->
+02-27 23:34:38.328: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div align="center" id="footer"><div class="inner">
+02-27 23:34:38.328: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="donation">
+02-27 23:34:38.328: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <table border="0" cellspacing="4" cellpadding="0"><tr><td nowrap>
+02-27 23:34:38.338: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="cmd" value="_xclick" />
+02-27 23:34:38.338: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="business" value="paypal@apnea.cz" />
+02-27 23:34:38.338: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="item_name" value="APNEA.cz DONATION" />
+02-27 23:34:38.338: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="item_number" value="sponsorship" />
+02-27 23:34:38.338: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="no_shipping" value="1" />
+02-27 23:34:38.348: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="no_note" value="1" />
+02-27 23:34:38.348: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="return" value="http://apnea.cz/paid.html" />
+02-27 23:34:38.348: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="cancel_return" value="http://apnea.cz/unpaid.html" />
+02-27 23:34:38.348: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="currency_code" value="EUR" />
+02-27 23:34:38.348: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="tax" value="0" />
+02-27 23:34:38.358: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="bn" value="PP-DonationsBF" />
+02-27 23:34:38.358: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="rm" value="2" />
+02-27 23:34:38.358: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="on0" value="sid" />
+02-27 23:34:38.358: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="os0" value="" />
+02-27 23:34:38.368: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="on1" value="uid" />
+02-27 23:34:38.368: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="hidden" name="os1" value="2" />
+02-27 23:34:38.368: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <input type="image" src="pic/paypal.gif" border="0" height="31" width="62" name="submit" alt="THANK YOU!" />
+02-27 23:34:38.368: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      </td><td><div id="donStatus">status:<br />20 €</div></td>
+02-27 23:34:38.378: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>      <td valign="middle">&nbsp;&nbsp;</td>
+02-27 23:34:38.378: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     </tr></table>
+02-27 23:34:38.378: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </form>
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="counter"><a href="sitestat.html?" title="Site Statistics">page hits: <b>802.9</b>&nbsp;k</a></div>
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <input type="button" id="logIn" name="loginBtn" value="log in" onclick="document.mainForm.logInNow.value=1; document.mainForm.submit();" >
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <div class="txtMenu"><a href="index.html?"  title="APNEA.cz - Freediving and Apnea Resources">Home</a>|<a href="media.html?"  title="APNEA.cz - Freediving Media Base">Media</a>|<a href="training.html?"  title="APNEA.cz - Apnea Training Manager">Training</a>|<a href="forum.html?" title="APNEA.cz - User Forum">Forum</a>|<span>Ranking</span>|<a href="equipment.html?"  title="APNEA.cz - Equipment">Equipment</a>|<a href="contact.html?"  title="APNEA.cz - Contact Form">Contact</a>|<a href="support.html?"  title="APNEA.cz - Support">Support</a>|<a href="privacy.html?"  title="APNEA.cz - Privacy Policy">Privacy</a>|<a href="sitemap.html">Site Map</a></div><!-- txtMenu -->
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <div id="expressHint" style="display:none" onMouseOver="fnExpressHint(2)" onMouseOut="fnExpressHint(0)">
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <h3>Lazy?</h3>
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <h4>Try our <span>Express Drag&#39;n&#39;Drop Submission</span>&trade;</h4>
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <p>Simply drag and drop an URL-icon from another browser window anywhere on the APNEA.cz page.</p>
+02-27 23:34:38.418: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>     <div align="center"><a href="faq.html?faq=med001">See more details in the FAQ</a></div>
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    </div><!-- expressHInt -->
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>    <a href="/copyright.html%SID%" class="copyright"><b>copyright 2005 - 2012 &copy; truXoft</b>&nbsp;&nbsp; all rights reserved</a>
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   </div></div><!-- 2x footer -->
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>   <!-- ======= end of FOOTER ======= -->
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!>  </body>
+02-27 23:34:38.428: DEBUG/zzzPostResponce(30229): <!>com.kovalenych.RankingActivity 217<!> </html>

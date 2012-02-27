@@ -66,6 +66,7 @@
     </LinearLayout>
 
     <Button
+            android:id="@+id/sendButton"
             android:text="Show"
             android:layout_height="wrap_content"
             android:layout_width="200px"
