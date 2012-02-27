@@ -188,7 +188,7 @@ public class MenuActivity extends Activity {
         Intent intent = null;
 
 //        {"info", "heart", "tables", "videos", "ranking", "articles"};
-        switch (zone) {
+        switch (act) {
             case 0:
                 intent = new Intent(MenuActivity.this, InfoActivity.class);
                 break;
