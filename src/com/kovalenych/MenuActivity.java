@@ -232,8 +232,6 @@ public class MenuActivity extends Activity {
         task = new RotTask();
         task.execute(end);
 
-        Log.d("temp", a + "    " + nextPosInt + "");
-
     }
 
     private boolean haveInternet() {
