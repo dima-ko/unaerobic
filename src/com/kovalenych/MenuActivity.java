@@ -16,7 +16,6 @@ import android.view.*;
 import android.widget.AbsoluteLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import java.util.Locale;
 import java.util.Random;
@@ -24,9 +23,6 @@ import java.util.Random;
 public class MenuActivity extends Activity {
 
 //    GoogleAnalyticsTracker tracker;
-
-
-
 
 
     /**
@@ -109,6 +105,11 @@ public class MenuActivity extends Activity {
         nextPosInt = (a > 0) ? (int) (a + 0.5) : (int) (a - 0.5);
 
         setTexts();
+        setVisibilityLabels(false);
+        nextPosInt = -1;
+        float end = (nextPosInt * (float) Math.PI / 6);
+        task = new RotTask();
+        task.execute(end);
 
     }
 
@@ -154,8 +155,7 @@ public class MenuActivity extends Activity {
             currAngle += (angle - lastAngle) * 0.8;
             lastAngle = angle;
             if (Math.abs(lastAngle - downAngle) > 1.f / 12)  //treshold
-                for (TextView labal : labels)
-                    labal.setVisibility(View.INVISIBLE);
+                setVisibilityLabels(false);
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             if (System.currentTimeMillis() - downTime < 400 && Math.abs(lastAngle - downAngle) < 1.f / 10)
                 startActivities(event.getX(), event.getY());
@@ -183,7 +183,7 @@ public class MenuActivity extends Activity {
         else if (isClickInZone(x, y, 100, 460))
             zone = 5;
 
-        int act = (zone - nextPosInt +666) % 6;        // ]:<
+        int act = (zone - nextPosInt + 666) % 6;        // ]:<
 
         Intent intent = null;
 
@@ -289,10 +289,14 @@ public class MenuActivity extends Activity {
         @Override
         protected void onPostExecute(Integer integer) {
             super.onPostExecute(integer);
-            for (TextView labal : labels)
-                labal.setVisibility(View.VISIBLE);
+            setVisibilityLabels(true);
             setTexts();
         }
+    }
+
+    private void setVisibilityLabels(boolean visibility) {
+        for (TextView labal : labels)
+            labal.setVisibility(visibility ? View.VISIBLE : View.INVISIBLE);
     }
 
 
