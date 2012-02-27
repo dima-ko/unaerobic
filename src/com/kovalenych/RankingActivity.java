@@ -29,6 +29,7 @@ public class RankingActivity extends Activity {
     private Dialog filterDialog;
     protected URL url;
     protected HttpURLConnection conn;
+    private String cookie;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -144,16 +145,28 @@ public class RankingActivity extends Activity {
     protected void sendInitGet() throws IOException {
 
         conn.connect();
+        String headerName = null;
         System.out.println("zzzz" + conn.getResponseMessage());
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String line = "";
-        int i = 0;
-        while ((line = in.readLine()) != null) {
+        for (int i = 1; (headerName = conn.getHeaderFieldKey(i)) != null; i++) {
+            if (headerName.equals("Set-Cookie")) {
 
-            System.out.println("zzGet" + line);
-            i++;
+                String stringwithcool = conn.getHeaderField(i);
+                cookie = (stringwithcool.substring(0, stringwithcool.indexOf(";")));
+                System.out.println("zzzzcookie" + cookie);
+            }
         }
-        in.close();
+
+//        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//        String line = "";
+//        int i = 0;
+//        while ((line = in.readLine()) != null) {
+//
+//            System.out.println("zzGet" + line);
+//            i++;
+//        }
+//        in.close();
+
+
     }
 
 //    POST /ranking.html? HTTP/1.1
