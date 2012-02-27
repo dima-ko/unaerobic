@@ -185,10 +185,6 @@ public class TablesActivity extends Activity {
 //                    tracker.trackPageView("/addTable");
                     newDialog.show();
                     break;
-                case R.id.info:
-//                    tracker.trackPageView("/info");
-                    infoDialog.show();
-                    break;
                 case R.id.delete_button:
                     tableList.remove(chosenTable);
                     delDialog.dismiss();
