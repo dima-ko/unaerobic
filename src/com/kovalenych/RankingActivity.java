@@ -41,8 +41,10 @@ public class RankingActivity extends Activity {
 //        setContentView(R.layout.ranking);
 
         lv = (ListView) findViewById(R.id.ranking_list);
+        getFromApneaCZ();
+//        invalidateList();
 
-        invalidateList();
+
     }
 
 
@@ -56,7 +58,7 @@ public class RankingActivity extends Activity {
         filterDialog.show();
 
 
-        recordsList.add(new Record("Goran", "Colak", "273", "CR", "101"));
+//        recordsList.add(new Record("Goran", "Colak", "273", "CR", "101"));
     }
 
     private void initDialog() {
@@ -107,14 +109,22 @@ public class RankingActivity extends Activity {
 
     }
 
+//    GET /ranking.html?STA HTTP/1.1
+//    Host: apnea.cz
+//    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0.2) Gecko/20100101 Firefox/10.0.2
+//    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+//        Accept-Language: en-us,en;q=0.5
+//        Accept-Encoding: gzip, deflate
+//        Connection: keep-alive
+
+
     protected void start() throws IOException {
         url = new URL("http://apnea.cz/ranking.html?");
         conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         setTypicalRequestProps();
-//        conn.setRequestProperty("Referer", kyivstar_referer_uri);
-//        sendInitGet();
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        sendInitGet();
+//        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     }
 
     protected void setTypicalRequestProps() {
@@ -126,11 +136,24 @@ public class RankingActivity extends Activity {
         conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
         conn.setRequestProperty("Accept-Language", "en-us,en;q=0.5");
         conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
-        conn.setRequestProperty("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.7");
-        conn.setRequestProperty("Keep-Alive", "300");
         conn.setRequestProperty("Connection", "keep-alive");
 
 
+    }
+
+    protected void sendInitGet() throws IOException {
+
+        conn.connect();
+        System.out.println("zzzz" + conn.getResponseMessage());
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line = "";
+        int i = 0;
+        while ((line = in.readLine()) != null) {
+
+            System.out.println("zzGet" + line);
+            i++;
+        }
+        in.close();
     }
 
 //    POST /ranking.html? HTTP/1.1
@@ -148,30 +171,30 @@ public class RankingActivity extends Activity {
 //    -----------------------------457964961466790513485958903
 //    Content-Disposition: form-data; name="Lang"
 
-    protected void sendPost(String content) throws IOException {
-        DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-//        Log.d(LOG_TAG + "zzzzzzlength", "" + content.length());
-        System.out.println(content);
-        out.writeBytes(content);
-        out.flush();
-        out.close();
-
-        System.out.println("zzPost" + conn.getResponseCode());
-        System.out.println("zzPost" + conn.getResponseMessage());
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String line = "";
-        int i = 0;
-//        while ((line = in.readLine()) != null) {
-//            if (haveSendConfirmation && line.contains("прийнято"))
-//                Toast.makeText(this, R.string.succesfulySend, 2000).show();
-//            Log.d("zzzPostResponce", line);
-//            i++;
-//        }
-        in.close();
-//        if (!haveSendConfirmation)
-//            Toast.makeText(this, R.string.succesfulySend, 2000).show();
-
-    }
+//    protected void sendPost(String content) throws IOException {
+//        DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+////        Log.d(LOG_TAG + "zzzzzzlength", "" + content.length());
+//        System.out.println(content);
+//        out.writeBytes(content);
+//        out.flush();
+//        out.close();
+//
+//        System.out.println("zzPost" + conn.getResponseCode());
+//        System.out.println("zzPost" + conn.getResponseMessage());
+//        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//        String line = "";
+//        int i = 0;
+////        while ((line = in.readLine()) != null) {
+////            if (haveSendConfirmation && line.contains("прийнято"))
+////                Toast.makeText(this, R.string.succesfulySend, 2000).show();
+////            Log.d("zzzPostResponce", line);
+////            i++;
+////        }
+//        in.close();
+////        if (!haveSendConfirmation)
+////            Toast.makeText(this, R.string.succesfulySend, 2000).show();
+//
+//    }
 
 
 }
