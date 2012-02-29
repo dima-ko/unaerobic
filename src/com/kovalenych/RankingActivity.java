@@ -8,7 +8,10 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -31,6 +34,7 @@ public class RankingActivity extends Activity {
     protected HttpURLConnection conn;
     private String cookie;
     private String postMessage;
+    private ArrayList<String> htmlList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +90,7 @@ public class RankingActivity extends Activity {
     }
 
     private void fillPost() {
-       postMessage = getString(R.string.post);
+        postMessage = getString(R.string.post);
     }
 
     private void invalidateList() {
@@ -147,7 +151,6 @@ public class RankingActivity extends Activity {
     }
 
 
-
     protected void sendInitGet() throws IOException {
 
         conn.connect();
@@ -178,6 +181,7 @@ public class RankingActivity extends Activity {
 
 
     }
+
     protected void setTypicalRequestPropsForPost() {
         conn.setRequestProperty("Referer", "http://apnea.cz/ranking.html?STA");
         conn.setRequestProperty("Cookie", cookie);
@@ -189,7 +193,9 @@ public class RankingActivity extends Activity {
     }
 
     protected void sendPost(String content) throws IOException {
-        url = new URL("http://apnea.cz/ranking.html?");
+        htmlList = new ArrayList<String>();
+
+        url = new URL("http://apnea.cz/ranking.html?DYN");
         conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         setTypicalRequestProps();
@@ -200,6 +206,7 @@ public class RankingActivity extends Activity {
         out.flush();
         out.close();
 
+
         System.out.println("zzPost" + conn.getResponseCode());
         System.out.println("zzPost" + conn.getResponseMessage());
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -207,6 +214,9 @@ public class RankingActivity extends Activity {
         int i = 0;
         while ((line = in.readLine()) != null) {
             Log.d("zzzPostResponce", line);
+            if (line.contains("tr class") && line.contains("rankRow")) {
+                htmlList.add(line);
+            }
             i++;
         }
         in.close();
