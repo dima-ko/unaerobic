@@ -33,11 +33,11 @@ public class MenuActivity extends Activity {
     Bitmap infobitmap;
 
 
-    private int mWidth = 320;
-    int centerX = mWidth - 40;
-    private int mHeight = 480;
-    int centerY = mHeight - 15;
-    int rad = 200;
+    private int mWidth;
+    int centerX ;
+    private int mHeight;
+    int centerY ;
+    int rad ;
     int clocks = 12;
     float shiftAngle = 1.f / 7.5f;
     float currAngle = 0.f;
@@ -52,9 +52,12 @@ public class MenuActivity extends Activity {
     private RotTask task;
     int nextPosInt;
     boolean allVisible = true;
+    int [] labelsX ;
+    int [] labelsY ;
 
     String[] texts = new String[]{"info", "heart", "tables", "videos", "ranking", "articles"};
     private long downTime;
+    private boolean isSmallSreen;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,16 @@ public class MenuActivity extends Activity {
 
         }
         resolvePlatform();
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        isSmallSreen = (PlatformResolver.isHVGA || PlatformResolver.isHVGA400);
+        rad  = PlatformResolver.getRadius();
+        centerX = PlatformResolver.getCenterX();
+        centerY = PlatformResolver.getCenterY();
+        labelsX = PlatformResolver.getLabelsX();
+        labelsY = PlatformResolver.getLabelsY();
 
         AbsoluteLayout abs = new AbsoluteLayout(this);
 
@@ -86,20 +99,8 @@ public class MenuActivity extends Activity {
             labels[i] = new TextView(this);
             labels[i].setTextSize(16);
             labels[i].setGravity(Gravity.CENTER);
+            abs.addView(labels[i], new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, labelsX[i], labelsY[i]));
         }
-
-//        LinearLayout child = new LinearLayout(this);
-//        child.setBackgroundColor(Color.WHITE);
-//        abs.addView(child, new AbsoluteLayout.LayoutParams(80, 80, 80, 380));
-
-        abs.addView(labels[0], new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 158, 371));
-        abs.addView(labels[1], new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 250, 320));
-        abs.addView(labels[2], new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 15, 190));
-
-        abs.addView(labels[3], new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 105, 145));
-        abs.addView(labels[4], new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 165, 65));
-        abs.addView(labels[5], new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 100, 460));
-
 
         float a = (float) ((currAngle * 6) / Math.PI);
         nextPosInt = (a > 0) ? (int) (a + 0.5) : (int) (a - 0.5);
@@ -170,18 +171,23 @@ public class MenuActivity extends Activity {
     private void startActivities(float x, float y) {
         int zone = -1;
 
-        if (isClickInZone(x, y, 158, 371))
-            zone = 0;
-        else if (isClickInZone(x, y, 250, 320))
-            zone = 1;
-        else if (isClickInZone(x, y, 15, 190))
-            zone = 2;
-        else if (isClickInZone(x, y, 105, 145))
-            zone = 3;
-        else if (isClickInZone(x, y, 165, 65))
-            zone = 4;
-        else if (isClickInZone(x, y, 100, 460))
-            zone = 5;
+        for(int i=0;i<6;i++){
+            if (isClickInZone(x, y, labelsX[i], labelsY[i]))
+                zone = i;
+        }
+
+//        if (isClickInZone(x, y, 158, 371))
+//            zone = 0;
+//        else if (isClickInZone(x, y, 250, 320))
+//            zone = 1;
+//        else if (isClickInZone(x, y, 15, 190))
+//            zone = 2;
+//        else if (isClickInZone(x, y, 105, 145))
+//            zone = 3;
+//        else if (isClickInZone(x, y, 165, 65))
+//            zone = 4;
+//        else if (isClickInZone(x, y, 100, 460))
+//            zone = 5;
 
         int act = (zone - nextPosInt + 666) % 6;        // ]:<
 
@@ -265,6 +271,9 @@ public class MenuActivity extends Activity {
 
         if (Build.VERSION.SDK_INT < 5)
             PlatformResolver.isDONUT = true;
+
+        mHeight = metrics.heightPixels;
+        mWidth = metrics.widthPixels;
     }
 
     class RotTask extends AsyncTask<Float, Integer, Integer> {
@@ -308,15 +317,17 @@ public class MenuActivity extends Activity {
 
         private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         Random random;
+        int cx,cy;
 
         public RadiusSurfaceView(Context context) {
             super(context);
             // TODO Auto-generated constructor stub
+            cx = PlatformResolver.getCircleShiftX();
+            cy = PlatformResolver.getCircleShiftY();
             surfaceHolder = getHolder();
             random = new Random();
             paint.setColor(Color.BLACK);
-            paint.setTextSize(20);
-            this.setBackgroundResource(R.drawable.bg24);
+            this.setBackgroundResource(PlatformResolver.getMenuBG());
         }
 
         public void onResumeMySurfaceView() {
@@ -348,7 +359,8 @@ public class MenuActivity extends Activity {
                     //... actual drawing on canvas
                     canvas.drawColor(Color.TRANSPARENT);
 //                    canvas.drawPoint(x, y, paint);
-                    canvas.drawCircle(-35, -55, rad + 100, paint);
+                    
+                    canvas.drawCircle(cx, cy, rad + 130 + (isSmallSreen ? -30 : 0), paint);
                     canvas.drawCircle(centerX, centerY, rad + 100, paint);
                     for (int i = 0; i < clocks; i++) {
                         float x = (float) (centerX + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI + currAngle));
@@ -359,8 +371,8 @@ public class MenuActivity extends Activity {
                     }
 
                     for (int i = 0; i < clocks; i++) {
-                        float x = (float) (-35 + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
-                        float y = (float) (-55 + rad * Math.sin(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
+                        float x = (float) (cx + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
+                        float y = (float) (cy + rad * Math.sin(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
                         if (x > -100 && y > -100) {
                             drawIcons2(canvas, i, x, y);
                         }

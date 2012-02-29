@@ -83,6 +83,49 @@ public class PlatformResolver {
             return R.layout.filter_dialog;
     }
 
+    static public int getMenuBG() {
+        if (isHVGA || isHVGA400)
+            return R.drawable.bg_hwga;
+        else
+            return R.drawable.bg;
+    }
+
+    static public int getRadius() {
+        if (isHVGA || isHVGA400)
+            return 200;
+        else
+            return 300;
+    }
+
+    static public int getCenterX() {
+        if (isHVGA || isHVGA400)
+            return 280;
+        else
+            return 425;
+    }
+
+    static public int getCenterY() {
+        if (isHVGA || isHVGA400)
+            return 465;
+        else
+            return 745;
+    }
+
+    static public int getCircleShiftX() {
+        if (isHVGA || isHVGA400)
+            return -35;
+        else
+            return -35;
+    }
+
+    static public int getCircleShiftY() {
+        if (isHVGA || isHVGA400)
+            return -55;
+        else
+            return -55;
+    }
+
+
     static public int getRecordItemLayout() {
         if (isHVGA)
             return R.layout.record_item_hwga;
@@ -100,6 +143,23 @@ public class PlatformResolver {
             return R.layout.cycle_item_400;
         else
             return R.layout.cycle_item;
+    }
+
+
+    public static int[] getLabelsX() {
+        if (isHVGA || isHVGA400)
+            return new int[]{158, 250, 15, 105, 165, 100};
+        else
+            return new int[]{198, 345, 25, 125, 165, 150};
+
+    }
+
+    public static int[] getLabelsY() {
+        if (isHVGA || isHVGA400)
+        return new int[]{371, 320, 190, 145, 65, 460};
+        else
+            return new int[]{571, 520, 390, 345, 265, 660};
+
     }
 
 
