@@ -201,25 +201,30 @@ public class RankingActivity extends Activity {
         setTypicalRequestProps();
         setTypicalRequestPropsForPost();
         DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-        System.out.println(content);
+//        System.out.println(content);
         out.writeBytes(content);
         out.flush();
         out.close();
 
-
-        System.out.println("zzPost" + conn.getResponseCode());
-        System.out.println("zzPost" + conn.getResponseMessage());
+//        System.out.println("zzPost" + conn.getResponseCode());
+//        System.out.println("zzPost" + conn.getResponseMessage());
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String line = "";
         int i = 0;
         while ((line = in.readLine()) != null) {
-            Log.d("zzzPostResponce", line);
-            if (line.contains("tr class") && line.contains("rankRow")) {
+//            Log.d("zzzPostResponce", line);
+            if (line.contains("rankRow") ) {
                 htmlList.add(line);
             }
             i++;
         }
         in.close();
+
+//        for (int j=0;j< htmlList.size();j++)
+//            Log.d("lines", htmlList.get(j));
+//        Log.d("lines n", htmlList.size()+"");
+
+
 
     }
 
