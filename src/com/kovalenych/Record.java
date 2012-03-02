@@ -7,10 +7,6 @@ public class Record {
         return name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -19,24 +15,17 @@ public class Record {
         return result;
     }
 
-    public String getDate() {
-        return date;
-    }
 
     private final String name;
-    private final String surname;
     private final String country;
     private final String result;
-    private final String date;
 
 
-    public Record(String name, String surname, String result, String country, String date) {
+    public Record(String name, String result, String country) {
 
         this.name = name;
-        this.surname = surname;
         this.result = result;
         this.country = country;
-        this.date = date;
 
     }
 

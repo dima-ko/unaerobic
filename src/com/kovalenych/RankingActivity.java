@@ -102,8 +102,8 @@ public class RankingActivity extends Activity {
     private void invalidateList() {
 
         SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), PlatformResolver.getRecordItemLayout(),
-                new String[]{"flag", "name", "result"},
-                new int[]{R.id.ranking_country, R.id.ranking_name_surname, R.id.ranking_result});
+                new String[]{"place", "flag", "name", "result"},
+                new int[]{R.id.ranking_place,R.id.ranking_country, R.id.ranking_name_surname, R.id.ranking_result});
         adapter.setViewBinder(new ArticleViewBinder());
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
@@ -115,8 +115,9 @@ public class RankingActivity extends Activity {
 
         for (int i = 0; i < recordsList.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();
+            map.put("place", i);
             map.put("flag", recordsList.get(i).getCountry());
-            map.put("name", recordsList.get(i).getName() + recordsList.get(i).getSurname());
+            map.put("name", recordsList.get(i).getName() );
             map.put("result", recordsList.get(i).getResult());
             items.add(map);
         }
@@ -138,14 +139,6 @@ public class RankingActivity extends Activity {
 
     }
 
-//    GET /ranking.html?STA HTTP/1.1
-//    Host: apnea.cz
-//    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0.2) Gecko/20100101 Firefox/10.0.2
-//    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-//        Accept-Language: en-us,en;q=0.5
-//        Accept-Encoding: gzip, deflate
-//        Connection: keep-alive
-
 
     protected void start() throws IOException {
         url = new URL("http://apnea.cz/ranking.html?");
@@ -153,7 +146,6 @@ public class RankingActivity extends Activity {
         conn.setRequestMethod("GET");
         setTypicalRequestProps();
         sendInitGet();
-//        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     }
 
 
@@ -213,25 +205,43 @@ public class RankingActivity extends Activity {
         out.flush();
         out.close();
 
-//        System.out.println("zzPost" + conn.getResponseCode());
-//        System.out.println("zzPost" + conn.getResponseMessage());
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String line = "";
         int i = 0;
         while ((line = in.readLine()) != null) {
-            Log.d("zzzPostResponce", line);
+//            Log.d("zzzPostResponce", line);
             if (line.contains("rankRow")) {
-                htmlList.add(line);
+                    htmlList.add(line);
             }
             i++;
         }
         in.close();
 
         for (int j = 0; j < htmlList.size(); j++)
-            if (j % 10 == 0)
-                Log.d("zzlines " + i, htmlList.get(j));
-        Log.d("zzlines n", htmlList.size()+"");
+            recordsList.add(extractRecoedFromString(htmlList.get(j)));
 
+        invalidateList();
+    }
+
+    private Record extractRecoedFromString(String fullString) {
+
+        int nameStartIndex = fullString.indexOf("<td>",26)+4;
+        int nameEndIndex = fullString.indexOf("</td>",nameStartIndex);
+        int surnameStartIndex = fullString.indexOf("\">",nameEndIndex+50)+2;
+        int surnameEndIndex = fullString.indexOf("</a>",surnameStartIndex);
+        String name = fullString.substring(nameStartIndex,nameEndIndex) + " " + fullString.substring(surnameStartIndex, surnameEndIndex) ;
+
+        int altFlagStartIndex = fullString.indexOf("flag")-13;
+        String country =  fullString.substring(altFlagStartIndex,altFlagStartIndex+3);
+
+
+        int resultStartIndex = fullString.indexOf("<b>")+3;
+        int resultEndIndex = fullString.indexOf("</b>",resultStartIndex);
+        String res =  fullString.substring(resultStartIndex,resultEndIndex);
+
+//        Log.d("zzzname","name " + name +  "  res   " + res + "country" + country);
+
+        return new Record(name, res, country);
 
     }
 
