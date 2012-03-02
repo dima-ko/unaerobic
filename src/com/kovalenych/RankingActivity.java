@@ -42,14 +42,10 @@ public class RankingActivity extends Activity {
         recordsList = new ArrayList<Record>();
         context = this;
         fillList();
-        // http://www.aidainternational.org/freediving/history
         setContentView(R.layout.ranking);
-//        setContentView(R.layout.ranking);
 
         lv = (ListView) findViewById(R.id.ranking_list);
         getFromApneaCZ();
-//        invalidateList();
-
 
     }
 
@@ -61,10 +57,6 @@ public class RankingActivity extends Activity {
         filterDialog.setCancelable(true);
         filterDialog.setContentView(PlatformResolver.getFilterDialogLayout());
         initDialog();
-//        filterDialog.show();
-
-
-//        recordsList.add(new Record("Goran", "Colak", "273", "CR", "101"));
     }
 
     private void initDialog() {
@@ -115,7 +107,7 @@ public class RankingActivity extends Activity {
 
         for (int i = 0; i < recordsList.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("place", i);
+            map.put("place", i+1);
             map.put("flag", recordsList.get(i).getCountry());
             map.put("name", recordsList.get(i).getName() );
             map.put("result", recordsList.get(i).getResult());
@@ -232,7 +224,7 @@ public class RankingActivity extends Activity {
         String name = fullString.substring(nameStartIndex,nameEndIndex) + " " + fullString.substring(surnameStartIndex, surnameEndIndex) ;
 
         int altFlagStartIndex = fullString.indexOf("flag")-13;
-        String country =  fullString.substring(altFlagStartIndex,altFlagStartIndex+3);
+        String country =  fullString.substring(altFlagStartIndex,altFlagStartIndex+2);
 
 
         int resultStartIndex = fullString.indexOf("<b>")+3;
