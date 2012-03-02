@@ -61,7 +61,7 @@ public class RankingActivity extends Activity {
         filterDialog.setCancelable(true);
         filterDialog.setContentView(PlatformResolver.getFilterDialogLayout());
         initDialog();
-        filterDialog.show();
+//        filterDialog.show();
 
 
 //        recordsList.add(new Record("Goran", "Colak", "273", "CR", "101"));
@@ -78,11 +78,17 @@ public class RankingActivity extends Activity {
             @Override
             public void onClick(View view) {
                 fillPost();
-                try {
-                    sendPost(postMessage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            sendPost(postMessage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, 50);
+
                 filterDialog.dismiss();
             }
         });
@@ -164,6 +170,7 @@ public class RankingActivity extends Activity {
                 System.out.println("zzzzcookie" + cookie);
             }
         }
+        filterDialog.show();
     }
 
     String boundary = "boundary=---------------------------1397366148113562428080587968";
@@ -212,18 +219,18 @@ public class RankingActivity extends Activity {
         String line = "";
         int i = 0;
         while ((line = in.readLine()) != null) {
-//            Log.d("zzzPostResponce", line);
-            if (line.contains("rankRow") ) {
+            Log.d("zzzPostResponce", line);
+            if (line.contains("rankRow")) {
                 htmlList.add(line);
             }
             i++;
         }
         in.close();
 
-//        for (int j=0;j< htmlList.size();j++)
-//            Log.d("lines", htmlList.get(j));
-//        Log.d("lines n", htmlList.size()+"");
-
+        for (int j = 0; j < htmlList.size(); j++)
+            if (i % 10 == 0)
+                Log.d("zzlines " + i, htmlList.get(j));
+        Log.d("zzlines n", htmlList.size()+"");
 
 
     }
