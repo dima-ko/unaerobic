@@ -228,7 +228,7 @@ public class RankingActivity extends Activity {
         in.close();
 
         for (int j = 0; j < htmlList.size(); j++)
-            if (i % 10 == 0)
+            if (j % 10 == 0)
                 Log.d("zzlines " + i, htmlList.get(j));
         Log.d("zzlines n", htmlList.size()+"");
 
