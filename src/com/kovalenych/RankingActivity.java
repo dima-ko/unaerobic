@@ -5,13 +5,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Spinner;
+import android.widget.*;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -35,12 +31,16 @@ public class RankingActivity extends Activity {
     private String cookie;
     private String postMessage;
     private ArrayList<String> htmlList;
+    private int chosenDisciplNumber = 0;
+    private String[] mDisciplinesArray;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         recordsList = new ArrayList<Record>();
         context = this;
+        mDisciplinesArray = getResources().getStringArray(R.array.disciplines);
         fillList();
         setContentView(R.layout.ranking);
 
@@ -65,6 +65,15 @@ public class RankingActivity extends Activity {
                 this, R.array.disciplines, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                chosenDisciplNumber = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
 
         filterDialog.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +104,7 @@ public class RankingActivity extends Activity {
 
         SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), PlatformResolver.getRecordItemLayout(),
                 new String[]{"place", "flag", "name", "result"},
-                new int[]{R.id.ranking_place,R.id.ranking_country, R.id.ranking_name_surname, R.id.ranking_result});
+                new int[]{R.id.ranking_place, R.id.ranking_country, R.id.ranking_name_surname, R.id.ranking_result});
         adapter.setViewBinder(new ArticleViewBinder());
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
@@ -107,9 +116,9 @@ public class RankingActivity extends Activity {
 
         for (int i = 0; i < recordsList.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("place", i+1);
+            map.put("place", i + 1);
             map.put("flag", recordsList.get(i).getCountry());
-            map.put("name", recordsList.get(i).getName() );
+            map.put("name", recordsList.get(i).getName());
             map.put("result", recordsList.get(i).getResult());
             items.add(map);
         }
@@ -178,21 +187,18 @@ public class RankingActivity extends Activity {
         conn.setRequestProperty("Cookie", cookie);
         conn.setRequestProperty("Content-Type", "multipart/form-data; " + boundary);
         conn.setRequestProperty("Content-Length", Integer.toString(postMessage.length()));
-//        Referer: http://apnea.cz/ranking.html?STA
-//        Cookie: htscallerid=12a14ac343c799cf87cadbd3778b45d1
 
     }
 
     protected void sendPost(String content) throws IOException {
         htmlList = new ArrayList<String>();
 
-        url = new URL("http://apnea.cz/ranking.html?DYN");
+        url = new URL("http://apnea.cz/ranking.html?" + mDisciplinesArray[chosenDisciplNumber]);
         conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         setTypicalRequestProps();
         setTypicalRequestPropsForPost();
         DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-//        System.out.println(content);
         out.writeBytes(content);
         out.flush();
         out.close();
@@ -201,9 +207,8 @@ public class RankingActivity extends Activity {
         String line = "";
         int i = 0;
         while ((line = in.readLine()) != null) {
-//            Log.d("zzzPostResponce", line);
             if (line.contains("rankRow")) {
-                    htmlList.add(line);
+                htmlList.add(line);
             }
             i++;
         }
@@ -217,19 +222,19 @@ public class RankingActivity extends Activity {
 
     private Record extractRecoedFromString(String fullString) {
 
-        int nameStartIndex = fullString.indexOf("<td>",26)+4;
-        int nameEndIndex = fullString.indexOf("</td>",nameStartIndex);
-        int surnameStartIndex = fullString.indexOf("\">",nameEndIndex+50)+2;
-        int surnameEndIndex = fullString.indexOf("</a>",surnameStartIndex);
-        String name = fullString.substring(nameStartIndex,nameEndIndex) + " " + fullString.substring(surnameStartIndex, surnameEndIndex) ;
+        int nameStartIndex = fullString.indexOf("<td>", 26) + 4;
+        int nameEndIndex = fullString.indexOf("</td>", nameStartIndex);
+        int surnameStartIndex = fullString.indexOf("\">", nameEndIndex + 50) + 2;
+        int surnameEndIndex = fullString.indexOf("</a>", surnameStartIndex);
+        String name = fullString.substring(nameStartIndex, nameEndIndex) + " " + fullString.substring(surnameStartIndex, surnameEndIndex);
 
-        int altFlagStartIndex = fullString.indexOf("flag")-13;
-        String country =  fullString.substring(altFlagStartIndex,altFlagStartIndex+2);
+        int altFlagStartIndex = fullString.indexOf("flag") - 13;
+        String country = fullString.substring(altFlagStartIndex, altFlagStartIndex + 2);
 
 
-        int resultStartIndex = fullString.indexOf("<b>")+3;
-        int resultEndIndex = fullString.indexOf("</b>",resultStartIndex);
-        String res =  fullString.substring(resultStartIndex,resultEndIndex);
+        int resultStartIndex = fullString.indexOf("<b>") + 3;
+        int resultEndIndex = fullString.indexOf("</b>", resultStartIndex);
+        String res = fullString.substring(resultStartIndex, resultEndIndex);
 
 //        Log.d("zzzname","name " + name +  "  res   " + res + "country" + country);
 

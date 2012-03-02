@@ -150,7 +150,7 @@ public class PlatformResolver {
         if (isHVGA || isHVGA400)
             return new int[]{158, 250, 15, 105, 165, 100};
         else
-            return new int[]{218, 360, 25, 175, 235, 150};
+            return new int[]{235, 360, 30, 175, 255, 160};
 
     }
 
@@ -158,7 +158,7 @@ public class PlatformResolver {
         if (isHVGA || isHVGA400)
         return new int[]{371, 320, 190, 145, 65, 460};
         else
-            return new int[]{571, 540, 390, 325, 145, 720};
+            return new int[]{600, 540, 325, 255, 135, 730};
 
     }
 
