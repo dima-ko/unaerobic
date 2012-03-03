@@ -44,7 +44,7 @@ public class PlatformResolver {
         if (isHVGA)
             return R.layout.menu_hvga;
         else
-            return R.layout.menu;
+            return R.layout.tables;
     }
 
     static public int getNewCycleDialogLayout() {

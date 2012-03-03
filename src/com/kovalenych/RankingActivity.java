@@ -38,6 +38,7 @@ public class RankingActivity extends Activity {
     private int chosenDisciplNumber = 0;
     private String[] mDisciplinesArray;
 
+    LinearLayout sendingRequestView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class RankingActivity extends Activity {
         sendingRequestDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         sendingRequestDialog.setCancelable(true);
 
-        LinearLayout sendingRequestView = new LinearLayout(this);
+        sendingRequestView = new LinearLayout(this);
         sendingRequestView.setBackgroundColor(Color.BLACK);
         TextView sendText = new TextView(this);
         sendText.setGravity(Gravity.CENTER);
@@ -136,7 +137,6 @@ public class RankingActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         filterDialog.show();
-
         return true;
     }
 
@@ -235,7 +235,9 @@ public class RankingActivity extends Activity {
     }
 
     protected void sendPost(String content) throws IOException {
+
         sendingRequestDialog.show();
+
         htmlList = new ArrayList<String>();
 
         url = new URL("http://apnea.cz/ranking.html?" + mDisciplinesArray[chosenDisciplNumber]);
