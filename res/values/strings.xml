@@ -188,7 +188,8 @@
 
 
         -----------------------------1397366148113562428080587968--</string>
-    <string name="new_query">New query</string>
+    <string name="new_query">New request</string>
+    <string name="sendingRequest">sending request ...</string>
 
 
 </resources>

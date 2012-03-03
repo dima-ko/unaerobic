@@ -3,8 +3,11 @@ package com.kovalenych;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
@@ -25,6 +28,7 @@ public class RankingActivity extends Activity {
     ArrayList<Record> recordsList;
     Context context;
     private Dialog filterDialog;
+    private Dialog sendingRequestDialog;
     protected URL url;
     protected HttpURLConnection conn;
     private String cookie;
@@ -55,8 +59,33 @@ public class RankingActivity extends Activity {
         filterDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         filterDialog.setCancelable(true);
         filterDialog.setContentView(PlatformResolver.getFilterDialogLayout());
+
+        sendingRequestDialog= new Dialog(context);
+        sendingRequestDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        sendingRequestDialog.setCancelable(true);
+
+        LinearLayout sendingRequestView = new LinearLayout(this);
+        sendingRequestView.setBackgroundColor(Color.BLACK);
+        TextView sendText = new TextView(this);
+        sendText.setGravity(Gravity.CENTER);
+        sendingRequestView.addView(sendText,new LinearLayout.LayoutParams(300,100));
+        sendText.setText(getString(R.string.sendingRequest));
+        sendingRequestDialog.setContentView(sendingRequestView);
+        sendingRequestDialog.show();
+
+        filterDialog.setOnDismissListener(onDismissListener);
+        sendingRequestDialog.setOnDismissListener(onDismissListener);
+
+
         initDialog();
     }
+
+    Dialog.OnDismissListener onDismissListener = new DialogInterface.OnDismissListener() {
+        @Override
+        public void onDismiss(DialogInterface dialogInterface) {
+            RankingActivity.this.onDestroy();
+        }
+    } ;
 
     private void initDialog() {
         Spinner s = (Spinner) filterDialog.findViewById(R.id.discipline_spinner);
@@ -205,6 +234,7 @@ public class RankingActivity extends Activity {
     }
 
     protected void sendPost(String content) throws IOException {
+        sendingRequestDialog.show();
         htmlList = new ArrayList<String>();
 
         url = new URL("http://apnea.cz/ranking.html?" + mDisciplinesArray[chosenDisciplNumber]);
@@ -228,10 +258,12 @@ public class RankingActivity extends Activity {
         }
         in.close();
         recordsList.clear();
+        Log.d("parsing","start " + System.currentTimeMillis());
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
-
+        Log.d("parsing","end " + System.currentTimeMillis());
         invalidateList();
+        sendingRequestDialog.dismiss();
     }
 
     private Record extractRecoedFromString(String fullString) {

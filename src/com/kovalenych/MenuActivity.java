@@ -74,7 +74,7 @@ public class MenuActivity extends Activity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        isSmallSreen = (PlatformResolver.isHVGA || PlatformResolver.isHVGA400);
+        isSmallSreen = (PlatformResolver.isHVGA );
         rad  = PlatformResolver.getRadius();
         centerX = PlatformResolver.getCenterX();
         centerY = PlatformResolver.getCenterY();
@@ -269,8 +269,6 @@ public class MenuActivity extends Activity {
         if (metrics.heightPixels == 480)
             PlatformResolver.isHVGA = true;
 
-        if (metrics.heightPixels == 400)
-            PlatformResolver.isHVGA400 = true;
 
         if (Build.VERSION.SDK_INT < 5)
             PlatformResolver.isDONUT = true;
