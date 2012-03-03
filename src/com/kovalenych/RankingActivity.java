@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -73,19 +74,19 @@ public class RankingActivity extends Activity {
         sendingRequestDialog.setContentView(sendingRequestView);
         sendingRequestDialog.show();
 
-        filterDialog.setOnDismissListener(onDismissListener);
-        sendingRequestDialog.setOnDismissListener(onDismissListener);
+        filterDialog.setOnCancelListener(onCancelListener);
+        sendingRequestDialog.setOnCancelListener(onCancelListener);
 
 
         initDialog();
     }
 
-    Dialog.OnDismissListener onDismissListener = new DialogInterface.OnDismissListener() {
+    Dialog.OnCancelListener onCancelListener = new DialogInterface.OnCancelListener() {
         @Override
-        public void onDismiss(DialogInterface dialogInterface) {
-            RankingActivity.this.onDestroy();
+        public void onCancel(DialogInterface dialogInterface) {
+            startActivity(new Intent(RankingActivity.this,MenuActivity.class));
         }
-    } ;
+    };
 
     private void initDialog() {
         Spinner s = (Spinner) filterDialog.findViewById(R.id.discipline_spinner);

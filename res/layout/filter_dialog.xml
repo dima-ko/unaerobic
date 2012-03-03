@@ -14,10 +14,10 @@
             android:layout_width="wrap_content"
             />
 
-    <ImageView
-            android:src="@drawable/apneaczzz"
+    <LinearLayout
+            android:background="@drawable/apneaczzz"
             android:layout_height="100px"
-            android:layout_width="wrap_content"
+            android:layout_width="372px"
       />
 
 
