@@ -12,6 +12,8 @@ public final class R {
         public static final int rotate_anim=0x7f040000;
     }
     public static final class array {
+        /** <item>NL</item>
+         */
         public static final int disciplines=0x7f060001;
         public static final int languages=0x7f060000;
     }
@@ -23,32 +25,33 @@ public final class R {
         public static final int glass=0x7f070001;
     }
     public static final class drawable {
-        public static final int bg=0x7f020000;
-        public static final int bg_hwga=0x7f020001;
-        public static final int blue_button=0x7f020002;
-        public static final int book2=0x7f020003;
-        public static final int gear2=0x7f020004;
-        public static final int heart_beat=0x7f020005;
-        public static final int icon=0x7f020006;
-        public static final int icon2=0x7f020007;
-        public static final int icon_ranking2=0x7f020008;
-        public static final int infoblack=0x7f020009;
-        public static final int muz_action=0x7f02000a;
-        public static final int muz_nor=0x7f02000b;
-        public static final int muz_sel=0x7f02000c;
-        public static final int nitsch=0x7f02000d;
-        public static final int nitsch_hvga=0x7f02000e;
-        public static final int plus_action=0x7f02000f;
-        public static final int plus_nor=0x7f020010;
-        public static final int plus_sel=0x7f020011;
-        public static final int progress_blue=0x7f020012;
-        public static final int progress_blue_left=0x7f020013;
-        public static final int progress_green=0x7f020014;
-        public static final int progress_green_left=0x7f020015;
-        public static final int speaker=0x7f020016;
-        public static final int stub_image=0x7f020017;
-        public static final int taable=0x7f020018;
-        public static final int vidos=0x7f020019;
+        public static final int apneacz=0x7f020000;
+        public static final int bg=0x7f020001;
+        public static final int bg_hwga=0x7f020002;
+        public static final int blue_button=0x7f020003;
+        public static final int book2=0x7f020004;
+        public static final int gear2=0x7f020005;
+        public static final int heart_beat=0x7f020006;
+        public static final int icon=0x7f020007;
+        public static final int icon2=0x7f020008;
+        public static final int icon_ranking2=0x7f020009;
+        public static final int infoblack=0x7f02000a;
+        public static final int muz_action=0x7f02000b;
+        public static final int muz_nor=0x7f02000c;
+        public static final int muz_sel=0x7f02000d;
+        public static final int nitsch=0x7f02000e;
+        public static final int nitsch_hvga=0x7f02000f;
+        public static final int plus_action=0x7f020010;
+        public static final int plus_nor=0x7f020011;
+        public static final int plus_sel=0x7f020012;
+        public static final int progress_blue=0x7f020013;
+        public static final int progress_blue_left=0x7f020014;
+        public static final int progress_green=0x7f020015;
+        public static final int progress_green_left=0x7f020016;
+        public static final int speaker=0x7f020017;
+        public static final int stub_image=0x7f020018;
+        public static final int taable=0x7f020019;
+        public static final int vidos=0x7f02001a;
     }
     public static final class id {
         public static final int add_cycle=0x7f080020;
