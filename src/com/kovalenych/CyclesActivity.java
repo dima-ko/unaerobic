@@ -343,9 +343,6 @@ public class CyclesActivity extends Activity implements Soundable {
     }
 
 
-
-
-
     /**
      * @return boolean return true if the application can access the internet
      */
@@ -360,6 +357,8 @@ public class CyclesActivity extends Activity implements Soundable {
         }
         return true;
     }
+
+
 
 
 }

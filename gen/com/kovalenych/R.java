@@ -72,6 +72,7 @@ public final class R {
         public static final int infot=0x7f080013;
         public static final int melody=0x7f080021;
         public static final int new_cycle_ok=0x7f080018;
+        public static final int new_query=0x7f080037;
         public static final int new_table_edit=0x7f08001a;
         public static final int new_table_ok=0x7f080019;
         public static final int ranking_country=0x7f08001f;
@@ -93,20 +94,21 @@ public final class R {
         public static final int tag_image_loader=0x7f080000;
         public static final int title=0x7f080012;
         public static final int topTime=0x7f08000d;
+        public static final int vibro=0x7f080030;
         public static final int video_image=0x7f080027;
         public static final int video_list=0x7f080029;
         public static final int video_text=0x7f080028;
         public static final int voice10to=0x7f08002d;
-        public static final int voice1after=0x7f080030;
+        public static final int voice1after=0x7f080031;
         public static final int voice1to=0x7f08002b;
-        public static final int voice2after=0x7f080031;
+        public static final int voice2after=0x7f080032;
         public static final int voice2to=0x7f08002a;
         public static final int voice30to=0x7f08002c;
-        public static final int voice3after=0x7f080032;
-        public static final int voice4after=0x7f080033;
-        public static final int voice5after=0x7f080034;
+        public static final int voice3after=0x7f080033;
+        public static final int voice4after=0x7f080034;
+        public static final int voice5after=0x7f080035;
         public static final int voice5to=0x7f08002e;
-        public static final int voicebreathe=0x7f080035;
+        public static final int voicebreathe=0x7f080036;
         public static final int voicestart=0x7f08002f;
     }
     public static final class layout {
@@ -148,6 +150,9 @@ public final class R {
         public static final int voice_400=0x7f030023;
         public static final int voice_hvga=0x7f030024;
     }
+    public static final class menu {
+        public static final int menushka=0x7f0a0000;
+    }
     public static final class raw {
         public static final int after1min=0x7f050000;
         public static final int after2min=0x7f050001;
@@ -181,6 +186,7 @@ public final class R {
         public static final int minutes4=0x7f09000d;
         public static final int minutes5=0x7f09000e;
         public static final int new_cycle=0x7f090018;
+        public static final int new_query=0x7f09001e;
         public static final int new_table=0x7f090017;
         public static final int noConnect=0x7f090006;
         public static final int post=0x7f09001d;

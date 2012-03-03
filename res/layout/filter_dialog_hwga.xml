@@ -46,36 +46,36 @@
             <!--android:layout_gravity="center_horizontal"-->
             <!--android:layout_marginRight="5px"-->
             <!--/>-->
-    <LinearLayout
-            android:layout_height="50px"
-            android:layout_width="fill_parent"
-            >
-        <TextView
-                android:layout_marginLeft="30px"
-                android:layout_height="wrap_content"
-                android:layout_width="210px"
-                android:text="women"
+    <!--<LinearLayout-->
+            <!--android:layout_height="50px"-->
+            <!--android:layout_width="fill_parent"-->
+            <!-->-->
+        <!--<TextView-->
+                <!--android:layout_marginLeft="30px"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="210px"-->
+                <!--android:text="women"-->
 
-                />
-        <CheckBox android:layout_height="wrap_content"
-                  android:layout_width="wrap_content"
-                />
-    </LinearLayout>
-    <LinearLayout
-            android:layout_height="80px"
-            android:layout_width="fill_parent"
-            >
-        <TextView
-                android:layout_marginLeft="30px"
-                android:layout_height="wrap_content"
-                android:layout_width="210px"
-                android:text="men"
+                <!--/>-->
+        <!--<CheckBox android:layout_height="wrap_content"-->
+                  <!--android:layout_width="wrap_content"-->
+                <!--/>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+            <!--android:layout_height="80px"-->
+            <!--android:layout_width="fill_parent"-->
+            <!-->-->
+        <!--<TextView-->
+                <!--android:layout_marginLeft="30px"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="210px"-->
+                <!--android:text="men"-->
 
-                />
-        <CheckBox android:layout_height="wrap_content"
-                  android:layout_width="wrap_content"
-                />
-    </LinearLayout>
+                <!--/>-->
+        <!--<CheckBox android:layout_height="wrap_content"-->
+                  <!--android:layout_width="wrap_content"-->
+                <!--/>-->
+    <!--</LinearLayout>-->
 
     <Button
             android:id="@+id/sendButton"

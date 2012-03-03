@@ -5,8 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.view.Window;
+import android.view.*;
 import android.widget.*;
 
 import java.io.BufferedReader;
@@ -94,6 +93,21 @@ public class RankingActivity extends Activity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menushka, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        filterDialog.show();
+
+        return true;
     }
 
     private void fillPost() {
@@ -213,7 +227,7 @@ public class RankingActivity extends Activity {
             i++;
         }
         in.close();
-
+        recordsList.clear();
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
 

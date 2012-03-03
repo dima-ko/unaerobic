@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -43,12 +44,14 @@ public class ClockActivity extends Activity implements Soundable {
     private SoundManager mSoundManager;
     private int position;
     Table table;
+    Vibrator v;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ptr = this;
+        v = (Vibrator) getSystemService(ptr.VIBRATOR_SERVICE);
         mSoundManager = new SoundManager(this);
         curCycle = new Cycle(0, 0);
         Bundle bun = getIntent().getExtras();
@@ -176,6 +179,8 @@ public class ClockActivity extends Activity implements Soundable {
         return super.onKeyDown(keyCode, event);
     }
 
+    private boolean vibrationEnabled =true;
+
     final Handler handler = new Handler() {
 
         public void handleMessage(Message msg) {
@@ -200,6 +205,8 @@ public class ClockActivity extends Activity implements Soundable {
                 timer.start();
                 breathBar.clearAnimation();
                 isAnimPlaying = false;
+                if(vibrationEnabled)
+                v.vibrate(300);
 
             } else {
                 breathTimeText.setVisibility(View.VISIBLE);
@@ -235,7 +242,8 @@ public class ClockActivity extends Activity implements Soundable {
                     curCycle = table.getCycles().get(position);
                     startCycle();
                 }
-
+                if(vibrationEnabled)
+                    v.vibrate(300);
 
             } else {
                 holdTimeText.setVisibility(View.VISIBLE);
