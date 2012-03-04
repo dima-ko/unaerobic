@@ -8,6 +8,7 @@ public class PlatformResolver {
 
     private Context _context;
     public static boolean isHVGA = false;
+    public static boolean isQVGA = false;
     public static boolean isDONUT = false;
 
 
@@ -42,7 +43,7 @@ public class PlatformResolver {
 
     static public int getMenuLayout() {
         if (isHVGA)
-            return R.layout.menu_hvga;
+            return R.layout.tables_hvga;
         else
             return R.layout.tables;
     }
@@ -69,6 +70,8 @@ public class PlatformResolver {
     }
 
     static public int getMenuBG() {
+        if (isQVGA)
+            return R.drawable.bg_hwga;
         if (isHVGA )
             return R.drawable.bg_hwga;
         else
@@ -76,6 +79,8 @@ public class PlatformResolver {
     }
 
     static public int getRadius() {
+        if (isQVGA )
+            return 130;
         if (isHVGA )
             return 200;
         else
@@ -83,6 +88,8 @@ public class PlatformResolver {
     }
 
     static public int getCenterX() {
+        if (isQVGA )
+            return 210;
         if (isHVGA )
             return 280;
         else
@@ -90,6 +97,8 @@ public class PlatformResolver {
     }
 
     static public int getCenterY() {
+        if (isQVGA )
+            return 310;
         if (isHVGA )
             return 465;
         else
@@ -97,6 +106,8 @@ public class PlatformResolver {
     }
 
     static public int getCircleShiftX() {
+        if (isQVGA )
+            return -15;
         if (isHVGA )
             return -35;
         else
@@ -104,6 +115,8 @@ public class PlatformResolver {
     }
 
     static public int getCircleShiftY() {
+        if (isQVGA )
+            return -43;
         if (isHVGA )
             return -55;
         else
@@ -128,6 +141,8 @@ public class PlatformResolver {
 
 
     public static int[] getLabelsX() {
+        if (isQVGA )
+            return new int[]{95, 155, -15, 48, 85, 60};
         if (isHVGA )
             return new int[]{158, 250, 15, 105, 165, 100};
         else
@@ -136,6 +151,8 @@ public class PlatformResolver {
     }
 
     public static int[] getLabelsY() {
+        if (isQVGA )
+            return new int[]{255, 221, 123, 91, 38, 304};
         if (isHVGA )
         return new int[]{371, 320, 190, 145, 65, 460};
         else

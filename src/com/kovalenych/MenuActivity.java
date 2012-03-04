@@ -269,6 +269,9 @@ public class MenuActivity extends Activity {
         if (metrics.heightPixels == 480)
             PlatformResolver.isHVGA = true;
 
+        if (metrics.heightPixels == 320)
+            PlatformResolver.isQVGA = true;
+
 
         if (Build.VERSION.SDK_INT < 5)
             PlatformResolver.isDONUT = true;
