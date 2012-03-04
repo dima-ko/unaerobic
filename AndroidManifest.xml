@@ -16,7 +16,7 @@
 
 
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8"/>
-    <application android:label="Unaerobic" android:icon="@drawable/icon"
+    <application android:label="Unaerobic" android:icon="@drawable/icon2"
                  android:theme="@android:style/Theme.NoTitleBar" android:debuggable="true"
                  android:name=".UnaeroApplication">
         <activity android:name=".MenuActivity"

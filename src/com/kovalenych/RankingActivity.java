@@ -70,7 +70,7 @@ public class RankingActivity extends Activity {
         sendingRequestView.setBackgroundColor(Color.BLACK);
         TextView sendText = new TextView(this);
         sendText.setGravity(Gravity.CENTER);
-        sendingRequestView.addView(sendText,new LinearLayout.LayoutParams(300,100));
+        sendingRequestView.addView(sendText,new LinearLayout.LayoutParams(220,100));
         sendText.setText(getString(R.string.sendingRequest));
         sendingRequestDialog.setContentView(sendingRequestView);
         sendingRequestDialog.show();

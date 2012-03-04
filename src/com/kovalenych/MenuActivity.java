@@ -402,7 +402,7 @@ public class MenuActivity extends Activity {
                     break;
                 case 3:
                 case 9:
-                    canvas.drawBitmap(videobitmap, x, y, paint);
+                    canvas.drawBitmap(videobitmap, x+3, y, paint);
                     break;
                 case 4:
                 case 10:
@@ -432,7 +432,7 @@ public class MenuActivity extends Activity {
                     break;
                 case 2:
                 case 8:
-                    canvas.drawBitmap(videobitmap, x, y, paint);
+                    canvas.drawBitmap(videobitmap, x+3, y, paint);
                     break;
                 case 1:
                 case 7:

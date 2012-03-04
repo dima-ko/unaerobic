@@ -144,7 +144,7 @@ public class PlatformResolver {
         if (isQVGA )
             return new int[]{95, 155, -15, 48, 85, 60};
         if (isHVGA )
-            return new int[]{158, 250, 15, 105, 165, 100};
+            return new int[]{133, 225, -10, 80, 140, 75};
         else
             return new int[]{215, 360, 30, 160, 245, 142};
 
