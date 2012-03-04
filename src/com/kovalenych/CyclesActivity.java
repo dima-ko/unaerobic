@@ -2,15 +2,13 @@ package com.kovalenych;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.*;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.*;
+import android.view.View;
+import android.view.Window;
 import android.widget.*;
 
 import java.io.*;
@@ -36,6 +34,7 @@ public class CyclesActivity extends Activity implements Soundable {
     int chosenTable;
     Dialog delDialog;
     private Button del_button;
+    private SharedPreferences _preferedSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -290,18 +289,26 @@ public class CyclesActivity extends Activity implements Soundable {
         if (curTable.getVoices().contains(BREATHE))
             ((CheckBox) voiceDialog.findViewById(R.id.voicebreathe)).setChecked(true);
 
+        _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
+        boolean isvibro = _preferedSettings.getBoolean("vibro", true);
+        if (isvibro)
+            ((CheckBox) voiceDialog.findViewById(R.id.vibro)).setChecked(true);
     }
 
     private void getVoiceRadios() {
         curTable.getVoices().clear();
-        if (((CheckBox) voiceDialog.findViewById(R.id.voice2to)).isChecked()) curTable.getVoices().add(TO_START_2_MIN);
-        if (((CheckBox) voiceDialog.findViewById(R.id.voice1to)).isChecked()) curTable.getVoices().add(TO_START_1_MIN);
+        if (((CheckBox) voiceDialog.findViewById(R.id.voice2to)).isChecked())
+            curTable.getVoices().add(TO_START_2_MIN);
+        if (((CheckBox) voiceDialog.findViewById(R.id.voice1to)).isChecked())
+            curTable.getVoices().add(TO_START_1_MIN);
         if (((CheckBox) voiceDialog.findViewById(R.id.voice30to)).isChecked())
             curTable.getVoices().add(TO_START_30_SEC);
         if (((CheckBox) voiceDialog.findViewById(R.id.voice10to)).isChecked())
             curTable.getVoices().add(TO_START_10_SEC);
-        if (((CheckBox) voiceDialog.findViewById(R.id.voice5to)).isChecked()) curTable.getVoices().add(TO_START_5_SEC);
-        if (((CheckBox) voiceDialog.findViewById(R.id.voicestart)).isChecked()) curTable.getVoices().add(START);
+        if (((CheckBox) voiceDialog.findViewById(R.id.voice5to)).isChecked())
+            curTable.getVoices().add(TO_START_5_SEC);
+        if (((CheckBox) voiceDialog.findViewById(R.id.voicestart)).isChecked())
+            curTable.getVoices().add(START);
         if (((CheckBox) voiceDialog.findViewById(R.id.voice1after)).isChecked())
             curTable.getVoices().add(AFTER_START_1);
         if (((CheckBox) voiceDialog.findViewById(R.id.voice2after)).isChecked())
@@ -312,8 +319,12 @@ public class CyclesActivity extends Activity implements Soundable {
             curTable.getVoices().add(AFTER_START_4);
         if (((CheckBox) voiceDialog.findViewById(R.id.voice5after)).isChecked())
             curTable.getVoices().add(AFTER_START_5);
-        if (((CheckBox) voiceDialog.findViewById(R.id.voicebreathe)).isChecked()) curTable.getVoices().add(BREATHE);
+        if (((CheckBox) voiceDialog.findViewById(R.id.voicebreathe)).isChecked())
+            curTable.getVoices().add(BREATHE);
 
+        SharedPreferences.Editor editor = _preferedSettings.edit();
+            editor.putBoolean("vibro", ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked());
+        editor.commit();
     }
 
     public ArrayList<Cycle> fill_O2() {
@@ -357,8 +368,6 @@ public class CyclesActivity extends Activity implements Soundable {
         }
         return true;
     }
-
-
 
 
 }
