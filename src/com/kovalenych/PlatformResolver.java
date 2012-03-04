@@ -71,7 +71,7 @@ public class PlatformResolver {
 
     static public int getMenuBG() {
         if (isQVGA)
-            return R.drawable.bg_hwga;
+            return R.drawable.bg_qwga;
         if (isHVGA )
             return R.drawable.bg_hwga;
         else
