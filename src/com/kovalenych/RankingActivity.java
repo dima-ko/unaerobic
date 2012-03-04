@@ -86,7 +86,8 @@ public class RankingActivity extends Activity {
     Dialog.OnCancelListener onCancelListener = new DialogInterface.OnCancelListener() {
         @Override
         public void onCancel(DialogInterface dialogInterface) {
-            startActivity(new Intent(RankingActivity.this,MenuActivity.class));
+              RankingActivity.this.finish();
+//            startActivity(new Intent(RankingActivity.this,MenuActivity.class));
         }
     };
 
