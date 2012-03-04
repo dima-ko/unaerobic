@@ -35,6 +35,7 @@ public class CyclesActivity extends Activity implements Soundable {
     Dialog delDialog;
     private Button del_button;
     private SharedPreferences _preferedSettings;
+    boolean isvibro;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public class CyclesActivity extends Activity implements Soundable {
         setContentView(PlatformResolver.getTableLayout());
 
         initViews();
+
+        _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
+
+        isvibro = _preferedSettings.getBoolean("vibro", true);
 
     }
 
@@ -193,6 +198,7 @@ public class CyclesActivity extends Activity implements Soundable {
 
                 bun.putIntegerArrayList("voices", curTable.getVoices());
                 bun.putInt("number", position);
+                bun.putBoolean("vibro", isvibro);
                 intent.putExtras(bun);
                 startActivity(intent);
 
@@ -288,9 +294,6 @@ public class CyclesActivity extends Activity implements Soundable {
             ((CheckBox) voiceDialog.findViewById(R.id.voice5after)).setChecked(true);
         if (curTable.getVoices().contains(BREATHE))
             ((CheckBox) voiceDialog.findViewById(R.id.voicebreathe)).setChecked(true);
-
-        _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
-        boolean isvibro = _preferedSettings.getBoolean("vibro", true);
         if (isvibro)
             ((CheckBox) voiceDialog.findViewById(R.id.vibro)).setChecked(true);
     }
@@ -323,7 +326,8 @@ public class CyclesActivity extends Activity implements Soundable {
             curTable.getVoices().add(BREATHE);
 
         SharedPreferences.Editor editor = _preferedSettings.edit();
-            editor.putBoolean("vibro", ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked());
+       isvibro = ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked();
+        editor.putBoolean("vibro", ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked());
         editor.commit();
     }
 

@@ -47,6 +47,7 @@ public class ClockActivity extends Activity implements Soundable {
     Vibrator v;
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,7 @@ public class ClockActivity extends Activity implements Soundable {
         }
 
         position = bun.getInt("number");
+        vibrationEnabled = bun.getBoolean("vibro");
         voices = bun.getIntegerArrayList("voices");
         setContentView(PlatformResolver.getClocksLayout());
 
@@ -179,7 +181,7 @@ public class ClockActivity extends Activity implements Soundable {
         return super.onKeyDown(keyCode, event);
     }
 
-    private boolean vibrationEnabled =true;
+    private boolean vibrationEnabled ;
 
     final Handler handler = new Handler() {
 
