@@ -5,7 +5,7 @@
     <string name="videos">Videos</string>
     <string name="ranking">Clasificación</string>
     <string name="info_title">Información</string>
-    <string name="info">- Pulse Menú para encontrar más interesantes en la web\n
+    <string name="info">
         - Pulse \"+\" botón para agregar la nueva tabla o en ciclo\n
         - Pulsación larga en el círculo de temporizador para comenzar de inmediato\n
         - Pulse el icono de volumen para personalizar las alarmas de voz\n

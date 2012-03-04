@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -90,6 +91,13 @@ public class RankingActivity extends Activity {
     };
 
     private void initDialog() {
+//        http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3
+        (filterDialog.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3")));
+            }
+        });
         Spinner s = (Spinner) filterDialog.findViewById(R.id.discipline_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 this, R.array.disciplines, android.R.layout.simple_spinner_item);
