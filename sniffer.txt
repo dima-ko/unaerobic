@@ -1,0 +1,22 @@
+                            http://apnea.cz/ranking.html?STA
+   first get
+                            GET /ranking.html?STA HTTP/1.1
+                            Host: apnea.cz
+                            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0.2) Gecko/20100101 Firefox/10.0.2
+                            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+                            Accept-Language: en-us,en;q=0.5
+                            Accept-Encoding: gzip, deflate
+                            Connection: keep-alive
+
+                            HTTP/1.1 200 OK
+                            Date: Mon, 27 Feb 2012 20:19:57 GMT
+                            Server: Apache
+                            P3P: CAO DSP COR CUR ADMa IVDi HISa OUR BUS PHY ONL UNI PUR FIN COM NAV INT CNT STA GOV OTC
+                            Set-Cookie: htscallerid=12a14ac343c799cf87cadbd3778b45d1; expires=Tue, 26-Feb-2013 20:19:57 GMT; path=/
+                            Keep-Alive: timeout=25, max=100
+                            Connection: Keep-Alive
+                            Transfer-Encoding: chunked
+                            Content-Type: text/html
+
+
+

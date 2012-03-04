@@ -12,7 +12,7 @@
         <item>CWT</item>
         <item>FIM</item>
         <item>CNF</item>
-        <item>NL</item>
+        <!--<item>NL</item>-->
     </string-array>
 
 </resources>

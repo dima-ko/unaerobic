@@ -1,0 +1,173 @@
+http://apnea.cz/ranking.html?
+
+POST /ranking.html? HTTP/1.1
+Host: apnea.cz
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0.2) Gecko/20100101 Firefox/10.0.2
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://apnea.cz/ranking.html?STA
+Cookie: htscallerid=12a14ac343c799cf87cadbd3778b45d1
+Content-Type: multipart/form-data; boundary=---------------------------1397366148113562428080587968
+Content-Length: 4220
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="Lang"
+
+EN
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="sort"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="start"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkReport"
+
+REPORT
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkScope"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkCompr"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkCompn"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkOrgNm"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkRelative"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkAllDisc"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkRgn2"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkFed2"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkDisc"
+
+DYN
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkGender"
+
+0
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkMode"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkRegn"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkClub"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkComprNm"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkCompnNm"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkYear"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkFede"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="rnkSrc"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="admin"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="pageID"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="pg"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="sid"
+
+86e000e1899bd0cfe1ae93e8345d4849
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="lastSearch"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="cleanText"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="url"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="origLocation"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="origPageID"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="logOut"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="logInNow"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="mediaTp"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="langSel"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="catSel"
+
+
+-----------------------------1397366148113562428080587968
+Content-Disposition: form-data; name="pageSzt"
+
+
+-----------------------------1397366148113562428080587968--
+
+HTTP/1.1 200 OK
+Date: Mon, 27 Feb 2012 20:33:20 GMT
+Server: Apache
+P3P: CAO DSP COR CUR ADMa IVDi HISa OUR BUS PHY ONL UNI PUR FIN COM NAV INT CNT STA GOV OTC
+Set-Cookie: Vars=Lang{EN} ; path=/
+Keep-Alive: timeout=25, max=100
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: text/html
+----------------------------------------------------------

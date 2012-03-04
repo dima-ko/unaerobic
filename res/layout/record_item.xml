@@ -5,24 +5,28 @@
               android:padding="5px"
         >
     <TextView
-            android:id="@+id/ranking_country"
-            android:layout_width="60px"
+            android:id="@+id/ranking_place"
+            android:layout_width="40px"
             android:layout_height="fill_parent"
             android:textSize="22px"
             />
-
     <TextView
             android:id="@+id/ranking_name_surname"
-            android:layout_width="300px"
+            android:layout_width="260px"
             android:layout_height="fill_parent"
             android:textSize="22px"
             />
     <TextView
             android:id="@+id/ranking_result"
-            android:layout_width="fill_parent"
+            android:layout_width="120px"
             android:layout_height="fill_parent"
             android:textSize="22px"
             />
-
+    <TextView
+            android:id="@+id/ranking_country"
+            android:layout_width="60px"
+            android:layout_height="fill_parent"
+            android:textSize="22px"
+            />
 
 </LinearLayout>

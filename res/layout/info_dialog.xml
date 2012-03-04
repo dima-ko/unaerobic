@@ -6,7 +6,7 @@
               android:layout_height="wrap_content"
               android:padding="10dp"
               android:gravity="right"
-              android:background="#00000000"
+              android:background="#FF000000"
         >
 
     <LinearLayout
@@ -19,7 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/info_title"
-                android:textSize="40px"
+                android:textSize="30px"
                 android:textColor="#FFFFFF"
                 android:layout_gravity="center_horizontal"
                 />
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/info"
-            android:textSize="20dp"
+            android:textSize="17dp"
             />
     <!--<Spinner-->
             <!--android:layout_marginTop="5px"-->

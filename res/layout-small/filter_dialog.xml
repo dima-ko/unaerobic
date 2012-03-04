@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="310px"
+              android:layout_width="240px"
               android:layout_height="fill_parent"
               android:padding="10dp"
               android:gravity="center"
@@ -16,9 +16,11 @@
 
     <LinearLayout
             android:background="@drawable/apneaczzz"
-            android:layout_height="66px"
-            android:layout_width="248px"
-            />
+            android:layout_height="65px"
+            android:layout_width="220px"
+      />
+
+
 
     <Spinner
             android:layout_marginTop="5px"
@@ -47,13 +49,13 @@
             <!--android:layout_marginRight="5px"-->
             <!--/>-->
     <!--<LinearLayout-->
-            <!--android:layout_height="50px"-->
+            <!--android:layout_height="80px"-->
             <!--android:layout_width="fill_parent"-->
             <!-->-->
         <!--<TextView-->
                 <!--android:layout_marginLeft="30px"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="210px"-->
+                <!--android:layout_width="330px"-->
                 <!--android:text="women"-->
 
                 <!--/>-->
@@ -68,7 +70,7 @@
         <!--<TextView-->
                 <!--android:layout_marginLeft="30px"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="210px"-->
+                <!--android:layout_width="330px"-->
                 <!--android:text="men"-->
 
                 <!--/>-->
@@ -79,6 +81,7 @@
 
     <Button
             android:id="@+id/sendButton"
+            android:layout_marginTop="20px"
             android:text="Show"
             android:layout_height="wrap_content"
             android:layout_width="200px"

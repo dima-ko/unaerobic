@@ -8,7 +8,7 @@
            android:layout_width="fill_parent"
            android:layout_height="100px"
            android:textSize="40px"
-           android:background="@drawable/blue_button"
+           android:background="#00000000"
 
 
    />
