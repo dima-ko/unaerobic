@@ -105,9 +105,9 @@ public class MenuActivity extends Activity {
 
         for (int i = 0; i < 6; i++) {
             labels[i] = new TextView(this);
-            labels[i].setTextSize(16);
+            labels[i].setTextSize(PlatformResolver.getTextSize());
             labels[i].setGravity(Gravity.CENTER);
-            abs.addView(labels[i], new AbsoluteLayout.LayoutParams(100, ViewGroup.LayoutParams.WRAP_CONTENT, labelsX[i], labelsY[i]));
+            abs.addView(labels[i], new AbsoluteLayout.LayoutParams(PlatformResolver.getTextWidth(), ViewGroup.LayoutParams.WRAP_CONTENT, labelsX[i], labelsY[i]));
         }
 
         float a = (float) ((currAngle * 6) / Math.PI);
@@ -266,6 +266,9 @@ public class MenuActivity extends Activity {
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        if (metrics.heightPixels == 1280)
+            PlatformResolver.is720p = true;
+
         if (metrics.heightPixels == 480)
             PlatformResolver.isHVGA = true;
 

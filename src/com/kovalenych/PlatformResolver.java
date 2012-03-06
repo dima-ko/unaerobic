@@ -10,6 +10,7 @@ public class PlatformResolver {
     public static boolean isHVGA = false;
     public static boolean isQVGA = false;
     public static boolean isDONUT = false;
+    public static boolean is720p = false;
 
 
     public PlatformResolver(Context context) {
@@ -70,54 +71,62 @@ public class PlatformResolver {
     }
 
     static public int getMenuBG() {
+        if (is720p)
+            return R.drawable.bg720p;
         if (isQVGA)
             return R.drawable.bg_qwga;
-        if (isHVGA )
+        if (isHVGA)
             return R.drawable.bg_hwga;
         else
             return R.drawable.bg;
     }
 
     static public int getRadius() {
-        if (isQVGA )
+        if (is720p)
+            return 460;
+        if (isQVGA)
             return 130;
-        if (isHVGA )
+        if (isHVGA)
             return 200;
         else
             return 300;
     }
 
     static public int getCenterX() {
-        if (isQVGA )
+        if (isQVGA)
             return 210;
-        if (isHVGA )
+        if (isHVGA)
             return 280;
+        if (is720p)
+            return 700;
         else
             return 425;
     }
 
     static public int getCenterY() {
-        if (isQVGA )
+        if (isQVGA)
             return 310;
-        if (isHVGA )
+        if (isHVGA)
             return 465;
+        if (is720p)
+            return 1200;
         else
             return 745;
     }
 
     static public int getCircleShiftX() {
-        if (isQVGA )
+        if (isQVGA)
             return -15;
-        if (isHVGA )
+        if (isHVGA)
             return -35;
         else
             return -35;
     }
 
     static public int getCircleShiftY() {
-        if (isQVGA )
+        if (isQVGA)
             return -43;
-        if (isHVGA )
+        if (isHVGA)
             return -55;
         else
             return -55;
@@ -141,9 +150,11 @@ public class PlatformResolver {
 
 
     public static int[] getLabelsX() {
-        if (isQVGA )
+        if (is720p)
+            return new int[]{380, 580, 45, 260, 370, 230};
+        if (isQVGA)
             return new int[]{95, 155, -15, 48, 85, 60};
-        if (isHVGA )
+        if (isHVGA)
             return new int[]{133, 225, -10, 80, 140, 75};
         else
             return new int[]{215, 360, 30, 160, 245, 142};
@@ -151,14 +162,29 @@ public class PlatformResolver {
     }
 
     public static int[] getLabelsY() {
-        if (isQVGA )
+        if (is720p)
+            return new int[]{950, 830, 500, 380, 180, 1150};
+        if (isQVGA)
             return new int[]{255, 221, 123, 91, 38, 304};
-        if (isHVGA )
-        return new int[]{371, 320, 190, 145, 65, 460};
+        if (isHVGA)
+            return new int[]{371, 320, 190, 145, 65, 460};
         else
             return new int[]{605, 540, 325, 255, 125, 735};
 
     }
 
 
+    public static float getTextSize() {
+        if (is720p)
+            return 25;
+        else
+            return 16;
+    }
+
+    public static int getTextWidth() {
+        if (is720p)
+            return 130;
+        else
+            return 100;
+    }
 }

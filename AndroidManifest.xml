@@ -6,7 +6,7 @@
     <supports-screens android:resizeable="true"
                       android:smallScreens="true"
                       android:normalScreens="true"
-                      android:largeScreens="false"
+                      android:largeScreens="true"
                       android:anyDensity="true"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
