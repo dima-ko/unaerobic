@@ -11,6 +11,7 @@ public class PlatformResolver {
     public static boolean isQVGA = false;
     public static boolean isDONUT = false;
     public static boolean is720p = false;
+    public static boolean isTabI = false;
 
 
     public PlatformResolver(Context context) {
@@ -88,6 +89,8 @@ public class PlatformResolver {
             return 130;
         if (isHVGA)
             return 200;
+        if (isTabI)
+            return 375;
         else
             return 300;
     }
@@ -99,6 +102,8 @@ public class PlatformResolver {
             return 280;
         if (is720p)
             return 700;
+        if (isTabI)
+            return 570;
         else
             return 425;
     }
@@ -110,6 +115,8 @@ public class PlatformResolver {
             return 465;
         if (is720p)
             return 1200;
+        if (isTabI)
+            return 980;
         else
             return 745;
     }
@@ -150,6 +157,8 @@ public class PlatformResolver {
 
 
     public static int[] getLabelsX() {
+        if (isTabI)
+            return new int[]{305, 470, 35, 210, 315, 207};
         if (is720p)
             return new int[]{380, 580, 45, 260, 370, 230};
         if (isQVGA)
@@ -162,6 +171,8 @@ public class PlatformResolver {
     }
 
     public static int[] getLabelsY() {
+        if (isTabI)
+            return new int[]{775, 690, 410, 305, 160, 940};
         if (is720p)
             return new int[]{950, 830, 500, 380, 180, 1150};
         if (isQVGA)
