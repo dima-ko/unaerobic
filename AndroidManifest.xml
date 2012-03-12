@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.kovalenych"
-          android:versionCode="16"
-          android:versionName="1.23">
+          android:versionCode="17"
+          android:versionName="1.24">
     <supports-screens android:resizeable="true"
                       android:smallScreens="true"
                       android:normalScreens="true"

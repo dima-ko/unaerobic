@@ -5,6 +5,8 @@
     <string name="videos">Videos</string>
     <string name="ranking">Ranking</string>
     <string name="info_title">Info</string>
+    <string name="heart">Heart</string>
+    <string name="tables">Tables</string>
     <string name="info">
         - Press \"+\" button to add new table or cycle\n
         - Long press on timer circle to start it immediately\n
@@ -190,6 +192,14 @@
         -----------------------------1397366148113562428080587968--</string>
     <string name="new_query">New request</string>
     <string name="sendingRequest">sending request ...</string>
+    <string name="frenchRequest">\tHello, my French friends! \n
+        \n
+    \tSorry for speaking to you not in your mother language, but my French is poor :(
+    Thats why I ask you for help. I found a beautiful film about freediving, that is called \"La vie sans air\".
+    If you please, you could help me to write an english subtitles to the part of the film.
+    So, if you can do that, wrote on my email:\n insomniac.robot@gmail.com for cooperation.
+      \n\n  Thanks again.
+    </string>
 
 
 </resources>

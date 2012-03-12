@@ -4,7 +4,9 @@ package com.kovalenych;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.*;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -52,23 +54,30 @@ public class MenuActivity extends Activity {
     private TextView[] labels;
     private RotTask task;
     int nextPosInt;
-    boolean allVisible = true;
     int [] labelsX ;
     int [] labelsY ;
 
-    String[] texts = new String[]{"info", "heart", "tables", "videos", "ranking", "articles"};
+    String[] texts;
     private long downTime;
     private boolean isSmallSreen;
     private Dialog infoDialog;
+    private SharedPreferences _preferedTables;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.d("language", Locale.getDefault().getLanguage());
-        if (Locale.getDefault().getLanguage().equals("fr")) {
+        texts = new String[]{getString(R.string.info_title),
+                getString(R.string.heart),
+                getString(R.string.tables),
+                getString(R.string.videos),
+                getString(R.string.ranking),
+                getString(R.string.articles)};
 
-        }
+        _preferedTables = getSharedPreferences("initPreferences", MODE_PRIVATE);
+
+        showFrenchFilmDialog();
+
         resolvePlatform();
 
         DisplayMetrics metrics = new DisplayMetrics();
@@ -122,9 +131,34 @@ public class MenuActivity extends Activity {
 
     }
 
+    private void showFrenchFilmDialog() {
+        boolean needShowFrenchFilm = _preferedTables.getBoolean("frenchfilm",true);
+        Log.d("language", Locale.getDefault().getLanguage());
+
+        if (Locale.getDefault().getLanguage().equals("fr")) {
+            if(needShowFrenchFilm){
+                Dialog frenchDialog = new Dialog(MenuActivity.this);
+                TextView textView = new TextView(MenuActivity.this);
+                textView.setPadding(30,20,20,20);
+                textView.setText(getString(R.string.frenchRequest));
+                frenchDialog.setContentView(textView);
+                frenchDialog.show();
+                frenchDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        SharedPreferences.Editor edito = _preferedTables.edit();
+                       edito.putBoolean("frenchfilm",false);
+                        edito.commit();
+                    }
+                });
+
+            }
+        }
+    }
+
     private void setTexts() {
         for (int i = 0; i < 6; i++) {
-            int z = (i - nextPosInt) % 6;
+            int z = (i - nextPosInt+666) % 6;
             try {
                 labels[i].setText(texts[z]);
             } catch (ArrayIndexOutOfBoundsException e) {

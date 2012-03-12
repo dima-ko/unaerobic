@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="articles">Articles</string>
+    <string name="videos">Vidéos</string>
+    <string name="ranking">Archives</string>
+    <string name="info_title">Informations</string>
+    <string name="heart">Cœur</string>
+    <string name="tables">Tableaux</string>
+</resources>

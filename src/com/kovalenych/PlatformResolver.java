@@ -172,7 +172,7 @@ public class PlatformResolver {
 
     public static int[] getLabelsY() {
         if (isTabI)
-            return new int[]{780, 690, 410, 305, 160, 945};
+            return new int[]{780, 690, 405, 305, 160, 945};
         if (is720p)
             return new int[]{950, 830, 500, 380, 180, 1150};
         if (isQVGA)
