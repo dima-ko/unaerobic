@@ -12,6 +12,8 @@ public class PlatformResolver {
     public static boolean isDONUT = false;
     public static boolean is720p = false;
     public static boolean isTabI = false;
+    public static boolean is854= false;
+
 
 
     public PlatformResolver(Context context) {

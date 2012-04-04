@@ -72,6 +72,7 @@ public class RankingActivity extends Activity {
         TextView sendText = new TextView(this);
         sendText.setGravity(Gravity.CENTER);
         sendingRequestView.addView(sendText,new LinearLayout.LayoutParams(220,100));
+
         sendText.setText(getString(R.string.sendingRequest));
         sendingRequestDialog.setContentView(sendingRequestView);
         sendingRequestDialog.show();

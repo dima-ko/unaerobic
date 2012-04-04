@@ -9,6 +9,7 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -47,10 +48,10 @@ public class ClockActivity extends Activity implements Soundable {
     Vibrator v;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         ptr = this;
         v = (Vibrator) getSystemService(ptr.VIBRATOR_SERVICE);
         mSoundManager = new SoundManager(this);
@@ -181,7 +182,7 @@ public class ClockActivity extends Activity implements Soundable {
         return super.onKeyDown(keyCode, event);
     }
 
-    private boolean vibrationEnabled ;
+    private boolean vibrationEnabled;
 
     final Handler handler = new Handler() {
 
@@ -207,8 +208,8 @@ public class ClockActivity extends Activity implements Soundable {
                 timer.start();
                 breathBar.clearAnimation();
                 isAnimPlaying = false;
-                if(vibrationEnabled)
-                v.vibrate(300);
+                if (vibrationEnabled)
+                    v.vibrate(300);
 
             } else {
                 breathTimeText.setVisibility(View.VISIBLE);
@@ -244,7 +245,7 @@ public class ClockActivity extends Activity implements Soundable {
                     curCycle = table.getCycles().get(position);
                     startCycle();
                 }
-                if(vibrationEnabled)
+                if (vibrationEnabled)
                     v.vibrate(300);
 
             } else {
