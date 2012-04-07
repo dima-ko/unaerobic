@@ -12,8 +12,7 @@ public class PlatformResolver {
     public static boolean isDONUT = false;
     public static boolean is720p = false;
     public static boolean isTabI = false;
-    public static boolean is854= false;
-
+    public static boolean is854 = false;
 
 
     public PlatformResolver(Context context) {
@@ -119,6 +118,8 @@ public class PlatformResolver {
             return 1200;
         if (isTabI)
             return 980;
+        if(is854)
+            return 799;
         else
             return 745;
     }
@@ -181,6 +182,8 @@ public class PlatformResolver {
             return new int[]{255, 221, 123, 91, 38, 304};
         if (isHVGA)
             return new int[]{371, 320, 190, 145, 65, 460};
+        if (is854)
+            return new int[]{605+54, 540+54, 325, 255, 125, 735+54};
         else
             return new int[]{605, 540, 325, 255, 125, 735};
 
