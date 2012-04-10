@@ -19,7 +19,6 @@ import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
-import com.kovalenych.R;
 import com.nostra13.universalimageloader.utils.FileUtils;
 
 /**

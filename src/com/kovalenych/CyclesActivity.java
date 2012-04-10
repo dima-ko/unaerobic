@@ -3,8 +3,6 @@ package com.kovalenych;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.*;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
