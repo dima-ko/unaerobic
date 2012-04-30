@@ -37,12 +37,12 @@ public class MenuActivity extends Activity {
 
 
     private int mWidth;
-    int centerX ;
+    int centerX;
     private int mHeight;
-    int centerY ;
-    int rad ;
+    int centerY;
+    int rad;
     int clocks = 12;
-    float shiftAngle = 1.f / 7.5f;
+    final static float shiftAngle = 1.f / 7.5f;
     float currAngle = 0.f;
     float lastAngle = 0.f;
     float downAngle = 0.f;
@@ -54,8 +54,8 @@ public class MenuActivity extends Activity {
     private TextView[] labels;
     private RotTask task;
     int nextPosInt;
-    int [] labelsX ;
-    int [] labelsY ;
+    int[] labelsX;
+    int[] labelsY;
 
     String[] texts;
     private long downTime;
@@ -83,8 +83,8 @@ public class MenuActivity extends Activity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        isSmallSreen = (PlatformResolver.isHVGA );
-        rad  = PlatformResolver.getRadius();
+        isSmallSreen = (PlatformResolver.isHVGA);
+        rad = PlatformResolver.getRadius();
         centerX = PlatformResolver.getCenterX();
         centerY = PlatformResolver.getCenterY();
         labelsX = PlatformResolver.getLabelsX();
@@ -132,14 +132,14 @@ public class MenuActivity extends Activity {
     }
 
     private void showFrenchFilmDialog() {
-        boolean needShowFrenchFilm = _preferedTables.getBoolean("frenchfilm",true);
+        boolean needShowFrenchFilm = _preferedTables.getBoolean("frenchfilm", true);
         Log.d("language", Locale.getDefault().getLanguage());
 
         if (Locale.getDefault().getLanguage().equals("fr")) {
-            if(needShowFrenchFilm){
+            if (needShowFrenchFilm) {
                 Dialog frenchDialog = new Dialog(MenuActivity.this);
                 TextView textView = new TextView(MenuActivity.this);
-                textView.setPadding(30,20,20,20);
+                textView.setPadding(30, 20, 20, 20);
                 textView.setText(getString(R.string.frenchRequest));
                 frenchDialog.setContentView(textView);
                 frenchDialog.show();
@@ -147,7 +147,7 @@ public class MenuActivity extends Activity {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
                         SharedPreferences.Editor edito = _preferedTables.edit();
-                       edito.putBoolean("frenchfilm",false);
+                        edito.putBoolean("frenchfilm", false);
                         edito.commit();
                     }
                 });
@@ -158,7 +158,7 @@ public class MenuActivity extends Activity {
 
     private void setTexts() {
         for (int i = 0; i < 6; i++) {
-            int z = (i - nextPosInt+666) % 6;
+            int z = (i - nextPosInt + 666) % 6;
             try {
                 labels[i].setText(texts[z]);
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -213,7 +213,7 @@ public class MenuActivity extends Activity {
     private void startActivities(float x, float y) {
         int zone = -1;
 
-        for(int i=0;i<6;i++){
+        for (int i = 0; i < 6; i++) {
             if (isClickInZone(x, y, labelsX[i], labelsY[i]))
                 zone = i;
         }
@@ -236,22 +236,22 @@ public class MenuActivity extends Activity {
                 intent = new Intent(MenuActivity.this, TablesActivity.class);
                 break;
             case 3:
-                if(haveInternet())
+                if (haveInternet())
                     intent = new Intent(MenuActivity.this, NostraVideoActivity.class);
                 else
-                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
                 break;
             case 4:
-                if(haveInternet())
-                intent = new Intent(MenuActivity.this, RankingActivity.class);
+                if (haveInternet())
+                    intent = new Intent(MenuActivity.this, RankingActivity.class);
                 else
-                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
                 break;
             case 5:
-                if(haveInternet())
-                intent = new Intent(MenuActivity.this, ArticlesActivity.class);
+                if (haveInternet())
+                    intent = new Intent(MenuActivity.this, ArticlesActivity.class);
                 else
-                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -364,7 +364,7 @@ public class MenuActivity extends Activity {
 
         private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         Random random;
-        int cx,cy;
+        int cx, cy;
 
         public RadiusSurfaceView(Context context) {
             super(context);
@@ -406,24 +406,31 @@ public class MenuActivity extends Activity {
                     //... actual drawing on canvas
                     canvas.drawColor(Color.TRANSPARENT);
 //                    canvas.drawPoint(x, y, paint);
-                    
+
                     canvas.drawCircle(cx, cy, rad + 130 + (isSmallSreen ? -30 : 0), paint);
-                    canvas.drawCircle(centerX, centerY, rad + 100, paint);
-                    for (int i = 0; i < clocks; i++) {
-                        float x = (float) (centerX + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI + currAngle));
-                        float y = (float) (centerY + rad * Math.sin(((float) i / clocks + shiftAngle) * 2 * Math.PI + currAngle));
-                        if (x < mWidth && y < mHeight) {
-                            drawIcons(canvas, i, x, y);
+
+
+
+                    for (int j = 0; j < clocks; j++) {
+
+                        canvas.drawCircle(centerX, centerY, rad + 100, paint);
+                        for (int i = 0; i < clocks; i++) {
+                            float x = (float) (centerX + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI + currAngle));
+                            float y = (float) (centerY + rad * Math.sin(((float) i / clocks + shiftAngle) * 2 * Math.PI + currAngle));
+                            if (x < mWidth && y < mHeight) {
+                                drawIcons(canvas, i, x, y);
+                            }
+                        }
+
+                        for (int i = 0; i < clocks; i++) {
+                            float x = (float) (cx + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
+                            float y = (float) (cy + rad * Math.sin(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
+                            if (x > -100 && y > -100) {
+                                drawIcons2(canvas, i, x, y);
+                            }
                         }
                     }
 
-                    for (int i = 0; i < clocks; i++) {
-                        float x = (float) (cx + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
-                        float y = (float) (cy + rad * Math.sin(((float) i / clocks + shiftAngle) * 2 * Math.PI - currAngle - Math.PI / 3));
-                        if (x > -100 && y > -100) {
-                            drawIcons2(canvas, i, x, y);
-                        }
-                    }
                     surfaceHolder.unlockCanvasAndPost(canvas);
                 }
             }
@@ -445,7 +452,7 @@ public class MenuActivity extends Activity {
                     break;
                 case 3:
                 case 9:
-                    canvas.drawBitmap(videobitmap, x+3, y, paint);
+                    canvas.drawBitmap(videobitmap, x + 3, y, paint);
                     break;
                 case 4:
                 case 10:
@@ -475,7 +482,7 @@ public class MenuActivity extends Activity {
                     break;
                 case 2:
                 case 8:
-                    canvas.drawBitmap(videobitmap, x+3, y, paint);
+                    canvas.drawBitmap(videobitmap, x + 3, y, paint);
                     break;
                 case 1:
                 case 7:
