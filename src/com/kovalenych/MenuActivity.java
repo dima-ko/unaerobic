@@ -407,13 +407,13 @@ public class MenuActivity extends Activity {
                     canvas.drawColor(Color.TRANSPARENT);
 //                    canvas.drawPoint(x, y, paint);
 
-                    canvas.drawCircle(cx, cy, rad + 130 + (isSmallSreen ? -30 : 0), paint);
-
+                    canvas.drawCircle(cx, cy, rad + 180 + (isSmallSreen ? -30 : 0), paint);
+                    canvas.drawCircle(centerX, centerY, rad + 100, paint);
 
 
                     for (int j = 0; j < clocks; j++) {
 
-                        canvas.drawCircle(centerX, centerY, rad + 100, paint);
+
                         for (int i = 0; i < clocks; i++) {
                             float x = (float) (centerX + rad * Math.cos(((float) i / clocks + shiftAngle) * 2 * Math.PI + currAngle));
                             float y = (float) (centerY + rad * Math.sin(((float) i / clocks + shiftAngle) * 2 * Math.PI + currAngle));

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unaerobic</string>
+    <string name="articles">Статьи</string>
+    <string name="videos">Видео</string>
+    <string name="ranking">Рекорды</string>
+    <string name="info_title">Инфа</string>
+    <string name="heart">ЧСС</string>
+    <string name="tables">Таблицы</string>
+    <string name="info">
+        - Нажмите \"+\" чтобы добавить таблицу или цикл\n
+        - Нажмите и держите круг таймера, чтобы начать немедленно\n
+        - Нажмите иконку динамика для настройка голосовых оповещений\n
+        - Нажмите и держите на таблице или цикле, чтобы удалить \n
+        Новые видео и статьи приветсвуются :)
+        \t\t Удачной нырялки!!!
+    </string>
+    <string name="noConnect">Извините, вы должны быть онлайн</string>
+    <string name="credits">С критикой и предложениями пишите: \ninsomniac.robot@gmail.com</string>
+    <string name="under_construction">В разработке</string>
+    <string name="disipline_prompt">дисциплина</string>
+
+    <string name="minutes1">минута</string>
+    <string name="minutes2">2 минуты</string>
+    <string name="minutes3">3 минуты</string>
+    <string name="minutes4">4 минуты</string>
+    <string name="minutes5">5 минут</string>
+    <string name="seconds30">30 секунд</string>
+    <string name="seconds10">10 секунд</string>
+    <string name="seconds5">5 секунд</string>
+    <string name="start">старт</string>
+    <string name="tostart">ДО СТАРТА</string>
+    <string name="afterstart">ПОСЛЕ СТАРТА</string>
+    <string name="breathe">дыхание</string>
+    <string name="voices">Звук</string>
+    <string name="new_table">Новая таблица</string>
+    <string name="new_cycle">Новый цикл</string>
+    <string name="hold_s">задержка, с</string>
+    <string name="breath_s">дыхание, с</string>
+    <string name="breathe_time">время\n дыхания</string>
+    <string name="hold_time">время\n задержки</string>
+    <string name="post">-----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="Lang"
+
+        EN
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="sort"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="start"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkReport"
+
+        REPORT
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkScope"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkCompr"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkCompn"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkOrgNm"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkRelative"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkAllDisc"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkRgn2"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkFed2"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkDisc"
+
+        DYN
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkGender"
+
+        0
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkMode"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkRegn"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkClub"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkComprNm"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkCompnNm"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkYear"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkFede"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="rnkSrc"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="admin"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="pageID"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="pg"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="sid"
+
+        86e000e1899bd0cfe1ae93e8345d4849
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="lastSearch"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="cleanText"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="url"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="origLocation"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="origPageID"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="logOut"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="logInNow"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="mediaTp"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="langSel"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="catSel"
+
+
+        -----------------------------1397366148113562428080587968
+        Content-Disposition: form-data; name="pageSzt"
+
+
+        -----------------------------1397366148113562428080587968--</string>
+    <string name="new_query">Новый запрос</string>
+    <string name="sendingRequest">посылаю запрос ...</string>
+    <string name="frenchRequest">\tHello, my French friends! \n
+        \n
+    \tSorry for speaking to you not in your mother language, but my French is poor :(
+    Thats why I ask you for help. I found a beautiful film about freediving, that is called \"La vie sans air\".
+    If you please, you could help me to write an english subtitles to the part of the film.
+    So, if you can do that, wrote on my email:\n insomniac.robot@gmail.com for cooperation.
+      \n\n  Thanks again.
+    </string>
+
+
+</resources>
