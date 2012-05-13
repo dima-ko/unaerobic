@@ -18,7 +18,7 @@ public class PlatformResolver {
     public PlatformResolver(Context context) {
         _context = context;
 
-        Utils.setFonts(Typeface.createFromAsset(context.getAssets(),
+        Fonts.setFonts(Typeface.createFromAsset(context.getAssets(),
                 "fonts/belligerent.ttf"));
 
     }

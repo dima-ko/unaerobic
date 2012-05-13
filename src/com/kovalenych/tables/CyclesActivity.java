@@ -1,4 +1,4 @@
-package com.kovalenych;
+package com.kovalenych.tables;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.*;
+import com.kovalenych.Fonts;
+import com.kovalenych.PlatformResolver;
+import com.kovalenych.R;
 
 import java.io.*;
 import java.util.ArrayList;

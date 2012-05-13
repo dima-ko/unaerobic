@@ -1,4 +1,4 @@
-package com.kovalenych;
+package com.kovalenych.tables;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.kovalenych.Fonts;
+import com.kovalenych.PlatformResolver;
+import com.kovalenych.R;
 
 import java.util.List;
 

@@ -31,13 +31,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TablesActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".CyclesActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ClockActivity" android:screenOrientation="landscape"
+        <activity android:name=".tables.TablesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".tables.CyclesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".tables.ClockActivity" android:screenOrientation="landscape"
                   android:configChanges="orientation"/>
         <activity android:name=".ArticlesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".NostraVideoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".RankingActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".InfoActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest> 

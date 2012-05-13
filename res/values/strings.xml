@@ -41,155 +41,155 @@
     <string name="breath_s">breath, s</string>
     <string name="breathe_time">breathe\n time</string>
     <string name="hold_time">hold\n time</string>
-    <string name="post">-----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="Lang"
-
+    <string name="post">-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="Lang"  \n
+        \n
         EN
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="sort"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="sort"    \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="start"     \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="start"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkReport"
-
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkReport"   \n
+        \n
         REPORT
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkScope"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkScope"    \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkCompr"   \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkCompr"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkCompn"   \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkOrgNm"   \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkCompn"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkRelative"   \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkAllDisc"   \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkOrgNm"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkRgn2"    \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkFed2"   \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkRelative"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkAllDisc"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkRgn2"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkFed2"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkDisc"
-
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkDisc"    \n
+        \n
         DYN
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkGender"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkGender"   \n
+        \n
+        F
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkMode"     \n
+        \n
 
-        0
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkMode"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkRegn"    \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkClub"    \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkRegn"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkComprNm"     \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkCompnNm"    \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkClub"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkYear"     \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkFede"      \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkComprNm"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="rnkSrc"      \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="admin"        \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkCompnNm"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="pageID"     \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="pg"        \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkYear"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkFede"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="rnkSrc"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="admin"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="pageID"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="pg"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="sid"
-
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="sid"        \n
+        \n
         86e000e1899bd0cfe1ae93e8345d4849
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="lastSearch"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="lastSearch"    \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="cleanText"    \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="cleanText"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="url"         \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="origLocation"    \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="url"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="origPageID"   \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="logOut"       \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="origLocation"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="logInNow"    \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="mediaTp"     \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="origPageID"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="langSel"    \n
+        \n
 
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="catSel"       \n
+        \n
 
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="logOut"
+        \n-----------------------------1397366148113562428080587968\n
+        Content-Disposition: form-data; name="pageSzt"    \n
+        \n
 
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="logInNow"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="mediaTp"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="langSel"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="catSel"
-
-
-        -----------------------------1397366148113562428080587968
-        Content-Disposition: form-data; name="pageSzt"
-
-
-        -----------------------------1397366148113562428080587968--</string>
+        \n-----------------------------1397366148113562428080587968--</string>
     <string name="new_query">New request</string>
     <string name="sendingRequest">sending request ...</string>
     <string name="frenchRequest">\tHello, my French friends! \n

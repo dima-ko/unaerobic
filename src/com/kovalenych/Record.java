@@ -21,6 +21,7 @@ public class Record {
     private final String result;
 
 
+
     public Record(String name, String result, String country) {
 
         this.name = name;
