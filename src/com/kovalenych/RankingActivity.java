@@ -8,11 +8,15 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -28,6 +32,7 @@ import java.util.Map;
 public class RankingActivity extends Activity {
 
     ListView lv;
+    PullToRefreshListView mPullRefreshListView;
     ArrayList<Record> recordsList;
     Context context;
     private Dialog filterDialog;
@@ -51,7 +56,22 @@ public class RankingActivity extends Activity {
         fillList();
         setContentView(R.layout.ranking);
 
-        lv = (ListView) findViewById(R.id.ranking_list);
+        mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.ranking_list);
+        mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullRefreshListView.setLastUpdatedLabel("last update: " + DateUtils.formatDateTime(getApplicationContext(),
+                        System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
+                        | DateUtils.FORMAT_ABBREV_ALL));
+
+                // Do work to refresh the list here.
+                new GetDataTask().execute();
+            }
+        });
+        mPullRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+
+        lv = mPullRefreshListView.getRefreshableView();
+
         getFromApneaCZ();
 //        DBHelper dbHelper = new DBHelper(RankingActivity.this,"records_STA_all_all_all.db");
 //        SQLiteDatabase db  = dbHelper.getWritableDatabase();
@@ -68,7 +88,7 @@ public class RankingActivity extends Activity {
         filterDialog.setCancelable(true);
         filterDialog.setContentView(PlatformResolver.getFilterDialogLayout());
 
-        sendingRequestDialog= new Dialog(context);
+        sendingRequestDialog = new Dialog(context);
         sendingRequestDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         sendingRequestDialog.setCancelable(true);
 
@@ -76,7 +96,7 @@ public class RankingActivity extends Activity {
         sendingRequestView.setBackgroundColor(Color.BLACK);
         TextView sendText = new TextView(this);
         sendText.setGravity(Gravity.CENTER);
-        sendingRequestView.addView(sendText,new LinearLayout.LayoutParams(220,100));
+        sendingRequestView.addView(sendText, new LinearLayout.LayoutParams(220, 100));
 
         sendText.setText(getString(R.string.sendingRequest));
         sendingRequestDialog.setContentView(sendingRequestView);
@@ -92,7 +112,7 @@ public class RankingActivity extends Activity {
     Dialog.OnCancelListener onCancelListener = new DialogInterface.OnCancelListener() {
         @Override
         public void onCancel(DialogInterface dialogInterface) {
-              RankingActivity.this.finish();
+            RankingActivity.this.finish();
 //            startActivity(new Intent(RankingActivity.this,MenuActivity.class));
         }
     };
@@ -117,7 +137,8 @@ public class RankingActivity extends Activity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
 
         filterDialog.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
@@ -128,7 +149,7 @@ public class RankingActivity extends Activity {
                     @Override
                     public void run() {
                         try {
-                            sendPost(postMessage);
+                            sendPost(postMessage, false);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -172,6 +193,13 @@ public class RankingActivity extends Activity {
     private List<? extends Map<String, ?>> createCyclesList() {
 
         List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
+
+        Map<String, Object> titleMap = new HashMap<String, Object>();
+        titleMap.put("place", "No");
+        titleMap.put("flag", "from");
+        titleMap.put("name", "who");
+        titleMap.put("result", "result");
+        items.add(titleMap);
 
         for (int i = 0; i < recordsList.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -249,9 +277,10 @@ public class RankingActivity extends Activity {
 
     }
 
-    protected void sendPost(String content) throws IOException {
+    protected void sendPost(String content, boolean isCalledFromList) throws IOException {
 
-        sendingRequestDialog.show();
+        if (!isCalledFromList)
+            sendingRequestDialog.show();
 
         htmlList = new ArrayList<String>();
 
@@ -276,12 +305,15 @@ public class RankingActivity extends Activity {
         }
         in.close();
         recordsList.clear();
-        Log.d("parsing","start " + System.currentTimeMillis());
+        Log.d("parsing", "start " + System.currentTimeMillis());
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
-        Log.d("parsing","end " + System.currentTimeMillis());
-        invalidateList();
-        sendingRequestDialog.dismiss();
+        Log.d("parsing", "end " + System.currentTimeMillis());
+        if (!isCalledFromList) {
+            invalidateList();
+            sendingRequestDialog.dismiss();
+        }
+
     }
 
     private Record extractRecoedFromString(String fullString) {
@@ -304,6 +336,31 @@ public class RankingActivity extends Activity {
 
         return new Record(name, res, country);
 
+    }
+
+
+    private class GetDataTask extends AsyncTask<Void, Void, String[]> {
+
+        @Override
+        protected String[] doInBackground(Void... params) {
+            // Simulates a background job.
+            try {
+                sendPost(postMessage, true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String[] result) {
+
+            invalidateList();
+            // Call onRefreshComplete when the list has been refreshed.
+            mPullRefreshListView.onRefreshComplete();
+            Log.d("zzzzz","refersh");
+            super.onPostExecute(result);
+        }
     }
 
 
