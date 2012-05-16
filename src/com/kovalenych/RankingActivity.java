@@ -59,7 +59,7 @@ public class RankingActivity extends Activity {
         mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mPullRefreshListView.setLastUpdatedLabel(DateUtils.formatDateTime(getApplicationContext(),
+                mPullRefreshListView.setLastUpdatedLabel("last update: " + DateUtils.formatDateTime(getApplicationContext(),
                         System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
                         | DateUtils.FORMAT_ABBREV_ALL));
 
@@ -67,6 +67,7 @@ public class RankingActivity extends Activity {
                 new GetDataTask().execute();
             }
         });
+        mPullRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
 
         lv = mPullRefreshListView.getRefreshableView();
 
@@ -352,7 +353,7 @@ public class RankingActivity extends Activity {
             invalidateList();
             // Call onRefreshComplete when the list has been refreshed.
             mPullRefreshListView.onRefreshComplete();
-
+            Log.d("zzzzz","refersh");
             super.onPostExecute(result);
         }
     }
