@@ -15,7 +15,7 @@ public class ArticleViewBinder implements SimpleAdapter.ViewBinder {
     }
 
     @Override
-    public boolean setViewValue(View view, Object data,String textRepresentation) {
+    public boolean setViewValue(View view, Object data, String textRepresentation) {
 
         if ((view instanceof TextView) & (data instanceof String)) {
 
@@ -23,11 +23,16 @@ public class ArticleViewBinder implements SimpleAdapter.ViewBinder {
 //            iv.setTypeface(tf);
             iv.setText((String) data);
 
-            if (view.getId()==R.id.art_domain)
+            if (view.getId() == R.id.art_domain)
                 iv.setTextColor(0xFF8888FF);
+//            if (data.equals("No") || data.equals("from") || data.equals("who") || data.equals("result"))
+//                iv.setTextColor(0xFF44AAFF);
 
-            return true;
+
+                return true;
         }
+
+
         return false;
 
     }
