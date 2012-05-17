@@ -1,7 +1,10 @@
 package com.kovalenych.ranking;
 
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -56,14 +59,8 @@ public class RankingManager {
             }
         });
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
-
         lv = mPullToRefreshListView.getRefreshableView();
-
-        //        DBHelper dbHelper = new DBHelper(RankingActivity.this,"records_STA_all_all_all.db");
-//        SQLiteDatabase db  = dbHelper.getWritableDatabase();
-//
-//        db.close();
-//        dbHelper.close();
+        dbHelper = new DBHelper(context);
     }
 
     private List<? extends Map<String, ?>> createCyclesList() {
@@ -124,7 +121,6 @@ public class RankingManager {
 
 
     public void sendPost() throws IOException {
-        Log.d("zzzzzzzzzzzzzzpost","asd");
         fillPost();
         htmlList = new ArrayList<String>();
 
@@ -154,7 +150,55 @@ public class RankingManager {
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
         Log.d("parsing", "end " + System.currentTimeMillis());
 
+        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
+        saveToDB();
+//        readFromDB();
+        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
 
+    }
+
+    DBHelper dbHelper;
+
+    private void saveToDB() {
+        dbHelper.tableName = makeTableName();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (int i = 0; i < recordsList.size(); i++) {
+            ContentValues cv = new ContentValues();
+            cv.put(DBHelper.C_NAME, recordsList.get(i).getName());
+            cv.put(DBHelper.C_COUNTRY, recordsList.get(i).getCountry());
+            cv.put(DBHelper.C_RESULT, recordsList.get(i).getResult());
+            db.insert(makeTableName(), null, cv);
+        }
+
+        db.close();
+        dbHelper.close();
+    }
+
+    public String makeTableName() {
+        return "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
+    }
+
+    private void readFromDB() {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(dbHelper.tableName, new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT},
+                null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            Log.d("dbhel", cursor.getString(cursor.getColumnIndex(DBHelper.C_NAME)) + cursor.getString(cursor.getColumnIndex(DBHelper.C_RESULT)));
+        }
+        db.close();
+    }
+
+    public boolean isTableExists(String tableName) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '" + tableName + "'", null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private Record extractRecoedFromString(String fullString) {
@@ -172,9 +216,7 @@ public class RankingManager {
         int resultStartIndex = fullString.indexOf("<b>") + 3;
         int resultEndIndex = fullString.indexOf("</b>", resultStartIndex);
         String res = fullString.substring(resultStartIndex, resultEndIndex);
-
 //        Log.d("zzzname","name " + name +  "  res   " + res + "country" + country);
-
         return new Record(name, res, country);
 
     }
@@ -208,7 +250,8 @@ public class RankingManager {
             // Call onRefreshComplete when the list has been refreshed.
             mPullToRefreshListView.onRefreshComplete();
             Log.d("zzzzz", "refersh");
-            super.onPostExecute(result);
+
+
         }
     }
 

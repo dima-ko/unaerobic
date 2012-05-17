@@ -104,7 +104,6 @@ public class RankingActivity extends Activity {
             else {
                 RankingActivity.this.finish();
             }
-
         }
     };
 
