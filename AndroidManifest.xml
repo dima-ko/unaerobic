@@ -37,6 +37,6 @@
                   android:configChanges="orientation"/>
         <activity android:name=".ArticlesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".NostraVideoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".RankingActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ranking.RankingActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest> 

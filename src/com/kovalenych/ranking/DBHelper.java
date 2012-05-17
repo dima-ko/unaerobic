@@ -1,4 +1,4 @@
-package com.kovalenych;
+package com.kovalenych.ranking;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

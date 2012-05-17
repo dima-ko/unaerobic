@@ -19,6 +19,7 @@ import android.view.*;
 import android.widget.AbsoluteLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.kovalenych.ranking.RankingActivity;
 import com.kovalenych.tables.TablesActivity;
 
 import java.util.Locale;

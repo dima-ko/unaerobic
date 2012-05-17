@@ -1,4 +1,4 @@
-package com.kovalenych;
+package com.kovalenych.ranking;
 
 /**
  * this class was made

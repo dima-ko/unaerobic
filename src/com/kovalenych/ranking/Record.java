@@ -1,4 +1,4 @@
-package com.kovalenych;
+package com.kovalenych.ranking;
 
 
 public class Record {
