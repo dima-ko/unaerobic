@@ -34,9 +34,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql;
         if (tableName.equals(RECORDS_CONF))
-            sql = String.format("create table " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT,%s TEXT ,)", C_ID, C_TABLENAME, C_LASTUPD);
+            sql = String.format("CREATE TABLE IF NOT EXISTS " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT,%s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
         else
-            sql = String.format("create table " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT,%s TEXT ,%s TEXT )", C_ID, C_NAME, C_COUNTRY, C_RESULT);
+            sql = String.format("CREATE TABLE IF NOT EXISTS" + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT,%s TEXT ,%s TEXT)", C_ID, C_NAME, C_COUNTRY, C_RESULT);
         db.execSQL(sql);
     }
 

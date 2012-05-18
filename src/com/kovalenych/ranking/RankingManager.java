@@ -63,27 +63,7 @@ public class RankingManager {
         unpackSavedTables();
     }
 
-    private void unpackSavedTables() {
-        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(dbHelper.tableName, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
-                null, null, null, null, null);
-        while (cursor.moveToNext()) {
-            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
-        }
-        db.close();
-    }
 
-    private void packSavedTables(String tableName, String lastUpd) {
-//        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
-//        SQLiteDatabase db = dbHelper.getReadableDatabase();
-//        Cursor cursor = db.query(dbHelper.tableName, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
-//                null, null, null, null, null);
-//        while (cursor.moveToNext()) {
-//            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
-//        }
-//        db.close();
-    }
 
     private List<? extends Map<String, ?>> createCyclesList() {
 
@@ -197,14 +177,38 @@ public class RankingManager {
 //        dbHelper.close();
     }
 
+    private void unpackSavedTables() {
+        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.query(DBHelper.RECORDS_CONF, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
+                null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
+        }
+        db.close();
+//        dbHelper.close();
+    }
+
+    private void packSavedTables(String tableName, String lastUpd) {
+//        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.query(dbHelper.tableName, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
+//                null, null, null, null, null);
+//        while (cursor.moveToNext()) {
+//            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
+//        }
+//        db.close();
+    }
+
     public String makeTableName() {
-//        return "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
-        return "records_" + "sta" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
+        return "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
+//        return "records_" + "sta" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
     }
 
     private void readFromDB() {
         recordsList.clear();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        dbHelper.tableName = makeTableName();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.query(makeTableName(), new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT},
                 null, null, null, null, null);
         int nameColumn = cursor.getColumnIndex(DBHelper.C_NAME);
@@ -216,6 +220,7 @@ public class RankingManager {
             recordsList.add(new Record(cursor.getString(nameColumn), cursor.getString(resultColumn), cursor.getString(countryColumn)));
         }
         db.close();
+//        dbHelper.close();
     }
 
 
