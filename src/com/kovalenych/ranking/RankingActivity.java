@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -97,11 +98,10 @@ public class RankingActivity extends Activity {
         @Override
         public void onCancel(DialogInterface dialogInterface) {
             sendTask.cancel(true);
-            if (exitFlag){
+            if (exitFlag) {
                 filterDialog.show();
                 exitFlag = false;
-            }
-            else {
+            } else {
                 RankingActivity.this.finish();
             }
         }
@@ -111,7 +111,7 @@ public class RankingActivity extends Activity {
     public void onBackPressed() {
         sendTask.cancel(true);
         filterDialog.show();
-          exitFlag = false;
+        exitFlag = false;
     }
 
     private void initDialog() {
@@ -143,10 +143,25 @@ public class RankingActivity extends Activity {
             public void onClick(View view) {
                 filterDialog.dismiss();
                 exitFlag = true;
-                sendTask = new SendTask(false).execute();
+                rManager.getRecords();
+//                sendTask = new SendTask(false).execute();
             }
         });
 
+    }
+
+    public void showRequestDialog(boolean show) {
+        if (show)
+            sendingRequestDialog.show();
+        else
+            sendingRequestDialog.dismiss();
+    }
+
+    public void showFilterDialog(boolean show) {
+        if (show)
+            filterDialog.show();
+        else
+            filterDialog.dismiss();
     }
 
     public void getFromApneaCZ() throws IOException {
@@ -186,10 +201,10 @@ public class RankingActivity extends Activity {
         protected String[] doInBackground(Void... params) {
             // Simulates a background job.
             try {
-                if (get)
-                    getFromApneaCZ();
-                else
-                    rManager.sendPost();
+//                if (get)
+                getFromApneaCZ();
+//                else
+//                    rManager.sendPost();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -198,14 +213,13 @@ public class RankingActivity extends Activity {
 
         @Override
         protected void onPostExecute(String[] result) {
-            if (get)
-                filterDialog.show();
-            else
-                rManager.invalidateList();
+//            if (get)
+            filterDialog.show();
+//            else
+//                rManager.invalidateList();
             sendingRequestDialog.dismiss();
         }
     }
-
 
 }
 // POST /ranking.html? HTTP/1.1
