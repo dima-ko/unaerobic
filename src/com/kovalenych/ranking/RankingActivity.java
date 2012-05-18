@@ -85,7 +85,7 @@ public class RankingActivity extends Activity {
 
         sendText.setText(getString(R.string.sendingRequest));
         sendingRequestDialog.setContentView(sendingRequestView);
-        sendingRequestDialog.show();
+//        sendingRequestDialog.show();
 
         filterDialog.setOnCancelListener(onCancelListener);
         sendingRequestDialog.setOnCancelListener(onCancelListener);
@@ -194,7 +194,7 @@ public class RankingActivity extends Activity {
 
         @Override
         protected void onPreExecute() {
-            sendingRequestDialog.show();
+//            sendingRequestDialog.show();
         }
 
         @Override
@@ -217,7 +217,7 @@ public class RankingActivity extends Activity {
             filterDialog.show();
 //            else
 //                rManager.invalidateList();
-            sendingRequestDialog.dismiss();
+//            sendingRequestDialog.dismiss();
         }
     }
 

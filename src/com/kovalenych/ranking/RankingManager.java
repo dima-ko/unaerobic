@@ -169,11 +169,13 @@ public class RankingManager {
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
         Log.d("parsing", "end " + System.currentTimeMillis());
-        String a = makeTableName();
-        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
+//        String a = makeTableName();
+//        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
         saveToDB();
+        savedTables.put(makeTableName(),"now");
+
 //        readFromDB();
-        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
+//        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
 
     }
 
@@ -201,12 +203,17 @@ public class RankingManager {
     }
 
     private void readFromDB() {
+        recordsList.clear();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(makeTableName(), new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT},
                 null, null, null, null, null);
+        int nameColumn = cursor.getColumnIndex(DBHelper.C_NAME);
+        int resultColumn = cursor.getColumnIndex(DBHelper.C_RESULT);
+        int countryColumn = cursor.getColumnIndex(DBHelper.C_COUNTRY);
+
         while (cursor.moveToNext()) {
 //            Log.d("dbhel", cursor.getString(cursor.getColumnIndex(DBHelper.C_NAME)) + cursor.getString(cursor.getColumnIndex(DBHelper.C_RESULT)));
-
+            recordsList.add(new Record(cursor.getString(nameColumn), cursor.getString(resultColumn), cursor.getString(countryColumn)));
         }
         db.close();
     }
