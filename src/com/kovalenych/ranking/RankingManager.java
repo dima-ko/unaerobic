@@ -41,6 +41,7 @@ public class RankingManager {
     protected HttpURLConnection conn;
     private static final String BOUNDARY = "boundary=---------------------------1397366148113562428080587968";
     private String[] mDisciplinesArray;
+    Map<String, String> savedTables = new HashMap<String, String>();
 
     public RankingManager(Context context, PullToRefreshListView pullToRefreshListView) {
         this.context = context;
@@ -53,14 +54,35 @@ public class RankingManager {
                 mPullToRefreshListView.setLastUpdatedLabel("last update: " + DateUtils.formatDateTime(RankingManager.this.context.getApplicationContext(),
                         System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
                         | DateUtils.FORMAT_ABBREV_ALL));
-
                 // Do work to refresh the list here.
                 new GetDataTask().execute();
             }
         });
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         lv = mPullToRefreshListView.getRefreshableView();
-        dbHelper = new DBHelper(context);
+        unpackSavedTables();
+    }
+
+    private void unpackSavedTables() {
+        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(dbHelper.tableName, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
+                null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
+        }
+        db.close();
+    }
+
+    private void packSavedTables(String tableName, String lastUpd) {
+//        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.query(dbHelper.tableName, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
+//                null, null, null, null, null);
+//        while (cursor.moveToNext()) {
+//            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
+//        }
+//        db.close();
     }
 
     private List<? extends Map<String, ?>> createCyclesList() {
@@ -85,7 +107,6 @@ public class RankingManager {
 
         return items;
     }
-
 
     public void invalidateList() {
 
@@ -119,7 +140,6 @@ public class RankingManager {
 
     }
 
-
     public void sendPost() throws IOException {
         fillPost();
         htmlList = new ArrayList<String>();
@@ -149,7 +169,7 @@ public class RankingManager {
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
         Log.d("parsing", "end " + System.currentTimeMillis());
-
+        String a = makeTableName();
         Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
         saveToDB();
 //        readFromDB();
@@ -172,7 +192,7 @@ public class RankingManager {
         }
 
         db.close();
-        dbHelper.close();
+//        dbHelper.close();
     }
 
     public String makeTableName() {
@@ -181,26 +201,20 @@ public class RankingManager {
     }
 
     private void readFromDB() {
-
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(dbHelper.tableName, new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT},
+        Cursor cursor = db.query(makeTableName(), new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT},
                 null, null, null, null, null);
         while (cursor.moveToNext()) {
-            Log.d("dbhel", cursor.getString(cursor.getColumnIndex(DBHelper.C_NAME)) + cursor.getString(cursor.getColumnIndex(DBHelper.C_RESULT)));
+//            Log.d("dbhel", cursor.getString(cursor.getColumnIndex(DBHelper.C_NAME)) + cursor.getString(cursor.getColumnIndex(DBHelper.C_RESULT)));
+
         }
         db.close();
     }
 
 
     public boolean isTableExists(String tableName) {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '" + tableName + "'", null);
-        if (cursor != null) {
-            if (cursor.getCount() > 0) {
-                return true;
-            }
-        }
-        return false;
+        return savedTables.containsKey(tableName);
+
     }
 
     private Record extractRecoedFromString(String fullString) {
@@ -227,9 +241,16 @@ public class RankingManager {
         postMessage = context.getString(R.string.post);
     }
 
-
     public void setCookie(String cookie) {
         this.cookie = cookie;
+    }
+
+    public void getRecords() {
+        if (isTableExists(makeTableName()))
+            readFromDB();
+        else
+            new GetDataTask().execute();
+
     }
 
     private class GetDataTask extends AsyncTask<Void, Void, String[]> {
