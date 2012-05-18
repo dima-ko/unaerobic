@@ -176,7 +176,8 @@ public class RankingManager {
     }
 
     public String makeTableName() {
-        return "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
+//        return "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
+        return "records_" + "sta" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
     }
 
     private void readFromDB() {
@@ -189,6 +190,7 @@ public class RankingManager {
         }
         db.close();
     }
+
 
     public boolean isTableExists(String tableName) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
