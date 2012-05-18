@@ -162,7 +162,7 @@ public class RankingManager {
     DBHelper dbHelper;
 
     private void saveToDB() {
-        dbHelper.tableName = makeTableName();
+        dbHelper = new DBHelper(context,makeTableName());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         for (int i = 0; i < recordsList.size(); i++) {
@@ -174,18 +174,18 @@ public class RankingManager {
         }
 
         db.close();
-//        dbHelper.close();
+        dbHelper.close();
     }
 
     private void unpackSavedTables() {
-        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.query(DBHelper.RECORDS_CONF, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
-                null, null, null, null, null);
-        while (cursor.moveToNext()) {
-            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
-        }
-        db.close();
+//        dbHelper = new DBHelper(context, DBHelper.RECORDS_CONF);
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        Cursor cursor = db.query(DBHelper.RECORDS_CONF, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
+//                null, null, null, null, null);
+//        while (cursor.moveToNext()) {
+//            savedTables.put(cursor.getString(cursor.getColumnIndex(DBHelper.C_TABLENAME)), cursor.getString(cursor.getColumnIndex(DBHelper.C_LASTUPD)));
+//        }
+//        db.close();
 //        dbHelper.close();
     }
 
@@ -202,13 +202,13 @@ public class RankingManager {
 
     public String makeTableName() {
         return "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
-//        return "records_" + "sta" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
+//        return "records_";
     }
 
     private void readFromDB() {
         recordsList.clear();
-        dbHelper.tableName = makeTableName();
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        dbHelper = new DBHelper(context,makeTableName());
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(makeTableName(), new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT},
                 null, null, null, null, null);
         int nameColumn = cursor.getColumnIndex(DBHelper.C_NAME);
@@ -220,7 +220,7 @@ public class RankingManager {
             recordsList.add(new Record(cursor.getString(nameColumn), cursor.getString(resultColumn), cursor.getString(countryColumn)));
         }
         db.close();
-//        dbHelper.close();
+        dbHelper.close();
     }
 
 
