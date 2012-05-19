@@ -35,6 +35,7 @@ public class RankingManager {
     ArrayList<Record> recordsList;
     private String cookie;
     private String postMessage;
+    private String filter;
     private ArrayList<String> htmlList;
     public int chosenDisciplNumber = 0;
     protected URL url;
@@ -47,6 +48,7 @@ public class RankingManager {
         this.context = context;
         this.mPullToRefreshListView = pullToRefreshListView;
         recordsList = new ArrayList<Record>();
+        dbHelper = new DBHelper(context);
         mDisciplinesArray = this.context.getResources().getStringArray(R.array.disciplines);
         mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
             @Override
@@ -62,7 +64,6 @@ public class RankingManager {
         lv = mPullToRefreshListView.getRefreshableView();
         unpackSavedTables();
     }
-
 
 
     private List<? extends Map<String, ?>> createCyclesList() {
@@ -149,20 +150,20 @@ public class RankingManager {
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
         Log.d("parsing", "end " + System.currentTimeMillis());
-//        String a = makeTableName();
-//        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
+//        String a = asmFilter();
+//        Log.d("tableexis", Boolean.toString(isTableExists(asmFilter())));
         saveToDB();
-        savedTables.put(makeTableName(),"now");
+        savedTables.put(filter, "now");
 
 //        readFromDB();
-//        Log.d("tableexis", Boolean.toString(isTableExists(makeTableName())));
+//        Log.d("tableexis", Boolean.toString(isTableExists(filter)));
 
     }
 
     DBHelper dbHelper;
 
     private void saveToDB() {
-        dbHelper = new DBHelper(context,makeTableName());
+
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         for (int i = 0; i < recordsList.size(); i++) {
@@ -170,7 +171,8 @@ public class RankingManager {
             cv.put(DBHelper.C_NAME, recordsList.get(i).getName());
             cv.put(DBHelper.C_COUNTRY, recordsList.get(i).getCountry());
             cv.put(DBHelper.C_RESULT, recordsList.get(i).getResult());
-            db.insert(makeTableName(), null, cv);
+            cv.put(DBHelper.C_FILTER, filter);
+            db.insert(filter, null, cv);
         }
 
         db.close();
@@ -200,17 +202,17 @@ public class RankingManager {
 //        db.close();
     }
 
-    public String makeTableName() {
-        return "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
+    public void asmFilter() {
+        filter = "records_" + mDisciplinesArray[chosenDisciplNumber] + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all" + "_" + "all";
 //        return "records_";
     }
 
     private void readFromDB() {
         recordsList.clear();
-        dbHelper = new DBHelper(context,makeTableName());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(makeTableName(), new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT},
-                null, null, null, null, null);
+        Cursor cursor = db.query("records", new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT, DBHelper.C_FILTER},
+                DBHelper.C_FILTER +" like "+  "'%"
+                        + filter + "%'", null, null, null, null);
         int nameColumn = cursor.getColumnIndex(DBHelper.C_NAME);
         int resultColumn = cursor.getColumnIndex(DBHelper.C_RESULT);
         int countryColumn = cursor.getColumnIndex(DBHelper.C_COUNTRY);
@@ -258,7 +260,7 @@ public class RankingManager {
     }
 
     public void getRecords() {
-        if (isTableExists(makeTableName()))
+        if (isTableExists(filter))
             readFromDB();
         else
             new GetDataTask().execute();

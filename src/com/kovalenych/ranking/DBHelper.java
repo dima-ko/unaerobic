@@ -23,20 +23,21 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String C_RESULT = "result";
     public static final String C_TABLENAME = "tablename";
     public static final String C_LASTUPD = "lastupd";
+    public static final String C_FILTER = "filter";
 
 
-    public DBHelper(Context context, String tableName) {
+    public DBHelper(Context context) {
         super(context, "timeline.db", null, DB_VERSION);
-        this.tableName = tableName;
+        this.tableName = "records";
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql;
         if (tableName.equals(RECORDS_CONF))
-            sql = String.format("CREATE TABLE  " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT,%s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
+            sql = String.format("CREATE TABLE " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
         else
-            sql = String.format("CREATE TABLE " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT,%s TEXT ,%s TEXT)", C_ID, C_NAME, C_COUNTRY, C_RESULT);
+            sql = String.format("CREATE TABLE IF NOT EXISTS " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT , %s TEXT, %s TEXT)", C_ID, C_NAME, C_COUNTRY, C_RESULT, C_FILTER);
         db.execSQL(sql);
     }
 

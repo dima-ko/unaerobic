@@ -143,6 +143,7 @@ public class RankingActivity extends Activity {
             public void onClick(View view) {
                 filterDialog.dismiss();
                 exitFlag = true;
+                rManager.asmFilter();
                 rManager.getRecords();
 //                sendTask = new SendTask(false).execute();
             }
