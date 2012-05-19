@@ -12,9 +12,11 @@ import android.provider.BaseColumns;
  */
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String RECORDS_CONF = "recordsconf";
+    public static final String REQUESTS_TABLE = "requests";
     public static final String RECORDS_TABLE = "records";
-    public String tableName;
+    public static final String RECORDS_DB = "records.db";
+    public static final String REQUESTS_DB = "savedquery.db";
+    public String fileName;
     private static final int DB_VERSION = 1;
 
 
@@ -27,15 +29,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String C_FILTER = "filter";
 
 
-    public DBHelper(Context context) {
-        super(context, "timeline.db", null, DB_VERSION);
+    public DBHelper(Context context,String filename) {
+        super(context, RECORDS_DB, null, DB_VERSION);
+        fileName = filename;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql;
-        if (tableName.equals(RECORDS_CONF))
-            sql = String.format("CREATE TABLE " + RECORDS_TABLE + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
+        if (fileName.equals(REQUESTS_DB))
+            sql = String.format("CREATE TABLE IF NOT EXISTS " + REQUESTS_TABLE + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
         else
             sql = String.format("CREATE TABLE IF NOT EXISTS " + RECORDS_TABLE + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT , %s TEXT, %s TEXT)", C_ID, C_NAME, C_COUNTRY, C_RESULT, C_FILTER);
         db.execSQL(sql);
@@ -44,6 +47,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ REQUESTS_TABLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ RECORDS_TABLE);
+        onCreate(sqLiteDatabase);
 
     }
 }

@@ -88,6 +88,7 @@ public class RankingActivity extends Activity {
                 filterDialog.show();
                 exitFlag = false;
             } else {
+                rManager.packSavedTables();
                 RankingActivity.this.finish();
             }
         }
