@@ -5,33 +5,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.kovalenych.ArticleViewBinder;
 import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class RankingActivity extends Activity {
 
@@ -40,7 +26,7 @@ public class RankingActivity extends Activity {
 
     Context context;
     private Dialog filterDialog;
-    private Dialog sendingRequestDialog;
+    private Dialog progressDialog;
     protected URL url;
     protected HttpURLConnection conn;
 
@@ -73,9 +59,9 @@ public class RankingActivity extends Activity {
         filterDialog.setCancelable(true);
         filterDialog.setContentView(PlatformResolver.getFilterDialogLayout());
 
-        sendingRequestDialog = new Dialog(context);
-        sendingRequestDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        sendingRequestDialog.setCancelable(true);
+        progressDialog = new Dialog(context);
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.setCancelable(true);
 
         sendingRequestView = new LinearLayout(this);
         sendingRequestView.setBackgroundColor(Color.BLACK);
@@ -84,11 +70,11 @@ public class RankingActivity extends Activity {
         sendingRequestView.addView(sendText, new LinearLayout.LayoutParams(220, 100));
 
         sendText.setText(getString(R.string.sendingRequest));
-        sendingRequestDialog.setContentView(sendingRequestView);
-//        sendingRequestDialog.show();
+        progressDialog.setContentView(sendingRequestView);
+//        showProgressDialog.show();
 
         filterDialog.setOnCancelListener(onCancelListener);
-        sendingRequestDialog.setOnCancelListener(onCancelListener);
+        progressDialog.setOnCancelListener(onCancelListener);
 
 
         initDialog();
@@ -145,17 +131,18 @@ public class RankingActivity extends Activity {
                 exitFlag = true;
                 rManager.asmFilter();
                 rManager.getRecords();
+//                showProgressDialog(true);
 //                sendTask = new SendTask(false).execute();
             }
         });
 
     }
 
-    public void showRequestDialog(boolean show) {
+    public void showProgressDialog(boolean show) {
         if (show)
-            sendingRequestDialog.show();
+            progressDialog.show();
         else
-            sendingRequestDialog.dismiss();
+            progressDialog.dismiss();
     }
 
     public void showFilterDialog(boolean show) {
@@ -195,7 +182,7 @@ public class RankingActivity extends Activity {
 
         @Override
         protected void onPreExecute() {
-//            sendingRequestDialog.show();
+            showProgressDialog(true);
         }
 
         @Override
@@ -218,7 +205,7 @@ public class RankingActivity extends Activity {
             filterDialog.show();
 //            else
 //                rManager.invalidateList();
-//            sendingRequestDialog.dismiss();
+            showProgressDialog(false);
         }
     }
 

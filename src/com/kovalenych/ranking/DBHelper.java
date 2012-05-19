@@ -13,6 +13,7 @@ import android.provider.BaseColumns;
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String RECORDS_CONF = "recordsconf";
+    public static final String RECORDS_TABLE = "records";
     public String tableName;
     private static final int DB_VERSION = 1;
 
@@ -28,16 +29,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, "timeline.db", null, DB_VERSION);
-        this.tableName = "records";
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql;
         if (tableName.equals(RECORDS_CONF))
-            sql = String.format("CREATE TABLE " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
+            sql = String.format("CREATE TABLE " + RECORDS_TABLE + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
         else
-            sql = String.format("CREATE TABLE IF NOT EXISTS " + tableName + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT , %s TEXT, %s TEXT)", C_ID, C_NAME, C_COUNTRY, C_RESULT, C_FILTER);
+            sql = String.format("CREATE TABLE IF NOT EXISTS " + RECORDS_TABLE + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT , %s TEXT, %s TEXT)", C_ID, C_NAME, C_COUNTRY, C_RESULT, C_FILTER);
         db.execSQL(sql);
     }
 

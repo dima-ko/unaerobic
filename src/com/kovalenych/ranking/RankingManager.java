@@ -172,7 +172,7 @@ public class RankingManager {
             cv.put(DBHelper.C_COUNTRY, recordsList.get(i).getCountry());
             cv.put(DBHelper.C_RESULT, recordsList.get(i).getResult());
             cv.put(DBHelper.C_FILTER, filter);
-            db.insert(filter, null, cv);
+            db.insert(DBHelper.RECORDS_TABLE, null, cv);
         }
 
         db.close();
@@ -210,8 +210,8 @@ public class RankingManager {
     private void readFromDB() {
         recordsList.clear();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query("records", new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT, DBHelper.C_FILTER},
-                DBHelper.C_FILTER +" like "+  "'%"
+        Cursor cursor = db.query(DBHelper.RECORDS_TABLE, new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT, DBHelper.C_FILTER},
+                DBHelper.C_FILTER + " like " + "'%"
                         + filter + "%'", null, null, null, null);
         int nameColumn = cursor.getColumnIndex(DBHelper.C_NAME);
         int resultColumn = cursor.getColumnIndex(DBHelper.C_RESULT);
@@ -260,14 +260,21 @@ public class RankingManager {
     }
 
     public void getRecords() {
-        if (isTableExists(filter))
+        if (isTableExists(filter))    {
             readFromDB();
+            invalidateList();
+        }
         else
             new GetDataTask().execute();
 
     }
 
     private class GetDataTask extends AsyncTask<Void, Void, String[]> {
+
+        @Override
+        protected void onPreExecute() {
+            ((RankingActivity) context).showProgressDialog(true);
+        }
 
         @Override
         protected String[] doInBackground(Void... params) {
@@ -284,6 +291,7 @@ public class RankingManager {
         protected void onPostExecute(String[] result) {
 
             invalidateList();
+            ((RankingActivity) context).showProgressDialog(false);
             // Call onRefreshComplete when the list has been refreshed.
             mPullToRefreshListView.onRefreshComplete();
             Log.d("zzzzz", "refersh");
