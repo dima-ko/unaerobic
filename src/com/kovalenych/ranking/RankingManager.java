@@ -42,6 +42,7 @@ public class RankingManager {
     private static final String BOUNDARY = "boundary=---------------------------1397366148113562428080587968";
     private String[] mDisciplinesArray;
     Map<String, String> savedTables = new HashMap<String, String>();
+    DateFormat df = new SimpleDateFormat("dd MMM");
 
     public RankingManager(Context context, PullToRefreshListView pullToRefreshListView) {
         this.context = context;
@@ -153,7 +154,7 @@ public class RankingManager {
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
         Log.d("parsing", "time " + (System.currentTimeMillis() - startParse));
         saveToDB();
-        DateFormat df = new SimpleDateFormat("dd MMM");
+
         savedTables.put(filter, df.format(new Date()));
 
     }
@@ -201,7 +202,7 @@ public class RankingManager {
     private void saveToDB() {
         recodsDBHelper = new DBHelper(context, DBHelper.RECORDS_DB);
         SQLiteDatabase db = recodsDBHelper.getWritableDatabase();
-        db.delete(DBHelper.RECORDS_TABLE, DBHelper.C_FILTER+ "=?",new String[]{filter});
+        db.delete(DBHelper.RECORDS_TABLE, DBHelper.C_FILTER + "=?", new String[]{filter});
 
         for (int i = 0; i < recordsList.size(); i++) {
             ContentValues cv = new ContentValues();
@@ -272,7 +273,7 @@ public class RankingManager {
         if (isTableExists(filter)) {
             readFromDB();
             invalidateList();
-            mPullToRefreshListView.setLastUpdatedLabel("updated: " + savedTables.get(filter));
+            refreshDateLabel();
         } else
             new GetDataTask(false).execute();
 
@@ -308,13 +309,21 @@ public class RankingManager {
         protected void onPostExecute(String[] result) {
 
             invalidateList();
-            mPullToRefreshListView.setLastUpdatedLabel("updated: " + savedTables.get(filter));
+            refreshDateLabel();
             if (!onPull)
                 ((RankingActivity) context).showProgressDialog(false);
             // Call onRefreshComplete when the list has been refreshed.
             mPullToRefreshListView.onRefreshComplete();
             Log.d("zzzzz", "refersh");
         }
+    }
+
+    private void refreshDateLabel() {
+        String nowTime = df.format(new Date());
+        if (nowTime.equals(savedTables.get(filter)))
+            mPullToRefreshListView.setLastUpdatedLabel("updated: " + " today");
+        else
+            mPullToRefreshListView.setLastUpdatedLabel("updated: " + savedTables.get(filter));
     }
 
 
