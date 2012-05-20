@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class RankingManager {
@@ -50,9 +52,9 @@ public class RankingManager {
         mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mPullToRefreshListView.setLastUpdatedLabel("last update: " + DateUtils.formatDateTime(RankingManager.this.context.getApplicationContext(),
-                        System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
-                        | DateUtils.FORMAT_ABBREV_ALL));
+//                mPullToRefreshListView.setLastUpdatedLabel("last update: " + DateUtils.formatDateTime(RankingManager.this.context.getApplicationContext(),
+//                        System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
+//                        | DateUtils.FORMAT_ABBREV_ALL));
                 // Do work to refresh the list here.
                 new GetDataTask().execute();
             }
@@ -96,6 +98,7 @@ public class RankingManager {
         adapter.setViewBinder(new ArticleViewBinder());
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
+
     }
 
     public void setTypicalRequestProps(HttpURLConnection conn) {
@@ -145,12 +148,13 @@ public class RankingManager {
         }
         in.close();
         recordsList.clear();
-        Log.d("parsing", "start " + System.currentTimeMillis());
+        long startParse = System.currentTimeMillis();
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
-        Log.d("parsing", "end " + System.currentTimeMillis());
+        Log.d("parsing", "time " + (System.currentTimeMillis()-startParse));
         saveToDB();
-        savedTables.put(filter, "now");
+        DateFormat df = new SimpleDateFormat("dd/MM");
+        savedTables.put(filter, df.format(new Date()) );
 
     }
 
@@ -249,7 +253,6 @@ public class RankingManager {
         int resultStartIndex = fullString.indexOf("<b>") + 3;
         int resultEndIndex = fullString.indexOf("</b>", resultStartIndex);
         String res = fullString.substring(resultStartIndex, resultEndIndex);
-//        Log.d("zzzname","name " + name +  "  res   " + res + "country" + country);
         return new Record(name, res, country);
 
     }
@@ -293,6 +296,7 @@ public class RankingManager {
         protected void onPostExecute(String[] result) {
 
             invalidateList();
+            mPullToRefreshListView.setLastUpdatedLabel(savedTables.get(filter));
             ((RankingActivity) context).showProgressDialog(false);
             // Call onRefreshComplete when the list has been refreshed.
             mPullToRefreshListView.onRefreshComplete();
