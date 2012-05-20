@@ -44,6 +44,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
+    public String createNewReqTable(){
+         return String.format("CREATE TABLE IF NOT EXISTS " + REQUESTS_TABLE + "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)", C_ID, C_TABLENAME, C_LASTUPD);
+
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

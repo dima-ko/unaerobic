@@ -164,6 +164,9 @@ public class RankingManager {
     public void packSavedTables() {
         requestsDBHelper = new DBHelper(context, DBHelper.REQUESTS_DB);
         SQLiteDatabase db = requestsDBHelper.getWritableDatabase();
+        db.execSQL("DROP TABLE " + DBHelper.REQUESTS_TABLE);
+        db.execSQL(recodsDBHelper.createNewReqTable());
+
         Iterator<String> iter = savedTables.keySet().iterator();
         while (iter.hasNext()) {
             String key = iter.next();
@@ -189,7 +192,6 @@ public class RankingManager {
         requestsDBHelper.close();
 
     }
-
 
 
     private void saveToDB() {
