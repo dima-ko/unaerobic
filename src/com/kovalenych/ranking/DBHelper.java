@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public DBHelper(Context context,String filename) {
-        super(context, RECORDS_DB, null, DB_VERSION);
+        super(context, filename, null, DB_VERSION);
         fileName = filename;
     }
 
@@ -48,9 +48,9 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ REQUESTS_TABLE);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ RECORDS_TABLE);
-        onCreate(sqLiteDatabase);
+//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ REQUESTS_TABLE);
+//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ RECORDS_TABLE);
+//        onCreate(sqLiteDatabase);
 
     }
 }
