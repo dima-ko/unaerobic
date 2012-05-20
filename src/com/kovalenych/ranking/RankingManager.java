@@ -56,7 +56,7 @@ public class RankingManager {
 //                        System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
 //                        | DateUtils.FORMAT_ABBREV_ALL));
                 // Do work to refresh the list here.
-                new GetDataTask().execute();
+                new GetDataTask(true).execute();
             }
         });
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
@@ -151,10 +151,10 @@ public class RankingManager {
         long startParse = System.currentTimeMillis();
         for (int j = 0; j < htmlList.size(); j++)
             recordsList.add(extractRecoedFromString(htmlList.get(j)));
-        Log.d("parsing", "time " + (System.currentTimeMillis()-startParse));
+        Log.d("parsing", "time " + (System.currentTimeMillis() - startParse));
         saveToDB();
-        DateFormat df = new SimpleDateFormat("dd/MM");
-        savedTables.put(filter, df.format(new Date()) );
+        DateFormat df = new SimpleDateFormat("dd MMM");
+        savedTables.put(filter, df.format(new Date()));
 
     }
 
@@ -201,6 +201,8 @@ public class RankingManager {
     private void saveToDB() {
         recodsDBHelper = new DBHelper(context, DBHelper.RECORDS_DB);
         SQLiteDatabase db = recodsDBHelper.getWritableDatabase();
+        db.delete(DBHelper.RECORDS_TABLE, DBHelper.C_FILTER+ "=?",new String[]{filter});
+
         for (int i = 0; i < recordsList.size(); i++) {
             ContentValues cv = new ContentValues();
             cv.put(DBHelper.C_NAME, recordsList.get(i).getName());
@@ -211,6 +213,7 @@ public class RankingManager {
         }
 
         db.close();
+
         recodsDBHelper.close();
     }
 
@@ -269,16 +272,25 @@ public class RankingManager {
         if (isTableExists(filter)) {
             readFromDB();
             invalidateList();
+            mPullToRefreshListView.setLastUpdatedLabel("updated: " + savedTables.get(filter));
         } else
-            new GetDataTask().execute();
+            new GetDataTask(false).execute();
 
     }
 
     private class GetDataTask extends AsyncTask<Void, Void, String[]> {
 
+
+        private boolean onPull;
+
+        public GetDataTask(boolean onPull) {
+            this.onPull = onPull;
+        }
+
         @Override
         protected void onPreExecute() {
-            ((RankingActivity) context).showProgressDialog(true);
+            if (!onPull)
+                ((RankingActivity) context).showProgressDialog(true);
         }
 
         @Override
@@ -296,13 +308,12 @@ public class RankingManager {
         protected void onPostExecute(String[] result) {
 
             invalidateList();
-            mPullToRefreshListView.setLastUpdatedLabel(savedTables.get(filter));
-            ((RankingActivity) context).showProgressDialog(false);
+            mPullToRefreshListView.setLastUpdatedLabel("updated: " + savedTables.get(filter));
+            if (!onPull)
+                ((RankingActivity) context).showProgressDialog(false);
             // Call onRefreshComplete when the list has been refreshed.
             mPullToRefreshListView.onRefreshComplete();
             Log.d("zzzzz", "refersh");
-
-
         }
     }
 
