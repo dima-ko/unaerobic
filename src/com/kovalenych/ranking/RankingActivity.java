@@ -36,7 +36,7 @@ public class RankingActivity extends Activity {
 
         context = this;
         screenWidth = PlatformResolver.getWidth();
-        setContentView(R.layout.ranking);
+        setContentView(PlatformResolver.getRank());
 
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.ranking_list);
         scrollView = (HorizontalScrollView) findViewById(R.id.scroll);
@@ -49,7 +49,7 @@ public class RankingActivity extends Activity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (scrollView.getScrollX() > screenWidth/2)
+                            if (scrollView.getScrollX() > screenWidth / 2)
                                 scrollView.smoothScrollBy(screenWidth, 0);
                             else
                                 scrollView.smoothScrollBy(-screenWidth, 0);

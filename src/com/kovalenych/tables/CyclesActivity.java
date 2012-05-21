@@ -173,7 +173,8 @@ public class CyclesActivity extends Activity implements Soundable {
         } catch (IOException
                 ex) {
             Log.d(LOG_TAG, "Error parsing file");
-        } catch (ClassNotFoundException
+        }
+        catch (ClassNotFoundException
                 ex) {
             Log.d(LOG_TAG, "Error class not found");
         }

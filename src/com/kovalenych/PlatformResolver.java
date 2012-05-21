@@ -29,11 +29,24 @@ public class PlatformResolver {
         else if (isQVGA)
             return 240;
         else if (is720p)
-            return 720;
+            return 800;
         else if (isTabI)
             return 600;
         else
             return 480;
+    }
+
+    static public int getRank() {
+        if (isHVGA)
+            return R.layout.ranking_hvga;
+        else if (isQVGA)
+            return 240;
+        else if (is720p)
+            return R.layout.ranking720p;
+        else if (isTabI)
+            return R.layout.ranking;
+        else
+            return R.layout.ranking;
     }
 
     static public int getTableLayout() {
@@ -76,13 +89,6 @@ public class PlatformResolver {
             return R.layout.voice_hvga;
         else
             return R.layout.voice;
-    }
-
-    static public int getFilterDialogLayout() {
-        if (isHVGA)
-            return R.layout.filter_dialog_hwga;
-        else
-            return R.layout.filter_dialog;
     }
 
     static public int getMenuBG() {
@@ -205,7 +211,7 @@ public class PlatformResolver {
 
     public static float getTextSize() {
         if (is720p)
-            return 25;
+            return 23;
         else
             return 16;
     }
