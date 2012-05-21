@@ -9,9 +9,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
 
 public class RankingActivity extends Activity {
@@ -25,20 +28,40 @@ public class RankingActivity extends Activity {
     LinearLayout sendingRequestView;
     RankingManager rManager;
     private HorizontalScrollView scrollView;
+    private int screenWidth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         context = this;
-
+        screenWidth = PlatformResolver.getWidth();
         setContentView(R.layout.ranking);
 
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.ranking_list);
         scrollView = (HorizontalScrollView) findViewById(R.id.scroll);
         rManager = new RankingManager(this, mPullRefreshListView);
         initFilterAndProgress();
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (scrollView.getScrollX() > screenWidth/2)
+                                scrollView.smoothScrollBy(screenWidth, 0);
+                            else
+                                scrollView.smoothScrollBy(-screenWidth, 0);
 
+                        }
+                    }, 50);
+
+                    Log.d("scrollView", "zzzzzzzzzz" + motionEvent.toString());
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -108,8 +131,8 @@ public class RankingActivity extends Activity {
             progressDialog.dismiss();
     }
 
-    public void scrollToList(){
-        scrollView.smoothScrollTo(480,0);
+    public void scrollToList() {
+        scrollView.smoothScrollTo(screenWidth, 0);
     }
 
     public boolean haveInternet() {

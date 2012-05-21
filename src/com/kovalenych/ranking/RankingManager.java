@@ -47,8 +47,9 @@ public class RankingManager {
     DateFormat df = new SimpleDateFormat("dd MMM");
     private AsyncTask<Void, Void, String[]> getDataTask;
 
-    public RankingManager(Context context, PullToRefreshListView pullToRefreshListView) {
-        this.context = context;
+
+    public RankingManager(Context Context, PullToRefreshListView pullToRefreshListView) {
+        this.context = Context;
         this.mPullToRefreshListView = pullToRefreshListView;
         recordsList = new ArrayList<Record>();
 
@@ -60,14 +61,17 @@ public class RankingManager {
 //                        System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
 //                        | DateUtils.FORMAT_ABBREV_ALL));
                 // Do work to refresh the list here.
-                new GetDataTask(true).execute();
+                if (((RankingActivity) context).haveInternet())
+                    getDataTask = new GetDataTask(false).execute();
+                else {
+                    Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+                    mPullToRefreshListView.onRefreshComplete();
+                }
             }
         });
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         lv = mPullToRefreshListView.getRefreshableView();
         unpackSavedTables();
-
-
     }
 
 

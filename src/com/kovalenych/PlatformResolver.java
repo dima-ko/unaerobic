@@ -23,6 +23,19 @@ public class PlatformResolver {
 
     }
 
+    static public int getWidth() {
+        if (isHVGA)
+            return 320;
+        else if (isQVGA)
+            return 240;
+        else if (is720p)
+            return 720;
+        else if (isTabI)
+            return 600;
+        else
+            return 480;
+    }
+
     static public int getTableLayout() {
         if (isHVGA)
             return R.layout.table_hvga;
@@ -118,7 +131,7 @@ public class PlatformResolver {
             return 1200;
         if (isTabI)
             return 980;
-        if(is854)
+        if (is854)
             return 799;
         else
             return 745;
@@ -183,7 +196,7 @@ public class PlatformResolver {
         if (isHVGA)
             return new int[]{371, 320, 190, 145, 65, 460};
         if (is854)
-            return new int[]{605+54, 540+54, 325, 255, 125, 735+54};
+            return new int[]{605 + 54, 540 + 54, 325, 255, 125, 735 + 54};
         else
             return new int[]{605, 540, 325, 255, 125, 735};
 
