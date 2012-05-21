@@ -220,6 +220,8 @@ public class MenuActivity extends Activity {
                 zone = i;
         }
 
+        if (zone == -1)
+            return;
         int act = (zone - nextPosInt + 666) % 6;        // ]:<
 
         Intent intent = null;
@@ -245,7 +247,7 @@ public class MenuActivity extends Activity {
                 break;
             case 4:
 //                if (haveInternet())
-                    intent = new Intent(MenuActivity.this, RankingActivity.class);
+                intent = new Intent(MenuActivity.this, RankingActivity.class);
 //                else
 //                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
                 break;
@@ -356,7 +358,6 @@ public class MenuActivity extends Activity {
         for (TextView labal : labels)
             labal.setVisibility(visibility ? View.VISIBLE : View.INVISIBLE);
     }
-
 
     class RadiusSurfaceView extends SurfaceView implements Runnable {
 
