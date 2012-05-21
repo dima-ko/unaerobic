@@ -244,10 +244,10 @@ public class MenuActivity extends Activity {
                     Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
                 break;
             case 4:
-                if (haveInternet())
+//                if (haveInternet())
                     intent = new Intent(MenuActivity.this, RankingActivity.class);
-                else
-                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
+//                else
+//                    Toast.makeText(MenuActivity.this, MenuActivity.this.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
                 break;
             case 5:
                 if (haveInternet())

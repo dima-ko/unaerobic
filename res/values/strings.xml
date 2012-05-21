@@ -18,6 +18,8 @@
         \t\t Good luck in your dive
     </string>
     <string name="noConnect">Sorry,you must be connected to internet</string>
+    <string name="noConnectRank">Sorry,you must be connected to internet\n
+    to fetch this table</string>
     <string name="credits">For propositions and critics write on: \ninsomniac.robot@gmail.com</string>
     <string name="under_construction">Sorry, under construction</string>
     <string name="disipline_prompt">discipline</string>

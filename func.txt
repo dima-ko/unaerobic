@@ -1,0 +1,23 @@
+public void getFromApneaCZ() throws IOException {
+        url = new URL("http://apnea.cz/ranking.html?");
+        conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        setTypicalRequestProps(conn);
+        conn.connect();
+        String headerName = null;
+        System.out.println("zzzz" + conn.getResponseMessage());
+        for (int i = 1; (headerName = conn.getHeaderFieldKey(i)) != null; i++) {
+            if (headerName.equals("Set-Cookie")) {
+
+                String stringwithcool = conn.getHeaderField(i);
+                String cookie = (stringwithcool.substring(0, stringwithcool.indexOf(";")));
+                System.out.println("zzzzcookie" + cookie);
+                setCookie(cookie);
+            }
+        }
+
+    }
+
+     public void setCookie(String cookie) {
+            this.cookie = cookie;
+        }

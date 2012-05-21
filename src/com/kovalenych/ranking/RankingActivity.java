@@ -3,21 +3,16 @@ package com.kovalenych.ranking;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class RankingActivity extends Activity {
 
@@ -25,16 +20,11 @@ public class RankingActivity extends Activity {
     PullToRefreshListView mPullRefreshListView;
 
     Context context;
-    private Dialog filterDialog;
     private Dialog progressDialog;
-    protected URL url;
-    protected HttpURLConnection conn;
-
 
     LinearLayout sendingRequestView;
     RankingManager rManager;
-    public boolean exitFlag = false; //if true goes to filterdialog on backpressed
-    private AsyncTask<Void, Void, String[]> sendTask;
+    private HorizontalScrollView scrollView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,23 +32,17 @@ public class RankingActivity extends Activity {
 
         context = this;
 
-        fillList();
         setContentView(R.layout.ranking);
 
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.ranking_list);
+        scrollView = (HorizontalScrollView) findViewById(R.id.scroll);
         rManager = new RankingManager(this, mPullRefreshListView);
-        sendTask = new SendTask(true).execute();
+        initFilterAndProgress();
 
     }
 
 
-    private void fillList() {
-
-        filterDialog = new Dialog(context);
-        filterDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        filterDialog.setCancelable(true);
-        filterDialog.setContentView(PlatformResolver.getFilterDialogLayout());
-
+    private void initFilterAndProgress() {
         progressDialog = new Dialog(context);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.setCancelable(true);
@@ -71,45 +55,13 @@ public class RankingActivity extends Activity {
 
         sendText.setText(getString(R.string.sendingRequest));
         progressDialog.setContentView(sendingRequestView);
-//        showProgressDialog.show();
-
-        filterDialog.setOnCancelListener(onCancelListener);
-        progressDialog.setOnCancelListener(onCancelListener);
-
-
-        initDialog();
-    }
-
-    Dialog.OnCancelListener onCancelListener = new DialogInterface.OnCancelListener() {
-        @Override
-        public void onCancel(DialogInterface dialogInterface) {
-            sendTask.cancel(true);
-            if (exitFlag) {
-                filterDialog.show();
-                exitFlag = false;
-            } else {
-                rManager.packSavedTables();
-                RankingActivity.this.finish();
-            }
-        }
-    };
-
-    @Override
-    public void onBackPressed() {
-        sendTask.cancel(true);
-        filterDialog.show();
-        exitFlag = false;
-    }
-
-    private void initDialog() {
-//        http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3
-        (filterDialog.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3")));
             }
         });
-        Spinner s = (Spinner) filterDialog.findViewById(R.id.discipline_spinner);
+        Spinner s = (Spinner) findViewById(R.id.discipline_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 this, R.array.disciplines, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -125,19 +77,29 @@ public class RankingActivity extends Activity {
             }
         });
 
-        filterDialog.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterDialog.dismiss();
-                exitFlag = true;
                 rManager.asmFilter();
                 rManager.getRecords();
-//                showProgressDialog(true);
-//                sendTask = new SendTask(false).execute();
             }
         });
-
     }
+
+
+    @Override
+    public void onBackPressed() {
+        rManager.cancelTask();
+        rManager.packSavedTables();
+        if (rManager.recodsDBHelper != null)
+            rManager.recodsDBHelper.close();
+
+        if (rManager.requestsDBHelper != null)
+            rManager.requestsDBHelper.close();
+
+        RankingActivity.this.finish();
+    }
+
 
     public void showProgressDialog(boolean show) {
         if (show)
@@ -146,69 +108,22 @@ public class RankingActivity extends Activity {
             progressDialog.dismiss();
     }
 
-    public void showFilterDialog(boolean show) {
-        if (show)
-            filterDialog.show();
-        else
-            filterDialog.dismiss();
+    public void scrollToList(){
+        scrollView.smoothScrollTo(480,0);
     }
 
-    public void getFromApneaCZ() throws IOException {
-        url = new URL("http://apnea.cz/ranking.html?");
-        conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        rManager.setTypicalRequestProps(conn);
-        conn.connect();
-        String headerName = null;
-        System.out.println("zzzz" + conn.getResponseMessage());
-        for (int i = 1; (headerName = conn.getHeaderFieldKey(i)) != null; i++) {
-            if (headerName.equals("Set-Cookie")) {
-
-                String stringwithcool = conn.getHeaderField(i);
-                String cookie = (stringwithcool.substring(0, stringwithcool.indexOf(";")));
-                System.out.println("zzzzcookie" + cookie);
-                rManager.setCookie(cookie);
-            }
+    public boolean haveInternet() {
+        NetworkInfo info = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        if (info == null || !info.isConnected()) {
+            return false;
         }
-
+        if (info.isRoaming()) {
+            // here is the roaming option you can change it if you want to disable internet while roaming, just return false
+            return true;
+        }
+        return true;
     }
 
-    private class SendTask extends AsyncTask<Void, Void, String[]> {
-
-        private boolean get;
-
-        public SendTask(boolean isGet) {
-            get = isGet;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            showProgressDialog(true);
-        }
-
-        @Override
-        protected String[] doInBackground(Void... params) {
-            // Simulates a background job.
-            try {
-//                if (get)
-                getFromApneaCZ();
-//                else
-//                    rManager.sendPost();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String[] result) {
-//            if (get)
-            filterDialog.show();
-//            else
-//                rManager.invalidateList();
-            showProgressDialog(false);
-        }
-    }
 
 }
 // POST /ranking.html? HTTP/1.1

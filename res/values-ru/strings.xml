@@ -16,6 +16,7 @@
         \t\t Удачной нырялки!!!
     </string>
     <string name="noConnect">Извините, вы должны быть онлайн</string>
+    <string name="noConnectRank">Извините, вы должны быть онлайн, чтобы скачать эту таблицу</string>
     <string name="credits">С критикой и предложениями пишите: \ninsomniac.robot@gmail.com</string>
     <string name="under_construction">В разработке</string>
     <string name="disipline_prompt">дисциплина</string>

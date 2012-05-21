@@ -6,11 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.ArticleViewBinder;
@@ -43,6 +45,7 @@ public class RankingManager {
     private String[] mDisciplinesArray;
     Map<String, String> savedTables = new HashMap<String, String>();
     DateFormat df = new SimpleDateFormat("dd MMM");
+    private AsyncTask<Void, Void, String[]> getDataTask;
 
     public RankingManager(Context context, PullToRefreshListView pullToRefreshListView) {
         this.context = context;
@@ -170,7 +173,7 @@ public class RankingManager {
         requestsDBHelper = new DBHelper(context, DBHelper.REQUESTS_DB);
         SQLiteDatabase db = requestsDBHelper.getWritableDatabase();
         db.execSQL("DROP TABLE " + DBHelper.REQUESTS_TABLE);
-        db.execSQL(recodsDBHelper.createNewReqTable());
+        db.execSQL(requestsDBHelper.createNewReqTable());
 
         Iterator<String> iter = savedTables.keySet().iterator();
         while (iter.hasNext()) {
@@ -184,7 +187,6 @@ public class RankingManager {
         requestsDBHelper.close();
     }
 
-
     private void unpackSavedTables() {
         requestsDBHelper = new DBHelper(context, DBHelper.REQUESTS_DB);
         SQLiteDatabase db = requestsDBHelper.getWritableDatabase();
@@ -197,7 +199,6 @@ public class RankingManager {
         requestsDBHelper.close();
 
     }
-
 
     private void saveToDB() {
         recodsDBHelper = new DBHelper(context, DBHelper.RECORDS_DB);
@@ -236,7 +237,6 @@ public class RankingManager {
         recodsDBHelper.close();
     }
 
-
     public boolean isTableExists(String tableName) {
         return savedTables.containsKey(tableName);
 
@@ -265,18 +265,31 @@ public class RankingManager {
         postMessage = context.getString(R.string.post);
     }
 
-    public void setCookie(String cookie) {
-        this.cookie = cookie;
-    }
-
     public void getRecords() {
         if (isTableExists(filter)) {
             readFromDB();
-            invalidateList();
-            refreshDateLabel();
-        } else
-            new GetDataTask(false).execute();
+            ((RankingActivity) context).scrollToList();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
+                    invalidateList();
+                    refreshDateLabel();
+
+                }
+            }, 600);
+        } else {
+            if (((RankingActivity) context).haveInternet())
+                getDataTask = new GetDataTask(false).execute();
+            else
+                Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void cancelTask() {
+        if (getDataTask != null)
+            getDataTask.cancel(true);
     }
 
     private class GetDataTask extends AsyncTask<Void, Void, String[]> {
@@ -310,10 +323,15 @@ public class RankingManager {
 
             invalidateList();
             refreshDateLabel();
-            if (!onPull)
+
+            if (onPull)
+                mPullToRefreshListView.onRefreshComplete();
+            else {
                 ((RankingActivity) context).showProgressDialog(false);
+                ((RankingActivity) context).scrollToList();
+            }
             // Call onRefreshComplete when the list has been refreshed.
-            mPullToRefreshListView.onRefreshComplete();
+
             Log.d("zzzzz", "refersh");
         }
     }
