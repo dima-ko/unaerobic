@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.kovalenych.Fonts;
 import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
+import com.kovalenych.Table;
 
 import java.util.List;
 

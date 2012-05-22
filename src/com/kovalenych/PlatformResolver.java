@@ -39,8 +39,6 @@ public class PlatformResolver {
     static public int getRank() {
         if (isHVGA)
             return R.layout.ranking_hvga;
-        else if (isQVGA)
-            return 240;
         else if (is720p)
             return R.layout.ranking720p;
         else if (isTabI)

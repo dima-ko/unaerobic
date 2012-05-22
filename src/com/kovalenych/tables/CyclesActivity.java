@@ -11,6 +11,7 @@ import android.widget.*;
 import com.kovalenych.Fonts;
 import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
+import com.kovalenych.Table;
 
 import java.io.*;
 import java.util.ArrayList;

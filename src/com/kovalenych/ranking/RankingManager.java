@@ -62,7 +62,7 @@ public class RankingManager {
 //                        | DateUtils.FORMAT_ABBREV_ALL));
                 // Do work to refresh the list here.
                 if (((RankingActivity) context).haveInternet())
-                    getDataTask = new GetDataTask(false).execute();
+                    getDataTask = new GetDataTask(true).execute();
                 else {
                     Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
                     mPullToRefreshListView.onRefreshComplete();
@@ -82,7 +82,7 @@ public class RankingManager {
         Map<String, Object> titleMap = new HashMap<String, Object>();
         titleMap.put("place", "");
         titleMap.put("flag", "from");
-        titleMap.put("name", "who");
+        titleMap.put("name", "who");                                     //TODO: localize
         titleMap.put("result", "result");
         items.add(titleMap);
 
@@ -343,9 +343,9 @@ public class RankingManager {
     private void refreshDateLabel() {
         String nowTime = df.format(new Date());
         if (nowTime.equals(savedTables.get(filter)))
-            mPullToRefreshListView.setLastUpdatedLabel("updated: " + " today");
+            mPullToRefreshListView.setLastUpdatedLabel(context.getString(R.string.updated) + context.getString(R.string.today));
         else
-            mPullToRefreshListView.setLastUpdatedLabel("updated: " + savedTables.get(filter));
+            mPullToRefreshListView.setLastUpdatedLabel(context.getString(R.string.updated) + savedTables.get(filter));
     }
 
 

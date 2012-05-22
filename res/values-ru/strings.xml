@@ -41,15 +41,9 @@
     <string name="breathe_time">время\n дыхания</string>
     <string name="hold_time">время\n задержки</string>
     <string name="new_query">Новый запрос</string>
-    <string name="sendingRequest">посылаю запрос ...</string>
-    <string name="frenchRequest">\tHello, my French friends! \n
-        \n
-    \tSorry for speaking to you not in your mother language, but my French is poor :(
-    Thats why I ask you for help. I found a beautiful film about freediving, that is called \"La vie sans air\".
-    If you please, you could help me to write an english subtitles to the part of the film.
-    So, if you can do that, wrote on my email:\n insomniac.robot@gmail.com for cooperation.
-      \n\n  Thanks again.
-    </string>
+    <string name="sendingRequest">скачивается ...</string>
+    <string name="today">" сегодня"</string>
+    <string name="updated">"обновлено: "</string>
 
 
 </resources>

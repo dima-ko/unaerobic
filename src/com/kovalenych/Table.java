@@ -1,4 +1,6 @@
-package com.kovalenych.tables;
+package com.kovalenych;
+
+import com.kovalenych.tables.Cycle;
 
 import java.io.Serializable;
 import java.util.ArrayList;

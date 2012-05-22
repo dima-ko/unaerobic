@@ -43,6 +43,8 @@
     <string name="breath_s">breath, s</string>
     <string name="breathe_time">breathe\n time</string>
     <string name="hold_time">hold\n time</string>
+    <string name="updated">"updated: "</string>
+    <string name="today">" today"</string>
     <string name="post">-----------------------------1397366148113562428080587968\n
         Content-Disposition: form-data; name="Lang"  \n
         \n
@@ -192,8 +194,7 @@
         \n
 
         \n-----------------------------1397366148113562428080587968--</string>
-    <string name="new_query">New request</string>
-    <string name="sendingRequest">sending request ...</string>
+    <string name="sendingRequest">downloading info ...</string>
     <string name="frenchRequest">\tHello, my French friends! \n
         \n
     \tSorry for speaking to you not in your mother language, but my French is poor :(
