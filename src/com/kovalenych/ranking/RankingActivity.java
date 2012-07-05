@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.*;
@@ -132,7 +133,19 @@ public class RankingActivity extends Activity {
     }
 
     public void scrollToList() {
-        scrollView.smoothScrollTo(screenWidth, 0);
+       // scrollView.smoothScrollTo(screenWidth/2, 0);
+
+        new CountDownTimer(1000, 10) {
+
+            public void onTick(long millisUntilFinished) {
+                scrollView.scrollTo((int) (((float)1000-millisUntilFinished)/1000*screenWidth), 0);
+
+            }
+
+            public void onFinish() {
+
+            }
+        }.start();
     }
 
     public boolean haveInternet() {

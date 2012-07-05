@@ -1,0 +1,8 @@
+out
+.idea
+gen
+*.properties
+*.cfg
+.keystore
+*.apk
+*.iml

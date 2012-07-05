@@ -281,7 +281,7 @@ public class RankingManager {
                     refreshDateLabel();
 
                 }
-            }, 600);
+            }, 1000);
         } else {
             if (((RankingActivity) context).haveInternet())
                 getDataTask = new GetDataTask(false).execute();
