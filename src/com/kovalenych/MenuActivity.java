@@ -13,8 +13,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MenuActivity extends FragmentActivity {
 
-    private static final String[] CONTENT = new String[]{"Tables", "Videos", "Articles", "Settings"};
-
+    private static final String[] CONTENT = new String[]{"Tables", "Videos", "Articles"};
     protected TestFragmentAdapter mAdapter;
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
