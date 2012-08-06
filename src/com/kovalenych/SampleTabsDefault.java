@@ -1,13 +1,15 @@
-package com.sample;
+package com.kovalenych;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import com.kovalenych.R;
+import com.sample.BaseSampleActivity;
+import com.sample.TestFragment;
+import com.sample.TestFragmentAdapter;
 import com.viewpagerindicator.TabPageIndicator;
 
-public class SampleTabsStyled extends BaseSampleActivity {
+public class SampleTabsDefault extends BaseSampleActivity {
     private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
 
     @Override
@@ -31,17 +33,17 @@ public class SampleTabsStyled extends BaseSampleActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return TestFragment.newInstance(SampleTabsStyled.CONTENT[position % SampleTabsStyled.CONTENT.length]);
+            return TestFragment.newInstance(SampleTabsDefault.CONTENT[position % SampleTabsDefault.CONTENT.length]);
         }
 
         @Override
         public int getCount() {
-            return SampleTabsStyled.CONTENT.length;
+            return SampleTabsDefault.CONTENT.length;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return SampleTabsStyled.CONTENT[position % SampleTabsStyled.CONTENT.length].toUpperCase();
+            return SampleTabsDefault.CONTENT[position % SampleTabsDefault.CONTENT.length].toUpperCase();
         }
     }
 }

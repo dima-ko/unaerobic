@@ -2,21 +2,17 @@ package com.kovalenych;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import com.sample.BaseSampleActivity;
-import com.sample.SampleTabsDefault;
 import com.sample.TestFragment;
 import com.sample.TestFragmentAdapter;
-import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 
 
 public class MenuActivity extends BaseSampleActivity {
 
-    //    private static final String[] CONTENT = new String[] { "Tables", "Videos", "Articles", "Settings"};
-    private static final String[] CONTENT = new String[]{"Recent", "Artists", "Albums", "Songs", "Playlists", "Genres"};
+    private static final String[] CONTENT = new String[]{"Tables", "Videos", "Articles", "Settings"};
 
 
     @Override
