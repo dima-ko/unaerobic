@@ -13,9 +13,9 @@ import java.util.Random;
 public abstract class BaseSampleActivity extends FragmentActivity {
     private static final Random RANDOM = new Random();
 
-    TestFragmentAdapter mAdapter;
-    ViewPager mPager;
-    PageIndicator mIndicator;
+    protected TestFragmentAdapter mAdapter;
+    protected ViewPager mPager;
+    protected PageIndicator mIndicator;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
