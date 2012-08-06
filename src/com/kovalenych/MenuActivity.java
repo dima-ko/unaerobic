@@ -2,25 +2,29 @@ package com.kovalenych;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import com.sample.BaseSampleActivity;
 import com.sample.TestFragment;
 import com.sample.TestFragmentAdapter;
+import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 
 
-public class MenuActivity extends BaseSampleActivity {
+public class MenuActivity extends FragmentActivity {
 
     private static final String[] CONTENT = new String[]{"Tables", "Videos", "Articles", "Settings"};
 
+    protected TestFragmentAdapter mAdapter;
+    protected ViewPager mPager;
+    protected PageIndicator mIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple_tabs);
 
-        mAdapter = new GoogleMusicAdapter(getSupportFragmentManager());
+        mAdapter = new FreeDivingAdapter(getSupportFragmentManager());
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
@@ -29,8 +33,8 @@ public class MenuActivity extends BaseSampleActivity {
         mIndicator.setViewPager(mPager);
     }
 
-    class GoogleMusicAdapter extends TestFragmentAdapter {
-        public GoogleMusicAdapter(FragmentManager fm) {
+    class FreeDivingAdapter extends TestFragmentAdapter {
+        public FreeDivingAdapter(FragmentManager fm) {
             super(fm);
         }
 

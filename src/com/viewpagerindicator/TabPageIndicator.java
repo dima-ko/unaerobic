@@ -21,6 +21,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
@@ -250,7 +251,10 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         private int mIndex;
 
         public TabView(Context context) {
-            super(context, null, R.attr.vpiTabPageIndicatorStyle);
+            super(context, null);
+            this.setBackgroundResource(R.drawable.vpi__tab_indicator);
+            this.setMinHeight(60);
+            this.setGravity(Gravity.CENTER);
         }
 
         @Override
