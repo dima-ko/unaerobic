@@ -1,0 +1,49 @@
+package com.kovalenych;
+
+
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.os.Build;
+import android.util.DisplayMetrics;
+
+public class Utils {
+
+    public static boolean isHoneyCombOrMore = false;
+    public static int height;
+    public static int width;
+    public static int flowidth;
+    public static boolean isTab;
+    public static boolean isSmall;
+    public static boolean isPortrait;
+    public static float scale;
+
+    public static void resolvePlatform(Activity activity) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        height = metrics.heightPixels;
+        width = metrics.widthPixels;
+        int vers = Integer.parseInt(Build.VERSION.RELEASE.substring(0, 1));
+        if (vers > 2) Utils.isHoneyCombOrMore = true;
+
+        int screenSizeType = activity.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+        if (screenSizeType == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            isTab = true;
+        } else if (screenSizeType == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            isSmall = true;
+        }
+
+        flowidth = isTab ? 400 : width;
+        isPortrait = (height > width);
+
+
+        scale = activity.getResources().getDisplayMetrics().density;
+
+    }
+
+    public static int dpToPix(float dips) {
+
+        return Math.round(dips * scale);
+
+    }
+
+}
