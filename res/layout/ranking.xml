@@ -5,6 +5,7 @@
         >
 
     <LinearLayout
+            android:id="@+id/ranking_filter"
             android:orientation="vertical"
             android:padding="10dp"
             android:gravity="center"
@@ -101,14 +102,26 @@
                 android:layout_width="200px"
                 />
     </LinearLayout>
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-            android:id="@+id/ranking_list"
-            android:visibility="gone"
-            android:layout_width="fill_parent"
+    <RelativeLayout
+            android:id="@+id/ranking_records"
             android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="10pt"
-            android:cacheColorHint="#00000000"
-            />
+            android:layout_width="fill_parent">
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+                android:id="@+id/ranking_list"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10pt"
+                android:cacheColorHint="#00000000"
+                />
+        <Button
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:text="Back"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                />
+    </RelativeLayout>
 </RelativeLayout>

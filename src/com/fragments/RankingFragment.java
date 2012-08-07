@@ -27,15 +27,15 @@ import java.util.Map;
 public final class RankingFragment extends Fragment {
 
     PullToRefreshListView mPullRefreshListView;
+    LinearLayout filterView;
+    RelativeLayout recordsView;
+    private Dialog progressDialog;
 
-//    private Dialog progressDialog;
-
-//    LinearLayout sendingRequestView;
     RankingManager rManager;
 
     public static RankingFragment newInstance() {
 
-        return  new RankingFragment();
+        return new RankingFragment();
     }
 
     @Override
@@ -49,53 +49,57 @@ public final class RankingFragment extends Fragment {
         View tables = inflater.inflate(R.layout.ranking, null);
         mPullRefreshListView = (PullToRefreshListView) tables.findViewById(R.id.ranking_list);
         rManager = new RankingManager(getActivity(), mPullRefreshListView);
-        initFilterAndProgress();
+        initFilterAndProgress(tables);
         return tables;
     }
 
+    private void initFilterAndProgress(View tables) {
+        progressDialog = new Dialog(getActivity());
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.setCancelable(true);
 
-    private void initFilterAndProgress() {
-//        progressDialog = new Dialog(context);
-//        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        progressDialog.setCancelable(true);
-//
-//        sendingRequestView = new LinearLayout(this);
-//        sendingRequestView.setBackgroundColor(Color.BLACK);
-//        TextView sendText = new TextView(this);
-//        sendText.setGravity(Gravity.CENTER);
-//        sendingRequestView.addView(sendText, new LinearLayout.LayoutParams(220, 100));
-//
-//        sendText.setText(getString(R.string.sendingRequest));
-//        progressDialog.setContentView(sendingRequestView);
-//        (findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3")));
-//            }
-//        });
-//        Spinner s = (Spinner) findViewById(R.id.discipline_spinner);
-//        ArrayAdapter adapter = ArrayAdapter.createFromResource(
-//                getActivity(), R.array.disciplines, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        s.setAdapter(adapter);
-//        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                rManager.chosenDisciplNumber = i;
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//            }
-//        });
-//
-//        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                rManager.asmFilter();
-//                rManager.getRecords();
-//            }
-//        });
+        LinearLayout sendingRequestView = new LinearLayout(getActivity());
+        sendingRequestView.setBackgroundColor(Color.BLACK);
+        TextView sendText = new TextView(getActivity());
+        sendText.setGravity(Gravity.CENTER);
+        sendingRequestView.addView(sendText, new LinearLayout.LayoutParams(220, 100));
+
+        sendText.setText(getString(R.string.sendingRequest));
+        progressDialog.setContentView(sendingRequestView);
+
+
+        filterView = (LinearLayout) tables.findViewById(R.id.ranking_filter);
+        recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
+
+        (filterView.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3")));
+            }
+        });
+        Spinner s = (Spinner) filterView.findViewById(R.id.discipline_spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                getActivity(), R.array.disciplines, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                rManager.chosenDisciplNumber = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        filterView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rManager.asmFilter();
+                rManager.getRecords();
+            }
+        });
     }
 
 
@@ -111,12 +115,21 @@ public final class RankingFragment extends Fragment {
 //        RankingActivity.this.finish();
     }
 
-
     public void showProgressDialog(boolean show) {
-//        if (show)
-//            progressDialog.show();
-//        else
-//            progressDialog.dismiss();
+        if (show)
+            progressDialog.show();
+        else
+            progressDialog.dismiss();
+    }
+
+    public void showFilter(boolean show) {
+        if (show) {
+            filterView.setVisibility(View.VISIBLE);
+            recordsView.setVisibility(View.GONE);
+        } else {
+            filterView.setVisibility(View.VISIBLE);
+            recordsView.setVisibility(View.GONE);
+        }
     }
 
 
