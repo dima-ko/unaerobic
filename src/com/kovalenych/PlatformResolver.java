@@ -39,7 +39,7 @@ public class PlatformResolver {
     }
 
     static public int getTableLayout() {
-            return R.layout.table;
+            return R.layout.cycles;
     }
 
     static public int getTableItemLayout() {

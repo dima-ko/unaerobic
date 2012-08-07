@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+        >
+    <ImageView
+            android:src="@drawable/nitsch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            />
+
+    <Button
+            android:id="@+id/add_cycle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/plus_action"
+
+            />
+    <Button
+            android:id="@+id/melody"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/muz_action"
+
+            />
+    <TextView
+            android:id="@+id/chosen_table_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/melody"
+            android:layout_toRightOf="@id/add_cycle"
+            android:textSize="30px"
+            android:textColor="#FF444444"
+            android:layout_marginBottom="20px"
+            android:gravity="center"
+            />
+
+    <ListView
+            android:id="@+id/cycles_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="30px"
+            android:layout_above="@id/add_cycle"
+            android:cacheColorHint="#00000000"
+
+
+            />
+    <TextView
+            android:id="@+id/holdtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20px"
+            android:text="@string/hold_time"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:padding="5px"
+            />
+    <TextView
+            android:id="@+id/breathtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20px"
+            android:text="@string/breathe_time"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:gravity="left"
+            android:padding="5px"
+            />
+
+
+</RelativeLayout>
+
