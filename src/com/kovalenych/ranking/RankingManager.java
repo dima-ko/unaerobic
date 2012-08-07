@@ -271,7 +271,7 @@ public class RankingManager {
     public void getRecords() {
         if (isTableExists(filter)) {
             readFromDB();
-            ((RankingActivity) context).scrollToList();
+//            ((RankingActivity) context).scrollToList();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -331,7 +331,7 @@ public class RankingManager {
                 mPullToRefreshListView.onRefreshComplete();
             else {
                 ((RankingActivity) context).showProgressDialog(false);
-                ((RankingActivity) context).scrollToList();
+//                ((RankingActivity) context).scrollToList();
             }
             // Call onRefreshComplete when the list has been refreshed.
 

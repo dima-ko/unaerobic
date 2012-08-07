@@ -22,7 +22,6 @@
                  android:name=".UnaeroApplication">
         <activity android:name=".MenuActivity"
                   android:label="@string/app_name"
-                  android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
                 >
             <intent-filter>
