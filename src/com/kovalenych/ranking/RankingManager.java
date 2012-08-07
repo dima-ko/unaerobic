@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Handler;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -15,7 +14,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.kovalenych.ArticleViewBinder;
+import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
 

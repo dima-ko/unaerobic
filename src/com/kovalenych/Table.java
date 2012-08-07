@@ -5,7 +5,7 @@ import com.kovalenych.tables.Cycle;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Table implements Serializable {
+public class Table implements Serializable {    //DO NOT CHANGE PACKAGE!!!  MUST BE com.kovalenych
 
     ArrayList<Cycle> cycles;
     ArrayList<Integer> voices;
