@@ -284,15 +284,8 @@ public class RankingManager {
         if (isTableExists(filter)) {
             readFromDB();
             parent.showFilter(false);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    invalidateList();
-                    refreshDateLabel();
-
-                }
-            }, 1000);
+            invalidateList();
+            refreshDateLabel();
         } else {
             if (parent.haveInternet())
                 getDataTask = new GetDataTask(false).execute();

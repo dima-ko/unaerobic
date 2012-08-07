@@ -99,6 +99,13 @@ public final class RankingFragment extends Fragment {
                 rManager.getRecords();
             }
         });
+
+        recordsView.findViewById(R.id.ranking_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFilter(true);
+            }
+        });
     }
 
     @Override
@@ -122,8 +129,8 @@ public final class RankingFragment extends Fragment {
             filterView.setVisibility(View.VISIBLE);
             recordsView.setVisibility(View.GONE);
         } else {
-            filterView.setVisibility(View.VISIBLE);
-            recordsView.setVisibility(View.GONE);
+            filterView.setVisibility(View.GONE);
+            recordsView.setVisibility(View.VISIBLE);
         }
     }
 

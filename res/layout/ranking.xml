@@ -104,11 +104,12 @@
     </LinearLayout>
     <RelativeLayout
             android:id="@+id/ranking_records"
+            android:visibility="gone"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent">
         <com.handmark.pulltorefresh.library.PullToRefreshListView
                 android:id="@+id/ranking_list"
-                android:visibility="gone"
+
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_alignParentTop="true"
@@ -117,8 +118,11 @@
                 android:cacheColorHint="#00000000"
                 />
         <Button
+                android:id="@+id/ranking_back"
+                android:layout_marginBottom="5pt"
+                android:layout_marginRight="5pt"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:text="Back"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
