@@ -1,123 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
         >
 
-    <HorizontalScrollView
-            android:id="@+id/scroll"
+    <LinearLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="#FF000000"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             >
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="fill_parent">
+        <TextView
+                android:text="powered by"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                />
 
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="10dp"
-                    android:gravity="center"
-                    android:background="#FF000000"
-                    android:layout_width="480px"
-                    android:layout_height="fill_parent"
-                    >
-                <TextView
-                        android:text="powered by"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        />
-
-                <LinearLayout
-                        android:background="@drawable/apneaczzz"
-                        android:layout_height="100px"
-                        android:layout_width="372px"
-                        />
+        <LinearLayout
+                android:background="@drawable/apneaczzz"
+                android:layout_height="100px"
+                android:layout_width="372px"
+                />
 
 
-                <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        >
-                    <ImageView
-                            android:id="@+id/disc_info"
-                            android:layout_width="50px"
-                            android:layout_height="50px"
-                            android:src="@drawable/infoblack"
-                            />
-                    <Spinner
-                            android:layout_marginTop="5px"
-                            android:id="@+id/discipline_spinner"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="5px"
-                            android:prompt="@string/disipline_prompt"
-                            />
-                </LinearLayout>
-                <!--<Spinner-->
-                <!--android:layout_marginTop="5px"-->
-                <!--android:id="@+id/discipline_spinner"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginRight="5px"-->
-                <!--/>-->
-                <!--<Spinner-->
-                <!--android:layout_marginTop="5px"-->
-                <!--android:id="@+id/discipline_spinner"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginRight="5px"-->
-                <!--/>-->
-                <!--<LinearLayout-->
-                <!--android:layout_height="80px"-->
-                <!--android:layout_width="fill_parent"-->
-                <!-->-->
-                <!--<TextView-->
-                <!--android:layout_marginLeft="30px"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="330px"-->
-                <!--android:text="women"-->
-
-                <!--/>-->
-                <!--<CheckBox android:layout_height="wrap_content"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--/>-->
-                <!--</LinearLayout>-->
-                <!--<LinearLayout-->
-                <!--android:layout_height="80px"-->
-                <!--android:layout_width="fill_parent"-->
-                <!-->-->
-                <!--<TextView-->
-                <!--android:layout_marginLeft="30px"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="330px"-->
-                <!--android:text="men"-->
-
-                <!--/>-->
-                <!--<CheckBox android:layout_height="wrap_content"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--/>-->
-                <!--</LinearLayout>-->
-
-                <Button
-                        android:id="@+id/sendButton"
-                        android:layout_marginTop="220px"
-                        android:text="Show"
-                        android:layout_height="wrap_content"
-                        android:layout_width="200px"
-                        />
-            </LinearLayout>
-            <com.handmark.pulltorefresh.library.PullToRefreshListView
-                    android:id="@+id/ranking_list"
-                    android:layout_width="480px"
-                    android:layout_height="fill_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="20px"
-                    android:cacheColorHint="#00000000"
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+            <ImageView
+                    android:id="@+id/disc_info"
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:src="@drawable/infoblack"
+                    />
+            <Spinner
+                    android:layout_marginTop="5px"
+                    android:id="@+id/discipline_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="5px"
+                    android:prompt="@string/disipline_prompt"
                     />
         </LinearLayout>
-    </HorizontalScrollView>
-</LinearLayout>
+        <!--<Spinner-->
+        <!--android:layout_marginTop="5px"-->
+        <!--android:id="@+id/discipline_spinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginRight="5px"-->
+        <!--/>-->
+        <!--<Spinner-->
+        <!--android:layout_marginTop="5px"-->
+        <!--android:id="@+id/discipline_spinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginRight="5px"-->
+        <!--/>-->
+        <!--<LinearLayout-->
+        <!--android:layout_height="80px"-->
+        <!--android:layout_width="fill_parent"-->
+        <!-->-->
+        <!--<TextView-->
+        <!--android:layout_marginLeft="30px"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="330px"-->
+        <!--android:text="women"-->
+
+        <!--/>-->
+        <!--<CheckBox android:layout_height="wrap_content"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--/>-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+        <!--android:layout_height="80px"-->
+        <!--android:layout_width="fill_parent"-->
+        <!-->-->
+        <!--<TextView-->
+        <!--android:layout_marginLeft="30px"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="330px"-->
+        <!--android:text="men"-->
+
+        <!--/>-->
+        <!--<CheckBox android:layout_height="wrap_content"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--/>-->
+        <!--</LinearLayout>-->
+
+        <Button
+                android:id="@+id/sendButton"
+                android:layout_marginTop="220px"
+                android:text="Show"
+                android:layout_height="wrap_content"
+                android:layout_width="200px"
+                />
+    </LinearLayout>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/ranking_list"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10pt"
+            android:cacheColorHint="#00000000"
+            />
+</RelativeLayout>

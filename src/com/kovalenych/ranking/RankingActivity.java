@@ -28,7 +28,6 @@ public class RankingActivity extends Activity {
 
     LinearLayout sendingRequestView;
     RankingManager rManager;
-    private HorizontalScrollView scrollView;
     private int screenWidth;
 
     @Override
@@ -40,29 +39,8 @@ public class RankingActivity extends Activity {
         setContentView(PlatformResolver.getRank());
 
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.ranking_list);
-        scrollView = (HorizontalScrollView) findViewById(R.id.scroll);
         rManager = new RankingManager(this, mPullRefreshListView);
         initFilterAndProgress();
-        scrollView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (scrollView.getScrollX() > screenWidth / 2)
-                                scrollView.smoothScrollBy(screenWidth, 0);
-                            else
-                                scrollView.smoothScrollBy(-screenWidth, 0);
-
-                        }
-                    }, 50);
-
-                    Log.d("scrollView", "zzzzzzzzzz" + motionEvent.toString());
-                }
-                return false;
-            }
-        });
     }
 
 
@@ -132,21 +110,6 @@ public class RankingActivity extends Activity {
             progressDialog.dismiss();
     }
 
-    public void scrollToList() {
-       // scrollView.smoothScrollTo(screenWidth/2, 0);
-
-        new CountDownTimer(1000, 10) {
-
-            public void onTick(long millisUntilFinished) {
-                scrollView.scrollTo((int) (((float)1000-millisUntilFinished)/1000*screenWidth), 0);
-
-            }
-
-            public void onFinish() {
-
-            }
-        }.start();
-    }
 
     public boolean haveInternet() {
         NetworkInfo info = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
