@@ -48,7 +48,7 @@ public final class RankingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View tables = inflater.inflate(R.layout.ranking, null);
         mPullRefreshListView = (PullToRefreshListView) tables.findViewById(R.id.ranking_list);
-        rManager = new RankingManager(getActivity(), mPullRefreshListView);
+        rManager = new RankingManager(getActivity(), this, mPullRefreshListView);
         initFilterAndProgress(tables);
         return tables;
     }
@@ -66,7 +66,6 @@ public final class RankingFragment extends Fragment {
 
         sendText.setText(getString(R.string.sendingRequest));
         progressDialog.setContentView(sendingRequestView);
-
 
         filterView = (LinearLayout) tables.findViewById(R.id.ranking_filter);
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
@@ -102,17 +101,13 @@ public final class RankingFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onDestroy() {
+        rManager.cancelTask();
+        rManager.packSavedTables();
+        rManager.closeDBHelpers();
 
-    public void onBackPressed() {
-//        rManager.cancelTask();
-//        rManager.packSavedTables();
-//        if (rManager.recodsDBHelper != null)
-//            rManager.recodsDBHelper.close();
-//
-//        if (rManager.requestsDBHelper != null)
-//            rManager.requestsDBHelper.close();
-//
-//        RankingActivity.this.finish();
+        super.onDestroy();
     }
 
     public void showProgressDialog(boolean show) {
@@ -131,7 +126,6 @@ public final class RankingFragment extends Fragment {
             recordsView.setVisibility(View.GONE);
         }
     }
-
 
     public boolean haveInternet() {
         NetworkInfo info = ((ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();

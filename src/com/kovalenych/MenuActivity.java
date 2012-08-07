@@ -12,7 +12,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MenuActivity extends FragmentActivity {
 
-    private static final String[] CONTENT = new String[]{"TABLES", "ARTICLES", "VIDEO", "RANKING"};
+    private static final String[] CONTENT = new String[]{"TABLES", "RANKING", "ARTICLES", "VIDEO"};
     protected TestFragmentAdapter mAdapter;
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
@@ -43,11 +43,11 @@ public class MenuActivity extends FragmentActivity {
                 case 0:
                     return TablesFragment.newInstance();
                 case 1:
-                    return ArticlesFragment.newInstance();
-                case 2:
-                    return VideoFragment.newInstance();
-                case 3:
                     return RankingFragment.newInstance();
+                case 2:
+                    return ArticlesFragment.newInstance();
+                case 3:
+                    return VideoFragment.newInstance();
             }
             return null;
         }

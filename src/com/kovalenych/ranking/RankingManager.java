@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import com.fragments.RankingFragment;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.media.ArticleViewBinder;
@@ -30,6 +31,7 @@ import java.util.*;
 
 public class RankingManager {
     private Context context;
+    private RankingFragment parent;
     private PullToRefreshListView mPullToRefreshListView;
     ListView lv;
     ArrayList<Record> recordsList;
@@ -47,10 +49,12 @@ public class RankingManager {
     private AsyncTask<Void, Void, String[]> getDataTask;
 
 
-    public RankingManager(Context Context, PullToRefreshListView pullToRefreshListView) {
+    public RankingManager(Context Context, final RankingFragment parent, PullToRefreshListView pullToRefreshListView) {
         this.context = Context;
+        this.parent = parent;
         this.mPullToRefreshListView = pullToRefreshListView;
         recordsList = new ArrayList<Record>();
+
 
         mDisciplinesArray = this.context.getResources().getStringArray(R.array.disciplines);
         mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
@@ -60,7 +64,7 @@ public class RankingManager {
 //                        System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
 //                        | DateUtils.FORMAT_ABBREV_ALL));
                 // Do work to refresh the list here.
-                if (((RankingActivity) context).haveInternet())
+                if (parent.haveInternet())
                     getDataTask = new GetDataTask(true).execute();
                 else {
                     Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
@@ -245,6 +249,14 @@ public class RankingManager {
 
     }
 
+    public void closeDBHelpers() {
+        if (recodsDBHelper != null)
+            recodsDBHelper.close();
+
+        if (requestsDBHelper != null)
+            requestsDBHelper.close();
+    }
+
     private Record extractRecoedFromString(String fullString) {
 
         int nameStartIndex = fullString.indexOf("<td>", 26) + 4;
@@ -271,7 +283,7 @@ public class RankingManager {
     public void getRecords() {
         if (isTableExists(filter)) {
             readFromDB();
-//            ((RankingActivity) context).scrollToList();
+            parent.showFilter(false);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -282,7 +294,7 @@ public class RankingManager {
                 }
             }, 1000);
         } else {
-            if (((RankingActivity) context).haveInternet())
+            if (parent.haveInternet())
                 getDataTask = new GetDataTask(false).execute();
             else
                 Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
@@ -307,7 +319,7 @@ public class RankingManager {
         @Override
         protected void onPreExecute() {
             if (!onPull)
-                ((RankingActivity) context).showProgressDialog(true);
+                parent.showProgressDialog(true);
         }
 
         @Override
@@ -330,8 +342,8 @@ public class RankingManager {
             if (onPull)
                 mPullToRefreshListView.onRefreshComplete();
             else {
-                ((RankingActivity) context).showProgressDialog(false);
-//                ((RankingActivity) context).scrollToList();
+                parent.showProgressDialog(false);
+                parent.showFilter(false);
             }
             // Call onRefreshComplete when the list has been refreshed.
 

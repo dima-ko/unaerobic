@@ -39,7 +39,7 @@ public class RankingActivity extends Activity {
         setContentView(PlatformResolver.getRank());
 
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.ranking_list);
-        rManager = new RankingManager(this, mPullRefreshListView);
+        rManager = new RankingManager(this, null, mPullRefreshListView);
         initFilterAndProgress();
     }
 
