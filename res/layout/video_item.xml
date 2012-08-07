@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
-              android:layout_height="100px"
+              android:layout_height="30pt"
               android:orientation="horizontal"
         >
     <ImageView
             android:id="@+id/video_image"
-            android:layout_width="130px"
-            android:layout_height="90px"
+            android:layout_width="43pt"
+            android:layout_height="29pt"
             />
     <TextView
-            android:layout_marginLeft="20px"
+            android:layout_marginLeft="6pt"
             android:id="@+id/video_text"
             android:layout_width="fill_parent"
-            android:layout_height="90px"
+            android:layout_height="29pt"
             />
 
 
