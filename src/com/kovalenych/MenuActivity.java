@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import com.fragments.*;
 import com.viewpagerindicator.PageIndicator;
@@ -13,7 +14,7 @@ import com.viewpagerindicator.TabPageIndicator;
 public class MenuActivity extends FragmentActivity {
 
     private static final String[] CONTENT = new String[]{"TABLES", "RANKING", "ARTICLES", "VIDEO"};
-    protected TestFragmentAdapter mAdapter;
+    protected FragmentPagerAdapter mAdapter;
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
 
@@ -31,7 +32,7 @@ public class MenuActivity extends FragmentActivity {
         mIndicator.setViewPager(mPager);
     }
 
-    class FreeDivingAdapter extends TestFragmentAdapter {
+    class FreeDivingAdapter extends FragmentPagerAdapter {
         public FreeDivingAdapter(FragmentManager fm) {
             super(fm);
         }
