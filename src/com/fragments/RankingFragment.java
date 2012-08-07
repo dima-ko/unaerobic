@@ -10,23 +10,23 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import com.kovalenych.R;
 import com.kovalenych.media.Article;
 import com.kovalenych.media.ArticleViewBinder;
-import com.kovalenych.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class ArticlesFragment extends Fragment {
+public final class RankingFragment extends Fragment {
 
     ListView lv;
     ArrayList<Article> artList;
 
-    public static ArticlesFragment newInstance() {
+    public static RankingFragment newInstance() {
 
-        return  new ArticlesFragment();
+        return  new RankingFragment();
     }
 
     @Override

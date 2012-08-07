@@ -1,23 +1,34 @@
-package com.kovalenych.media;
+package com.fragments;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.*;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.kovalenych.R;
+import com.kovalenych.media.Article;
+import com.kovalenych.media.ArticleViewBinder;
+import com.kovalenych.media.Video;
 import com.nostra13.universalimageloader.imageloader.DisplayImageOptions;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
 import com.nostra13.universalimageloader.imageloader.ImageLoadingListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class NostraVideoActivity extends Activity {
+public final class VideoFragment extends Fragment {
 
     private ArrayList<Video> videoList;
+
+    public static VideoFragment newInstance() {
+
+        return  new VideoFragment();
+    }
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
@@ -27,21 +38,24 @@ public class NostraVideoActivity extends Activity {
         }
     };
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         videoList = new ArrayList<Video>();
-        context = this;
         fillList();
-
-        setContentView(R.layout.videos);
-
-        ((ListView) findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
-        ((ListView) findViewById(R.id.video_list)).setOnItemClickListener(listener);
     }
 
-    Context context;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View tables = inflater.inflate(R.layout.videos, null);
+        ((ListView) tables.findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
+        ((ListView) tables.findViewById(R.id.video_list)).setOnItemClickListener(listener);
+
+        return tables;
+    }
+
 
 
     private void fillList() {
@@ -62,15 +76,10 @@ public class NostraVideoActivity extends Activity {
         videoList.add(new Video("Record mundial de apnea \"No Limits\" - Herbert Nitsch -214 m", "http://www.youtube.com/watch?v=WBNaGscqcyc"));
     }
 
-//    }
-
-
-
-
     public ImageLoader imageLoader = ImageLoader.getInstance();
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         imageLoader.stop();
         super.onDestroy();
     }
@@ -107,7 +116,7 @@ public class NostraVideoActivity extends Activity {
             View view = convertView;
             final ViewHolder holder;
             if (convertView == null) {
-                view = getLayoutInflater().inflate(R.layout.video_item, null);
+                view = getActivity().getLayoutInflater().inflate(R.layout.video_item, null);
                 holder = new ViewHolder();
                 holder.text = (TextView) view.findViewById(R.id.video_text);
                 holder.image = (ImageView) view.findViewById(R.id.video_image);
@@ -146,4 +155,5 @@ public class NostraVideoActivity extends Activity {
             return view;
         }
     }
+
 }
