@@ -2,18 +2,12 @@ package com.sample;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import android.widget.LinearLayout.LayoutParams;
-import com.kovalenych.Fonts;
-import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
 import com.kovalenych.tables.CyclesActivity;
 
@@ -21,27 +15,17 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
-public final class TestFragment extends Fragment {
-    private static final String KEY_CONTENT = "TestFragment:Content";
+public final class TablesFragment extends Fragment {
+    private static final String KEY_CONTENT = "TablesFragment:Content";
 
     Map<String, ?> mapa;                   //Table , file
     SharedPreferences _preferedTables;
     ArrayList<String> tableList;
 
-    public static TestFragment newInstance(String content) {
-        TestFragment fragment = new TestFragment();
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 20; i++) {
-            builder.append(content).append(" ");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        fragment.mContent = builder.toString();
-
-        return fragment;
+    public static TablesFragment newInstance() {
+        return new TablesFragment();
     }
 
-    private String mContent = "???";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,17 +34,12 @@ public final class TestFragment extends Fragment {
         _preferedTables = getActivity().getSharedPreferences("sharedTables", getActivity().MODE_PRIVATE);
         mapa = _preferedTables.getAll();
 
-        if ((savedInstanceState != null) && savedInstanceState.containsKey(KEY_CONTENT)) {
-            mContent = savedInstanceState.getString(KEY_CONTENT);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final ListView lv;
         View tables = inflater.inflate(R.layout.tables, null);
-//        Fonts.setFonts(Typeface.createFromAsset(getAssets(),
-//                "fonts/belligerent.ttf"));
 
         tableList = new ArrayList<String>();
         Set<String> tableSet = mapa.keySet();
@@ -121,9 +100,4 @@ public final class TestFragment extends Fragment {
         return tables;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(KEY_CONTENT, mContent);
-    }
 }

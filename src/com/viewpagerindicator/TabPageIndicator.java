@@ -253,7 +253,7 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         public TabView(Context context) {
             super(context, null);
             this.setBackgroundResource(R.drawable.vpi__tab_indicator);
-            this.setMinHeight(60);
+            this.setMinHeight(60);  //TODO: scale
             this.setGravity(Gravity.CENTER);
         }
 

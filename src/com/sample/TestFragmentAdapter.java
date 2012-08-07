@@ -15,7 +15,7 @@ public class TestFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+        return TablesFragment.newInstance(CONTENT[position % CONTENT.length]);
     }
 
     @Override

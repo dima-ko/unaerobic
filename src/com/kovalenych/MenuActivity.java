@@ -5,7 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import com.sample.TestFragment;
+import com.sample.MediaFragment;
+import com.sample.TablesFragment;
 import com.sample.TestFragmentAdapter;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
@@ -13,7 +14,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MenuActivity extends FragmentActivity {
 
-    private static final String[] CONTENT = new String[]{"Tables", "Videos", "Articles"};
+    private static final String[] CONTENT = new String[]{"TABLES", "MEDIA", "RANKING"};
     protected TestFragmentAdapter mAdapter;
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
@@ -39,7 +40,10 @@ public class MenuActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return TestFragment.newInstance(MenuActivity.CONTENT[position % MenuActivity.CONTENT.length]);
+            if (position == 1)
+                return MediaFragment.newInstance();
+            else
+                return TablesFragment.newInstance();
         }
 
         @Override
@@ -49,7 +53,7 @@ public class MenuActivity extends FragmentActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return MenuActivity.CONTENT[position % MenuActivity.CONTENT.length].toUpperCase();
+            return MenuActivity.CONTENT[position % MenuActivity.CONTENT.length];
         }
     }
 
