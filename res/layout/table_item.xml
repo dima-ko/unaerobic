@@ -6,8 +6,8 @@
            android:gravity="center"
            android:id="@+id/table_name"
            android:layout_width="fill_parent"
-           android:layout_height="100px"
-           android:textSize="40px"
+           android:layout_height="21pt"
+           android:textSize="10pt"
            android:background="#00000000"
 
 

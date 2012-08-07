@@ -5,10 +5,8 @@
         >
     <ImageView
             android:src="@drawable/nitsch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             />
 
     <ListView
@@ -17,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="30px"
+            android:layout_marginTop="10pt"
             android:cacheColorHint="#00000000"
             />
     <Button
@@ -27,6 +25,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/plus_action"
+            />
+
+    <Button
+            android:id="@+id/info_button"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/infoblack"
             />
 
 

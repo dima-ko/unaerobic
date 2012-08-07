@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.kovalenych.Fonts;
 import com.kovalenych.R;
 import com.kovalenych.tables.CyclesActivity;
 
@@ -16,7 +18,6 @@ import java.util.Map;
 import java.util.Set;
 
 public final class TablesFragment extends Fragment {
-    private static final String KEY_CONTENT = "TablesFragment:Content";
 
     Map<String, ?> mapa;                   //Table , file
     SharedPreferences _preferedTables;
@@ -38,8 +39,9 @@ public final class TablesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final ListView lv;
+
         View tables = inflater.inflate(R.layout.tables, null);
+        final ListView lv;
 
         tableList = new ArrayList<String>();
         Set<String> tableSet = mapa.keySet();
@@ -49,12 +51,12 @@ public final class TablesFragment extends Fragment {
         } else
             tableList.addAll(tableSet);
 
-//        initDialogs();
+        initDialogs();
 
-//        edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
-//        ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
-//        ok_button.setTypeface(Fonts.BELIGERENT);
-//        del_button = (Button) delDialog.findViewById(R.id.delete_button);
+        edit = (EditText) tables.findViewById(R.id.new_table_edit);
+        ok_button = (Button) tables.findViewById(R.id.new_table_ok);
+        ok_button.setTypeface(Fonts.BELIGERENT);
+        del_button = (Button) delDialog.findViewById(R.id.delete_button);
 
 
         lv = (ListView) tables.findViewById(R.id.tables_list);
@@ -75,21 +77,20 @@ public final class TablesFragment extends Fragment {
             }
         });
 
-//        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Log.d("onLongClick", "zzz");
-//                chosenTable = i;
-//                delDialog.show();
-//                return false;
-//            }
-//        });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("onLongClick", "zzz");
+                chosenTable = i;
+                delDialog.show();
+                return false;
+            }
+        });
 //
-//        add_button = (Button) findViewById(R.id.add_table);
-//
-////        info_button = (Button) findViewById(R.id.info);
-//
-//        setButtonListeners();
+        add_button = (Button) tables.findViewById(R.id.add_table);
+        info_button = (Button) tables.findViewById(R.id.info_button);
+
+        setButtonListeners();
 
 //        tracker = GoogleAnalyticsTracker.getInstance();
 //
