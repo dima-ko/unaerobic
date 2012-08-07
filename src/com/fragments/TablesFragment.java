@@ -1,4 +1,4 @@
-package com.sample;
+package com.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

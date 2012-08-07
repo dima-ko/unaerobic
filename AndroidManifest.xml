@@ -35,7 +35,6 @@
         <activity android:name=".tables.CyclesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".tables.ClockActivity" android:screenOrientation="landscape"
                   android:configChanges="orientation"/>
-        <activity android:name=".media.ArticlesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".media.NostraVideoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ranking.RankingActivity" android:screenOrientation="portrait"/>
     </application>

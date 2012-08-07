@@ -1,4 +1,4 @@
-package com.sample;
+package com.fragments;
 
 import android.support.v4.app.FragmentManager;
 

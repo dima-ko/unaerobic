@@ -25,7 +25,7 @@ public class ArticleViewBinder implements SimpleAdapter.ViewBinder {
             iv.setText((String) data);
 
             if (view.getId() == R.id.art_domain)
-                iv.setTextColor(0xFF8888FF);
+                iv.setTextColor(0xFF88DDFF);
 //            if (data.equals("No") || data.equals("from") || data.equals("who") || data.equals("result"))
 //                iv.setTextColor(0xFF44AAFF);
 

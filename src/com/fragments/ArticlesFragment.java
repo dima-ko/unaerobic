@@ -1,14 +1,17 @@
-package com.kovalenych.media;
+package com.fragments;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import com.kovalenych.media.Article;
+import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.R;
 
 import java.util.ArrayList;
@@ -16,26 +19,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ArticlesActivity extends Activity {
+public final class ArticlesFragment extends Fragment {
 
     ListView lv;
     ArrayList<Article> artList;
-    Context context;
+
+    public static ArticlesFragment newInstance() {
+
+        return  new ArticlesFragment();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         artList = new ArrayList<Article>();
-        context = this;
         fillList();
         // http://www.aidainternational.org/freediving/history
-        setContentView(R.layout.articles);
-//        setContentView(R.layout.ranking);
 
-        lv = (ListView) findViewById(R.id.articles_list);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View tables = inflater.inflate(R.layout.articles, null);
+        lv = (ListView) tables.findViewById(R.id.articles_list);
         lv.setOnItemClickListener(listener);
-
         invalidateList();
+
+        return tables;
     }
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
@@ -59,7 +70,7 @@ public class ArticlesActivity extends Activity {
 
     private void invalidateList() {
 
-        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), R.layout.article_item,
+        SimpleAdapter adapter = new SimpleAdapter(getActivity(), createCyclesList(), R.layout.article_item,
                 new String[]{"name", "author", "domain"},
                 new int[]{R.id.art_name, R.id.art_author, R.id.art_domain});
         adapter.setViewBinder(new ArticleViewBinder());
@@ -81,7 +92,5 @@ public class ArticlesActivity extends Activity {
 
         return items;
     }
-
-
 
 }
