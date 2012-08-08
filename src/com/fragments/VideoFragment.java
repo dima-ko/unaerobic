@@ -38,7 +38,7 @@ public final class VideoFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoList.get(i).getUri()));
                 startActivity(intent);
             } else {
-                Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectVid), Toast.LENGTH_SHORT).show();
             }
         }
     };

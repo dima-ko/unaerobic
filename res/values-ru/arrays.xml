@@ -1,9 +1,9 @@
 <resources>
     <string-array name="tabs">
-        <item>TABLES</item>
-        <item>RANKING</item>
-        <item>ARTICLES</item>
-        <item>VIDEO</item>
+        <item>ТАБЛИЦЫ</item>
+        <item>РЕКОРДЫ</item>
+        <item>СТАТЬИ</item>
+        <item>ВИДЕО</item>
     </string-array>
 
 

@@ -59,7 +59,7 @@ public final class ArticlesFragment extends Fragment {
 //                            Uri.parse("http://www.scubadivingplanet.com/articles/templates/general.asp?articleid=4&zoneid=1"));
                 startActivity(intent);
             } else {
-                Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectArt), Toast.LENGTH_SHORT).show();
             }
         }
     };

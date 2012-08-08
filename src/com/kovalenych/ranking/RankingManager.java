@@ -68,7 +68,7 @@ public class RankingManager {
                 if (((MenuActivity) parent.getActivity()).haveInternet())
                     getDataTask = new GetDataTask(true).execute();
                 else {
-                    Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
                     mPullToRefreshListView.onRefreshComplete();
                 }
             }
@@ -291,7 +291,7 @@ public class RankingManager {
             if (((MenuActivity) parent.getActivity()).haveInternet())
                 getDataTask = new GetDataTask(false).execute();
             else
-                Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, context.getString(R.string.noConnect), Toast.LENGTH_SHORT).show();
         }
 
     }

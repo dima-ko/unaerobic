@@ -42,5 +42,6 @@
     <string name="breath_s">aliento, s</string>
     <string name="breathe_time">aliento\n tiempo</string>
     <string name="hold_time">retraso\n tiempo</string>
+    <string name="show">Show</string>
 
 </resources>

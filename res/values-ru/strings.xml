@@ -41,9 +41,10 @@
     <string name="breathe_time">время\n дыхания</string>
     <string name="hold_time">время\n задержки</string>
     <string name="new_query">Новый запрос</string>
-    <string name="sendingRequest">скачивается ...</string>
+    <string name="sendingRequest">скачивается …</string>
     <string name="today">" сегодня"</string>
     <string name="updated">"обновлено: "</string>
+    <string name="show">Показать</string>
 
 
 </resources>

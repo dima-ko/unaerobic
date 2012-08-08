@@ -4,7 +4,7 @@
                 android:layout_height="fill_parent"
         >
     <ImageView
-            android:src="@drawable/nitsch"
+            android:background="@drawable/nitsch"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             />
@@ -22,17 +22,19 @@
             android:id="@+id/add_table"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35pt"
+            android:layout_height="35pt"
             android:background="@drawable/plus_action"
             />
 
     <Button
             android:id="@+id/info_button"
+            android:layout_marginBottom="3pt"
+            android:layout_marginLeft="3pt"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25pt"
+            android:layout_height="25pt"
             android:background="@drawable/infoblack"
             />
 

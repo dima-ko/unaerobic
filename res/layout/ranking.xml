@@ -97,7 +97,7 @@
         <Button
                 android:id="@+id/sendButton"
                 android:layout_marginTop="220px"
-                android:text="Show"
+                android:text="@string/show"
                 android:layout_height="wrap_content"
                 android:layout_width="200px"
                 />
@@ -118,14 +118,14 @@
                 android:cacheColorHint="#00000000"
                 />
         <Button
+                android:background="@drawable/arrow"
                 android:id="@+id/ranking_back"
                 android:layout_marginBottom="5pt"
                 android:layout_marginRight="5pt"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:text="Back"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_height="25pt"
+                android:layout_width="25pt"
                 />
     </RelativeLayout>
 </RelativeLayout>

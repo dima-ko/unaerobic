@@ -16,7 +16,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MenuActivity extends FragmentActivity {
 
-    private static final String[] CONTENT = new String[]{"TABLES", "RANKING", "ARTICLES", "VIDEO"};
+    private static String[] CONTENT ;
     protected FragmentPagerAdapter mAdapter;
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
@@ -24,6 +24,8 @@ public class MenuActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        CONTENT = getResources().getStringArray(R.array.tabs);
         setContentView(R.layout.simple_tabs);
 
         mAdapter = new FreeDivingAdapter(getSupportFragmentManager());
