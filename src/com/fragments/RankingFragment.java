@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
 import com.kovalenych.media.Article;
 import com.kovalenych.media.ArticleViewBinder;
@@ -73,7 +74,12 @@ public final class RankingFragment extends Fragment {
         (filterView.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3")));
+
+                if (((MenuActivity) getActivity()).haveInternet()) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.aida-international.org/aspportal1/code/page.asp?ObjectID=39&CountryID=4&actID=3")));
+                } else {
+                    Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectArt), Toast.LENGTH_SHORT).show();
+                }
             }
         });
         Spinner s = (Spinner) filterView.findViewById(R.id.discipline_spinner);

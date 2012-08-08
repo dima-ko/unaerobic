@@ -19,7 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/info_title"
-                android:textSize="30px"
+                android:textSize="13pt"
                 android:textColor="#FFFFFF"
                 android:layout_gravity="center_horizontal"
                 />
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/info"
-            android:textSize="17dp"
+            android:textSize="16dp"
             />
     <!--<Spinner-->
             <!--android:layout_marginTop="5px"-->
@@ -42,12 +42,12 @@
             <!--android:layout_gravity="center_horizontal"-->
             <!--/>-->
     <TextView
-            android:layout_marginTop="30px"
+            android:layout_marginTop="10pt"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/credits"
-            android:textSize="14px"
+            android:textSize="6pt"
             />
     <!--<ImageButton></ImageButton>-->       <!--donate-->
 

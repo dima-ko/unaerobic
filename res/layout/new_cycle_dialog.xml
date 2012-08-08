@@ -2,17 +2,18 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="horizontal"
-                android:layout_width="400px"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="10px"
+                android:padding="3pt"
                 android:gravity="right"
                 android:background="#FF000000"
+
         >
 
 
     <EditText android:id="@+id/breath_edit"
-              android:layout_width="185px"
-              android:layout_height="80px"
+              android:layout_width="55pt"
+              android:layout_height="wrap_content"
               android:singleLine="true"
               android:text="60"
               android:gravity="center"
@@ -20,8 +21,8 @@
               android:layout_alignParentLeft="true"
             />
     <EditText android:id="@+id/hold_edit"
-              android:layout_width="185px"
-              android:layout_height="80px"
+              android:layout_width="55pt"
+              android:layout_height="wrap_content"
               android:singleLine="true"
               android:text="60"
               android:inputType="number"
@@ -29,34 +30,38 @@
               android:layout_alignParentRight="true"
             />
 
-    <Button
-            android:id="@+id/new_cycle_ok"
-            android:background="#00000000"
-            android:layout_width="100px"
-            android:layout_height="80px"
-            android:text="OK"
-            android:textColor="#FFFFFFFF"
-            android:textSize="24px"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/breath_edit"
-            />
     <TextView
-            android:layout_width="110px"
-            android:layout_height="80px"
-            android:textSize="20px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="8pt"
             android:text="@string/breath_s"
             android:layout_below="@id/breath_edit"
             android:layout_alignParentLeft="true"
             />
     <TextView
-            android:layout_width="110px"
-            android:layout_height="80px"
-            android:textSize="20px"
+            android:id="@+id/labl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="8pt"
             android:text="@string/hold_s"
             android:gravity="right"
             android:layout_below="@id/hold_edit"
             android:layout_alignParentRight="true"
             />
+    <Button
+            android:id="@+id/new_cycle_ok"
+            android:background="#ff333333"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:textColor="#FFFFFFFF"
+            android:textSize="11pt"
+            android:padding="3pt"
+            android:layout_marginTop="3pt"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/labl"
+            />
+
 
 
 </RelativeLayout>
