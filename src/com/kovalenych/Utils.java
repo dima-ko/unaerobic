@@ -2,7 +2,10 @@ package com.kovalenych;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.DisplayMetrics;
 
@@ -39,6 +42,7 @@ public class Utils {
         scale = activity.getResources().getDisplayMetrics().density;
 
     }
+
 
     public static int dpToPix(float dips) {
 

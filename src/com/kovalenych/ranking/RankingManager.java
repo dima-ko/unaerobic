@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.fragments.RankingFragment;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.kovalenych.MenuActivity;
 import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
@@ -64,7 +65,7 @@ public class RankingManager {
 //                        System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE
 //                        | DateUtils.FORMAT_ABBREV_ALL));
                 // Do work to refresh the list here.
-                if (parent.haveInternet())
+                if (((MenuActivity) parent.getActivity()).haveInternet())
                     getDataTask = new GetDataTask(true).execute();
                 else {
                     Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
@@ -287,7 +288,7 @@ public class RankingManager {
             invalidateList();
             refreshDateLabel();
         } else {
-            if (parent.haveInternet())
+            if (((MenuActivity) parent.getActivity()).haveInternet())
                 getDataTask = new GetDataTask(false).execute();
             else
                 Toast.makeText(context, context.getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();

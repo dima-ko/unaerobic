@@ -134,17 +134,7 @@ public final class RankingFragment extends Fragment {
         }
     }
 
-    public boolean haveInternet() {
-        NetworkInfo info = ((ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        if (info == null || !info.isConnected()) {
-            return false;
-        }
-        if (info.isRoaming()) {
-            // here is the roaming option you can change it if you want to disable internet while roaming, just return false
-            return true;
-        }
-        return true;
-    }
+
 
 
 }

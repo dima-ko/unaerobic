@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
 import com.kovalenych.media.Article;
 import com.kovalenych.media.ArticleViewBinder;
@@ -33,8 +34,12 @@ public final class VideoFragment extends Fragment {
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoList.get(i).getUri()));
-            startActivity(intent);
+            if (((MenuActivity) getActivity()).haveInternet()) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoList.get(i).getUri()));
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
@@ -143,7 +148,7 @@ public final class VideoFragment extends Fragment {
 
                 @Override
                 public void onLoadingFailed() {
-                    holder.text.setText("Error!");
+                    holder.text.setText("No connection");
                 }
 
                 @Override

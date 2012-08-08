@@ -1,5 +1,8 @@
 package com.kovalenych;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -30,6 +33,19 @@ public class MenuActivity extends FragmentActivity {
 
         mIndicator = (TabPageIndicator) findViewById(R.id.indicator);
         mIndicator.setViewPager(mPager);
+    }
+
+
+    public boolean haveInternet() {
+        NetworkInfo info = ((ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        if (info == null || !info.isConnected()) {
+            return false;
+        }
+        if (info.isRoaming()) {
+            // here is the roaming option you can change it if you want to disable internet while roaming, just return false
+            return true;
+        }
+        return true;
     }
 
     class FreeDivingAdapter extends FragmentPagerAdapter {

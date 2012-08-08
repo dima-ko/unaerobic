@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
+import com.kovalenych.MenuActivity;
 import com.kovalenych.media.Article;
 import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.R;
@@ -26,7 +28,7 @@ public final class ArticlesFragment extends Fragment {
 
     public static ArticlesFragment newInstance() {
 
-        return  new ArticlesFragment();
+        return new ArticlesFragment();
     }
 
     @Override
@@ -52,9 +54,13 @@ public final class ArticlesFragment extends Fragment {
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(artList.get(i).getUri()));
+            if (((MenuActivity) getActivity()).haveInternet()) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(artList.get(i).getUri()));
 //                            Uri.parse("http://www.scubadivingplanet.com/articles/templates/general.asp?articleid=4&zoneid=1"));
-            startActivity(intent);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectRank), Toast.LENGTH_SHORT).show();
+            }
         }
     };
 

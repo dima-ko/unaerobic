@@ -17,6 +17,7 @@
 package com.viewpagerindicator;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -252,9 +253,9 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
 
         public TabView(Context context) {
             super(context, null);
+            this.setTextColor(Color.WHITE);
             this.setBackgroundResource(R.drawable.vpi__tab_indicator);
             this.setPadding(0,15,0,15);  //TODO: scale
-//            this.setMinHeight(60);  //TODO: scale
             this.setGravity(Gravity.CENTER);
         }
 
