@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -17,7 +16,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.media.ArticleViewBinder;
-import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
 
 import java.io.BufferedReader;
@@ -104,7 +102,7 @@ public class RankingManager {
 
     public void invalidateList() {
 
-        SimpleAdapter adapter = new SimpleAdapter(context, createCyclesList(), PlatformResolver.getRecordItemLayout(),
+        SimpleAdapter adapter = new SimpleAdapter(context, createCyclesList(), R.layout.record_item,
                 new String[]{"place", "flag", "name", "result"},
                 new int[]{R.id.ranking_place, R.id.ranking_country, R.id.ranking_name_surname, R.id.ranking_result});
         adapter.setViewBinder(new ArticleViewBinder());

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.*;
 import com.kovalenych.Fonts;
-import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
 import com.kovalenych.Table;
 
@@ -48,7 +47,7 @@ public class CyclesActivity extends Activity implements Soundable {
 
 
         unPackTable();
-        setContentView(PlatformResolver.getTableLayout());
+        setContentView(R.layout.cycles);
 
         initViews();
 
@@ -73,7 +72,7 @@ public class CyclesActivity extends Activity implements Soundable {
         newDialog = new Dialog(ptr);
         newDialog.setTitle(getResources().getString(R.string.new_cycle));
         newDialog.setCancelable(true);
-        newDialog.setContentView(PlatformResolver.getNewCycleDialogLayout());
+        newDialog.setContentView(R.layout.new_cycle_dialog);
 
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
@@ -99,7 +98,7 @@ public class CyclesActivity extends Activity implements Soundable {
 
     private void invalidateList() {
 
-        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), PlatformResolver.getTableItemLayout(),
+        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), R.layout.cycle_item,
                 new String[]{"text"},
                 new int[]{R.id.table_name});
 
@@ -243,7 +242,7 @@ public class CyclesActivity extends Activity implements Soundable {
                 voiceDialog = new Dialog(ptr);
                 voiceDialog.setCancelable(true);
                 voiceDialog.setTitle(getResources().getString(R.string.voices));
-                voiceDialog.setContentView(PlatformResolver.getVoicesLayout());
+                voiceDialog.setContentView(R.layout.voice);
                 setVoiceRadios();
                 voiceDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override

@@ -43,7 +43,7 @@ public final class TablesFragment extends Fragment {
 
         _preferedTables = getActivity().getSharedPreferences("sharedTables", getActivity().MODE_PRIVATE);
         mapa = _preferedTables.getAll();
-
+                        //TODO dont work tables saving
     }
 
     @Override

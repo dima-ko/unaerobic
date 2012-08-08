@@ -30,10 +30,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".tables.TablesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".tables.CyclesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".tables.ClockActivity" android:screenOrientation="landscape"
                   android:configChanges="orientation"/>
-        <activity android:name=".ranking.RankingActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest> 

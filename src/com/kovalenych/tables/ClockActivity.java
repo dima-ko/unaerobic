@@ -15,7 +15,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.kovalenych.Fonts;
-import com.kovalenych.PlatformResolver;
 import com.kovalenych.R;
 import com.kovalenych.Table;
 
@@ -75,14 +74,14 @@ public class ClockActivity extends Activity implements Soundable {
         position = bun.getInt("number");
         vibrationEnabled = bun.getBoolean("vibro");
         voices = bun.getIntegerArrayList("voices");
-        setContentView(PlatformResolver.getClocksLayout());
+        setContentView(R.layout.clocks);
 
         curCycle = table.getCycles().get(position);
 
 
         initViews();
 
-        startCycle();
+        startCycle();    //TODO: service that shows in status bar
 
     }
 
