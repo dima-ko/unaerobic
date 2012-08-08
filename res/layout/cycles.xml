@@ -4,11 +4,11 @@
                 android:layout_height="fill_parent"
         >
     <ImageView
-            android:src="@drawable/nitsch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:background="@drawable/nitsch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             />
 
     <Button
@@ -36,9 +36,9 @@
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@id/melody"
             android:layout_toRightOf="@id/add_cycle"
-            android:textSize="30px"
+            android:textSize="15pt"
             android:textColor="#FF444444"
-            android:layout_marginBottom="20px"
+            android:layout_marginBottom="10pt"
             android:gravity="center"
             />
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="30px"
+            android:layout_marginTop="10pt"
             android:layout_above="@id/add_cycle"
             android:cacheColorHint="#00000000"
 
@@ -58,23 +58,23 @@
             android:id="@+id/holdtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20px"
+            android:textSize="8pt"
             android:text="@string/hold_time"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:gravity="right"
-            android:padding="5px"
+            android:padding="2pt"
             />
     <TextView
             android:id="@+id/breathtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20px"
+            android:textSize="8pt"
             android:text="@string/breathe_time"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:gravity="left"
-            android:padding="5px"
+            android:padding="2pt"
             />
 
 

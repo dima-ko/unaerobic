@@ -27,7 +27,7 @@ import java.util.Map;
 public final class RankingFragment extends Fragment {
 
     PullToRefreshListView mPullRefreshListView;
-    LinearLayout filterView;
+    RelativeLayout filterView;
     RelativeLayout recordsView;
     private Dialog progressDialog;
 
@@ -67,7 +67,7 @@ public final class RankingFragment extends Fragment {
         sendText.setText(getString(R.string.sendingRequest));
         progressDialog.setContentView(sendingRequestView);
 
-        filterView = (LinearLayout) tables.findViewById(R.id.ranking_filter);
+        filterView = (RelativeLayout) tables.findViewById(R.id.ranking_filter);
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
 
         (filterView.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
