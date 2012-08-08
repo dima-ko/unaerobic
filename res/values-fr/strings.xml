@@ -7,4 +7,7 @@
     <string name="heart">Cœur</string>
     <string name="tables">Tableaux</string>
     <string name="show">Show</string>
+    <string name="discipline">Discipline:</string>
+    <string name="disc_hint">Don\'t know what is it? Click</string>
+    <string name="here">here</string>
 </resources>

@@ -43,5 +43,8 @@
     <string name="breathe_time">aliento\n tiempo</string>
     <string name="hold_time">retraso\n tiempo</string>
     <string name="show">Show</string>
+    <string name="discipline">Discipline:</string>
+    <string name="disc_hint">Don\'t know what is it? Click</string>
+    <string name="here">here</string>
 
 </resources>
