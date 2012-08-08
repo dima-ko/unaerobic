@@ -4,7 +4,7 @@
                 android:layout_height="fill_parent"
         >
 
-    <LinearLayout
+    <RelativeLayout
             android:id="@+id/ranking_filter"
             android:orientation="vertical"
             android:padding="10dp"
@@ -14,35 +14,41 @@
             android:layout_height="fill_parent"
             >
         <TextView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/powered"
                 android:text="powered by"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 />
 
         <LinearLayout
+                android:layout_centerHorizontal="true"
+                android:id="@+id/apneacz"
+                android:layout_below="@id/powered"
                 android:background="@drawable/apneaczzz"
                 android:layout_height="20pt"
                 android:layout_width="80pt"
                 />
 
 
-        <RelativeLayout
-                android:layout_marginTop="10pt"
-                android:layout_width="fill_parent"
+        <LinearLayout
+                android:layout_centerHorizontal="true"
+                android:id="@+id/diciplebar"
+                android:layout_below="@id/apneacz"
+                android:layout_marginTop="5pt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 >
 
             <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true"
                     android:textSize="10pt"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/discipline"
                     />
             <Spinner
-                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="8pt"
                     android:layout_marginTop="2pt"
                     android:id="@+id/discipline_spinner"
                     android:layout_width="wrap_content"
@@ -51,20 +57,22 @@
                     android:layout_marginRight="3pt"
                     android:prompt="@string/disipline_prompt"
                     />
-        </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/diciplebar"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 >
             <TextView
-                    android:textSize="8pt"
+                    android:textSize="6pt"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/disc_hint"
                     />
             <TextView
-                    android:textSize="8pt"
+                    android:textSize="7pt"
                     android:textColor="#FF8855FF"
                     android:id="@+id/disc_info"
                     android:layout_height="wrap_content"
@@ -120,13 +128,15 @@
         <!--</LinearLayout>-->
 
         <Button
+                android:layout_marginBottom="4pt"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:id="@+id/sendButton"
-                android:layout_marginTop="220px"
                 android:text="@string/show"
                 android:layout_height="wrap_content"
-                android:layout_width="200px"
+                android:layout_width="90pt"
                 />
-    </LinearLayout>
+    </RelativeLayout>
     <RelativeLayout
             android:id="@+id/ranking_records"
             android:visibility="gone"

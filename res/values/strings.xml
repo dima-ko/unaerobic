@@ -205,7 +205,7 @@
     </string>
     <string name="show">Show</string>
     <string name="discipline">Discipline:</string>
-    <string name="disc_hint">Don\'t know what is it? Click</string>
+    <string name="disc_hint">Don\'t know what is it? Click \t</string>
     <string name="here">here</string>
 
 
