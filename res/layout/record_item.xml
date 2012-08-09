@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
-              android:layout_height="60px"
-              android:padding="5px"
+              android:layout_height="25pt"
+              android:weightSum="20"
         >
     <TextView
             android:id="@+id/ranking_place"
-            android:layout_width="40px"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:textSize="22px"
+            android:textSize="10pt"
+            android:layout_weight="2"
             />
     <TextView
             android:id="@+id/ranking_name_surname"
-            android:layout_width="260px"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:textSize="22px"
+            android:textSize="10pt"
+            android:layout_weight="10"
             />
     <TextView
             android:id="@+id/ranking_result"
-            android:layout_width="120px"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:textSize="22px"
+            android:textSize="10pt"
+            android:layout_weight="4"
             />
     <TextView
             android:id="@+id/ranking_country"
-            android:layout_width="60px"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:textSize="22px"
+            android:textSize="10pt"
+            android:layout_weight="4"
             />
 
 </LinearLayout>

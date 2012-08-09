@@ -80,9 +80,6 @@ public class CyclesActivity extends Activity implements Soundable {
         ok_button.setTypeface(Fonts.BELIGERENT);
 
         lv = (ListView) findViewById(R.id.cycles_list);
-//        lv.setTextFilterEnabled(true);
-//        lv.setAdapter(new ArrayAdapter<String>(this, R.layout.cycle_item, stringList));
-//        lv.setVisibility(View.VISIBLE);
 
         invalidateList();
 
@@ -98,27 +95,14 @@ public class CyclesActivity extends Activity implements Soundable {
 
     private void invalidateList() {
 
-        SimpleAdapter adapter = new SimpleAdapter(this, createCyclesList(), R.layout.cycle_item,
-                new String[]{"text"},
-                new int[]{R.id.table_name});
-
-        adapter.setViewBinder(new TableViewBinder(Fonts.BELIGERENT));
+        ArrayList<Cycle> cycles = curTable.getCycles();
+        Cycle[] cyclesArray = new Cycle[cycles.size()];
+        cycles.toArray(cyclesArray);
+        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, cyclesArray);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
 
-    private List<? extends Map<String, ?>> createCyclesList() {
-
-        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
-
-        for (int i = 0; i < curTable.getCycles().size(); i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("text", curTable.getCycles().get(i).convertToString());
-            items.add(map);
-        }
-
-        return items;
-    }
 
     @Override
     protected void onPause() {
@@ -173,8 +157,7 @@ public class CyclesActivity extends Activity implements Soundable {
         } catch (IOException
                 ex) {
             Log.d(LOG_TAG, "Error parsing file");
-        }
-        catch (ClassNotFoundException
+        } catch (ClassNotFoundException
                 ex) {
             Log.d(LOG_TAG, "Error class not found");
         }
