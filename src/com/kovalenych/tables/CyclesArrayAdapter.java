@@ -21,30 +21,16 @@ public class CyclesArrayAdapter extends ArrayAdapter<Cycle> {
         this.cycles = cycles;
     }
 
-    // Класс для сохранения во внешний класс и для ограничения доступа
-    // из потомков класса
-    static class ViewHolder {
-        public TextView dataView;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // ViewHolder буферизирует оценку различных полей шаблона элемента
 
-        ViewHolder holder;
-        // Очищает сущетсвующий шаблон, если параметр задан
-        // Работает только если базовый шаблон для всех классов один и тот же
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
                 rowView = inflater.inflate(R.layout.cycle_item, null, true);
-            holder = new ViewHolder();
-            holder.dataView = (TextView) rowView.findViewById(R.id.cycle_item);
-            rowView.setTag(holder);
-            holder.dataView.setText(cycles[position].convertToString());
-        } else {
-            holder = (ViewHolder) rowView.getTag();
         }
+       ((TextView) rowView.findViewById(R.id.cycle_item)).setText(cycles[position].convertToString());
 
         return rowView;
     }

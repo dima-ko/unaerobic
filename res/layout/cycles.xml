@@ -15,8 +15,8 @@
             android:id="@+id/add_cycle"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35pt"
+            android:layout_height="35pt"
             android:background="@drawable/plus_action"
 
             />

@@ -16,10 +16,15 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MenuActivity extends FragmentActivity {
 
-    private static String[] CONTENT ;
+    private static String[] CONTENT;
+    public static final int TABLE_TAB = 0;
+    public static final int RANK_TAB = 1;
+    public static final int ART_TAB = 2;
+    public static final int VIDEO_TAB = 3;
     protected FragmentPagerAdapter mAdapter;
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
+    public int curTab = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,20 @@ public class MenuActivity extends FragmentActivity {
 
         mIndicator = (TabPageIndicator) findViewById(R.id.indicator);
         mIndicator.setViewPager(mPager);
+        mIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+                curTab = i;
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+            }
+        });
     }
 
 
@@ -61,13 +80,13 @@ public class MenuActivity extends FragmentActivity {
         public Fragment getItem(int position) {
 
             switch (position) {
-                case 0:
+                case TABLE_TAB:
                     return TablesFragment.newInstance();
-                case 1:
+                case RANK_TAB:
                     return RankingFragment.newInstance();
-                case 2:
+                case ART_TAB:
                     return ArticlesFragment.newInstance();
-                case 3:
+                case VIDEO_TAB:
                     return VideoFragment.newInstance();
             }
             return null;
@@ -84,4 +103,10 @@ public class MenuActivity extends FragmentActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (curTab == RANK_TAB) {
+        } else
+            super.onBackPressed();
+    }
 }
