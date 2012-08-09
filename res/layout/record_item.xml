@@ -8,32 +8,36 @@
             android:id="@+id/ranking_place"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:textSize="10pt"
-            android:layout_weight="2"
+            android:textSize="5pt"
+            android:layout_weight="1"
             android:background="#ff123345"
+            android:gravity="center"
             />
     <TextView
             android:id="@+id/ranking_name_surname"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:textSize="12pt"
+            android:textSize="7pt"
             android:layout_weight="10"
             android:background="#ff128675"
+            android:gravity="center"
             />
     <TextView
             android:id="@+id/ranking_result"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:textSize="10pt"
-            android:layout_weight="4"
+            android:textSize="7pt"
+            android:layout_weight="3"
             android:background="#ff123431"
+            android:gravity="center"
             />
     <TextView
             android:id="@+id/ranking_country"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:textSize="10pt"
-            android:layout_weight="4"
+            android:textSize="7pt"
+            android:layout_weight="3"
+            android:gravity="center"
             />
 
 </LinearLayout>

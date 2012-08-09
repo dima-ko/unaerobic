@@ -49,7 +49,7 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
             holder.resultView = (TextView) rowView.findViewById(R.id.ranking_result);
             holder.countryView = (TextView) rowView.findViewById(R.id.ranking_country);
             rowView.setTag(holder);
-            holder.placeView.setText(position+"");
+            holder.placeView.setText((position+1)+"");
             holder.nameView.setText(records.get(position).getName());
             holder.resultView.setText(records.get(position).getResult());
             holder.countryView.setText(records.get(position).getCountry());
