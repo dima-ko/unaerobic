@@ -136,6 +136,18 @@
                 android:layout_height="wrap_content"
                 android:layout_width="90pt"
                 />
+
+        <ProgressBar
+                android:visibility="gone"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_centerInParent="true"
+                android:id="@+id/sending_prog"
+                android:layout_height="35pt"
+                android:layout_width="fill_parent"
+                android:padding="5pt"
+                android:max="200"
+                />
+
     </RelativeLayout>
     <RelativeLayout
             android:id="@+id/ranking_records"

@@ -25,6 +25,8 @@ public class MenuActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Utils.resolvePlatform(this);
+
         CONTENT = getResources().getStringArray(R.array.tabs);
         setContentView(R.layout.simple_tabs);
 

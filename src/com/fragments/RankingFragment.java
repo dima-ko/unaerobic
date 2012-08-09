@@ -12,6 +12,7 @@ import android.widget.*;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
+import com.kovalenych.Utils;
 import com.kovalenych.ranking.RankingManager;
 
 public final class RankingFragment extends Fragment {
@@ -19,7 +20,6 @@ public final class RankingFragment extends Fragment {
     PullToRefreshListView mPullRefreshListView;
     RelativeLayout filterView;
     RelativeLayout recordsView;
-    private Dialog progressDialog;   //TODO: make geometric increasing progress
     ProgressBar progressBar;
     RankingManager rManager;
 
@@ -44,19 +44,13 @@ public final class RankingFragment extends Fragment {
     }
 
     private void initFilterAndProgress(View tables) {
-        progressDialog = new Dialog(getActivity());
-        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        progressDialog.setCancelable(true);
 
-        LinearLayout sendingRequestView = new LinearLayout(getActivity());
-        sendingRequestView.setBackgroundColor(Color.BLACK);
-        progressBar = new ProgressBar(getActivity(),null, android.R.attr.progressBarStyleHorizontal);
-        progressBar.setMax(200);
-        sendingRequestView.addView(progressBar, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 80));
-        progressDialog.setContentView(sendingRequestView);
+
 
         filterView = (RelativeLayout) tables.findViewById(R.id.ranking_filter);
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
+
+        progressBar = (ProgressBar) filterView.findViewById(R.id.sending_prog);
 
         (filterView.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,12 +108,12 @@ public final class RankingFragment extends Fragment {
 
     public void showProgressDialog(boolean show) {
         if (show) {
-            progressDialog.show();
+            progressBar.setVisibility(View.VISIBLE);
             task = new ProgressTask();
             task.execute();
         } else {
             task.cancel(true);
-            progressDialog.dismiss();
+            progressBar.setVisibility(View.GONE);
         }
     }
 
@@ -140,9 +134,9 @@ public final class RankingFragment extends Fragment {
             int incr = 0;
             while (!isCancelled()) {
                 publishProgress(incr);
-                incr += 4;
+                incr += 2;
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
