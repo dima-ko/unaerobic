@@ -136,7 +136,7 @@ public final class RankingFragment extends Fragment {
                 publishProgress(incr);
                 incr += 2;
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(101);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
