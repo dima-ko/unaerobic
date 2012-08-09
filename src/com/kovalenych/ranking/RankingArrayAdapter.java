@@ -14,10 +14,10 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
     private Record[] records;
 
 
-    public RankingArrayAdapter(Activity context, Record[] cycles) {
-        super(context, R.layout.record_item, cycles);
+    public RankingArrayAdapter(Activity context, Record[] records) {
+        super(context, R.layout.record_item, records);
         this.context = context;
-        this.records = cycles;
+        this.records = records;
     }
 
 

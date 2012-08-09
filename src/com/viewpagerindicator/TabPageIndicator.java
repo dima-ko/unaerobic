@@ -255,7 +255,7 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
             super(context, null);
             this.setTextColor(Color.WHITE);
             this.setBackgroundResource(R.drawable.vpi__tab_indicator);
-            this.setPadding(0,15,0,15);  //TODO: scale
+            this.setPadding(0,15,0,15);
             this.setGravity(Gravity.CENTER);
         }
 

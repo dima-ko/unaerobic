@@ -17,6 +17,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.R;
+import com.kovalenych.tables.Cycle;
+import com.kovalenych.tables.CyclesArrayAdapter;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -77,31 +79,33 @@ public class RankingManager {
     }
 
 
-    private List<? extends Map<String, ?>> createCyclesList() {
-
-        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
-
-        Map<String, Object> titleMap = new HashMap<String, Object>();
-        titleMap.put("place", "");
-        titleMap.put("flag", "from");
-        titleMap.put("name", "who");                                     //TODO: localize
-        titleMap.put("result", "result");
-        items.add(titleMap);
-
-        for (int i = 0; i < recordsList.size(); i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("place", i + 1);                              //TODO: more info in landscape mode
-            map.put("flag", recordsList.get(i).getCountry());
-            map.put("name", recordsList.get(i).getName());
-            map.put("result", recordsList.get(i).getResult());
-            items.add(map);
-        }
-
-        return items;
-    }
+//    private List<? extends Map<String, ?>> createCyclesList() {
+//
+//        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
+//
+//        Map<String, Object> titleMap = new HashMap<String, Object>();
+//        titleMap.put("place", "");
+//        titleMap.put("flag", "from");
+//        titleMap.put("name", "who");                                     //TODO: localize
+//        titleMap.put("result", "result");
+//        items.add(titleMap);
+//
+//        for (int i = 0; i < recordsList.size(); i++) {
+//            Map<String, Object> map = new HashMap<String, Object>();
+//            map.put("place", i + 1);                              //TODO: more info in landscape mode
+//            map.put("flag", recordsList.get(i).getCountry());
+//            map.put("name", recordsList.get(i).getName());
+//            map.put("result", recordsList.get(i).getResult());
+//            items.add(map);
+//        }
+//
+//        return items;
+//    }
 
     public void invalidateList() {
-
+        Record[] recordsArray = new Record[recordsList.size()];
+        recordsList.toArray(recordsArray);
+        RankingArrayAdapter adapter = new RankingArrayAdapter((MenuActivity)context, recordsArray);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
 
