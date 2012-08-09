@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
@@ -19,7 +20,7 @@ public final class RankingFragment extends Fragment {
     RelativeLayout filterView;
     RelativeLayout recordsView;
     private Dialog progressDialog;   //TODO: make geometric increasing progress
-
+    ProgressBar progressBar;
     RankingManager rManager;
 
     public static RankingFragment newInstance() {
@@ -49,11 +50,9 @@ public final class RankingFragment extends Fragment {
 
         LinearLayout sendingRequestView = new LinearLayout(getActivity());
         sendingRequestView.setBackgroundColor(Color.BLACK);
-        TextView sendText = new TextView(getActivity());
-        sendText.setGravity(Gravity.CENTER);
-        sendingRequestView.addView(sendText, new LinearLayout.LayoutParams(220, 100));
-
-        sendText.setText(getString(R.string.sendingRequest));
+        progressBar = new ProgressBar(getActivity(),null, android.R.attr.progressBarStyleHorizontal);
+        progressBar.setMax(200);
+        sendingRequestView.addView(progressBar, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 80));
         progressDialog.setContentView(sendingRequestView);
 
         filterView = (RelativeLayout) tables.findViewById(R.id.ranking_filter);
@@ -111,11 +110,17 @@ public final class RankingFragment extends Fragment {
         super.onDestroy();
     }
 
+    ProgressTask task;
+
     public void showProgressDialog(boolean show) {
-        if (show)
+        if (show) {
             progressDialog.show();
-        else
+            task = new ProgressTask();
+            task.execute();
+        } else {
+            task.cancel(true);
             progressDialog.dismiss();
+        }
     }
 
     public void showFilter(boolean show) {
@@ -128,7 +133,28 @@ public final class RankingFragment extends Fragment {
         }
     }
 
+    class ProgressTask extends AsyncTask<Void, Integer, Void> {
 
+        @Override
+        protected Void doInBackground(Void... voids) {
+            int incr = 0;
+            while (!isCancelled()) {
+                publishProgress(incr);
+                incr += 4;
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            progressBar.setProgress(values[0]);
+        }
+    }
 
 
 }

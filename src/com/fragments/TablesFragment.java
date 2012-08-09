@@ -136,6 +136,7 @@ public final class TablesFragment extends Fragment {
         delDialog.setContentView(R.layout.delete_dialog);
 
         newDialog = new Dialog(getActivity());
+        newDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         newDialog.setTitle(getResources().getString(R.string.new_table));
         newDialog.setCancelable(true);
         newDialog.setContentView(R.layout.new_table_dialog);
