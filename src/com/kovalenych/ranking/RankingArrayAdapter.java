@@ -9,12 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.kovalenych.R;
 
+import java.util.ArrayList;
+
 public class RankingArrayAdapter extends ArrayAdapter<Record> {
     private final Activity context;
-    private Record[] records;
+    private ArrayList<Record> records;
 
 
-    public RankingArrayAdapter(Activity context, Record[] records) {
+    public RankingArrayAdapter(Activity context, ArrayList<Record> records) {
         super(context, R.layout.record_item, records);
         this.context = context;
         this.records = records;
@@ -47,10 +49,10 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
             holder.resultView = (TextView) rowView.findViewById(R.id.ranking_result);
             holder.countryView = (TextView) rowView.findViewById(R.id.ranking_country);
             rowView.setTag(holder);
-            holder.placeView.setText(position);
-            holder.nameView.setText(records[position].getName());
-            holder.resultView.setText(records[position].getResult());
-            holder.countryView.setText(records[position].getCountry());
+            holder.placeView.setText(position+"");
+            holder.nameView.setText(records.get(position).getName());
+            holder.resultView.setText(records.get(position).getResult());
+            holder.countryView.setText(records.get(position).getCountry());
         } else {
             holder = (ViewHolder) rowView.getTag();
         }

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="25pt"
-              android:weightSum="20"
+              android:background="#ff222222"
         >
     <TextView
             android:id="@+id/ranking_place"
@@ -16,7 +16,7 @@
             android:id="@+id/ranking_name_surname"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:textSize="10pt"
+            android:textSize="12pt"
             android:layout_weight="10"
             android:background="#ff128675"
             />

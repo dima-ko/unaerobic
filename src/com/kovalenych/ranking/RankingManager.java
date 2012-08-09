@@ -103,9 +103,7 @@ public class RankingManager {
 //    }
 
     public void invalidateList() {
-        Record[] recordsArray = new Record[recordsList.size()];
-        recordsList.toArray(recordsArray);
-        RankingArrayAdapter adapter = new RankingArrayAdapter((MenuActivity)context, recordsArray);
+        RankingArrayAdapter adapter = new RankingArrayAdapter((MenuActivity)context, recordsList);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
 
