@@ -10,7 +10,7 @@
             android:gravity="center"
             android:id="@+id/cycle_item"
             android:layout_width="fill_parent"
-            android:layout_height="35pt"
+            android:layout_height="30pt"
             android:textSize="10pt"
             android:background="@drawable/blue_button"
             />

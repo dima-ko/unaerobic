@@ -30,7 +30,7 @@ public final class RankingFragment extends Fragment {
     PullToRefreshListView mPullRefreshListView;
     RelativeLayout filterView;
     RelativeLayout recordsView;
-    private Dialog progressDialog;
+    private Dialog progressDialog;   //TODO: make geometric increasing progress
 
     RankingManager rManager;
 
