@@ -13,8 +13,8 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.media.Article;
-import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.R;
+import com.kovalenych.media.ArticleArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,27 +76,10 @@ public final class ArticlesFragment extends Fragment {
 
     private void invalidateList() {     //TODO: fix list slow
 
-        SimpleAdapter adapter = new SimpleAdapter(getActivity(), createCyclesList(), R.layout.article_item,
-                new String[]{"name", "author", "domain"},
-                new int[]{R.id.art_name, R.id.art_author, R.id.art_domain});
-        adapter.setViewBinder(new ArticleViewBinder());
+        ArticleArrayAdapter adapter = new ArticleArrayAdapter(getActivity(), artList);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
 
-    private List<? extends Map<String, ?>> createCyclesList() {
-
-        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
-
-        for (int i = 0; i < artList.size(); i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("name", artList.get(i).getName());
-            map.put("author", artList.get(i).getAuthor());
-            map.put("domain", artList.get(i).getDomain());
-            items.add(map);
-        }
-
-        return items;
-    }
 
 }

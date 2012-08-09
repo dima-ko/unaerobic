@@ -9,16 +9,12 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.fragments.RankingFragment;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.MenuActivity;
-import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.R;
-import com.kovalenych.tables.Cycle;
-import com.kovalenych.tables.CyclesArrayAdapter;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

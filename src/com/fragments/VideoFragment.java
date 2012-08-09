@@ -10,17 +10,13 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
-import com.kovalenych.media.Article;
-import com.kovalenych.media.ArticleViewBinder;
 import com.kovalenych.media.Video;
 import com.nostra13.universalimageloader.imageloader.DisplayImageOptions;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
 import com.nostra13.universalimageloader.imageloader.ImageLoadingListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class VideoFragment extends Fragment {
 
