@@ -42,15 +42,15 @@ public final class TablesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        _preferedTables = getActivity().getSharedPreferences("sharedTables", getActivity().MODE_PRIVATE);
-        mapa = _preferedTables.getAll();
-                        //TODO dont work tables saving
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View tables = inflater.inflate(R.layout.tables, null);
+        _preferedTables = getActivity().getSharedPreferences("sharedTables", getActivity().MODE_PRIVATE);
+        mapa = _preferedTables.getAll();
 
         tableList = new ArrayList<String>();
         Set<String> tableSet = mapa.keySet();
@@ -203,4 +203,13 @@ public final class TablesFragment extends Fragment {
         ok_button.setOnClickListener(buttonListener);
     }
 
+    @Override
+    public void onDestroyView() {
+        SharedPreferences.Editor editor = _preferedTables.edit();
+        editor.clear();
+        for (String s : tableList)
+            editor.putString(s, "");
+        editor.commit();
+        super.onDestroyView();
+    }
 }

@@ -73,7 +73,7 @@ public class ClockActivity extends Activity implements Soundable {
                     new Cycle(bun.getInt("breathe" + Integer.toString(i)), bun.getInt("hold" + Integer.toString(i)))
             );
         }
-                                                //TODO : resolutions
+
         position = bun.getInt("number");
         vibrationEnabled = bun.getBoolean("vibro");
         voices = bun.getIntegerArrayList("voices");
