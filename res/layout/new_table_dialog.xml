@@ -11,9 +11,9 @@
 
     <EditText android:id="@+id/new_table_edit"
               android:layout_width="fill_parent"
-              android:layout_height="32pt"
+              android:layout_height="26pt"
               android:singleLine="true"
-
+              android:hint="new table name"
             />
 
     <Button
@@ -24,9 +24,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="OK"
-            android:padding="4pt"
+            android:padding="6pt"
             android:textColor="#FFFFFFFF"
-            android:textSize="9pt"
+            android:textSize="7pt"
             />
 
 

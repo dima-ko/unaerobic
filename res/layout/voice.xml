@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="440px"
+              android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical"
         >
     <LinearLayout
-            android:layout_width="440px"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
             android:padding="10px"
-            >
-        <LinearLayout android:layout_width="440px"
+            android:baselineAligned="false">
+
+        <LinearLayout android:layout_width="0dp"
                       android:layout_height="fill_parent"
                       android:orientation="vertical"
                       android:layout_weight="1"
@@ -23,8 +24,9 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     />
+
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -41,7 +43,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -57,7 +59,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -73,7 +75,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -89,7 +91,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -105,7 +107,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -124,7 +126,7 @@
         </LinearLayout>
         <LinearLayout
                 android:layout_height="fill_parent"
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
@@ -135,7 +137,7 @@
                       android:layout_width="wrap_content"
                     />
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -151,7 +153,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox
@@ -168,7 +170,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -184,7 +186,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -200,7 +202,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -216,7 +218,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="72px"
+                    android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
@@ -235,20 +237,21 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_marginLeft="120px"
-            android:layout_height="72px"
-            android:layout_width="240px"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
             android:orientation="horizontal"
+            android:gravity="center"
             >
         <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
                   android:id="@+id/vibro"
-                  android:layout_height="fill_parent"
+                  android:layout_height="wrap_content"
                   android:layout_width="wrap_content"
                 />
         <TextView android:gravity="center"
                   android:text="vibro"
-                  android:layout_height="fill_parent"
-                  android:layout_width="fill_parent"
+                  android:padding="3pt"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
                 />
     </LinearLayout>
 

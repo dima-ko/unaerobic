@@ -1,67 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="3pt"
-                android:gravity="right"
-                android:background="#FF000000"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="3pt"
+              android:background="#FF000000"
         >
 
-
-    <EditText android:id="@+id/breath_edit"
-              android:layout_width="55pt"
-              android:layout_height="wrap_content"
-              android:singleLine="true"
-              android:text="60"
-              android:gravity="center"
-              android:inputType="number"
-              android:layout_alignParentLeft="true"
-            />
-    <EditText android:id="@+id/hold_edit"
-              android:layout_width="55pt"
-              android:layout_height="wrap_content"
-              android:singleLine="true"
-              android:text="60"
-              android:inputType="number"
-              android:gravity="center"
-              android:layout_alignParentRight="true"
-            />
-
-    <TextView
-            android:layout_width="wrap_content"
+    <LinearLayout
             android:layout_height="wrap_content"
-            android:textSize="8pt"
-            android:text="@string/breath_s"
-            android:layout_below="@id/breath_edit"
-            android:layout_alignParentLeft="true"
-            />
-    <TextView
-            android:id="@+id/labl"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="8pt"
-            android:text="@string/hold_s"
-            android:gravity="right"
-            android:layout_below="@id/hold_edit"
-            android:layout_alignParentRight="true"
-            />
+            >
+        <EditText android:id="@+id/breath_edit"
+                  android:layout_width="55pt"
+                  android:layout_height="23pt"
+                  android:singleLine="true"
+                  android:inputType="number"
+                  android:hint="breath,s"
+                  android:textColor="#FF000000"
+                />
+        <EditText android:id="@+id/hold_edit"
+                  android:layout_width="55pt"
+                  android:layout_height="23pt"
+                  android:singleLine="true"
+                  android:inputType="number"
+                  android:layout_marginLeft="3pt"
+                  android:hint="hold,s"
+                  android:textColor="#FF000000"
+                />
+    </LinearLayout>
     <Button
             android:id="@+id/new_cycle_ok"
             android:background="#ff333333"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="OK"
+            android:layout_width="113pt"
+            android:layout_height="20pt"
+            android:text="add"
             android:textColor="#FFFFFFFF"
-            android:textSize="11pt"
-            android:padding="3pt"
+            android:textSize="6pt"
             android:layout_marginTop="3pt"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/labl"
             />
 
 
-
-</RelativeLayout>
+</LinearLayout>

@@ -131,7 +131,6 @@ public final class TablesFragment extends Fragment {
     }
 
 
-
     void initDialogs() {
         delDialog = new Dialog(getActivity());
         delDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -160,7 +159,7 @@ public final class TablesFragment extends Fragment {
         infoDialog.findViewById(R.id.stars).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final  String APP_PNAME = "com.kovalenych";
+                final String APP_PNAME = "com.kovalenych";
                 getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
             }
         });

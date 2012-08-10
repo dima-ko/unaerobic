@@ -33,7 +33,8 @@
         <activity android:name=".tables.CyclesActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
                 />
-        <activity android:name=".tables.ClockActivity" android:screenOrientation="landscape"
+        <activity android:name=".tables.ClockActivity"
+                  android:screenOrientation="landscape"
                   android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
                   android:configChanges="orientation"/>
     </application>

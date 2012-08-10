@@ -5,12 +5,15 @@ import android.app.Dialog;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
 import com.kovalenych.Fonts;
 import com.kovalenych.R;
 import com.kovalenych.Table;
+import com.kovalenych.Utils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -225,7 +228,10 @@ public class CyclesActivity extends Activity implements Soundable {
                 voiceDialog = new Dialog(ptr);
                 voiceDialog.setCancelable(true);
                 voiceDialog.setTitle(getResources().getString(R.string.voices));
-                voiceDialog.setContentView(R.layout.voice);
+                LayoutInflater inf = getLayoutInflater();
+                LinearLayout view1 = (LinearLayout) inf.inflate(R.layout.voice, null);
+                voiceDialog.setContentView(view1, new RelativeLayout.LayoutParams(Utils.width -30, ViewGroup.LayoutParams.FILL_PARENT));
+//                voiceDialog.setContentView(R.layout.voice);
                 setVoiceRadios();
                 voiceDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
