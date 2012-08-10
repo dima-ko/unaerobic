@@ -23,10 +23,10 @@
             android:background="#ff333333"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="OK"
-            android:padding="6pt"
+            android:padding="8pt"
             android:textColor="#FFFFFFFF"
-            android:textSize="7pt"
+            android:text="add"
+            android:textSize="6pt"
             />
 
 
