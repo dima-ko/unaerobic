@@ -8,15 +8,18 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.kovalenych.Fonts;
 import com.kovalenych.R;
 import com.kovalenych.Table;
+import com.kovalenych.Utils;
 
 import java.util.List;
 
@@ -49,7 +52,7 @@ public class ClockActivity extends Activity implements Soundable {
     private int position;
     Table table;
     Vibrator v;
-
+    RelativeLayout parent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,12 +77,15 @@ public class ClockActivity extends Activity implements Soundable {
         position = bun.getInt("number");
         vibrationEnabled = bun.getBoolean("vibro");
         voices = bun.getIntegerArrayList("voices");
-        setContentView(R.layout.clocks);
+
+
+        initViews();
+
+        setContentView(parent);
 
         curCycle = table.getCycles().get(position);
 
 
-        initViews();
 
         startCycle();    //TODO: service that shows in status bar
 
@@ -87,21 +93,38 @@ public class ClockActivity extends Activity implements Soundable {
 
     public void initViews() {
 
-        breathBar = (ImageView) findViewById(R.id.run_ventilate_progress);
-        breathBar_left = (ImageView) findViewById(R.id.run_ventilate_progress_left);
-        breathBar_right = (ImageView) findViewById(R.id.run_ventilate_progress_right);
-        holdBar = (ImageView) findViewById(R.id.run_static_progress);
-        holdBar_left = (ImageView) findViewById(R.id.run_static_progress_left);
-        holdBar_right = (ImageView) findViewById(R.id.run_static_progress_right);
+        parent = new RelativeLayout(this);
+        LayoutInflater inflater = getLayoutInflater();
+        RelativeLayout leftCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_left, null, false);
+        RelativeLayout rightCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_right, null, false);
+
+        int w = Utils.smaller2dim - 30;
+
+        RelativeLayout.LayoutParams paramsLeft = new RelativeLayout.LayoutParams(w, w);
+        paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        parent.addView(leftCircle, paramsLeft);
+
+        RelativeLayout.LayoutParams paramsRight= new RelativeLayout.LayoutParams(w, w);
+        paramsRight.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        paramsRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+        parent.addView(rightCircle, paramsRight);
 
 
-        topTimeText = (TextView) findViewById(R.id.topTime);
-        breathTimeText = (TextView) findViewById(R.id.run_time_breath);
-        holdTimeText = (TextView) findViewById(R.id.run_time_hold);
+        breathBar = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress);
+        breathBar_left = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress_left);
+        breathBar_right = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress_right);
+        holdBar = (ImageView) rightCircle.findViewById(R.id.run_static_progress);
+        holdBar_left = (ImageView) rightCircle.findViewById(R.id.run_static_progress_left);
+        holdBar_right = (ImageView) rightCircle.findViewById(R.id.run_static_progress_right);
+
+
+//        topTimeText = (TextView) findViewById(R.id.topTime);
+        breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
+        holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
 
         breathTimeText.setTypeface(Fonts.BELIGERENT);
         holdTimeText.setTypeface(Fonts.BELIGERENT);
-        topTimeText.setTypeface(Fonts.BELIGERENT);
+//        topTimeText.setTypeface(Fonts.BELIGERENT);
 
         rot = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
         rot2 = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
@@ -118,7 +141,7 @@ public class ClockActivity extends Activity implements Soundable {
         int itemTimeH = (short) curCycle.hold;
         rot.setDuration(itemTimeB * 1000);
         rot2.setDuration(itemTimeH * 1000);
-        topTimeText.setText(curCycle.convertToString());
+//        topTimeText.setText(curCycle.convertToString());
         timer = new TimerThread(handler);
         timer.start();
         holdBar_left.setVisibility(View.VISIBLE);

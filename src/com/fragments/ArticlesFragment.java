@@ -74,7 +74,7 @@ public final class ArticlesFragment extends Fragment {
         artList.add(new Article("Patrick Musimu and Herbert Nitsch", "By Jimmy Muzzone", "http://www.patrykkruk.com/2011/02/interviews-with-patrick-musimu-and.html"));
     }
 
-    private void invalidateList() {     //TODO: fix list slow
+    private void invalidateList() {
 
         ArticleArrayAdapter adapter = new ArticleArrayAdapter(getActivity(), artList);
         lv.setAdapter(adapter);

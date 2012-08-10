@@ -15,6 +15,7 @@ public class Utils {
     public static int height;
     public static int width;
     public static int flowidth;
+    public static int smaller2dim;
     public static boolean isTab;
     public static boolean isSmall;
     public static boolean isPortrait;
@@ -37,6 +38,8 @@ public class Utils {
 
         flowidth = isTab ? 400 : width;
         isPortrait = (height > width);
+
+        smaller2dim =  isPortrait ? height /2 : width/2;
 
 
         scale = activity.getResources().getDisplayMetrics().density;

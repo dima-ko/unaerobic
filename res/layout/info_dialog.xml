@@ -34,13 +34,41 @@
             android:textSize="16dp"
             />
     <!--<Spinner-->
-            <!--android:layout_marginTop="5px"-->
-            <!--android:layout_marginLeft="100px"-->
-            <!--android:id="@+id/info_spinner"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--/>-->
+    <!--android:layout_marginTop="5px"-->
+    <!--android:layout_marginLeft="100px"-->
+    <!--android:id="@+id/info_spinner"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--/>-->
+    <LinearLayout
+            android:id="@+id/stars"
+            android:layout_height="25pt"
+            android:layout_width="fill_parent"
+            android:gravity="center_vertical"
+            >
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Rate us!"
+                />
+        <ImageView
+                android:layout_marginLeft="5pt"
+                android:layout_height="25pt"
+                android:layout_width="25pt"
+                android:src="@drawable/star"
+                />
+        <ImageView
+                android:layout_height="25pt"
+                android:layout_width="25pt"
+                android:src="@drawable/star"
+                />
+        <ImageView
+                android:layout_height="25pt"
+                android:layout_width="25pt"
+                android:src="@drawable/star"
+                />
+    </LinearLayout>
     <TextView
             android:layout_marginTop="10pt"
             android:gravity="center"

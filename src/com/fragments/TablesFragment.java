@@ -3,6 +3,7 @@ package com.fragments;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -100,6 +101,8 @@ public final class TablesFragment extends Fragment {
 //        tracker.startNewSession("UA-28633429-1", this);
 //        tracker.setAnonymizeIp(true);
 
+//
+
         return tables;
     }
 
@@ -153,6 +156,14 @@ public final class TablesFragment extends Fragment {
 
         ((TextView) infoDialog.findViewById(R.id.infot)).setTypeface(Fonts.BELIGERENT);
         ((TextView) infoDialog.findViewById(R.id.title)).setTypeface(Fonts.BELIGERENT);
+
+        infoDialog.findViewById(R.id.stars).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final  String APP_PNAME = "com.kovalenych";
+                getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
+            }
+        });
     }
 
 
