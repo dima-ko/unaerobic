@@ -9,7 +9,6 @@
             android:layout_width="fill_parent"
             android:layout_height="25pt"
             android:textSize="10pt"
-            android:background="@drawable/blue_button"
             />
 </LinearLayout>
 

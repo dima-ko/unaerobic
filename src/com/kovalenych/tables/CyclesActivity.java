@@ -98,10 +98,7 @@ public class CyclesActivity extends Activity implements Soundable {
 
     private void invalidateList() {
 
-        ArrayList<Cycle> cycles = curTable.getCycles();
-        Cycle[] cyclesArray = new Cycle[cycles.size()];
-        cycles.toArray(cyclesArray);
-        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, cyclesArray);
+        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, curTable.getCycles());
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
