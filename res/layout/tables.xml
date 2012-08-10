@@ -35,9 +35,9 @@
             android:layout_marginLeft="3pt"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="25pt"
-            android:layout_height="25pt"
-            android:background="@drawable/infoblack"
+            android:layout_width="28pt"
+            android:layout_height="28pt"
+            android:background="@drawable/quest"
             />
 
 

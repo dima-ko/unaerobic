@@ -54,18 +54,18 @@
                 />
         <ImageView
                 android:layout_marginLeft="5pt"
-                android:layout_height="25pt"
-                android:layout_width="25pt"
+                android:layout_height="20pt"
+                android:layout_width="20pt"
                 android:src="@drawable/star"
                 />
         <ImageView
-                android:layout_height="25pt"
-                android:layout_width="25pt"
+                android:layout_height="20pt"
+                android:layout_width="20pt"
                 android:src="@drawable/star"
                 />
         <ImageView
-                android:layout_height="25pt"
-                android:layout_width="25pt"
+                android:layout_height="20pt"
+                android:layout_width="20pt"
                 android:src="@drawable/star"
                 />
     </LinearLayout>
