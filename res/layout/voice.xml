@@ -1,259 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
         >
+
     <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:padding="10px"
-            android:baselineAligned="false">
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            >
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:padding="10px"
+                android:baselineAligned="false">
 
-        <LinearLayout android:layout_width="0dp"
-                      android:layout_height="fill_parent"
-                      android:orientation="vertical"
-                      android:layout_weight="1"
-                      android:gravity="center_horizontal"
-                >
-            <TextView
-                    android:gravity="center"
-                    android:text="@string/tostart"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    />
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice2to"
+            <LinearLayout android:layout_width="0dp"
                           android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
+                          android:orientation="vertical"
+                          android:layout_weight="1"
+                          android:gravity="center_horizontal"
+                    >
                 <TextView
                         android:gravity="center"
-                        android:text="@string/minutes2"
-                        android:layout_height="fill_parent"
+                        android:text="@string/tostart"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        />
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
                         android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice2to"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView
+                            android:gravity="center"
+                            android:text="@string/minutes2"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
 
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice1to"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/minutes1"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice30to"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/seconds30"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice10to"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/seconds10"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice5to"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/seconds5"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voicestart"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/start"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+
+            </LinearLayout>
             <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice1to"
-                          android:layout_height="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    >
+                <TextView android:gravity="center"
+                          android:text="@string/afterstart"
+                          android:layout_height="wrap_content"
                           android:layout_width="wrap_content"
                         />
-                <TextView android:gravity="center"
-                          android:text="@string/minutes1"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice1after"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/minutes1"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
 
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice30to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/seconds30"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:id="@+id/voice2after"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/minutes2"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
 
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice10to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/seconds10"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice3after"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/minutes3"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
 
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice5to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/seconds5"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice4after"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/minutes4"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
 
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voicestart"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/start"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voice5after"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/minutes5"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
 
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                    <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                              android:id="@+id/voicebreathe"
+                              android:layout_height="fill_parent"
+                              android:layout_width="wrap_content"
+                            />
+                    <TextView android:gravity="center"
+                              android:text="@string/breathe"
+                              android:layout_height="fill_parent"
+                              android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
-                android:layout_height="fill_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
                 >
-            <TextView android:gravity="center"
-                      android:text="@string/afterstart"
+            <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                      android:id="@+id/vibro"
                       android:layout_height="wrap_content"
                       android:layout_width="wrap_content"
                     />
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice1after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/minutes1"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:id="@+id/voice2after"
-                        android:layout_height="fill_parent"
-                        android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/minutes2"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice3after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/minutes3"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice4after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/minutes4"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice5after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/minutes5"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voicebreathe"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <TextView android:gravity="center"
-                          android:text="@string/breathe"
-                          android:layout_height="fill_parent"
-                          android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
+            <TextView android:gravity="center"
+                      android:text="vibro"
+                      android:padding="3pt"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                    />
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            >
-        <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                  android:id="@+id/vibro"
-                  android:layout_height="wrap_content"
-                  android:layout_width="wrap_content"
-                />
-        <TextView android:gravity="center"
-                  android:text="vibro"
-                  android:padding="3pt"
-                  android:layout_height="wrap_content"
-                  android:layout_width="wrap_content"
-                />
-    </LinearLayout>
-
-</LinearLayout>
-
+</ScrollView>

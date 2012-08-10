@@ -226,8 +226,8 @@ public class CyclesActivity extends Activity implements Soundable {
                 voiceDialog.setCancelable(true);
                 voiceDialog.setTitle(getResources().getString(R.string.voices));
                 LayoutInflater inf = getLayoutInflater();
-                LinearLayout view1 = (LinearLayout) inf.inflate(R.layout.voice, null);
-                voiceDialog.setContentView(view1, new RelativeLayout.LayoutParams(Utils.width -30, ViewGroup.LayoutParams.FILL_PARENT));
+                ScrollView view1 = (ScrollView) inf.inflate(R.layout.voice, null);
+                voiceDialog.setContentView(view1, new RelativeLayout.LayoutParams(Utils.smallerDim -30, ViewGroup.LayoutParams.FILL_PARENT));
 //                voiceDialog.setContentView(R.layout.voice);
                 setVoiceRadios();
                 voiceDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
