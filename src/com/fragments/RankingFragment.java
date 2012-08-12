@@ -45,8 +45,6 @@ public final class RankingFragment extends Fragment {
 
     private void initFilterAndProgress(View tables) {
 
-
-
         filterView = (RelativeLayout) tables.findViewById(R.id.ranking_filter);
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
 
@@ -96,12 +94,12 @@ public final class RankingFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroyView() {
         rManager.cancelTask();
         rManager.packSavedTables();
         rManager.closeDBHelpers();
 
-        super.onDestroy();
+        super.onDestroyView();
     }
 
     ProgressTask task;
