@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="articles">Articles</string>
-    <string name="videos">Vidéos</string>
-    <string name="ranking">Archives</string>
+
     <string name="info_title">Informations</string>
-    <string name="heart">Cœur</string>
-    <string name="tables">Tableaux</string>
-    <string name="show">Show</string>
+
+
+    <string name="show">Montrer</string>
     <string name="discipline">Discipline:</string>
-    <string name="disc_hint">Don\'t know what is it? Click</string>
-    <string name="here">here</string>
+    <string name="disc_hint">Je ne sais pas ce que c\'est? Cliquez</string>
+    <string name="here">ici</string>
 </resources>

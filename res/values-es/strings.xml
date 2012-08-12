@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Unaerobic</string>
-    <string name="articles">Artículos</string>
-    <string name="videos">Videos</string>
-    <string name="ranking">Clasificación</string>
+
     <string name="info_title">Información</string>
     <string name="heart">Corazón</string>
-    <string name="tables">Tablas</string>
+
     <string name="info">
         - Pulse \"+\" botón para agregar la nueva tabla o en ciclo\n
         - Pulsación larga en el círculo de temporizador para comenzar de inmediato\n
@@ -42,9 +40,9 @@
     <string name="breath_s">aliento, s</string>
     <string name="breathe_time">aliento\n tiempo</string>
     <string name="hold_time">retraso\n tiempo</string>
-    <string name="show">Show</string>
+    <string name="show">Mostrar</string>
     <string name="discipline">Discipline:</string>
-    <string name="disc_hint">Don\'t know what is it? Click</string>
-    <string name="here">here</string>
+    <string name="disc_hint">No sé lo que es? Haga clic </string>
+    <string name="here">aquí</string>
 
 </resources>
