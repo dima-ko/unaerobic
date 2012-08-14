@@ -1,21 +1,20 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
+import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import com.kovalenych.Fonts;
 import com.kovalenych.R;
 import com.kovalenych.Table;
@@ -53,6 +52,7 @@ public class ClockActivity extends Activity implements Soundable {
     Table table;
     Vibrator v;
     RelativeLayout parent;
+    private static final int NOTIFY_ID = 1; // Ун
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,11 +85,25 @@ public class ClockActivity extends Activity implements Soundable {
 
         curCycle = table.getCycles().get(position);
 
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
+        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
+        long when = System.currentTimeMillis(); // Выясним системное время
+        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
+        Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
+//        contentView.setImageViewResource(R.id.image, R.drawable.tray_icon); // Привязываем нашу картинку к ImageView в разметке уведомления
+//        contentView.setTextViewText(R.id.text,"Привет Habrahabr! А мы тут, плюшками балуемся..."); // Привязываем текст к TextView в нашей разметке
+        notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
+        notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
+        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
 
 
         startCycle();    //TODO: service that shows in status bar
 
     }
+
+    Button stopButton;
 
     public void initViews() {
 
@@ -101,13 +115,22 @@ public class ClockActivity extends Activity implements Soundable {
         int w = Utils.smaller2dim - 30;
 
         RelativeLayout.LayoutParams paramsLeft = new RelativeLayout.LayoutParams(w, w);
-        paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+//        paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         parent.addView(leftCircle, paramsLeft);
 
-        RelativeLayout.LayoutParams paramsRight= new RelativeLayout.LayoutParams(w, w);
-        paramsRight.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        RelativeLayout.LayoutParams paramsRight = new RelativeLayout.LayoutParams(w, w);
+//        paramsRight.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         paramsRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
         parent.addView(rightCircle, paramsRight);
+
+        stopButton = new Button(this);
+        stopButton.setText("STOP");
+
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+        parent.addView(stopButton, params);
 
 
         breathBar = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress);
@@ -246,7 +269,7 @@ public class ClockActivity extends Activity implements Soundable {
                     breathBar_right.setVisibility(View.VISIBLE);
                 }
                 if (!isAnimPlaying) {
-                    breathBar.startAnimation(rot);
+//                    breathBar.startAnimation(rot);
                     isAnimPlaying = true;
                 }
                 Log.d("zzz", (msg.arg1 - curCycle.breathe) + "");
@@ -284,7 +307,7 @@ public class ClockActivity extends Activity implements Soundable {
                 }
 
                 if (!isAnimPlaying) {
-                    holdBar.startAnimation(rot2);
+//                    holdBar.startAnimation(rot2);
                     isAnimPlaying = true;
                 }
                 Log.d("zzz", (msg.arg1) + "");
