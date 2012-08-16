@@ -14,8 +14,8 @@ import android.widget.Toast;
 public class OnAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "Service work!", Toast.LENGTH_LONG).show();
-        Log.d(this.getClass().getName(), "Service catch alarm message at: "
+        Toast.makeText(context, "Service work!", Toast.LENGTH_SHORT).show();
+        Log.d(this.getClass().getName(), "zzzzService catch alarm message at: "
                 + new java.util.Date().toString());
     }
 }

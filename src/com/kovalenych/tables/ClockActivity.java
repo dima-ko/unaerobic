@@ -98,8 +98,10 @@ public class ClockActivity extends Activity implements Soundable {
         notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
         mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
 
+        startCycle();
 
-        startCycle();    //TODO: service that shows in status bar
+        startService(new Intent(this,ClockService.class));
+
 
     }
 
@@ -272,7 +274,7 @@ public class ClockActivity extends Activity implements Soundable {
 //                    breathBar.startAnimation(rot);
                     isAnimPlaying = true;
                 }
-                Log.d("zzz", (msg.arg1 - curCycle.breathe) + "");
+//                Log.d("zzz", (msg.arg1 - curCycle.breathe) + "");
                 if (voices.contains(msg.arg1 - curCycle.breathe))
                     mSoundManager.playSound(msg.arg1 - curCycle.breathe);
 
@@ -310,7 +312,7 @@ public class ClockActivity extends Activity implements Soundable {
 //                    holdBar.startAnimation(rot2);
                     isAnimPlaying = true;
                 }
-                Log.d("zzz", (msg.arg1) + "");
+//                Log.d("zzz", (msg.arg1) + "");
                 if (voices.contains(msg.arg1) && msg.arg1 != 0)
                     mSoundManager.playSound(msg.arg1);
             }
@@ -325,7 +327,7 @@ public class ClockActivity extends Activity implements Soundable {
         TimerThread(Handler handler) {
             i = 0;
             this.handler = handler;
-            Log.d("zzzzthread", "TimerThread ");
+//            Log.d("zzzzthread", "TimerThread ");
 
         }
 
@@ -341,7 +343,7 @@ public class ClockActivity extends Activity implements Soundable {
                 Message msg = new Message();
                 msg.arg1 = i;
                 handler.sendMessage(msg);
-                Log.d("zzzzthread", "tick " + i);
+//                Log.d("zzzzthread", "tick " + i);
                 i++;
                 try {
                     Thread.sleep(1000);

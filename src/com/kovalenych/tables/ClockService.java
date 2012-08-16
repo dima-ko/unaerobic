@@ -16,7 +16,7 @@ import android.util.Log;
 public class ClockService extends Service {
 
     public static final int FIRST_RUN = 1000; // 5 seconds
-    public static final int INTERVAL = 1000; // 1 sec
+    public static final int INTERVAL = 5000; // 1 sec
 
     AlarmManager alarmManager;
 
@@ -27,20 +27,21 @@ public class ClockService extends Service {
         Intent intent = new Intent(this, OnAlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
+
         this.alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         this.alarmManager.setRepeating(
                 AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 SystemClock.elapsedRealtime() + FIRST_RUN,
                 INTERVAL, pendingIntent);
 
-        Log.v(this.getClass().getName(), "AlarmManger binding at "
+        Log.v(this.getClass().getName(), "zzzAlarmManger binding at "
                 + new java.util.Date().toString());
-        Log.v(this.getClass().getName(), "Service created.");
+        Log.v(this.getClass().getName(), "zzzzService created.");
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        Log.v(this.getClass().getName(), "Service binded.");
+        Log.d(this.getClass().getName(), "zzzzzService binded.");
         return null;
     }
 
