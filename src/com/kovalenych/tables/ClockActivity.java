@@ -30,7 +30,7 @@ public class ClockActivity extends Activity implements Soundable {
     boolean isBreathing = false;
     boolean isAnimPlaying = false;
 
-    private static final String LOG_TAG = "ClockActivity";
+    private static final String LOG_TAG = "zzClockActivity";
 
     ImageView breathBar;
     ImageView breathBar_left;
@@ -75,7 +75,8 @@ public class ClockActivity extends Activity implements Soundable {
         pi = createPendingResult(1, null, 0);
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
-        intent = new Intent(this, ClockService.class).putExtra(PARAM_CYCLES, bun)
+        intent = new Intent(this, ClockService.class)
+                .putExtra(PARAM_CYCLES, bun)
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
@@ -176,16 +177,14 @@ public class ClockActivity extends Activity implements Soundable {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        Log.d(LOG_TAG, "requestCode = " + requestCode + ", resultCode = "
-//                + resultCode);
 
-        // Ловим сообщения о старте задач
+        int time = data.getIntExtra(ClockActivity.PARAM_TIME, 0);
         if (resultCode == STATUS_BREATH) {
-            Log.d(LOG_TAG, "breathing");
+            breathTimeText.setText(timeToString(time));
         } else if (resultCode == STATUS_HOLD) {
-            Log.d(LOG_TAG, "holding");
+            holdTimeText.setText(timeToString(time));
         } else if (resultCode == STATUS_FINISH) {
-
+            finish();
         }
     }
 
