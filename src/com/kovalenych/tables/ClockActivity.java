@@ -49,6 +49,8 @@ public class ClockActivity extends Activity implements Soundable {
     public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";
     public final static String PARAM_PROGRESS = "progress";
+    public static final String PARAM_TIME = "time";
+    public static final String PARAM_BREATHING = "breathing";
     public static final int STATUS_BREATH = 1;
     public static final int STATUS_HOLD = 2;
     public static final int STATUS_FINISH = 3;
@@ -92,11 +94,9 @@ public class ClockActivity extends Activity implements Soundable {
         int w = Utils.smaller2dim - 30;
 
         RelativeLayout.LayoutParams paramsLeft = new RelativeLayout.LayoutParams(w, w);
-//        paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         parent.addView(leftCircle, paramsLeft);
 
         RelativeLayout.LayoutParams paramsRight = new RelativeLayout.LayoutParams(w, w);
-//        paramsRight.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         paramsRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
         parent.addView(rightCircle, paramsRight);
 
@@ -176,14 +176,14 @@ public class ClockActivity extends Activity implements Soundable {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(LOG_TAG, "requestCode = " + requestCode + ", resultCode = "
-                + resultCode);
+//        Log.d(LOG_TAG, "requestCode = " + requestCode + ", resultCode = "
+//                + resultCode);
 
         // Ловим сообщения о старте задач
         if (resultCode == STATUS_BREATH) {
-
+            Log.d(LOG_TAG, "breathing");
         } else if (resultCode == STATUS_HOLD) {
-
+            Log.d(LOG_TAG, "holding");
         } else if (resultCode == STATUS_FINISH) {
 
         }

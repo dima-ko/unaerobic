@@ -64,14 +64,24 @@ public class ClockService extends Service {
 
     ClockTask task;
 
-    private void onTic(Integer value, Integer cycle, boolean breathing) {
-        Intent intent = new Intent().putExtra(ClockActivity.PARAM_PROGRESS, 0 * 100);
+    private void onTic(Integer time, Integer cycle, boolean breathing) {
+
+        //evaluate percent progress
+        Log.d(LOG_TAG, "zzzzbreathing");
+
+        Intent intent = new Intent()
+                .putExtra(ClockActivity.PARAM_TIME, time)
+                .putExtra(ClockActivity.PARAM_PROGRESS, 0 * 100)
+                .putExtra(ClockActivity.PARAM_BREATHING, breathing);
         try {
             int stat = breathing ? ClockActivity.STATUS_BREATH : ClockActivity.STATUS_HOLD;
             pi.send(ClockService.this, stat, intent);
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
         }
+
+
+        //vibrate  or sound
 
     }
 
@@ -128,64 +138,6 @@ public class ClockService extends Service {
             super.onPostExecute(aVoid);
         }
     }
-
-//    class MyRun implements
-//    Runnable {
-//
-//        int time;
-//        int startId;
-//        PendingIntent pi;
-//
-//        public MyRun(int time, int startId, PendingIntent pi) {
-//            this.time = time;
-//            this.startId = startId;
-//            this.pi = pi;
-//            Log.d(LOG_TAG, "MyRun#" + startId + " create");
-//        }
-//
-//        public void run() {
-//            Log.d(LOG_TAG, "MyRun#" + startId + " start, time = " + time);
-//            try {
-//                // сообщаем об старте задачи
-//                pi.send(MainActivity.STATUS_START);
-//
-//                // начинаем выполнение задачи
-//                TimeUnit.SECONDS.sleep(1);
-//
-//                // сообщаем об окончании задачи
-//                Intent intent = new Intent().putExtra(MainActivity.PARAM_RESULT, time * 100);
-//                pi.send(MyService.this, MainActivity.STATUS_FINISH, intent);
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            } catch (PendingIntent.CanceledException e) {
-//                e.printStackTrace();
-//            }
-//            stop();
-//        }
-//
-//        void stop() {
-//            Log.d(LOG_TAG, "MyRun#" + startId + " end, stopSelfResult("
-//                    + startId + ") = " + stopSelfResult(startId));
-//        }
-//    }
-//    List voices;
-//    TimerThread timer;
-
-
-//    @Override
-//    public void onCreate() {
-//        super.onCreate();
-//
-//        curCycle = new Cycle(0, 0);
-//
-//
-//
-//
-//
-//
-//        curCycle = table.getCycles().get(position);
-//
 //
 //        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
 //        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
@@ -201,22 +153,6 @@ public class ClockService extends Service {
 //        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
 //
 //    }
-//
-//    final Handler handler = new Handler() {
-//
-//        public void handleMessage(Message msg) {
-//            Log.d("handler1", msg.toString());
-//
-//            if (isBreathing) {
-//
-//                ifBreathing(msg);
-//
-//            } else {
-//
-//                ifHolding(msg);
-//
-//            }
-//        }
 //
 //        private void ifBreathing(Message msg) {
 //            if (msg.arg1 == curCycle.breathe + 1) {
@@ -288,52 +224,5 @@ public class ClockService extends Service {
 //
 //    private boolean vibrationEnabled;
 //
-//
-//    @Override
-//    public IBinder onBind(Intent intent) {
-//        return null;  //To change body of implemented methods use File | Settings | File Templates.
-//    }
-//
-//    private class TimerThread extends Thread {
-//
-//        Handler handler;
-//        int i;
-//
-//        TimerThread(Handler handler) {
-//            i = 0;
-//            this.handler = handler;
-////            Log.d("zzzzthread", "TimerThread ");
-//
-//        }
-//
-//        boolean isRunning = true;
-//
-//        public void stopThread() {
-//            isRunning = false;
-//        }
-//
-//        public void run() {
-//
-//            while (isRunning) {
-//                Message msg = new Message();
-//                msg.arg1 = i;
-//                handler.sendMessage(msg);
-////                Log.d("zzzzthread", "tick " + i);
-//                i++;
-//                try {
-//                    Thread.sleep(1000);
-//
-//                } catch (InterruptedException e) {
-//                    Log.d("InterruptedException", "thread");
-//                    return;
-//                }
-//
-//
-//            }
-//
-//        }
-//
-//
-//    }
 
 }
