@@ -2,45 +2,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent">
-    <ImageView
+    <com.kovalenych.tables.RotImageView
             android:id="@+id/run_ventilate_progress"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@drawable/progress_green_left"
             />
-    <ImageView
-            android:id="@+id/run_ventilate_progress_right"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@drawable/progress_green"
-            />
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            android:weightSum="2">
-        <ImageView
-                android:id="@+id/run_ventilate_progress_left"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="#FF000000"
-                android:layout_marginLeft="4px"
-                />
-    </LinearLayout>
-    <ImageView
+    <!--<ImageView-->
+            <!--android:id="@+id/run_ventilate_progress_right"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:background="@drawable/progress_green"-->
+            <!--/>-->
+    <!--<LinearLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="2">-->
+        <!--<ImageView-->
+                <!--android:id="@+id/run_ventilate_progress_left"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="#FF000000"-->
+                <!--android:layout_marginLeft="4px"-->
+                <!--/>-->
+    <!--</LinearLayout>-->
+    <!--<ImageView-->
 
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@drawable/cl"
-            />
-    <TextView
-            android:id="@+id/run_time_breath"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50px"
-            android:gravity="center"
-            android:text="00:00"
-            android:layout_centerInParent="true"
-            />
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:background="@drawable/cl"-->
+            <!--/>-->
+    <!--<TextView-->
+            <!--android:id="@+id/run_time_breath"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="50px"-->
+            <!--android:gravity="center"-->
+            <!--android:text="00:00"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--/>-->
 </RelativeLayout>

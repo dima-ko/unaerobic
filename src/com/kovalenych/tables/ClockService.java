@@ -80,11 +80,12 @@ public class ClockService extends Service {
     private void onTic(Integer time, Integer cycle, boolean breathing) {
 
         //evaluate percent progress
-
+        int all = breathing ? table.getCycles().get(cycle).breathe : table.getCycles().get(cycle).hold;
+        int percent = time * 360 / all;
         Log.d(LOG_TAG, "zzzzonTic  time: " + time);
         Intent intent = new Intent()
                 .putExtra(ClockActivity.PARAM_TIME, time)
-                .putExtra(ClockActivity.PARAM_PROGRESS, 0 * 100)
+                .putExtra(ClockActivity.PARAM_PROGRESS, percent)
                 .putExtra(ClockActivity.PARAM_BREATHING, breathing);
         try {
             int stat = breathing ? ClockActivity.STATUS_BREATH : ClockActivity.STATUS_HOLD;
