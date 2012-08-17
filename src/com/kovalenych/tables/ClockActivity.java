@@ -66,8 +66,6 @@ public class ClockActivity extends Activity implements Soundable {
 
         setContentView(parent);    //TODO: show in status bar checkbox
 
-        startCycle();
-
         PendingIntent pi;
         Intent intent;
 
@@ -106,7 +104,8 @@ public class ClockActivity extends Activity implements Soundable {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stopService(new Intent(ClockActivity.this, ClockService.class));
+                stopService(new Intent(ptr, ClockService.class));
+                finish();
             }
         });
 
@@ -136,15 +135,6 @@ public class ClockActivity extends Activity implements Soundable {
 
     }
 
-    public void startCycle() {
-
-        isBreathing = true;
-        holdBar_left.setVisibility(View.VISIBLE);
-        holdBar_right.setVisibility(View.INVISIBLE);
-//        breathBar_left.setVisibility(View.VISIBLE);
-//        breathBar_right.setVisibility(View.INVISIBLE);
-        isAnimPlaying = false;
-    }
 
     public void setListeners() {
 
@@ -154,11 +144,8 @@ public class ClockActivity extends Activity implements Soundable {
             public boolean onLongClick(View view) {
 
                 isBreathing = true;
-                holdBar.clearAnimation();
-                isAnimPlaying = false;
-//                breathBar_left.setVisibility(View.VISIBLE);
-//                breathBar_right.setVisibility(View.INVISIBLE);
                 return true;
+
             }
         });
 
@@ -166,10 +153,6 @@ public class ClockActivity extends Activity implements Soundable {
             @Override
             public boolean onLongClick(View view) {
                 isBreathing = false;
-                breathBar.clearAnimation();
-                isAnimPlaying = false;
-                holdBar_left.setVisibility(View.VISIBLE);
-                holdBar_right.setVisibility(View.INVISIBLE);
                 return true;
             }
         });

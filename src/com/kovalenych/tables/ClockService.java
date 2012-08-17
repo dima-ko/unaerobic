@@ -134,6 +134,8 @@ public class ClockService extends Service {
                             Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
+                            return null;
+
                         }
                     }
                 breathing = false;
@@ -143,6 +145,7 @@ public class ClockService extends Service {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                       return null;
                     }
                 }
                 breathing = true;
