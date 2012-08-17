@@ -6,7 +6,7 @@
             android:id="@+id/run_ventilate_progress"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@drawable/progress_green_left"
+            android:src="@drawable/progress_green_left"
             />
     <!--<ImageView-->
             <!--android:id="@+id/run_ventilate_progress_right"-->

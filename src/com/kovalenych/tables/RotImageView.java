@@ -12,7 +12,7 @@ import android.widget.ImageView;
  */
 public class RotImageView extends ImageView {
 
-    int angle;
+    int angle = 0;
 
     public RotImageView(Context context) {
         super(context);
