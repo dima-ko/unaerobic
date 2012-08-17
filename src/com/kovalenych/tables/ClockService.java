@@ -32,6 +32,8 @@ public class ClockService extends Service {
         Log.d(LOG_TAG, "MyService onDestroy");
     }
 
+    PendingIntent pi;
+
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "MyService onStartCommand");
 
@@ -39,7 +41,8 @@ public class ClockService extends Service {
         mSoundManager = new SoundManager(this);
 
         Bundle bundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
-        PendingIntent pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
+
+        pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
 
         int size = bundle.getInt("tablesize");
         table = new Table();
@@ -53,8 +56,22 @@ public class ClockService extends Service {
         position = bundle.getInt("number");
 //        vibrationEnabled = bundle.getBoolean("vibro");
 //        voices = bundle.getIntegerArrayList("voices");
+        task = new ClockTask(table, true);
+        task.execute(position);
 
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    ClockTask task;
+
+    private void onTic(Integer value, Integer cycle, boolean breathing) {
+        Intent intent = new Intent().putExtra(ClockActivity.PARAM_RESULT, 0 * 100);
+        try {
+            pi.send(ClockService.this, ClockActivity.STATUS_FINISH, intent);
+        } catch (PendingIntent.CanceledException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public IBinder onBind(Intent arg0) {
@@ -63,32 +80,51 @@ public class ClockService extends Service {
 
     class ClockTask extends AsyncTask<Integer, Integer, Void> {
 
-//        int time;
-//        int startId;
-        PendingIntent pi;
+        Table table;
+        boolean breathing;
 
-        public ClockTask(int time, int startId, PendingIntent pi) {
-//            this.time = time;
-//            this.startId = startId;
-            this.pi = pi;
-            Log.d(LOG_TAG, "MyRun#" + startId + " create");
+        public ClockTask(Table table, boolean breathing) {
+            this.table = table;
+            this.breathing = breathing;
         }
 
         @Override
-        protected Void doInBackground(Integer... integers) {
+        protected Void doInBackground(Integer... params) {
 
+            for (int i = params[0]; i < table.getCycles().size(); i++) {
+                if (breathing)
+                    for (int t = 0; t < table.getCycles().get(params[0]).breathe; t++) {
+                        publishProgress(t,params[0]);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                else
+                    for (int t = 0; t < table.getCycles().get(params[0]).hold; t++) {
+                        publishProgress(t,params[0]);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+            }
             return null;
         }
 
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            Intent intent = new Intent().putExtra(ClockActivity.PARAM_RESULT, 0 * 100);
-            try {
-                pi.send(ClockService.this, ClockActivity.STATUS_FINISH, intent);
-            } catch (PendingIntent.CanceledException e) {
-                e.printStackTrace();
-            }
+            onTic(values[0], values[1], breathing);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
         }
     }
 

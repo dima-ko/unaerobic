@@ -45,7 +45,7 @@
             android:id="@+id/stars"
             android:layout_height="25pt"
             android:layout_width="fill_parent"
-            android:gravity="center_vertical"
+            android:gravity="center"
             >
         <TextView
                 android:layout_height="wrap_content"

@@ -60,7 +60,7 @@ public class ClockActivity extends Activity implements Soundable {
 
         initViews();
 
-        setContentView(parent);
+        setContentView(parent);    //TODO: show in status bar checkbox
 
         startCycle();
 
