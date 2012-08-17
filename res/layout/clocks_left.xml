@@ -42,6 +42,5 @@
             android:gravity="center"
             android:text="00:00"
             android:layout_centerInParent="true"
-            android:visibility="invisible"
             />
 </RelativeLayout>

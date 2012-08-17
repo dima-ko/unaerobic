@@ -16,7 +16,7 @@
                   android:layout_width="55pt"
                   android:layout_height="23pt"
                   android:singleLine="true"
-                  android:inputType="number"
+                  android:inputType="phone"
                   android:hint="breath,s"
                   android:textColor="#FF000000"
                 />
@@ -24,7 +24,7 @@
                   android:layout_width="55pt"
                   android:layout_height="23pt"
                   android:singleLine="true"
-                  android:inputType="number"
+                  android:inputType="phone"
                   android:layout_marginLeft="3pt"
                   android:hint="hold,s"
                   android:textColor="#FF000000"

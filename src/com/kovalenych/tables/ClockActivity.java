@@ -103,6 +103,12 @@ public class ClockActivity extends Activity implements Soundable {
 
         stopButton = new Button(this);
         stopButton.setText("STOP");
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopService(new Intent(ClockActivity.this, ClockService.class));
+            }
+        });
 
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -182,6 +188,8 @@ public class ClockActivity extends Activity implements Soundable {
         if (resultCode == STATUS_BREATH) {
             breathTimeText.setText(timeToString(time));
         } else if (resultCode == STATUS_HOLD) {
+            if (holdTimeText.getVisibility() != View.VISIBLE)
+                holdTimeText.setVisibility(View.VISIBLE);
             holdTimeText.setText(timeToString(time));
         } else if (resultCode == STATUS_FINISH) {
             finish();

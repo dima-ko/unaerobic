@@ -41,6 +41,7 @@ public class ClockService extends Service {
 
     public void onDestroy() {
         super.onDestroy();
+        task.cancel(true);
         Log.d(LOG_TAG, "MyService onDestroy");
     }
 
@@ -79,8 +80,8 @@ public class ClockService extends Service {
     private void onTic(Integer time, Integer cycle, boolean breathing) {
 
         //evaluate percent progress
-        Log.d(LOG_TAG, "zzzzbreathing");
 
+        Log.d(LOG_TAG, "zzzzonTic  time: " + time);
         Intent intent = new Intent()
                 .putExtra(ClockActivity.PARAM_TIME, time)
                 .putExtra(ClockActivity.PARAM_PROGRESS, 0 * 100)
