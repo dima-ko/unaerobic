@@ -1,9 +1,12 @@
 package com.kovalenych.tables;
 
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.os.*;
 import android.util.Log;
+import android.widget.RemoteViews;
+import com.kovalenych.R;
 import com.kovalenych.Table;
 
 import java.util.concurrent.TimeUnit;
@@ -21,10 +24,24 @@ public class ClockService extends Service {
     Vibrator v;
 
     final String LOG_TAG = "myLogs";
+    private static final int NOTIFY_ID = 1;
 
     public void onCreate() {
         super.onCreate();
         Log.d(LOG_TAG, "MyService onCreate");
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
+        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
+        long when = System.currentTimeMillis(); // Выясним системное время
+        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
+        Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
+//        contentView.setImageViewResource(R.id.image, R.drawable.tray_icon); // Привязываем нашу картинку к ImageView в разметке уведомления
+//        contentView.setTextViewText(R.id.text,"Привет Habrahabr! А мы тут, плюшками балуемся..."); // Привязываем текст к TextView в нашей разметке
+        notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
+        notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
+        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
+
     }
 
     public void onDestroy() {
@@ -139,18 +156,6 @@ public class ClockService extends Service {
         }
     }
 //
-//        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
-//        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
-//        long when = System.currentTimeMillis(); // Выясним системное время
-//        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
-//        Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
-//        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
-//        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
-////        contentView.setImageViewResource(R.id.image, R.drawable.tray_icon); // Привязываем нашу картинку к ImageView в разметке уведомления
-////        contentView.setTextViewText(R.id.text,"Привет Habrahabr! А мы тут, плюшками балуемся..."); // Привязываем текст к TextView в нашей разметке
-//        notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
-//        notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
-//        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
 //
 //    }
 //

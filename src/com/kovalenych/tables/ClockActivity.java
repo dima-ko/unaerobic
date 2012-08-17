@@ -44,7 +44,7 @@ public class ClockActivity extends Activity implements Soundable {
 
     RelativeLayout parent;
     Activity ptr;
-    private static final int NOTIFY_ID = 1; // Ун
+
 
     public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";
