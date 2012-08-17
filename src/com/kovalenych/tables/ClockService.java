@@ -65,9 +65,10 @@ public class ClockService extends Service {
     ClockTask task;
 
     private void onTic(Integer value, Integer cycle, boolean breathing) {
-        Intent intent = new Intent().putExtra(ClockActivity.PARAM_RESULT, 0 * 100);
+        Intent intent = new Intent().putExtra(ClockActivity.PARAM_PROGRESS, 0 * 100);
         try {
-            pi.send(ClockService.this, ClockActivity.STATUS_FINISH, intent);
+            int stat = breathing ? ClockActivity.STATUS_BREATH : ClockActivity.STATUS_HOLD;
+            pi.send(ClockService.this, stat, intent);
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
         }
@@ -94,7 +95,7 @@ public class ClockService extends Service {
             for (int i = params[0]; i < table.getCycles().size(); i++) {
                 if (breathing)
                     for (int t = 0; t < table.getCycles().get(params[0]).breathe; t++) {
-                        publishProgress(t,params[0]);
+                        publishProgress(t, params[0]);
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException e) {
@@ -103,7 +104,7 @@ public class ClockService extends Service {
                     }
                 else
                     for (int t = 0; t < table.getCycles().get(params[0]).hold; t++) {
-                        publishProgress(t,params[0]);
+                        publishProgress(t, params[0]);
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException e) {

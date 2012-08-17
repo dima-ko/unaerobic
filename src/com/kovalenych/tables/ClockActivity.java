@@ -39,16 +39,18 @@ public class ClockActivity extends Activity implements Soundable {
     ImageView holdBar_left;
     ImageView holdBar_right;
 
-    TextView  breathTimeText, holdTimeText;
+    TextView breathTimeText, holdTimeText;
 
 
     RelativeLayout parent;
     Activity ptr;
     private static final int NOTIFY_ID = 1; // Ун
 
-    public final static String PARAM_CYCLES= "cycles";
+    public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";
-    public final static String PARAM_RESULT = "result";
+    public final static String PARAM_PROGRESS = "progress";
+    public static final int STATUS_BREATH = 1;
+    public static final int STATUS_HOLD = 2;
     public static final int STATUS_FINISH = 3;
 
     @Override
@@ -71,7 +73,7 @@ public class ClockActivity extends Activity implements Soundable {
         pi = createPendingResult(1, null, 0);
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
-        intent = new Intent(this, ClockService.class).putExtra(PARAM_CYCLES,bun)
+        intent = new Intent(this, ClockService.class).putExtra(PARAM_CYCLES, bun)
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
@@ -131,8 +133,8 @@ public class ClockActivity extends Activity implements Soundable {
     public void startCycle() {
 
         isBreathing = true;
-        int itemTimeB = (short) curCycle.breathe;
-        int itemTimeH = (short) curCycle.hold;
+//        int itemTimeB = (short) curCycle.breathe;
+//        int itemTimeH = (short) curCycle.hold;
         holdBar_left.setVisibility(View.VISIBLE);
         holdBar_right.setVisibility(View.INVISIBLE);
         breathBar_left.setVisibility(View.VISIBLE);
@@ -171,6 +173,22 @@ public class ClockActivity extends Activity implements Soundable {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(LOG_TAG, "requestCode = " + requestCode + ", resultCode = "
+                + resultCode);
+
+        // Ловим сообщения о старте задач
+        if (resultCode == STATUS_BREATH) {
+
+        } else if (resultCode == STATUS_HOLD) {
+
+        } else if (resultCode == STATUS_FINISH) {
+
+        }
+    }
+
     public String timeToString(int time) {
         int min = time / 60;
         int sec = time - min * 60;
@@ -190,10 +208,6 @@ public class ClockActivity extends Activity implements Soundable {
 //        }
 //        return super.onKeyDown(keyCode, event);
 //    }
-
-
-
-
 
 
 }
