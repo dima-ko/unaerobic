@@ -186,10 +186,16 @@ public class ClockActivity extends Activity implements Soundable {
 
         int time = data.getIntExtra(ClockActivity.PARAM_TIME, 0);
         if (resultCode == STATUS_BREATH) {
+            if (breathTimeText.getVisibility() != View.VISIBLE)
+                breathTimeText.setVisibility(View.VISIBLE);
+            if (holdTimeText.getVisibility() == View.VISIBLE)
+                holdTimeText.setVisibility(View.INVISIBLE);
             breathTimeText.setText(timeToString(time));
         } else if (resultCode == STATUS_HOLD) {
             if (holdTimeText.getVisibility() != View.VISIBLE)
                 holdTimeText.setVisibility(View.VISIBLE);
+            if (breathTimeText.getVisibility() == View.VISIBLE)
+                breathTimeText.setVisibility(View.INVISIBLE);
             holdTimeText.setText(timeToString(time));
         } else if (resultCode == STATUS_FINISH) {
             finish();

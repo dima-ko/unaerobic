@@ -96,6 +96,15 @@ public class ClockService extends Service {
     }
 
     public void onTableFinish() {
+        Intent intent = new Intent()
+                .putExtra(ClockActivity.PARAM_TIME, 0)
+                .putExtra(ClockActivity.PARAM_PROGRESS, 0)
+                .putExtra(ClockActivity.PARAM_BREATHING, false);
+        try {
+            pi.send(ClockService.this, ClockActivity.STATUS_FINISH, intent);
+        } catch (PendingIntent.CanceledException e) {
+            e.printStackTrace();
+        }
         stopSelf();
     }
 
@@ -126,16 +135,16 @@ public class ClockService extends Service {
                             e.printStackTrace();
                         }
                     }
-                else
-                    for (int t = 0; t < table.getCycles().get(params[0]).hold; t++) {
-                        publishProgress(t, params[0]);
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                breathing = false;
+                for (int t = 0; t < table.getCycles().get(params[0]).hold; t++) {
+                    publishProgress(t, params[0]);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-
+                }
+                breathing = true;
             }
             return null;
         }
@@ -144,7 +153,6 @@ public class ClockService extends Service {
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             onTic(values[0], values[1], breathing);
-
         }
 
         @Override
