@@ -1,7 +1,9 @@
 package com.kovalenych.tables;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -12,7 +14,8 @@ import android.widget.ImageView;
  */
 public class RotImageView extends ImageView {
 
-    int angle = 0;
+    int angle = 90;
+    private Bitmap bm;
 
     public RotImageView(Context context) {
         super(context);
@@ -28,7 +31,22 @@ public class RotImageView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.rotate(angle);
+
+        canvas.save();
+
+
+        Matrix rotator = new Matrix();
+        rotator.postRotate(angle);
+        if (bm != null)
+            canvas.drawBitmap(bm, rotator, null);
+
+        canvas.restore();
         super.onDraw(canvas);
+
+    }
+
+    public void setBitmap(Bitmap bm) {
+
+        this.bm = bm;
     }
 }

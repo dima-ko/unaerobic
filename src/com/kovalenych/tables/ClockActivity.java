@@ -6,6 +6,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,6 +23,8 @@ import com.kovalenych.R;
 import com.kovalenych.Table;
 import com.kovalenych.Utils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class ClockActivity extends Activity implements Soundable {
@@ -32,14 +37,14 @@ public class ClockActivity extends Activity implements Soundable {
 
     private static final String LOG_TAG = "zzClockActivity";
 
-    RotImageView breathBar;
-//    ImageView breathBar_left;
+//    RotImageView breathBar;
+    //    ImageView breathBar_left;
 //    ImageView breathBar_right;
-    RotImageView holdBar;
-    ImageView holdBar_left;
-    ImageView holdBar_right;
+//    RotImageView holdBar;
+//    ImageView holdBar_left;
+//    ImageView holdBar_right;
 
-    TextView /*breathTimeText,*/ holdTimeText;
+    TextView breathTimeText, holdTimeText;
 
 
     RelativeLayout parent;
@@ -115,20 +120,32 @@ public class ClockActivity extends Activity implements Soundable {
         parent.addView(stopButton, params);
 
 
-        breathBar = (RotImageView) leftCircle.findViewById(R.id.run_ventilate_progress);
+//        breathBar = (RotImageView) leftCircle.findViewById(R.id.run_ventilate_progress);
+//        AssetManager mngr = getAssets();
+//        // Create an input stream to read from the asset folder
+//        InputStream ins = null;
+//        try {
+//            ins = mngr.open("progress_green_left_png");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Convert the input stream into a bitmap
+//        Bitmap map = BitmapFactory.decodeStream(ins);
+//        breathBar.setBitmap(map);
 //        breathBar_left = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress_left);
 //        breathBar_right = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress_right);
-        holdBar = (RotImageView) rightCircle.findViewById(R.id.run_static_progress);
-        holdBar_left = (ImageView) rightCircle.findViewById(R.id.run_static_progress_left);
-        holdBar_right = (ImageView) rightCircle.findViewById(R.id.run_static_progress_right);
+//        holdBar = (RotImageView) rightCircle.findViewById(R.id.run_static_progress);
+//        holdBar_left = (ImageView) rightCircle.findViewById(R.id.run_static_progress_left);
+//        holdBar_right = (ImageView) rightCircle.findViewById(R.id.run_static_progress_right);
 
 
 //        topTimeText = (TextView) findViewById(R.id.topTime);
-//        breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
+        breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
 
 //        breathTimeText.setTypeface(Fonts.BELIGERENT);
-        holdTimeText.setTypeface(Fonts.BELIGERENT);
+//        holdTimeText.setTypeface(Fonts.BELIGERENT);
 //        topTimeText.setTypeface(Fonts.BELIGERENT);
 
         setListeners();
@@ -139,23 +156,23 @@ public class ClockActivity extends Activity implements Soundable {
     public void setListeners() {
 
 
-        breathBar.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-
-                isBreathing = true;
-                return true;
-
-            }
-        });
-
-        holdBar.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                isBreathing = false;
-                return true;
-            }
-        });
+//        breathBar.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//
+//                isBreathing = true;
+//                return true;
+//
+//            }
+//        });
+//
+//        holdBar.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//                isBreathing = false;
+//                return true;
+//            }
+//        });
 
 
     }
@@ -168,19 +185,19 @@ public class ClockActivity extends Activity implements Soundable {
         int percent = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
         Log.d("zzzzzzz", percent + "");
         if (resultCode == STATUS_BREATH) {
-//            if (breathTimeText.getVisibility() != View.VISIBLE)
-//                breathTimeText.setVisibility(View.VISIBLE);
+            if (breathTimeText.getVisibility() != View.VISIBLE)
+                breathTimeText.setVisibility(View.VISIBLE);
             if (holdTimeText.getVisibility() == View.VISIBLE)
                 holdTimeText.setVisibility(View.INVISIBLE);
-            breathBar.angle = percent;
-//            breathTimeText.setText(timeToString(time));
+//            breathBar.angle = percent;
+            breathTimeText.setText(timeToString(time));
         } else if (resultCode == STATUS_HOLD) {
             if (holdTimeText.getVisibility() != View.VISIBLE)
                 holdTimeText.setVisibility(View.VISIBLE);
-//            if (breathTimeText.getVisibility() == View.VISIBLE)
-//                breathTimeText.setVisibility(View.INVISIBLE);
+            if (breathTimeText.getVisibility() == View.VISIBLE)
+                breathTimeText.setVisibility(View.INVISIBLE);
             holdTimeText.setText(timeToString(time));
-            holdBar.angle = percent;
+//            holdBar.angle = percent;
         } else if (resultCode == STATUS_FINISH) {
             finish();
         }
