@@ -5,10 +5,7 @@ import android.app.Dialog;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
+import android.view.*;
 import android.widget.*;
 import com.kovalenych.Fonts;
 import com.kovalenych.R;
@@ -79,6 +76,14 @@ public class CyclesActivity extends Activity implements Soundable {
 
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
+        breathEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    (ptr).getWindow().setSoftInputMode(
+                            WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
         ok_button.setTypeface(Fonts.BELIGERENT);
 
@@ -169,6 +174,9 @@ public class CyclesActivity extends Activity implements Soundable {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+
+                stopService(new Intent(ptr, ClockService.class));
+
                 curCycleId = position;
                 Intent intent = new Intent(lv.getContext(), ClockActivity.class);
                 Bundle bun = new Bundle();
@@ -227,7 +235,7 @@ public class CyclesActivity extends Activity implements Soundable {
                 voiceDialog.setTitle(getResources().getString(R.string.voices));
                 LayoutInflater inf = getLayoutInflater();
                 ScrollView view1 = (ScrollView) inf.inflate(R.layout.voice, null);
-                voiceDialog.setContentView(view1, new RelativeLayout.LayoutParams(Utils.smallerDim -30, ViewGroup.LayoutParams.FILL_PARENT));
+                voiceDialog.setContentView(view1, new RelativeLayout.LayoutParams(Utils.smallerDim - 30, ViewGroup.LayoutParams.FILL_PARENT));
 //                voiceDialog.setContentView(R.layout.voice);
                 setVoiceRadios();
                 voiceDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
