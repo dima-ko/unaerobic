@@ -31,12 +31,11 @@ public class ClockService extends Service implements Soundable {
     public void onCreate() {
         super.onCreate();
         Log.d(LOG_TAG, "MyService onCreate");
-
-        showNotif1Time();
-
+        showNotifTime(0);
     }
 
-    private void showNotif1Time() {
+    private void showNotifTime(int setTrayProgress) {
+
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
         int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
         long when = System.currentTimeMillis(); // Выясним системное время
@@ -44,11 +43,13 @@ public class ClockService extends Service implements Soundable {
         Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
         RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
+        contentView.setProgressBar(R.id.tray_progress, 100, setTrayProgress, false);
 //        contentView.setImageViewResource(R.id.image, R.drawable.tray_icon); // Привязываем нашу картинку к ImageView в разметке уведомления
 //        contentView.setTextViewText(R.id.text,"Привет Habrahabr! А мы тут, плюшками балуемся..."); // Привязываем текст к TextView в нашей разметке
         notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
         notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
         mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
+
     }
 
     public void onDestroy() {
@@ -64,11 +65,8 @@ public class ClockService extends Service implements Soundable {
 
         v = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
         mSoundManager = new SoundManager(this);
-
         Bundle bundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
-
         pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
-
         int size = bundle.getInt("tablesize");
         table = new Table();
 
@@ -123,6 +121,8 @@ public class ClockService extends Service implements Soundable {
             else if (voices.contains(time))
                 mSoundManager.playSound(time);
         }
+
+        showNotifTime(time);
 
     }
 

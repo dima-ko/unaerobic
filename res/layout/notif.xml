@@ -4,17 +4,16 @@
                 android:layout_height="fill_parent"
                 android:padding="2dp"
         >
-    <ImageView
-            android:layout_centerVertical="true"
-            android:id="@+id/icon"
-            android:src="@drawable/tray_icon"
-            android:layout_width="10pt"
-            android:layout_height="10pt"
-            android:layout_marginRight="2dp"
-            />
+    <!--<ImageView-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:id="@+id/icon"-->
+            <!--android:src="@drawable/tray_icon"-->
+            <!--android:layout_width="10pt"-->
+            <!--android:layout_height="10pt"-->
+            <!--android:layout_marginRight="2dp"-->
+            <!--/>-->
     <ProgressBar
             android:id="@+id/tray_progress"
-            android:layout_toRightOf="@id/icon"
             android:padding="2pt"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="fill_parent"
@@ -24,7 +23,7 @@
     <TextView
             android:id="@+id/tray_text"
             android:layout_centerInParent="true"
-            android:text="blabla"
+            android:text="%"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
