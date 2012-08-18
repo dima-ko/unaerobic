@@ -62,7 +62,6 @@ public class ClockService extends Service implements Soundable {
     }
 
 
-
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "MyService onStartCommand");
 
@@ -70,21 +69,22 @@ public class ClockService extends Service implements Soundable {
         mSoundManager = new SoundManager(this);
         Bundle bundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
         pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
-        int size = bundle.getInt("tablesize");
-        table = new Table();
+        if (bundle != null) {
+            int size = bundle.getInt("tablesize");
+            table = new Table();
 
-        for (int i = 0; i < size; i++) {
-            table.getCycles().add(
-                    new Cycle(bundle.getInt("breathe" + Integer.toString(i)), bundle.getInt("hold" + Integer.toString(i)))
-            );
+            for (int i = 0; i < size; i++) {
+                table.getCycles().add(
+                        new Cycle(bundle.getInt("breathe" + Integer.toString(i)), bundle.getInt("hold" + Integer.toString(i)))
+                );
+            }
+
+            position = bundle.getInt("number");
+            vibrationEnabled = bundle.getBoolean("vibro");
+            voices = bundle.getIntegerArrayList("voices");
+            task = new ClockTask(table, true);
+            task.execute(position);
         }
-
-        position = bundle.getInt("number");
-        vibrationEnabled = bundle.getBoolean("vibro");
-        voices = bundle.getIntegerArrayList("voices");
-        task = new ClockTask(table, true);
-        task.execute(position);
-
         return super.onStartCommand(intent, flags, startId);
     }
 
