@@ -13,7 +13,6 @@ public interface Soundable {
     int AFTER_START_3 = 180;
     int AFTER_START_4 = 240;
     int AFTER_START_5 = 300;
-    int BREATHE = 400;
-
+    int BREATHE = Integer.MAX_VALUE;
 
 }

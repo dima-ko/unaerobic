@@ -6,12 +6,14 @@ import android.os.*;
 import android.util.Log;
 import com.kovalenych.Table;
 
+import java.util.ArrayList;
+
 /**
  * this class was made
  * by insomniac and angryded
  * for their purposes
  */
-public class ClockService extends Service {
+public class ClockService extends Service implements Soundable {
 
     private SoundManager mSoundManager;
     private int position;
@@ -20,6 +22,8 @@ public class ClockService extends Service {
 
     final String LOG_TAG = "myLogs";
     private static final int NOTIFY_ID = 1;
+    private boolean vibrationEnabled;
+    private ArrayList<Integer> voices;
 
     public void onCreate() {
         super.onCreate();
@@ -67,8 +71,8 @@ public class ClockService extends Service {
         }
 
         position = bundle.getInt("number");
-//        vibrationEnabled = bundle.getBoolean("vibro");
-//        voices = bundle.getIntegerArrayList("voices");
+        vibrationEnabled = bundle.getBoolean("vibro");
+        voices = bundle.getIntegerArrayList("voices");
         task = new ClockTask(table, true);
         task.execute(position);
 
@@ -77,10 +81,12 @@ public class ClockService extends Service {
 
     ClockTask task;
 
-    private void onTic(Integer time, Integer cycle, boolean breathing) {
+    private void onTic(int time, int cycle, boolean breathing) {
 
         //evaluate percent progress
-        int all = breathing ? table.getCycles().get(cycle).breathe : table.getCycles().get(cycle).hold;
+        int breathe = table.getCycles().get(cycle).breathe;
+        int hold = table.getCycles().get(cycle).hold;
+        int all = breathing ? breathe : hold;
         int percent = time * 360 / all;
         Log.d(LOG_TAG, "zzzzonTic  time: " + time);
         Intent intent = new Intent()
@@ -94,9 +100,32 @@ public class ClockService extends Service {
             e.printStackTrace();
         }
         //vibrate  or sound
+
+        if (time == 0 && vibrationEnabled)
+            v.vibrate(300);
+        if (breathing) {                                            //breath
+            int relatTime = time - breathe;
+            if (time == 0 && voices.contains(BREATHE))
+                mSoundManager.playSound(BREATHE);
+            else if (voices.contains(relatTime))
+                mSoundManager.playSound(relatTime);
+        } else {
+            if (time == 0 && voices.contains(START))                 //hold
+                mSoundManager.playSound(START);
+            else if (voices.contains(time))
+                mSoundManager.playSound(time);
+        }
+
+
     }
 
     public void onTableFinish() {
+
+        if (voices.contains(BREATHE))
+            mSoundManager.playSound(BREATHE);
+        if (vibrationEnabled)
+            v.vibrate(300);
+
         Intent intent = new Intent()
                 .putExtra(ClockActivity.PARAM_TIME, 0)
                 .putExtra(ClockActivity.PARAM_PROGRESS, 0)
@@ -145,7 +174,7 @@ public class ClockService extends Service {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                       return null;
+                        return null;
                     }
                 }
                 breathing = true;
