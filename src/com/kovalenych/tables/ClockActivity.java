@@ -105,7 +105,7 @@ public class ClockActivity extends Activity implements Soundable {
         parent.addView(rightCircle, paramsRight);
 
         stopButton = new Button(this);
-        stopButton.setText("STOP");
+        stopButton.setBackgroundResource(R.drawable.stop_button);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +114,8 @@ public class ClockActivity extends Activity implements Soundable {
             }
         });
 
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 4, w / 4);
+        params.setMargins(0, 0, 0, 5);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         parent.addView(stopButton, params);

@@ -22,6 +22,7 @@ public class ClockService extends Service implements Soundable {
     private int position;
     Table table;
     Vibrator v;
+    PendingIntent pi;
 
     final String LOG_TAG = "myLogs";
     private static final int NOTIFY_ID = 1;
@@ -31,11 +32,10 @@ public class ClockService extends Service implements Soundable {
     public void onCreate() {
         super.onCreate();
         Log.d(LOG_TAG, "MyService onCreate");
-        showNotifTime(0);
     }
 
-    private void showNotifTime(int setTrayProgress) {
-
+    private void showProgressInTray(int progress, int max, boolean breathing) {
+        Log.d("showProgressInTray", "zzzzzzzzz");
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
         int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
         long when = System.currentTimeMillis(); // Выясним системное время
@@ -43,14 +43,22 @@ public class ClockService extends Service implements Soundable {
         Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
         RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
-        contentView.setProgressBar(R.id.tray_progress, 100, setTrayProgress, false);
-//        contentView.setImageViewResource(R.id.image, R.drawable.tray_icon); // Привязываем нашу картинку к ImageView в разметке уведомления
-//        contentView.setTextViewText(R.id.text,"Привет Habrahabr! А мы тут, плюшками балуемся..."); // Привязываем текст к TextView в нашей разметке
+        contentView.setProgressBar(R.id.tray_progress, max, progress, false);
+        contentView.setTextViewText(R.id.tray_text, (breathing ? "breathing " : "holding ") + timeToString(progress)); // Привязываем текст к TextView в нашей разметке
         notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
         notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
         mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
 
+//        public static void CancelNotification(Context ctx, int notifyId) {
+//            String ns = Context.NOTIFICATION_SERVICE;
+//            NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
+//            nMgr.cancel(notifyId);
+//        }
+
     }
+
+
+
 
     public void onDestroy() {
         super.onDestroy();
@@ -58,7 +66,11 @@ public class ClockService extends Service implements Soundable {
         Log.d(LOG_TAG, "MyService onDestroy");
     }
 
-    PendingIntent pi;
+    public String timeToString(int time) {
+        int min = time / 60;
+        int sec = time - min * 60;
+        return String.format("%02d:%02d", min, sec);
+    }
 
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "MyService onStartCommand");
@@ -109,21 +121,21 @@ public class ClockService extends Service implements Soundable {
 
         if (time == 0 && vibrationEnabled)
             v.vibrate(300);
-        if (breathing) {                                            //breath
+        if (breathing) {
+            showProgressInTray(time, breathe, breathing);
+            //breath
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE))
                 mSoundManager.playSound(BREATHE);
             else if (voices.contains(relatTime))
                 mSoundManager.playSound(relatTime);
         } else {
+            showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START))                 //hold
                 mSoundManager.playSound(START);
             else if (voices.contains(time))
                 mSoundManager.playSound(time);
         }
-
-        showNotifTime(time);
-
     }
 
     public void onTableFinish() {
