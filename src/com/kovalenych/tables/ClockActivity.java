@@ -191,24 +191,19 @@ public class ClockActivity extends Activity implements Soundable {
             if (holdTimeText.getVisibility() == View.VISIBLE)
                 holdTimeText.setVisibility(View.INVISIBLE);
 //            breathBar.angle = percent;
-            breathTimeText.setText(timeToString(time));
+            breathTimeText.setText(Utils.timeToString(time));
         } else if (resultCode == STATUS_HOLD) {
             if (holdTimeText.getVisibility() != View.VISIBLE)
                 holdTimeText.setVisibility(View.VISIBLE);
             if (breathTimeText.getVisibility() == View.VISIBLE)
                 breathTimeText.setVisibility(View.INVISIBLE);
-            holdTimeText.setText(timeToString(time));
+            holdTimeText.setText(Utils.timeToString(time));
 //            holdBar.angle = percent;
         } else if (resultCode == STATUS_FINISH) {
             finish();
         }
     }
 
-    public String timeToString(int time) {
-        int min = time / 60;
-        int sec = time - min * 60;
-        return String.format("%02d:%02d", min, sec);
-    }
 
 //    @Override
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import com.kovalenych.R;
 import com.kovalenych.Table;
+import com.kovalenych.Utils;
 
 import java.util.ArrayList;
 
@@ -44,33 +45,23 @@ public class ClockService extends Service implements Soundable {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
         RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
         contentView.setProgressBar(R.id.tray_progress, max, progress, false);
-        contentView.setTextViewText(R.id.tray_text, (breathing ? "breathing " : "holding ") + timeToString(progress)); // Привязываем текст к TextView в нашей разметке
+        contentView.setTextViewText(R.id.tray_text, (breathing ? "breathing " : "holding ") + Utils.timeToString(progress)); // Привязываем текст к TextView в нашей разметке
         notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
         notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
         mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
 
-//        public static void CancelNotification(Context ctx, int notifyId) {
-//            String ns = Context.NOTIFICATION_SERVICE;
-//            NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
-//            nMgr.cancel(notifyId);
-//        }
-
     }
-
-
 
 
     public void onDestroy() {
         super.onDestroy();
+        NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancel(NOTIFY_ID);
         task.cancel(true);
         Log.d(LOG_TAG, "MyService onDestroy");
     }
 
-    public String timeToString(int time) {
-        int min = time / 60;
-        int sec = time - min * 60;
-        return String.format("%02d:%02d", min, sec);
-    }
+
 
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "MyService onStartCommand");

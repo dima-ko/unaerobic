@@ -55,4 +55,10 @@ public class Utils {
 
     }
 
+    public static String timeToString(int time) {
+        int min = time / 60;
+        int sec = time - min * 60;
+        return String.format("%02d:%02d", min, sec);
+    }
+
 }
