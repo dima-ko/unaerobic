@@ -132,14 +132,13 @@ public class ClockActivity extends Activity implements Const {
 
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         startService(new Intent(this, ClockService.class)
                 .putExtra(FLAG, FLAG_SHOW_TRAY));
     }
 
     public void setListeners() {
-
 
         breathTimeText.setOnLongClickListener(new View.OnLongClickListener() {      //TODO: change on bigger layout
             @Override

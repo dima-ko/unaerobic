@@ -31,6 +31,8 @@ public class ClockService extends Service implements Soundable, Const {
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
 
+    public boolean showTray = false;
+
     public void onCreate() {
         super.onCreate();
         v = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
@@ -89,10 +91,11 @@ public class ClockService extends Service implements Soundable, Const {
             task.execute(position);
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
-
-
+            showTray = true;
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
-
+            showTray = false;
+            NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            nMgr.cancel(NOTIFY_ID);
 
         } else if (destination.equals(FLAG_CLICK_BREATH)) {
 
@@ -129,7 +132,8 @@ public class ClockService extends Service implements Soundable, Const {
         if (time == 0 && vibrationEnabled)
             v.vibrate(300);
         if (breathing) {
-            showProgressInTray(time, breathe, breathing);
+            if (showTray)
+                showProgressInTray(time, breathe, breathing);
             //breath
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE))
@@ -137,7 +141,8 @@ public class ClockService extends Service implements Soundable, Const {
             else if (voices.contains(relatTime))
                 mSoundManager.playSound(relatTime);
         } else {
-            showProgressInTray(time, hold, breathing);
+            if (showTray)
+                showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START))                 //hold
                 mSoundManager.playSound(START);
             else if (voices.contains(time))

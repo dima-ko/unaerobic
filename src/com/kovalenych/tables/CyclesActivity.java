@@ -40,6 +40,8 @@ public class CyclesActivity extends Activity implements Soundable {
     boolean isvibro;
     private Button stopButton;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
