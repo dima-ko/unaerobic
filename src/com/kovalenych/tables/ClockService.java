@@ -62,7 +62,8 @@ public class ClockService extends Service implements Soundable, Const {
         super.onDestroy();
         NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         nMgr.cancel(NOTIFY_ID);
-        task.cancel(true);
+        if (task != null)
+            task.cancel(true);
         Log.d(LOG_TAG, "MyService onDestroy");
     }
 
@@ -72,7 +73,7 @@ public class ClockService extends Service implements Soundable, Const {
 
         String destination = intent.getStringExtra(FLAG);
         if (destination.equals(FLAG_CREATE)) {
-
+            Log.d("zzzzz",FLAG_CREATE);
             Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             int size = cyclesBundle.getInt("tablesize");
@@ -91,7 +92,9 @@ public class ClockService extends Service implements Soundable, Const {
             task.execute(position);
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
+            Log.d("zzzzz",FLAG_SHOW_TRAY);
             showTray = true;
+            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
             showTray = false;
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

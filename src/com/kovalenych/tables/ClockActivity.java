@@ -38,8 +38,10 @@ public class ClockActivity extends Activity implements Const {
         setContentView(parent);    //TODO: show in status bar checkbox
 
         if (Utils.isMyServiceRunning(this)) {
+            PendingIntent pi = createPendingResult(1, null, 0);
             Intent intent = new Intent(this, ClockService.class)
-                    .putExtra(FLAG, FLAG_SHOW_TRAY);
+                    .putExtra(FLAG, FLAG_SHOW_TRAY)
+                    .putExtra(PARAM_PINTENT, pi);
             startService(intent);
         } else
             createService(bun);

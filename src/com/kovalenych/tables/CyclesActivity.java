@@ -62,6 +62,9 @@ public class CyclesActivity extends Activity implements Soundable {
     }
 
     public void initViews() {
+
+        lv = (ListView) findViewById(R.id.cycles_list);
+
         TextView id = (TextView) findViewById(R.id.chosen_table_name);
         id.setText(name);
 
@@ -80,14 +83,6 @@ public class CyclesActivity extends Activity implements Soundable {
 
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
-        breathEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    (ptr).getWindow().setSoftInputMode(
-                            WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                }
-            }
-        });
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
         ok_button.setTypeface(Fonts.BELIGERENT);
 
@@ -113,7 +108,7 @@ public class CyclesActivity extends Activity implements Soundable {
             stopButton.setVisibility(View.VISIBLE);
         else
             stopButton.setVisibility(View.GONE);
-        lv = (ListView) findViewById(R.id.cycles_list);
+
 
     }
 
