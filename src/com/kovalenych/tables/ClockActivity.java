@@ -1,28 +1,13 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.*;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.kovalenych.*;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 
 public class ClockActivity extends Activity implements Const {
 
@@ -140,7 +125,7 @@ public class ClockActivity extends Activity implements Const {
     protected void onDestroy() {
         super.onDestroy();
         startService(new Intent(this, ClockService.class)
-                .putExtra(FLAG, FLAG_EXIT));
+                .putExtra(FLAG, FLAG_TRAY));
     }
 
     public void setListeners() {

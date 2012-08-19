@@ -9,7 +9,7 @@ public interface Const {
     public final static String FLAG = "flag";
 
     public final static String FLAG_CREATE = "create";
-    public final static String FLAG_EXIT = "exit";
+    public final static String FLAG_TRAY = "exit";
     public final static String FLAG_LONG_CLICK= "click";
 
     public final static String PARAM_CYCLES = "cycles";
