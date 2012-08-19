@@ -18,24 +18,14 @@ import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
-import com.kovalenych.Fonts;
-import com.kovalenych.R;
-import com.kovalenych.Table;
-import com.kovalenych.Utils;
+import com.kovalenych.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class ClockActivity extends Activity implements Soundable {
+public class ClockActivity extends Activity implements Const {
 
-
-    Cycle curCycle;
-
-    boolean isBreathing = false;
-    boolean isAnimPlaying = false;
-
-    private static final String LOG_TAG = "zzClockActivity";
 
 //    RotImageView breathBar;
     //    ImageView breathBar_left;
@@ -50,15 +40,6 @@ public class ClockActivity extends Activity implements Soundable {
     RelativeLayout parent;
     Activity ptr;
 
-
-    public final static String PARAM_CYCLES = "cycles";
-    public final static String PARAM_PINTENT = "pendingIntent";
-    public final static String PARAM_PROGRESS = "progress";
-    public static final String PARAM_TIME = "time";
-    public static final String PARAM_BREATHING = "breathing";
-    public static final int STATUS_BREATH = 1;
-    public static final int STATUS_HOLD = 2;
-    public static final int STATUS_FINISH = 3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,6 +60,7 @@ public class ClockActivity extends Activity implements Soundable {
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
         intent = new Intent(this, ClockService.class)
+                .putExtra(FLAG, FLAG_CREATE)
                 .putExtra(PARAM_CYCLES, bun)
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
@@ -154,26 +136,33 @@ public class ClockActivity extends Activity implements Soundable {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        startService(new Intent(this, ClockService.class)
+                .putExtra(FLAG, FLAG_EXIT));
+    }
+
     public void setListeners() {
 
 
-//        breathBar.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//
-//                isBreathing = true;
-//                return true;
-//
-//            }
-//        });
-//
-//        holdBar.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//                isBreathing = false;
-//                return true;
-//            }
-//        });
+        breathTimeText.setOnLongClickListener(new View.OnLongClickListener() {      //TODO: change on bigger layout
+            @Override
+            public boolean onLongClick(View view) {
+                startService(new Intent(ptr, ClockService.class)
+                        .putExtra(FLAG, FLAG_LONG_CLICK));
+                return true;
+            }
+        });
+
+        holdTimeText.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                startService(new Intent(ptr, ClockService.class)
+                        .putExtra(FLAG, FLAG_LONG_CLICK));
+                return true;
+            }
+        });
 
 
     }

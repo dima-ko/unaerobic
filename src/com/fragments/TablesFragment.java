@@ -32,6 +32,7 @@ public final class TablesFragment extends Fragment {
     EditText edit;
     int chosenTable;
     ListView lv;
+    private Button stopButton;
 
     public static TablesFragment newInstance() {
         return new TablesFragment();
@@ -61,6 +62,12 @@ public final class TablesFragment extends Fragment {
             tableList.addAll(tableSet);
 
         initDialogs();
+
+        stopButton = (Button) tables.findViewById(R.id.stop_button);
+        if (true) //TODO: service must be running
+            stopButton.setVisibility(View.VISIBLE);
+        else
+            stopButton.setVisibility(View.GONE);
 
         lv = (ListView) tables.findViewById(R.id.tables_list);
         lv.setTextFilterEnabled(true);

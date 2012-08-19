@@ -37,6 +37,7 @@ public class CyclesActivity extends Activity implements Soundable {
     private Button del_button;
     private SharedPreferences _preferedSettings;
     boolean isvibro;
+    private Button stopButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,11 @@ public class CyclesActivity extends Activity implements Soundable {
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
         ok_button.setTypeface(Fonts.BELIGERENT);
 
+        stopButton = (Button) findViewById(R.id.stop_button);
+        if (true) //TODO: service must be running
+            stopButton.setVisibility(View.VISIBLE);
+        else
+            stopButton.setVisibility(View.GONE);
         lv = (ListView) findViewById(R.id.cycles_list);
 
         invalidateList();

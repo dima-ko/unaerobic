@@ -40,6 +40,16 @@
             android:background="@drawable/quest"
             />
 
+    <Button
+            android:id="@+id/stop_button"
+            android:layout_marginBottom="5pt"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="26pt"
+            android:layout_height="26pt"
+            android:background="@drawable/stop_button"
+            />
+
 
 </RelativeLayout>
 
