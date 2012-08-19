@@ -150,7 +150,9 @@ public class ClockActivity extends Activity implements Const {
             @Override
             public boolean onLongClick(View view) {
                 startService(new Intent(ptr, ClockService.class)
-                        .putExtra(FLAG, FLAG_LONG_CLICK));
+                        .putExtra(FLAG, FLAG_LONG_CLICK)
+                        .putExtra(PARAM_BREATHING, STATUS_BREATH)
+                );
                 return true;
             }
         });
@@ -159,7 +161,9 @@ public class ClockActivity extends Activity implements Const {
             @Override
             public boolean onLongClick(View view) {
                 startService(new Intent(ptr, ClockService.class)
-                        .putExtra(FLAG, FLAG_LONG_CLICK));
+                        .putExtra(FLAG, FLAG_LONG_CLICK)
+                        .putExtra(PARAM_BREATHING, STATUS_HOLD)
+                );
                 return true;
             }
         });

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * by insomniac and angryded
  * for their purposes
  */
-public class ClockService extends Service  implements Soundable, Const {
+public class ClockService extends Service implements Soundable, Const {
 
     private SoundManager mSoundManager;
     private int position;
@@ -68,12 +68,10 @@ public class ClockService extends Service  implements Soundable, Const {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "MyService onStartCommand" + flags);
 
-        Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
+        String destination = intent.getStringExtra(FLAG);
+        if (destination.equals(FLAG_CREATE)) {
 
-
-
-        Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
-        if (cyclesBundle != null) {
+            Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             int size = cyclesBundle.getInt("tablesize");
             table = new Table();
@@ -89,7 +87,14 @@ public class ClockService extends Service  implements Soundable, Const {
             voices = cyclesBundle.getIntegerArrayList("voices");
             task = new ClockTask(table, true);
             task.execute(position);
+        } else if (FLAG.equals(FLAG_EXIT)) {
+
+
+        } else if (FLAG.equals(FLAG_LONG_CLICK)) {
+
+
         }
+
         return super.onStartCommand(intent, flags, startId);
     }
 
