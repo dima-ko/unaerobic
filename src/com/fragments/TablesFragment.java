@@ -16,6 +16,7 @@ import android.view.Window;
 import android.widget.*;
 import com.kovalenych.Fonts;
 import com.kovalenych.R;
+import com.kovalenych.Utils;
 import com.kovalenych.tables.CyclesActivity;
 import com.kovalenych.tables.TableViewBinder;
 
@@ -66,7 +67,7 @@ public final class TablesFragment extends Fragment {
         initDialogs();
 
         stopButton = (Button) tables.findViewById(R.id.stop_button);
-        if (isMyServiceRunning())
+        if (Utils.isMyServiceRunning(getActivity()))
             stopButton.setVisibility(View.VISIBLE);
         else
             stopButton.setVisibility(View.GONE);
@@ -113,19 +114,9 @@ public final class TablesFragment extends Fragment {
 //        tracker.setAnonymizeIp(true);
 
 //
-
         return tables;
     }
 
-    private boolean isMyServiceRunning() {
-        ActivityManager manager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if ("com.kovalenych.tables.ClockService".equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private void invalidateList() {
 

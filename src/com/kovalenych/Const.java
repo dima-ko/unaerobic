@@ -9,8 +9,10 @@ public interface Const {
     public final static String FLAG = "flag";
 
     public final static String FLAG_CREATE = "create";
-    public final static String FLAG_TRAY = "exit";
-    public final static String FLAG_LONG_CLICK= "click";
+    public final static String FLAG_SHOW_TRAY = "showtray";
+    public final static String FLAG_HIDE_TRAY = "hidetray";
+    public final static String FLAG_CLICK_BREATH = "click_breath";
+    public final static String FLAG_CLICK_HOLD = "click_hold";
 
     public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";

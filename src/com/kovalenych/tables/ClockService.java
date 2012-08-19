@@ -56,7 +56,6 @@ public class ClockService extends Service implements Soundable, Const {
     }
 
 
-
     public void onDestroy() {
         super.onDestroy();
         NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -88,15 +87,17 @@ public class ClockService extends Service implements Soundable, Const {
             voices = cyclesBundle.getIntegerArrayList("voices");
             task = new ClockTask(table, true);
             task.execute(position);
-        } else if (destination.equals(FLAG_TRAY)) {
+
+        } else if (destination.equals(FLAG_SHOW_TRAY)) {
 
 
-        } else if (destination.equals(FLAG_LONG_CLICK)) {
-            int par = intent.getIntExtra(PARAM_BREATHING, 0);
-            if (par == STATUS_BREATH) {
-            } else {
+        } else if (destination.equals(FLAG_HIDE_TRAY)) {
 
-            }
+
+        } else if (destination.equals(FLAG_CLICK_BREATH)) {
+
+
+        } else if (destination.equals(FLAG_CLICK_HOLD)) {
 
         }
 

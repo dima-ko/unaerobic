@@ -2,6 +2,7 @@ package com.kovalenych;
 
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
@@ -41,11 +42,21 @@ public class Utils {
         isPortrait = (height > width);
         smallerDim = (height > width) ? width : height;
 
-        smaller2dim =  isPortrait ? height /2 : width/2;
+        smaller2dim = isPortrait ? height / 2 : width / 2;
 
 
         scale = activity.getResources().getDisplayMetrics().density;
 
+    }
+
+    public static boolean isMyServiceRunning(Activity activity) {
+        ActivityManager manager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if ("com.kovalenych.tables.ClockService".equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

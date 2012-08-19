@@ -90,7 +90,6 @@ public class CyclesActivity extends Activity implements Soundable {
         ok_button.setTypeface(Fonts.BELIGERENT);
 
 
-
         invalidateList();
 
         add_button = (Button) findViewById(R.id.add_cycle);
@@ -103,21 +102,12 @@ public class CyclesActivity extends Activity implements Soundable {
         setListeners();
     }
 
-    private boolean isMyServiceRunning() {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if ("com.kovalenych.tables.ClockService".equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
         stopButton = (Button) findViewById(R.id.stop_button);
-        if (isMyServiceRunning())
+        if (Utils.isMyServiceRunning(this))
             stopButton.setVisibility(View.VISIBLE);
         else
             stopButton.setVisibility(View.GONE);

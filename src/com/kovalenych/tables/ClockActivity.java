@@ -1,9 +1,7 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +37,17 @@ public class ClockActivity extends Activity implements Const {
 
         setContentView(parent);    //TODO: show in status bar checkbox
 
+        if (Utils.isMyServiceRunning(this)) {
+            Intent intent = new Intent(this, ClockService.class)
+                    .putExtra(FLAG, FLAG_SHOW_TRAY);
+            startService(intent);
+        } else
+            createService(bun);
+
+    }
+
+
+    private void createService(Bundle bun) {
         PendingIntent pi;
         Intent intent;
 
@@ -52,7 +61,6 @@ public class ClockActivity extends Activity implements Const {
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
-
     }
 
     Button stopButton;
@@ -127,7 +135,7 @@ public class ClockActivity extends Activity implements Const {
     protected void onDestroy() {
         super.onDestroy();
         startService(new Intent(this, ClockService.class)
-                .putExtra(FLAG, FLAG_TRAY));
+                .putExtra(FLAG, FLAG_SHOW_TRAY));
     }
 
     public void setListeners() {
@@ -137,8 +145,7 @@ public class ClockActivity extends Activity implements Const {
             @Override
             public boolean onLongClick(View view) {
                 startService(new Intent(ptr, ClockService.class)
-                        .putExtra(FLAG, FLAG_LONG_CLICK)
-                        .putExtra(PARAM_BREATHING, STATUS_BREATH)
+                        .putExtra(FLAG, FLAG_CLICK_BREATH)
                 );
                 return true;
             }
@@ -148,8 +155,7 @@ public class ClockActivity extends Activity implements Const {
             @Override
             public boolean onLongClick(View view) {
                 startService(new Intent(ptr, ClockService.class)
-                        .putExtra(FLAG, FLAG_LONG_CLICK)
-                        .putExtra(PARAM_BREATHING, STATUS_HOLD)
+                        .putExtra(FLAG, FLAG_CLICK_HOLD)
                 );
                 return true;
             }
@@ -157,7 +163,6 @@ public class ClockActivity extends Activity implements Const {
 
 
     }
-
 
 
     @Override
