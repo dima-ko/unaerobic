@@ -1,6 +1,8 @@
 package com.fragments;
 
+import android.app.ActivityManager;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -64,10 +66,12 @@ public final class TablesFragment extends Fragment {
         initDialogs();
 
         stopButton = (Button) tables.findViewById(R.id.stop_button);
-        if (true) //TODO: service must be running
+        if (isMyServiceRunning())
             stopButton.setVisibility(View.VISIBLE);
         else
             stopButton.setVisibility(View.GONE);
+        lv = (ListView) tables.findViewById(R.id.cycles_list);
+
 
         lv = (ListView) tables.findViewById(R.id.tables_list);
         lv.setTextFilterEnabled(true);
@@ -111,6 +115,16 @@ public final class TablesFragment extends Fragment {
 //
 
         return tables;
+    }
+
+    private boolean isMyServiceRunning() {
+        ActivityManager manager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if ("com.kovalenych.tables.ClockService".equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void invalidateList() {

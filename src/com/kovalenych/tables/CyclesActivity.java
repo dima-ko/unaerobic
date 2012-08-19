@@ -1,6 +1,7 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.*;
 import android.os.Bundle;
@@ -88,12 +89,7 @@ public class CyclesActivity extends Activity implements Soundable {
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
         ok_button.setTypeface(Fonts.BELIGERENT);
 
-        stopButton = (Button) findViewById(R.id.stop_button);
-        if (true) //TODO: service must be running
-            stopButton.setVisibility(View.VISIBLE);
-        else
-            stopButton.setVisibility(View.GONE);
-        lv = (ListView) findViewById(R.id.cycles_list);
+
 
         invalidateList();
 
@@ -105,6 +101,28 @@ public class CyclesActivity extends Activity implements Soundable {
         id.setTypeface(Fonts.BELIGERENT);
 
         setListeners();
+    }
+
+    private boolean isMyServiceRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if ("com.kovalenych.tables.ClockService".equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopButton = (Button) findViewById(R.id.stop_button);
+        if (isMyServiceRunning())
+            stopButton.setVisibility(View.VISIBLE);
+        else
+            stopButton.setVisibility(View.GONE);
+        lv = (ListView) findViewById(R.id.cycles_list);
+
     }
 
     private void invalidateList() {

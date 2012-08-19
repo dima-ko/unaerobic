@@ -1,7 +1,9 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -155,6 +157,8 @@ public class ClockActivity extends Activity implements Const {
 
 
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
