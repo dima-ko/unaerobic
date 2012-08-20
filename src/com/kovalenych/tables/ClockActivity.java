@@ -175,10 +175,10 @@ public class ClockActivity extends Activity implements Const {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(LOG_TAG, "onPause" + resultCode);
+        Log.d(LOG_TAG, "onActivityResult" + resultCode);
         int time = data.getIntExtra(ClockActivity.PARAM_TIME, 0);
         int percent = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
-        Log.d("zzzzzzz", percent + "");
+//        Log.d("zzzzzzz", percent + "");
         if (resultCode == STATUS_BREATH) {
             if (breathTimeText.getVisibility() != View.VISIBLE)
                 breathTimeText.setVisibility(View.VISIBLE);
@@ -194,6 +194,7 @@ public class ClockActivity extends Activity implements Const {
             holdTimeText.setText(Utils.timeToString(time));
 //            holdBar.angle = percent;
         } else if (resultCode == STATUS_FINISH) {
+            Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
             finish();
         }
     }
