@@ -34,6 +34,7 @@ public class ClockActivity extends Activity implements Const {
         Bundle bun = getIntent().getExtras();
 
         initViews();
+        Log.d(LOG_TAG, "onCreate");
 
         setContentView(parent);    //TODO: show in status bar checkbox
 
@@ -43,6 +44,7 @@ public class ClockActivity extends Activity implements Const {
                     .putExtra(FLAG, FLAG_SHOW_TRAY)
                     .putExtra(PARAM_PINTENT, pi);
             startService(intent);
+            Log.d(LOG_TAG, "createService FLAG_SHOW_TRAY");
         } else
             createService(bun);
 
@@ -52,6 +54,7 @@ public class ClockActivity extends Activity implements Const {
     private void createService(Bundle bun) {
         PendingIntent pi;
         Intent intent;
+        Log.d(LOG_TAG, "createService");
 
         // Создаем PendingIntent для Task1
         pi = createPendingResult(1, null, 0);
@@ -132,10 +135,13 @@ public class ClockActivity extends Activity implements Const {
 
     }
 
+    private static final String LOG_TAG = "zzz ClockActivity";
+
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(LOG_TAG, "onPause");
         startService(new Intent(this, ClockService.class)
                 .putExtra(FLAG, FLAG_SHOW_TRAY));
     }
@@ -169,7 +175,7 @@ public class ClockActivity extends Activity implements Const {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        Log.d(LOG_TAG, "onPause" + resultCode);
         int time = data.getIntExtra(ClockActivity.PARAM_TIME, 0);
         int percent = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
         Log.d("zzzzzzz", percent + "");

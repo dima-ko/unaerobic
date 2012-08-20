@@ -26,7 +26,7 @@ public class ClockService extends Service implements Soundable, Const {
     Vibrator v;
     PendingIntent pi;
 
-    final String LOG_TAG = "myLogs";
+    final String LOG_TAG = "zzz ClockService";
     private static final int NOTIFY_ID = 1;
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
@@ -73,7 +73,7 @@ public class ClockService extends Service implements Soundable, Const {
 
         String destination = intent.getStringExtra(FLAG);
         if (destination.equals(FLAG_CREATE)) {
-            Log.d("zzzzz",FLAG_CREATE);
+            Log.d("zzzzz", FLAG_CREATE);
             Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             int size = cyclesBundle.getInt("tablesize");
@@ -92,7 +92,7 @@ public class ClockService extends Service implements Soundable, Const {
             task.execute(position);
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
-            Log.d("zzzzz",FLAG_SHOW_TRAY);
+            Log.d("zzzzz", FLAG_SHOW_TRAY);
             showTray = true;
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
@@ -192,6 +192,8 @@ public class ClockService extends Service implements Soundable, Const {
             for (int i = params[0]; i < table.getCycles().size(); i++) {
                 if (breathing)
                     for (int t = 0; t < table.getCycles().get(params[0]).breathe; t++) {
+                        if (isCancelled())
+                            return null;
                         publishProgress(t, params[0]);
                         try {
                             Thread.sleep(1000);
@@ -203,6 +205,8 @@ public class ClockService extends Service implements Soundable, Const {
                     }
                 breathing = false;
                 for (int t = 0; t < table.getCycles().get(params[0]).hold; t++) {
+                    if (isCancelled())
+                        return null;
                     publishProgress(t, params[0]);
                     try {
                         Thread.sleep(1000);
@@ -228,79 +232,5 @@ public class ClockService extends Service implements Soundable, Const {
             onTableFinish();
         }
     }
-//
-//
-//    }
-//
-//        private void ifBreathing(Message msg) {
-//            if (msg.arg1 == curCycle.breathe + 1) {
-//                isBreathing = false;
-//                timer.stopThread();
-//                timer = new TimerThread(this);
-//                timer.start();
-//                breathBar.clearAnimation();
-//                isAnimPlaying = false;
-//                if (vibrationEnabled)
-//                    v.vibrate(300);
-//
-//            } else {
-//                breathTimeText.setVisibility(View.VISIBLE);
-//                breathTimeText.setText(timeToString(msg.arg1));
-//                holdTimeText.setVisibility(View.INVISIBLE);
-//                if (msg.arg1 == curCycle.breathe / 2) {
-//                    breathBar_left.setVisibility(View.INVISIBLE);
-//                    breathBar_right.setVisibility(View.VISIBLE);
-//                }
-//                if (!isAnimPlaying) {
-////                    breathBar.startAnimation(rot);
-//                    isAnimPlaying = true;
-//                }
-////                Log.d("zzz", (msg.arg1 - curCycle.breathe) + "");
-//                if (voices.contains(msg.arg1 - curCycle.breathe))
-//                    mSoundManager.playSound(msg.arg1 - curCycle.breathe);
-//
-//            }
-//        }
-//
-//        private void ifHolding(Message msg) {
-//            if (msg.arg1 == curCycle.hold + 1) {
-//                isBreathing = true;
-//                timer.stopThread();
-//                holdBar.clearAnimation();
-//                isAnimPlaying = false;
-//                mSoundManager.playSound(BREATHE);
-//
-//                position++;
-//                if (position == table.getCycles().size())
-//                    finish();
-//                else {
-//                    curCycle = table.getCycles().get(position);
-//                    startCycle();
-//                }
-//                if (vibrationEnabled)
-//                    v.vibrate(300);
-//
-//            } else {
-//                holdTimeText.setVisibility(View.VISIBLE);
-//                holdTimeText.setText(timeToString(msg.arg1));
-//                breathTimeText.setVisibility(View.INVISIBLE);
-//                if (msg.arg1 == curCycle.hold / 2) {
-//                    holdBar_left.setVisibility(View.INVISIBLE);
-//                    holdBar_right.setVisibility(View.VISIBLE);
-//                }
-//
-//                if (!isAnimPlaying) {
-////                    holdBar.startAnimation(rot2);
-//                    isAnimPlaying = true;
-//                }
-////                Log.d("zzz", (msg.arg1) + "");
-//                if (voices.contains(msg.arg1) && msg.arg1 != 0)
-//                    mSoundManager.playSound(msg.arg1);
-//            }
-//        }
-//    };
-//
-//    private boolean vibrationEnabled;
-//
 
 }

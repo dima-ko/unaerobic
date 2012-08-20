@@ -26,7 +26,7 @@ public class CyclesActivity extends Activity implements Soundable {
     Table curTable;
     int curCycleId;
 
-    private static final String LOG_TAG = "CyclesActivity";
+    private static final String LOG_TAG = "zzz CyclesActivity";
     String name;
     Button add_button, ok_button, melody;
     Dialog newDialog;
@@ -41,14 +41,13 @@ public class CyclesActivity extends Activity implements Soundable {
     private Button stopButton;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ptr = this;
         Bundle bun = getIntent().getExtras();
         name = bun.getString("name");
-
+        Log.d(LOG_TAG, "onCreate");
 
         unPackTable();
         setContentView(R.layout.cycles);
@@ -103,13 +102,15 @@ public class CyclesActivity extends Activity implements Soundable {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(LOG_TAG, "onResume ");
         stopButton = (Button) findViewById(R.id.stop_button);
-        if (Utils.isMyServiceRunning(this))
+        if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
-        else
+            Log.d(LOG_TAG, "onResume VISIBLE");
+        } else {
             stopButton.setVisibility(View.GONE);
-
-
+            Log.d(LOG_TAG, "onResume GONE");
+        }
     }
 
     private void invalidateList() {
