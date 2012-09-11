@@ -107,6 +107,6 @@ public class MenuActivity extends FragmentActivity {
     public void onBackPressed() {
         if (curTab == RANK_TAB) {
         } else
-            super.onBackPressed();
+            super.onBackPressed();    //TODO: fix
     }
 }

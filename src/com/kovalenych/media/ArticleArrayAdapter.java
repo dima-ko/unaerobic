@@ -23,11 +23,11 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
         this.articles = articles1;
     }
 
-    // Класс для сохранения во внешний класс и для ограничения доступа
-    // из потомков класса
+//    Класс для сохранения во внешний класс и для ограничения доступа
+//    из потомков класса
     static class ViewHolder {
         public TextView nameView;
-        public TextView domainView;
+        public TextView domainView;          //TODO:KILL!!!!
         public TextView authorView;
     }
 
@@ -47,12 +47,14 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
             holder.domainView = (TextView) rowView.findViewById(R.id.art_domain);
             holder.authorView = (TextView) rowView.findViewById(R.id.art_author);
             rowView.setTag(holder);
-            holder.nameView.setText(articles.get(position).getName());
-            holder.domainView.setText(articles.get(position).getDomain());
-            holder.authorView.setText(articles.get(position).getAuthor());
+
         } else {
             holder = (ViewHolder) rowView.getTag();
         }
+
+        holder.nameView.setText(articles.get(position).getName());
+        holder.domainView.setText(articles.get(position).getDomain());
+        holder.authorView.setText(articles.get(position).getAuthor());
 
         return rowView;
     }
