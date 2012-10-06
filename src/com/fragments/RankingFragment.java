@@ -40,6 +40,7 @@ public final class RankingFragment extends Fragment {
         mPullRefreshListView = (PullToRefreshListView) tables.findViewById(R.id.ranking_list);
         rManager = new RankingManager(getActivity(), this, mPullRefreshListView);
         initFilterAndProgress(tables);
+        tables.setId(1);
         return tables;
     }
 

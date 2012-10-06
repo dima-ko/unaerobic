@@ -46,7 +46,6 @@ public final class TablesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
 
     @Override
@@ -106,6 +105,7 @@ public final class TablesFragment extends Fragment {
         info_button = (Button) tables.findViewById(R.id.info_button);
 
         setButtonListeners();
+        tables.setId(0);
 
 //        tracker = GoogleAnalyticsTracker.getInstance();
 //

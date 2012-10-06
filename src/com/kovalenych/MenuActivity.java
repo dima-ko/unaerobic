@@ -21,7 +21,7 @@ public class MenuActivity extends FragmentActivity {
     public static final int RANK_TAB = 1;
     public static final int ART_TAB = 2;
     public static final int VIDEO_TAB = 3;
-    protected FragmentPagerAdapter mAdapter;
+    protected FragmentPagerAdapter mAdapter;   //todo: google guidelines
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
     public int curTab = 0;

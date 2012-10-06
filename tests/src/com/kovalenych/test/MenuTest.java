@@ -49,6 +49,8 @@ public class MenuTest extends
 
     public void testSettings() throws Exception {
 
+
+        solo.waitForFragmentById(1);
 ////        solo.clickOnText();
 //        clickOnButtonByID(R.id.settings);
 //        solo.sleep(1000);
