@@ -11,11 +11,11 @@ public class Video {
         return uri;
     }
 
-    public String getPictureUri() {
+    public String getPictureUri() {  //todo; sdcard!!!
         return pictureUri;
     }
 
-    private final String title;
+    private final String title;  // todo: all fonts to roboto
     private final String uri;
     private final String pictureUri;
 
