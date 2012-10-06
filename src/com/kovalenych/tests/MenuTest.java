@@ -29,25 +29,10 @@ public class MenuTest extends
         solo = new Solo(getInstrumentation(), getActivity());
     }
 
-    public void testSettings() throws Exception {
+    public void testTables() throws Exception {
 
-
-//        solo.clickOnText("Таблицы");
-//        solo.sleep(1000);
-//        solo.clickOnText("Рекорды");
-//        solo.sleep(1000);
-//        solo.clickOnText("Статьи");
-//        solo.sleep(1000);
-////        solo.clickOnText();
-//        clickOnButtonByID(R.id.settings);
-//        solo.sleep(1000);
-//        View settingsDialog = solo.getView(SmsActivity.SETDIALOG_ID);
-//        Assert.assertTrue(settingsDialog.getVisibility() == View.VISIBLE);
-
-    }
-
-    public void testLifeCycle() throws Exception {
-
+        solo.clickOnText("ТАБЛИЦЫ");
+        solo.sleep(1000);
     }
 
     private void clickOnButtonByID(int ID) {
