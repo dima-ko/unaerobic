@@ -66,7 +66,7 @@ public final class TablesFragment extends Fragment {
 
         initDialogs();
 
-        stopButton = (Button) tables.findViewById(R.id.stop_button);
+        stopButton = (Button) tables.findViewById(R.id.stop_button_tables);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

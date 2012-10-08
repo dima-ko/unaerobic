@@ -41,7 +41,7 @@
             />
 
     <Button
-            android:id="@+id/stop_button"
+            android:id="@+id/stop_button_tables"
             android:layout_marginBottom="5pt"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
