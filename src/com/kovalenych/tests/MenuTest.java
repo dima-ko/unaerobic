@@ -13,9 +13,7 @@ import java.util.List;
  * by insomniac and angryded
  * for their purposes
  */
-public class MenuTest extends
-        GeneralTest {
-
+public class MenuTest extends GeneralTest {
 
     public void testMenu() throws Exception {
 

@@ -11,8 +11,7 @@ import junit.framework.Assert;
  * by insomniac and angryded
  * for their purposes
  */
-public class TablesTest extends
-        GeneralTest {
+public class TablesTest extends GeneralTest {
 
 
     public void testTables() throws Exception {
@@ -41,7 +40,16 @@ public class TablesTest extends
         view = solo.getView(R.id.stop_button_cycles);
         Assert.assertFalse(view.getVisibility() == View.VISIBLE);
 
+        solo.clickInList(2);
 
+        solo.sleep(2000);
+
+        solo.goBack();
+        solo.goBack();
+
+        view = solo.getView(R.id.stop_button_tables);
+        Assert.assertTrue(view.getVisibility() == View.VISIBLE);
+        solo.clickOnView(view);
 
 
     }
