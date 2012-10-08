@@ -205,7 +205,7 @@ public final class TablesFragment extends Fragment {
 //                    tracker.trackPageView("/addTable");
                     newDialog.show();
                     break;
-                case R.id.delete_button:
+                case R.id.delete_button:   //todo delete file
                     tableList.remove(chosenTable);
                     delDialog.dismiss();
                     invalidateList();

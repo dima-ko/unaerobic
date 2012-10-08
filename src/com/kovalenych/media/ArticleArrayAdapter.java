@@ -27,7 +27,7 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
 //    из потомков класса
     static class ViewHolder {
         public TextView nameView;
-        public TextView domainView;          //TODO:KILL!!!!
+        public TextView domainView;
         public TextView authorView;
     }
 
