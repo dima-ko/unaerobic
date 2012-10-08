@@ -51,7 +51,7 @@ public class ClockActivity extends Activity implements Const {
     }
 
 
-    private void createService(Bundle bun) {
+    private void createService(Bundle bun) {  //todo:  reverse contdown
         PendingIntent pi;
         Intent intent;
         Log.d(LOG_TAG, "createService");

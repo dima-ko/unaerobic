@@ -263,11 +263,17 @@ public class CyclesActivity extends Activity implements Soundable {
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int b = Integer.parseInt(breathEdit.getText().toString());
-                int h = Integer.parseInt(holdEdit.getText().toString());
-                if (b < 3600 && h < 3600) {
-                    curTable.getCycles().add(new Cycle(b, h));
-                    invalidateList();
+                try {
+                    int b = Integer.parseInt(breathEdit.getText().toString());
+                    int h = Integer.parseInt(holdEdit.getText().toString());
+
+                    if (b < 3600 && h < 3600) {
+                        curTable.getCycles().add(new Cycle(b, h));
+                        invalidateList();
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();
+                } finally {
                     newDialog.dismiss();
                 }
 
