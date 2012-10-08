@@ -26,7 +26,7 @@ public class ClockService extends Service implements Soundable, Const {
     Vibrator v;
     PendingIntent pi;
 
-    final String LOG_TAG = "zzz ClockService";
+    final String LOG_TAG = "ClockService";
     private static final int NOTIFY_ID = 1;
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
@@ -175,6 +175,7 @@ public class ClockService extends Service implements Soundable, Const {
     public IBinder onBind(Intent arg0) {
         return null;
     }
+
 
     class ClockTask extends AsyncTask<Integer, Integer, Void> {
 

@@ -11,7 +11,7 @@ public class Video {
         return uri;
     }
 
-    public String getPictureUri() {  //todo; sdcard!!!
+    public String getPictureUri() {  //todo; sdcard!!!   universalim
         return pictureUri;
     }
 

@@ -91,6 +91,7 @@ public class ClockActivity extends Activity implements Const {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 stopService(new Intent(ptr, ClockService.class));
                 finish();
             }

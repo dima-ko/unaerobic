@@ -46,6 +46,5 @@
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                   android:configChanges="orientation"/>
         <service android:enabled="true" android:name=".tables.ClockService" android:process=":clock_process" />
-        <receiver android:name=".tables.OnAlarmReceiver" android:process=":remote"/>
     </application>
 </manifest> 
