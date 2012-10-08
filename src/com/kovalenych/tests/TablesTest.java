@@ -3,6 +3,7 @@ package com.kovalenych.tests;
 import android.view.View;
 import android.widget.ListView;
 import com.kovalenych.R;
+import com.kovalenych.tables.ClockActivity;
 import junit.framework.Assert;
 
 /**
@@ -16,30 +17,29 @@ public class TablesTest extends
 
     public void testTables() throws Exception {
 
-        solo.clickOnText("ТАБЛИЦЫ");
+        solo.clickOnText("TABLES");
         solo.sleep(1000);
 
-        solo.clickLongOnText("CO2");
+        solo.clickOnText("CO2");
 
-        ListView cyclesList = (ListView) solo.getView(R.id.cycles_list);
         solo.clickInList(2);
 
-        solo.sleep(5000);
+        solo.sleep(2000);
 
         solo.goBack();
 
-        View view = solo.getView(R.id.stop_button);
+        View view = solo.getView(R.id.stop_button_cycles);
         Assert.assertTrue(view.getVisibility() == View.VISIBLE);
 
         solo.clickInList(1);
 
-        solo.sleep(5000);
+        solo.sleep(2000);
 
-        view = solo.getView(R.id.stop_button);
+        view = solo.getView(ClockActivity.STOP_CLOCK_ID);
         solo.clickOnView(view);
 
-        view = solo.getView(R.id.stop_button);
-        Assert.assertTrue(view.getVisibility() == View.VISIBLE);
+        view = solo.getView(R.id.stop_button_cycles);
+        Assert.assertFalse(view.getVisibility() == View.VISIBLE);
 
 
 

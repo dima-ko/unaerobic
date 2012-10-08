@@ -10,6 +10,7 @@ import android.widget.*;
 import com.kovalenych.*;
 
 public class ClockActivity extends Activity implements Const {
+    public static final int STOP_CLOCK_ID = 500;
 
 
 //    RotImageView breathBar;
@@ -87,6 +88,7 @@ public class ClockActivity extends Activity implements Const {
         parent.addView(rightCircle, paramsRight);
 
         stopButton = new Button(this);
+        stopButton.setId(STOP_CLOCK_ID);
         stopButton.setBackgroundResource(R.drawable.stop_button);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override

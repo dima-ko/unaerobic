@@ -19,16 +19,16 @@ public class MenuTest extends
 
     public void testMenu() throws Exception {
 
-        solo.clickOnText("ВИДЕО");
+        solo.clickOnText("VIDEO");
         solo.sleep(1000);
 
-        solo.clickOnText("СТАТЬИ");
+        solo.clickOnText("ARTICLES");
         solo.sleep(1000);
 
-        solo.clickOnText("РЕКОРДЫ");
+        solo.clickOnText("RECORDS");
         solo.sleep(1000);
 
-        solo.clickOnText("ТАБЛИЦЫ");
+        solo.clickOnText("TABLES");
         solo.sleep(1000);
     }
 }

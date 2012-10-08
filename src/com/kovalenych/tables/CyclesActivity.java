@@ -103,7 +103,7 @@ public class CyclesActivity extends Activity implements Soundable {
     protected void onResume() {
         super.onResume();
         Log.d(LOG_TAG, "onResume ");
-        stopButton = (Button) findViewById(R.id.stop_button);
+        stopButton = (Button) findViewById(R.id.stop_button_cycles);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
