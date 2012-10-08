@@ -17,6 +17,7 @@ import android.widget.*;
 import com.kovalenych.Fonts;
 import com.kovalenych.R;
 import com.kovalenych.Utils;
+import com.kovalenych.tables.ClockService;
 import com.kovalenych.tables.CyclesActivity;
 import com.kovalenych.tables.TableViewBinder;
 
@@ -66,6 +67,13 @@ public final class TablesFragment extends Fragment {
         initDialogs();
 
         stopButton = (Button) tables.findViewById(R.id.stop_button);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().stopService(new Intent(getActivity(), ClockService.class));
+                stopButton.setVisibility(View.GONE);
+            }
+        });
         if (Utils.isMyServiceRunning(getActivity()))
             stopButton.setVisibility(View.VISIBLE);
         else
@@ -117,6 +125,14 @@ public final class TablesFragment extends Fragment {
         return tables;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (Utils.isMyServiceRunning(getActivity()))
+            stopButton.setVisibility(View.VISIBLE);
+        else
+            stopButton.setVisibility(View.GONE);
+    }
 
     private void invalidateList() {
 

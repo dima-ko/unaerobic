@@ -37,7 +37,7 @@ public class ClockService extends Service implements Soundable, Const {
         super.onCreate();
         v = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
         mSoundManager = new SoundManager(this);
-        Log.d(LOG_TAG, "MyService onCreate");
+        Log.d(LOG_TAG, "ClockService onCreate");
     }
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
@@ -64,12 +64,12 @@ public class ClockService extends Service implements Soundable, Const {
         nMgr.cancel(NOTIFY_ID);
         if (task != null)
             task.cancel(true);
-        Log.d(LOG_TAG, "MyService onDestroy");
+        Log.d(LOG_TAG, "ClockService onDestroy");
     }
 
 
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(LOG_TAG, "MyService onStartCommand" + flags);
+        Log.d(LOG_TAG, "ClockService onStartCommand" + flags);
 
         String destination = intent.getStringExtra(FLAG);
         if (destination.equals(FLAG_CREATE)) {

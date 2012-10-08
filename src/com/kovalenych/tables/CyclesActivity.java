@@ -104,6 +104,13 @@ public class CyclesActivity extends Activity implements Soundable {
         super.onResume();
         Log.d(LOG_TAG, "onResume ");
         stopButton = (Button) findViewById(R.id.stop_button);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopService(new Intent(ptr, ClockService.class));
+                stopButton.setVisibility(View.GONE);
+            }
+        });
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
             Log.d(LOG_TAG, "onResume VISIBLE");
