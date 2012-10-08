@@ -26,7 +26,7 @@ public class CyclesActivity extends Activity implements Soundable {
     Table curTable;
     int curCycleId;
 
-    private static final String LOG_TAG = "zzz CyclesActivity";
+    private static final String LOG_TAG = "CO2 CyclesActivity";
     String name;
     Button add_button, ok_button, melody;
     Dialog newDialog;

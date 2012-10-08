@@ -26,7 +26,7 @@ public class ClockService extends Service implements Soundable, Const {
     Vibrator v;
     PendingIntent pi;
 
-    final String LOG_TAG = "ClockService";
+    final String LOG_TAG = "CO2 ClockService";
     private static final int NOTIFY_ID = 1;
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
@@ -201,7 +201,6 @@ public class ClockService extends Service implements Soundable, Const {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                             return null;
-
                         }
                     }
                 breathing = false;

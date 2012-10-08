@@ -91,8 +91,12 @@ public class ClockActivity extends Activity implements Const {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 stopService(new Intent(ptr, ClockService.class));
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 finish();
             }
         });
@@ -136,15 +140,15 @@ public class ClockActivity extends Activity implements Const {
 
     }
 
-    private static final String LOG_TAG = "zzz ClockActivity";
+    private static final String LOG_TAG = "CO2 ClockActivity";
 
 
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(LOG_TAG, "onPause");
-        startService(new Intent(this, ClockService.class)
-                .putExtra(FLAG, FLAG_SHOW_TRAY));
+//        startService(new Intent(this, ClockService.class)
+//                .putExtra(FLAG, FLAG_SHOW_TRAY));
     }
 
     public void setListeners() {
