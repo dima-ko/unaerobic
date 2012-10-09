@@ -160,7 +160,7 @@ public class ClockActivity extends Activity implements Const {
 
     @Override
     protected void onResume() {
-        super.onPause();
+        super.onResume();
         Log.d(LOG_TAG, "onResume");
     }
 

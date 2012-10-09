@@ -10,7 +10,7 @@
             android:layout_width="18pt"
             />
 
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:gravity="center"
             android:id="@+id/table_name"
             android:layout_width="fill_parent"
