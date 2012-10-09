@@ -41,19 +41,19 @@ public class ClockService extends Service implements Soundable, Const {
     }
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
-//        Log.d("showProgressInTray", "zzzzzzzzz");
-//        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
-//        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
-//        long when = System.currentTimeMillis(); // Выясним системное время
-//        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
-//        Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
-//        PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
-//        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
-//        contentView.setProgressBar(R.id.tray_progress, max, progress, false);
-//        contentView.setTextViewText(R.id.tray_text, (breathing ? "breath  " : "hold  ") + Utils.timeToString(progress)); // Привязываем текст к TextView в нашей разметке
-//        notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
-//        notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
-//        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
+        Log.d("showProgressInTray", "zzzzzzzzz");
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
+        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
+        long when = System.currentTimeMillis(); // Выясним системное время
+        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
+        Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
+        contentView.setProgressBar(R.id.tray_progress, max, progress, false);
+        contentView.setTextViewText(R.id.tray_text, (breathing ? "breath  " : "hold  ") + Utils.timeToString(progress)); // Привязываем текст к TextView в нашей разметке
+        notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
+        notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
+        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
 
     }
 

@@ -24,6 +24,7 @@ public class ClockActivity extends Activity implements Const {
 
     RelativeLayout parent;
     Activity ptr;
+    public boolean addTray;
 
 
     @Override
@@ -93,6 +94,7 @@ public class ClockActivity extends Activity implements Const {
             @Override
             public void onClick(View view) {
                 stopService(new Intent(ptr, ClockService.class));
+                addTray = true;
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -132,8 +134,9 @@ public class ClockActivity extends Activity implements Const {
     protected void onPause() {
         super.onPause();
         Log.d(LOG_TAG, "onPause");
-//        startService(new Intent(this, ClockService.class)
-//                .putExtra(FLAG, FLAG_SHOW_TRAY));
+        if (addTray)
+            startService(new Intent(this, ClockService.class)
+                    .putExtra(FLAG, FLAG_SHOW_TRAY));
     }
 
     public void setListeners() {
