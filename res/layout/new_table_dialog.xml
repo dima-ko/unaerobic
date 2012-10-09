@@ -9,7 +9,7 @@
         >
 
 
-    <EditText android:id="@+id/new_table_edit"
+    <com.kovalenych.roboto.EditTextRoboto android:id="@+id/new_table_edit"
               android:layout_width="fill_parent"
               android:layout_height="26pt"
               android:singleLine="true"
@@ -17,7 +17,7 @@
               android:gravity="center_horizontal"
             />
 
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:layout_marginTop="3pt"
             android:gravity="center"
             android:id="@+id/new_table_ok"

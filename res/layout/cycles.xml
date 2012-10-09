@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             />
 
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:id="@+id/add_cycle"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
@@ -20,7 +20,7 @@
             android:background="@drawable/plus_action"
 
             />
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:id="@+id/melody"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
@@ -77,7 +77,7 @@
             android:padding="2pt"
             />
 
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:id="@+id/stop_button_cycles"
             android:layout_marginBottom="5pt"
             android:layout_centerHorizontal="true"

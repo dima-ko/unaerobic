@@ -128,7 +128,7 @@
         <!--/>-->
         <!--</LinearLayout>-->
 
-        <Button
+        <com.kovalenych.roboto.ButtonRoboto
                 android:layout_marginBottom="4pt"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
@@ -165,7 +165,7 @@
                 android:layout_marginTop="10pt"
                 android:cacheColorHint="#00000000"
                 />
-        <Button
+        <com.kovalenych.roboto.ButtonRoboto
                 android:background="@drawable/arrow"
                 android:id="@+id/ranking_back"
                 android:layout_marginBottom="5pt"
