@@ -61,7 +61,7 @@ public class ClockService extends Service implements Soundable, Const {
         nMgr.cancel(NOTIFY_ID);
         if (task != null)
             task.cancel(true);
-        Log.d(LOG_TAG, "ClockService onDestroy");
+        Log.d(LOG_TAG, "ClockService onDestroy");  //todo c03
     }
 
 

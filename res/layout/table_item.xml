@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_height="wrap_content"
+              android:layout_width="fill_parent"
+              android:gravity="center_vertical">
+    <TextView
+            android:gravity="center"
+            android:id="@+id/table_name"
+            android:layout_width="fill_parent"
+            android:layout_height="25pt"
+            android:textSize="10pt"
+            />
+</LinearLayout>
 
 
-   <TextView  xmlns:android="http://schemas.android.com/apk/res/android"
-
-           android:gravity="center"
-           android:id="@+id/table_name"
-           android:layout_width="fill_parent"
-           android:layout_height="21pt"
-           android:textSize="10pt"
-           android:background="#00000000"
-
-
-   />
 

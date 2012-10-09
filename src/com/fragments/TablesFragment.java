@@ -16,7 +16,8 @@ import com.kovalenych.R;
 import com.kovalenych.Utils;
 import com.kovalenych.tables.ClockService;
 import com.kovalenych.tables.CyclesActivity;
-import com.kovalenych.tables.TableViewBinder;
+import com.kovalenych.tables.CyclesArrayAdapter;
+import com.kovalenych.tables.TablesArrayAdapter;
 
 import java.util.*;
 
@@ -75,14 +76,10 @@ public final class TablesFragment extends Fragment {
             stopButton.setVisibility(View.VISIBLE);
         else
             stopButton.setVisibility(View.GONE);
-        lv = (ListView) tables.findViewById(R.id.cycles_list);
-
 
         lv = (ListView) tables.findViewById(R.id.tables_list);
-        lv.setTextFilterEnabled(true);
-        lv.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.table_item, tableList));
         lv.setVisibility(View.VISIBLE);
-//        invalidateList();
+        invalidateList();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -110,7 +107,6 @@ public final class TablesFragment extends Fragment {
         info_button = (Button) tables.findViewById(R.id.info_button);
 
         setButtonListeners();
-        tables.setId(0);
 
 //        tracker = GoogleAnalyticsTracker.getInstance();
 //
@@ -132,27 +128,9 @@ public final class TablesFragment extends Fragment {
     }
 
     private void invalidateList() {
-
-        SimpleAdapter adapter = new SimpleAdapter(getActivity(), createTablesList(), R.layout.table_item,
-                new String[]{"text"},
-                new int[]{R.id.table_name});
-
-        adapter.setViewBinder(new TableViewBinder());
+        TablesArrayAdapter adapter = new TablesArrayAdapter(getActivity(), tableList);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
-    }
-
-    private List<? extends Map<String, ?>> createTablesList() {
-
-        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
-
-        for (int i = 0; i < tableList.size(); i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("text", tableList.get(i));
-            items.add(map);
-        }
-
-        return items;
     }
 
 
@@ -180,10 +158,10 @@ public final class TablesFragment extends Fragment {
                 getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
             }
         });
-        ((TextView)infoDialog.findViewById(R.id.infot)).setTypeface(Utils.roboto_light);
-        ((TextView)infoDialog.findViewById(R.id.title)).setTypeface(Utils.roboto_light);
-        ((TextView)infoDialog.findViewById(R.id.rateus)).setTypeface(Utils.roboto_light);
-        ((TextView)infoDialog.findViewById(R.id.mailto)).setTypeface(Utils.roboto_light);
+        ((TextView) infoDialog.findViewById(R.id.infot)).setTypeface(Utils.roboto_light);
+        ((TextView) infoDialog.findViewById(R.id.title)).setTypeface(Utils.roboto_light);
+        ((TextView) infoDialog.findViewById(R.id.rateus)).setTypeface(Utils.roboto_light);
+        ((TextView) infoDialog.findViewById(R.id.mailto)).setTypeface(Utils.roboto_light);
 
         edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
