@@ -121,7 +121,7 @@ public class ClockActivity extends Activity implements Const {
 
 //        breathTimeText.setTypeface(Fonts.BELIGERENT);
 //        holdTimeText.setTypeface(Fonts.BELIGERENT);
-//        topTimeText.setTypeface(Fonts.BELIGERENT);    //TODO: roboto
+//        topTimeText.setTypeface(Fonts.BELIGERENT);    //TODO: roboto_reg
 
         setListeners();
 

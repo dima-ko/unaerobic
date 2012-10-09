@@ -5,15 +5,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import com.kovalenych.Utils;
 
 public class TableViewBinder implements SimpleAdapter.ViewBinder {
 
-
-    private Typeface tf;
-
-    public TableViewBinder(Typeface tf) {
-        this.tf = tf;
-    }
 
     @Override
     public boolean setViewValue(View view, Object data,String textRepresentation) {
@@ -22,7 +17,7 @@ public class TableViewBinder implements SimpleAdapter.ViewBinder {
 
             TextView iv = (TextView) view;
             iv.setGravity(Gravity.CENTER);
-            iv.setTypeface(tf);
+            iv.setTypeface(Utils.roboto_reg);
             iv.setText((String) data);
 
             if (data.equals("CO2 Table"))

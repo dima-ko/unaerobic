@@ -140,7 +140,7 @@ public final class TablesFragment extends Fragment {
                 new String[]{"text"},
                 new int[]{R.id.table_name});
 
-        adapter.setViewBinder(new TableViewBinder(Fonts.BELIGERENT));
+        adapter.setViewBinder(new TableViewBinder());
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
@@ -181,8 +181,6 @@ public final class TablesFragment extends Fragment {
         ok_button.setTypeface(Fonts.BELIGERENT);
         del_button = (Button) delDialog.findViewById(R.id.delete_button);
 
-        ((TextView) infoDialog.findViewById(R.id.infot)).setTypeface(Fonts.BELIGERENT);
-        ((TextView) infoDialog.findViewById(R.id.title)).setTypeface(Fonts.BELIGERENT);
 
         infoDialog.findViewById(R.id.stars).setOnClickListener(new View.OnClickListener() {
             @Override
