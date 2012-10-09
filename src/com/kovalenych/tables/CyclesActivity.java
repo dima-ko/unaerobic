@@ -1,23 +1,18 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.kovalenych.Fonts;
 import com.kovalenych.R;
 import com.kovalenych.Table;
 import com.kovalenych.Utils;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class CyclesActivity extends Activity implements Soundable {
 
@@ -83,7 +78,6 @@ public class CyclesActivity extends Activity implements Soundable {
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
-        ok_button.setTypeface(Fonts.BELIGERENT);
 
 
         invalidateList();
@@ -91,9 +85,6 @@ public class CyclesActivity extends Activity implements Soundable {
         add_button = (Button) findViewById(R.id.add_cycle);
         melody = (Button) findViewById(R.id.melody);
 
-        ((TextView) findViewById(R.id.holdtime)).setTypeface(Fonts.BELIGERENT);
-        ((TextView) findViewById(R.id.breathtime)).setTypeface(Fonts.BELIGERENT);
-        id.setTypeface(Fonts.BELIGERENT);
 
         setListeners();
     }

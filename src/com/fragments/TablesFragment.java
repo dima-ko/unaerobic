@@ -1,8 +1,6 @@
 package com.fragments;
 
-import android.app.ActivityManager;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
-import com.kovalenych.Fonts;
 import com.kovalenych.R;
 import com.kovalenych.Utils;
 import com.kovalenych.tables.ClockService;
@@ -188,7 +185,6 @@ public final class TablesFragment extends Fragment {
 
         edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
-        ok_button.setTypeface(Fonts.BELIGERENT);
         del_button = (Button) delDialog.findViewById(R.id.delete_button);
     }
 
