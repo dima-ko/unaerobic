@@ -43,12 +43,14 @@
     <!--android:layout_gravity="center_horizontal"-->
     <!--/>-->
     <LinearLayout
+
             android:id="@+id/stars"
             android:layout_height="25pt"
             android:layout_width="fill_parent"
             android:gravity="center"
             >
         <TextView
+                android:id="@+id/rateus"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Rate us!"
@@ -81,6 +83,7 @@
                 />
     </LinearLayout>
     <TextView
+            android:id="@+id/mailto"
             android:layout_marginTop="2pt"
             android:gravity="center"
             android:layout_width="wrap_content"

@@ -140,6 +140,9 @@ public class ClockActivity extends Activity implements Const {
     protected void onRestart() {
         super.onRestart();
         Log.d(LOG_TAG, "onRestart");
+        Intent intent = new Intent(this, ClockService.class)
+                .putExtra(FLAG, FLAG_HIDE_TRAY);
+        startService(intent);
     }
 
     @Override

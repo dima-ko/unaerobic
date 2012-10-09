@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.*;
 import android.util.Log;
 import android.widget.RemoteViews;
-import com.kovalenych.Const;
-import com.kovalenych.R;
-import com.kovalenych.Table;
-import com.kovalenych.Utils;
+import com.kovalenych.*;
 
 import java.util.ArrayList;
 
@@ -45,7 +42,7 @@ public class ClockService extends Service implements Soundable, Const {
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
         int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
         long when = System.currentTimeMillis(); // Выясним системное время
-        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
+        Intent notificationIntent = new Intent(this, MenuActivity.class); // Создаем экземпляр Intent
         Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
         PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
         RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
@@ -96,7 +93,7 @@ public class ClockService extends Service implements Soundable, Const {
             showTray = true;
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
             showTray = false;
-            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
+//            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             nMgr.cancel(NOTIFY_ID);
 

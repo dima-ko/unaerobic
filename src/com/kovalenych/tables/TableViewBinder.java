@@ -17,7 +17,7 @@ public class TableViewBinder implements SimpleAdapter.ViewBinder {
 
             TextView iv = (TextView) view;
             iv.setGravity(Gravity.CENTER);
-            iv.setTypeface(Utils.roboto_reg);
+            iv.setTypeface(Utils.roboto_light);
             iv.setText((String) data);
 
             if (data.equals("CO2 Table"))

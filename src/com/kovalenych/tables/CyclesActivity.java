@@ -74,14 +74,14 @@ public class CyclesActivity extends Activity implements Soundable {
         newDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         newDialog.setCancelable(true);
         newDialog.setContentView(R.layout.new_cycle_dialog);
-        ((TextView) newDialog.findViewById(R.id.new_cycle_title)).setTypeface(Utils.roboto_reg);
+        ((TextView) newDialog.findViewById(R.id.new_cycle_title)).setTypeface(Utils.roboto_light);
 
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
-        holdEdit.setTypeface(Utils.roboto_reg);
+        holdEdit.setTypeface(Utils.roboto_light);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
-        breathEdit.setTypeface(Utils.roboto_reg);
+        breathEdit.setTypeface(Utils.roboto_light);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
-        ok_button.setTypeface(Utils.roboto_reg);
+        ok_button.setTypeface(Utils.roboto_light);
 
 
         invalidateList();

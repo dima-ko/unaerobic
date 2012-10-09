@@ -180,8 +180,10 @@ public final class TablesFragment extends Fragment {
                 getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
             }
         });
-        ((TextView)infoDialog.findViewById(R.id.infot)).setTypeface(Utils.roboto_reg);
-        ((TextView)infoDialog.findViewById(R.id.title)).setTypeface(Utils.roboto_thin);
+        ((TextView)infoDialog.findViewById(R.id.infot)).setTypeface(Utils.roboto_light);
+        ((TextView)infoDialog.findViewById(R.id.title)).setTypeface(Utils.roboto_light);
+        ((TextView)infoDialog.findViewById(R.id.rateus)).setTypeface(Utils.roboto_light);
+        ((TextView)infoDialog.findViewById(R.id.mailto)).setTypeface(Utils.roboto_light);
 
         edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
