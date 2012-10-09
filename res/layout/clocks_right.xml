@@ -14,7 +14,7 @@
             android:layout_height="fill_parent"
             android:background="@drawable/cl"
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/run_time_hold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

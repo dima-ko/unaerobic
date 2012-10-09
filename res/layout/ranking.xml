@@ -13,7 +13,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             >
-        <TextView
+        <com.kovalenych.roboto.TextViewRoboto
                 android:layout_centerHorizontal="true"
                 android:id="@+id/powered"
                 android:text="powered by"
@@ -41,7 +41,7 @@
                 android:gravity="center_vertical"
                 >
 
-            <TextView
+            <com.kovalenych.roboto.TextViewRoboto
                     android:id="@+id/disciplin_text"
                     android:textSize="10pt"
                     android:layout_height="wrap_content"
@@ -66,13 +66,13 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 >
-            <TextView
+            <com.kovalenych.roboto.TextViewRoboto
                     android:textSize="6pt"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/disc_hint"
                     />
-            <TextView
+            <com.kovalenych.roboto.TextViewRoboto
                     android:textSize="7pt"
                     android:textColor="#FF8855FF"
                     android:id="@+id/disc_info"
@@ -101,7 +101,7 @@
         <!--android:layout_height="80px"-->
         <!--android:layout_width="fill_parent"-->
         <!-->-->
-        <!--<TextView-->
+        <!--<com.kovalenych.roboto.TextViewRoboto-->
         <!--android:layout_marginLeft="30px"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_width="330px"-->
@@ -116,7 +116,7 @@
         <!--android:layout_height="80px"-->
         <!--android:layout_width="fill_parent"-->
         <!-->-->
-        <!--<TextView-->
+        <!--<com.kovalenych.roboto.TextViewRoboto-->
         <!--android:layout_marginLeft="30px"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_width="330px"-->

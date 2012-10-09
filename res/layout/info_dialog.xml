@@ -15,7 +15,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             >
-        <TextView
+        <com.kovalenych.roboto.TextViewRoboto
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
 
 
     </LinearLayout>
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/infot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             android:layout_width="fill_parent"
             android:gravity="center"
             >
-        <TextView
+        <com.kovalenych.roboto.TextViewRoboto
                 android:id="@+id/rateus"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                 android:src="@drawable/star"
                 />
     </LinearLayout>
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/mailto"
             android:layout_marginTop="2pt"
             android:gravity="center"

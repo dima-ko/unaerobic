@@ -4,7 +4,7 @@
                 android:layout_height="30pt"
                 android:padding="2pt"
         >
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/art_name"
             android:layout_width="fill_parent"
             android:layout_height="13pt"
@@ -12,7 +12,7 @@
             android:layout_alignParentLeft="true"
             />
 
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/art_author"
             android:layout_width="wrap_content"
             android:layout_height="10pt"
@@ -20,7 +20,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:textColor="#FF88DDFF"
             android:id="@+id/art_domain"
             android:layout_width="fill_parent"

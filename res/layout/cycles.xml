@@ -29,7 +29,7 @@
             android:background="@drawable/muz_action"
 
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/chosen_table_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
 
 
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/holdtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:gravity="right"
             android:padding="2pt"
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/breathtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
