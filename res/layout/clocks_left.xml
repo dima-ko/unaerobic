@@ -2,31 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent">
-    <!--<com.kovalenych.tables.RotImageView-->
-            <!--android:id="@+id/run_ventilate_progress"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--/>-->
-    <!--<ImageView-->
-            <!--android:id="@+id/run_ventilate_progress_right"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:background="@drawable/progress_green"-->
-            <!--/>-->
-    <!--<LinearLayout-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:weightSum="2">-->
-        <!--<ImageView-->
-                <!--android:id="@+id/run_ventilate_progress_left"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="fill_parent"-->
-                <!--android:layout_weight="1"-->
-                <!--android:background="#FF000000"-->
-                <!--android:layout_marginLeft="4px"-->
-                <!--/>-->
-    <!--</LinearLayout>-->
+    <com.kovalenych.tables.RotImageView
+            android:id="@+id/run_ventilate_progress"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
+    <ImageView
+            android:id="@+id/run_ventilate_progress_right"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/progress_green"
+            />
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+        <ImageView
+                android:id="@+id/run_ventilate_progress_left"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#FF000000"
+                android:layout_marginLeft="4px"
+                />
+    </LinearLayout>
     <ImageView
 
             android:layout_width="fill_parent"

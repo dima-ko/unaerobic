@@ -34,14 +34,18 @@ public class RotImageView extends ImageView {
 
         canvas.save();
 
-
         Matrix rotator = new Matrix();
         rotator.postRotate(angle);
         if (bm != null)
             canvas.drawBitmap(bm, rotator, null);
 
-        canvas.restore();
         super.onDraw(canvas);
+        canvas.restore();
+
+//        canvas.save();
+//        canvas.rotate(45,<appropriate x pivot value>,<appropriate y pivot value>);
+//        super.onDraw(canvas);
+//        canvas.restore();
 
     }
 
