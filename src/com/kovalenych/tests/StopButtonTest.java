@@ -11,7 +11,7 @@ import junit.framework.Assert;
  * by insomniac and angryded
  * for their purposes
  */
-public class TablesTest extends GeneralTest {
+public class StopButtonTest extends GeneralTest {
 
 
     public void testTables() throws Exception {

@@ -3,8 +3,6 @@ package com.kovalenych.tables;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,17 +10,12 @@ import android.view.*;
 import android.widget.*;
 import com.kovalenych.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 public class ClockActivity extends Activity implements Const {
     public static final int STOP_CLOCK_ID = 500;
 
 
-    RotImageView breathBar;
-    ImageView breathBar_left;
-    ImageView breathBar_right;
-    RotImageView holdBar;
+    ClockView breathBar;
+    ClockView holdBar;
     ImageView holdBar_left;
     ImageView holdBar_right;
 
@@ -116,24 +109,8 @@ public class ClockActivity extends Activity implements Const {
         parent.addView(stopButton, params);
 
 
-        breathBar = (RotImageView) leftCircle.findViewById(R.id.run_ventilate_progress);
-        AssetManager mngr = getAssets();
-        // Create an input stream to read from the asset folder
-        InputStream ins = null;
-        try {
-            ins = mngr.open("progress_green_left_png");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Convert the input stream into a bitmap
-        Bitmap map = BitmapFactory.decodeStream(ins);
-        breathBar.setBitmap(map);
-        breathBar_left = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress_left);
-        breathBar_right = (ImageView) leftCircle.findViewById(R.id.run_ventilate_progress_right);
-        holdBar = (RotImageView) rightCircle.findViewById(R.id.run_static_progress);
-        holdBar_left = (ImageView) rightCircle.findViewById(R.id.run_static_progress_left);
-        holdBar_right = (ImageView) rightCircle.findViewById(R.id.run_static_progress_right);
+        holdBar = (ClockView) rightCircle.findViewById(R.id.run_static_progress);
+        breathBar = (ClockView) rightCircle.findViewById(R.id.run_ventilate_progress);
 
 
 //        topTimeText = (TextView) findViewById(R.id.topTime);
@@ -197,7 +174,7 @@ public class ClockActivity extends Activity implements Const {
                 breathTimeText.setVisibility(View.VISIBLE);
             if (holdTimeText.getVisibility() == View.VISIBLE)
                 holdTimeText.setVisibility(View.INVISIBLE);
-//            breathBar.angle = percent;
+            breathBar.angle = percent;
             breathTimeText.setText(Utils.timeToString(time));
         } else if (resultCode == STATUS_HOLD) {
             if (holdTimeText.getVisibility() != View.VISIBLE)
@@ -205,7 +182,7 @@ public class ClockActivity extends Activity implements Const {
             if (breathTimeText.getVisibility() == View.VISIBLE)
                 breathTimeText.setVisibility(View.INVISIBLE);
             holdTimeText.setText(Utils.timeToString(time));
-//            holdBar.angle = percent;
+            holdBar.angle = percent;
         } else if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
             finish();

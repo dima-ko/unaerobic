@@ -114,7 +114,7 @@ public class CyclesActivity extends Activity implements Soundable {
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
             Log.d(LOG_TAG, "onResume VISIBLE");
-            Toast.makeText(CyclesActivity.this, "timer is still running",Toast.LENGTH_SHORT);
+            Toast.makeText(CyclesActivity.this, "timer is still running",Toast.LENGTH_SHORT).show();
         } else {
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
