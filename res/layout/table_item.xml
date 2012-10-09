@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_height="wrap_content"
-              android:layout_width="fill_parent"
-              android:gravity="center_vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_vertical">
+    <ImageView
+            android:src="@drawable/icon"
+            android:layout_centerVertical="true"
+            android:layout_height="18pt"
+            android:layout_width="18pt"
+            />
+
     <TextView
             android:gravity="center"
             android:id="@+id/table_name"
@@ -10,7 +17,7 @@
             android:layout_height="25pt"
             android:textSize="10pt"
             />
-</LinearLayout>
+</RelativeLayout>
 
 
 
