@@ -29,6 +29,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.kovalenych.R;
+import com.kovalenych.Utils;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -254,6 +255,8 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         public TabView(Context context) {
             super(context, null);
             this.setTextColor(Color.WHITE);
+            this.setTypeface(Utils.roboto_light);
+            this.setTextSize(Utils.dpToPix(8));
             this.setBackgroundResource(R.drawable.vpi__tab_indicator);
             this.setPadding(0,15,0,15);
             this.setGravity(Gravity.CENTER);

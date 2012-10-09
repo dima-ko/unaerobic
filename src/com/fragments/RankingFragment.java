@@ -44,7 +44,7 @@ public final class RankingFragment extends Fragment {
         return tables;
     }
 
-    private void initFilterAndProgress(View tables) {
+    private void initFilterAndProgress(View tables) {       //todo: filter slide down
 
         filterView = (RelativeLayout) tables.findViewById(R.id.ranking_filter);
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
