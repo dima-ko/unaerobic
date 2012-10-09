@@ -42,7 +42,7 @@ public class ClockActivity extends Activity implements Const {
         if (Utils.isMyServiceRunning(this)) {
             PendingIntent pi = createPendingResult(1, null, 0);
             Intent intent = new Intent(this, ClockService.class)
-                    .putExtra(FLAG, FLAG_SHOW_TRAY)
+                    .putExtra(FLAG, FLAG_HIDE_TRAY)
                     .putExtra(PARAM_PINTENT, pi);
             startService(intent);
             Log.d(LOG_TAG, "createService FLAG_SHOW_TRAY");
@@ -134,9 +134,34 @@ public class ClockActivity extends Activity implements Const {
     protected void onPause() {
         super.onPause();
         Log.d(LOG_TAG, "onPause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(LOG_TAG, "onRestart");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LOG_TAG, "onDestroy");
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d(LOG_TAG, "onStop");
+        super.onStop();
         if (addTray)
             startService(new Intent(this, ClockService.class)
                     .putExtra(FLAG, FLAG_SHOW_TRAY));
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onPause();
+        Log.d(LOG_TAG, "onResume");
     }
 
     public void setListeners() {
