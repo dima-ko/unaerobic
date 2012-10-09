@@ -176,12 +176,6 @@ public final class TablesFragment extends Fragment {
         infoDialog.setCancelable(true);
         infoDialog.setContentView(R.layout.info_dialog);
 
-        edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
-        ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
-        ok_button.setTypeface(Fonts.BELIGERENT);
-        del_button = (Button) delDialog.findViewById(R.id.delete_button);
-
-
         infoDialog.findViewById(R.id.stars).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,6 +183,13 @@ public final class TablesFragment extends Fragment {
                 getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
             }
         });
+        ((TextView)infoDialog.findViewById(R.id.infot)).setTypeface(Utils.roboto_reg);
+        ((TextView)infoDialog.findViewById(R.id.title)).setTypeface(Utils.roboto_thin);
+
+        edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
+        ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
+        ok_button.setTypeface(Fonts.BELIGERENT);
+        del_button = (Button) delDialog.findViewById(R.id.delete_button);
     }
 
 
