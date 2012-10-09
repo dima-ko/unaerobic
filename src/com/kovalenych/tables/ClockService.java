@@ -94,11 +94,11 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
             Log.d(LOG_TAG, FLAG_SHOW_TRAY);
             showTray = true;
-//            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
             showTray = false;
-//            NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//            nMgr.cancel(NOTIFY_ID);
+            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
+            NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            nMgr.cancel(NOTIFY_ID);
 
         } else if (destination.equals(FLAG_CLICK_BREATH)) {
 
