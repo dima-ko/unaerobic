@@ -31,7 +31,7 @@ public class ClockService extends Service implements Soundable, Const {
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
 
-    public boolean showTray = false;
+    public boolean showTray ;
 
     public void onCreate() {
         super.onCreate();

@@ -24,7 +24,7 @@ public class ClockActivity extends Activity implements Const {
 
     RelativeLayout parent;
     Activity ptr;
-    public boolean addTray;
+    public boolean addTray = true;
 
 
     @Override
@@ -94,7 +94,7 @@ public class ClockActivity extends Activity implements Const {
             @Override
             public void onClick(View view) {
                 stopService(new Intent(ptr, ClockService.class));
-                addTray = true;
+                addTray = false;
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -112,7 +112,7 @@ public class ClockActivity extends Activity implements Const {
 
 
         holdBar = (ClockView) rightCircle.findViewById(R.id.run_static_progress);
-        breathBar = (ClockView) rightCircle.findViewById(R.id.run_ventilate_progress);
+        breathBar = (ClockView) leftCircle.findViewById(R.id.run_ventilate_progress);
 
 
 //        topTimeText = (TextView) findViewById(R.id.topTime);
