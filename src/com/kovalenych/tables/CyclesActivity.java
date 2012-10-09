@@ -71,13 +71,17 @@ public class CyclesActivity extends Activity implements Soundable {
 
 
         newDialog = new Dialog(ptr);
-        newDialog.setTitle(getResources().getString(R.string.new_cycle));
+        newDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         newDialog.setCancelable(true);
         newDialog.setContentView(R.layout.new_cycle_dialog);
+        ((TextView) newDialog.findViewById(R.id.new_cycle_title)).setTypeface(Utils.roboto_reg);
 
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
+        holdEdit.setTypeface(Utils.roboto_reg);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
+        breathEdit.setTypeface(Utils.roboto_reg);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
+        ok_button.setTypeface(Utils.roboto_reg);
 
 
         invalidateList();
@@ -105,7 +109,7 @@ public class CyclesActivity extends Activity implements Soundable {
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
             Log.d(LOG_TAG, "onResume VISIBLE");
-            Toast.makeText(CyclesActivity.this, "timer is still running",Toast.LENGTH_SHORT).show();
+            Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
         } else {
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");

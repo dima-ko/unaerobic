@@ -44,5 +44,7 @@
     <string name="discipline">Discipline:</string>
     <string name="disc_hint">No sé lo que es? Haga clic </string>
     <string name="here">aquí</string>
+    <string name="new_table_name">New table name</string>
+    <string name="add">add</string>
 
 </resources>

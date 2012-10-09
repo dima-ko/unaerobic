@@ -207,6 +207,8 @@
     <string name="discipline">Discipline:</string>
     <string name="disc_hint">Don\'t know what is it? Click \t</string>
     <string name="here">here</string>
+    <string name="new_table_name">New table name</string>
+    <string name="add">add</string>
 
 
 </resources>

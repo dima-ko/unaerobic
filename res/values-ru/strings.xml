@@ -48,6 +48,8 @@
     <string name="discipline">Дисциплина:</string>
     <string name="disc_hint">Не знаешь, что это? Тебе\t</string>
     <string name="here">сюда</string>
+    <string name="new_table_name">New table name</string>
+    <string name="add">add</string>
 
 
 </resources>
