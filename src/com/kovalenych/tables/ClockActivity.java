@@ -119,9 +119,6 @@ public class ClockActivity extends Activity implements Const {
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
 
-//        breathTimeText.setTypeface(Fonts.BELIGERENT);
-//        holdTimeText.setTypeface(Fonts.BELIGERENT);
-//        topTimeText.setTypeface(Fonts.BELIGERENT);    //TODO: roboto_reg
 
         setListeners();
 
