@@ -43,14 +43,22 @@ public class ClockActivity extends Activity implements Const {
         setContentView(parent);    //TODO: show in status bar checkbox
 
         if (Utils.isMyServiceRunning(this)) {
-            PendingIntent pi = createPendingResult(1, null, 0);
-            Intent intent = new Intent(this, ClockService.class)
-                    .putExtra(FLAG, FLAG_HIDE_TRAY)
-                    .putExtra(PARAM_PINTENT, pi);
-            startService(intent);
-            Log.d(LOG_TAG, "createService FLAG_SHOW_TRAY");
-        } else
+
+            boolean isSame = bun.getBoolean("isRunning");
+            if (isSame) {
+                PendingIntent pi = createPendingResult(1, null, 0);
+                Intent intent = new Intent(this, ClockService.class)
+                        .putExtra(FLAG, FLAG_HIDE_TRAY)
+                        .putExtra(PARAM_PINTENT, pi);
+                startService(intent);
+                Log.d(LOG_TAG, "createService FLAG_SHOW_TRAY");
+            } else {
+                stopService(new Intent(ptr, ClockService.class));
+                createService(bun);
+            }
+        } else {
             createService(bun);
+        }
 
     }
 
@@ -112,7 +120,7 @@ public class ClockActivity extends Activity implements Const {
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 4, w / 4);
         params.setMargins(0, 0, 0, 5);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
         params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         parent.addView(stopButton, params);
 

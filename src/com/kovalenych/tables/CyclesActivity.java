@@ -21,7 +21,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     ListView lv;
 
     Table curTable;
-    int curCycleId;
 
     private static final String LOG_TAG = "CO2 CyclesActivity";
     String name;
@@ -220,9 +219,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                stopService(new Intent(ptr, ClockService.class));
+//                stopService(new Intent(ptr, ClockService.class));
 
-                curCycleId = position;
                 Intent intent = new Intent(lv.getContext(), ClockActivity.class);
                 Bundle bun = new Bundle();
 
@@ -238,6 +236,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 bun.putInt("number", position);
                 bun.putBoolean("vibro", isvibro);
                 bun.putString("table_name", name);
+                bun.putBoolean("isRunning", curCycle == position);
                 intent.putExtras(bun);
                 startActivity(intent);
 

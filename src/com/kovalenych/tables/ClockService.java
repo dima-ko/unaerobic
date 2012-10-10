@@ -100,7 +100,7 @@ public class ClockService extends Service implements Soundable, Const {
             showTray = true;
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
             showTray = false;
-//            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
+            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             nMgr.cancel(NOTIFY_ID);
             subscriber = SUBSCRIBER_CLOCK;
