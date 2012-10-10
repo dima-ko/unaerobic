@@ -128,7 +128,8 @@ public class ClockService extends Service implements Soundable, Const {
         Intent intent = new Intent()
                 .putExtra(ClockActivity.PARAM_TIME, time)
                 .putExtra(ClockActivity.PARAM_PROGRESS, percent)
-                .putExtra(ClockActivity.PARAM_BREATHING, breathing);
+                .putExtra(ClockActivity.PARAM_BREATHING, breathing)
+                .putExtra(ClockActivity.PARAM_TABLE, name);
         try {
             int stat = breathing ? ClockActivity.STATUS_BREATH : ClockActivity.STATUS_HOLD;
             pi.send(ClockService.this, stat, intent);
@@ -137,7 +138,7 @@ public class ClockService extends Service implements Soundable, Const {
         }
         //vibrate  or sound
 
-        if (time == 0 && vibrationEnabled)
+        if (time == 0 && vibrationEnabled)      //todo if not clock  update only twice
             v.vibrate(300);
         if (breathing) {
             if (showTray)

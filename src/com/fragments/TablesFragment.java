@@ -38,6 +38,8 @@ public final class TablesFragment extends Fragment implements Const {
     ListView lv;
     private Button stopButton;
 
+    public static int posOfCurTable = -1;
+
     public static TablesFragment newInstance() {
         return new TablesFragment();
     }
@@ -72,6 +74,8 @@ public final class TablesFragment extends Fragment implements Const {
             public void onClick(View view) {
                 getActivity().stopService(new Intent(getActivity(), ClockService.class));
                 stopButton.setVisibility(View.GONE);
+                posOfCurTable = -1;
+                invalidateList();
             }
         });
         if (Utils.isMyServiceRunning(getActivity()))
@@ -229,5 +233,21 @@ public final class TablesFragment extends Fragment implements Const {
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         getActivity().startService(intent);
+    }
+
+    boolean curTableSet = false;
+
+    public void onUpdateCurTable(String curTableName) {
+
+        if (!curTableSet) {
+
+            for (String table : tableList) {
+                if (table.equals(curTableName))
+                    posOfCurTable = tableList.indexOf(table);
+            }
+            invalidateList();
+            curTableSet = true;
+        }
+
     }
 }

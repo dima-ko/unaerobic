@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.fragments.TablesFragment;
 import com.kovalenych.R;
 import com.kovalenych.Table;
 
@@ -30,10 +32,12 @@ public class TablesArrayAdapter extends ArrayAdapter<String> {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
-                rowView = inflater.inflate(R.layout.table_item, null, true);
+            rowView = inflater.inflate(R.layout.table_item, null, true);
         }
-       ((TextView) rowView.findViewById(R.id.table_name)).setText(cycles.get(position));
-
+        ((TextView) rowView.findViewById(R.id.table_name)).setText(cycles.get(position));
+        if (position == TablesFragment.posOfCurTable) {
+            (rowView.findViewById(R.id.table_pic)).setVisibility(View.VISIBLE);
+        }
         return rowView;
     }
 }

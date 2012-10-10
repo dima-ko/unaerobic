@@ -17,7 +17,7 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 
 
-public class MenuActivity extends FragmentActivity {
+public class MenuActivity extends FragmentActivity implements Const {
 
     private static String[] CONTENT;
     public static final int TABLE_TAB = 0;
@@ -79,6 +79,7 @@ public class MenuActivity extends FragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
+        tablesFragment.onUpdateCurTable(data.getStringExtra(PARAM_TABLE));
     }
 
     TablesFragment tablesFragment;
