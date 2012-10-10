@@ -120,7 +120,6 @@ public class ClockActivity extends Activity implements Const {
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
 
-
         setListeners();
 
     }
@@ -218,6 +217,28 @@ public class ClockActivity extends Activity implements Const {
         }
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.clock_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+
+        switch (item.getItemId()) {
+            case R.id.countdown:
+                return true;
+            case R.id.menu_tray:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 //    @Override
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {
