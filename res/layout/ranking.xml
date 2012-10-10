@@ -79,6 +79,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginRight="3pt"
                     android:prompt="@string/disipline_prompt"
+
                     />
         </LinearLayout>
 

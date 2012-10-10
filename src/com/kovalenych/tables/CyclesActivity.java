@@ -409,7 +409,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
-        curCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
+        if (name.equals(data.getStringExtra(PARAM_TABLE)))
+            curCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
+        else curCycle = -1;
         invalidateList();                                 //todo toast
     }
 

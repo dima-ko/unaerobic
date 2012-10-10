@@ -55,7 +55,7 @@ public class ClockActivity extends Activity implements Const {
     }
 
 
-    private void createService(Bundle bun) {  //todo:  reverse contdown
+    private void createService(Bundle bun) {  //todo:  reverse contdown  save pref
         PendingIntent pi;
         Intent intent;
         Log.d(LOG_TAG, "createService");
@@ -85,10 +85,12 @@ public class ClockActivity extends Activity implements Const {
         int w = Utils.smaller2dim - 30;
 
         RelativeLayout.LayoutParams paramsLeft = new RelativeLayout.LayoutParams(w, w);
+        paramsLeft.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         parent.addView(leftCircle, paramsLeft);
 
         RelativeLayout.LayoutParams paramsRight = new RelativeLayout.LayoutParams(w, w);
         paramsRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+        paramsRight.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         parent.addView(rightCircle, paramsRight);
 
         stopButton = new Button(this);
