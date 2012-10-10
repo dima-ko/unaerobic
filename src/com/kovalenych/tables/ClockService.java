@@ -107,10 +107,26 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_SUBSCRIBE_TABLE)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             subscriber = SUBSCRIBER_TABLE;
-
+            Intent newIntent = new Intent()
+                    .putExtra(ClockActivity.PARAM_TABLE, name)
+                    .putExtra(ClockActivity.PARAM_CYCLE_NUM, curCycle);
+            try {
+                pi.send(ClockService.this, 0, newIntent);
+            } catch (PendingIntent.CanceledException e) {
+                e.printStackTrace();
+            }
         } else if (destination.equals(FLAG_SUBSCRIBE_CYCLES)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             subscriber = SUBSCRIBER_CYCLE;
+            Intent newIntent = new Intent()
+                    .putExtra(ClockActivity.PARAM_TABLE, name)
+                    .putExtra(ClockActivity.PARAM_CYCLE_NUM, curCycle);
+            try {
+                pi.send(ClockService.this, 0, newIntent);
+            } catch (PendingIntent.CanceledException e) {
+                e.printStackTrace();
+            }
+
         } else if (destination.equals(FLAG_CLICK_BREATH)) {
 
 
@@ -122,10 +138,12 @@ public class ClockService extends Service implements Soundable, Const {
     }
 
     ClockTask task;
+    int curCycle = -1;
 
     private void onTic(int time, int cycle, boolean breathing) {
 
         //evaluate percent progress
+        curCycle = cycle;
         int breathe = table.getCycles().get(cycle).breathe;
         int hold = table.getCycles().get(cycle).hold;
         int all = breathing ? breathe : hold;
@@ -137,11 +155,12 @@ public class ClockService extends Service implements Soundable, Const {
                 .putExtra(ClockActivity.PARAM_TABLE, name)
                 .putExtra(ClockActivity.PARAM_CYCLE_NUM, cycle);
         try {
-            int stat = breathing ? ClockActivity.STATUS_BREATH : ClockActivity.STATUS_HOLD;
+            int stat = breathing ? STATUS_BREATH : STATUS_HOLD;
             if (subscriber == SUBSCRIBER_CLOCK ||
-                    (!breathing && (time == all - 1) && subscriber == SUBSCRIBER_CYCLE)
-                    )
+                    (!breathing && (time == all - 1) && subscriber == SUBSCRIBER_CYCLE)){
                 pi.send(ClockService.this, stat, intent);
+                Log.d(LOG_TAG,  "sendtotable");
+            }
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
         }

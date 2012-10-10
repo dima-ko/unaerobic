@@ -126,6 +126,12 @@ public final class TablesFragment extends Fragment implements Const {
     @Override
     public void onResume() {
         super.onResume();
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         if (Utils.isMyServiceRunning(getActivity())) {
             stopButton.setVisibility(View.VISIBLE);
             subscribeToService();
@@ -133,7 +139,6 @@ public final class TablesFragment extends Fragment implements Const {
         } else
             stopButton.setVisibility(View.GONE);
     }
-
 
     private void invalidateList() {
         TablesArrayAdapter adapter = new TablesArrayAdapter(getActivity(), tableList);
