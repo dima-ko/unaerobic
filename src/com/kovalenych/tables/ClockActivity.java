@@ -27,6 +27,7 @@ public class ClockActivity extends Activity implements Const {
     public boolean addTray = true;
 
     boolean countDown = false;
+    static boolean prefTray;
 
 
     @Override
