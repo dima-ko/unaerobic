@@ -136,8 +136,11 @@ public final class TablesFragment extends Fragment implements Const {
             stopButton.setVisibility(View.VISIBLE);
             subscribeToService();
 
-        } else
+        } else {
             stopButton.setVisibility(View.GONE);
+            posOfCurTable = -1;
+            invalidateList();
+        }
     }
 
     private void invalidateList() {

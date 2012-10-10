@@ -150,8 +150,10 @@ public class ClockActivity extends Activity implements Const {
     protected void onRestart() {
         super.onRestart();
         Log.d(LOG_TAG, "onRestart");
+        PendingIntent pi = createPendingResult(1, null, 0);
         Intent intent = new Intent(this, ClockService.class)
-                .putExtra(FLAG, FLAG_HIDE_TRAY);
+                .putExtra(FLAG, FLAG_HIDE_TRAY)
+                .putExtra(PARAM_PINTENT, pi);
         startService(intent);
     }
 

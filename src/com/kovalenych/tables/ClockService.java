@@ -43,8 +43,8 @@ public class ClockService extends Service implements Soundable, Const {
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
         int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
         long when = System.currentTimeMillis(); // Выясним системное время
-        Intent notificationIntent = new Intent(this, MenuActivity.class); // Создаем экземпляр Intent
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
+//        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
         PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье

@@ -126,6 +126,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
         } else {
             curCycle = -1;
+            invalidateList();
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
         }
@@ -410,7 +411,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
         if (name.equals(data.getStringExtra(PARAM_TABLE)))
             curCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
-        else curCycle = -1;
+        else
+            curCycle = -1;
         invalidateList();                                 //todo toast
     }
 
