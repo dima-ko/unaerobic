@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import com.fragments.TablesFragment;
 import com.kovalenych.R;
 
 import java.util.ArrayList;
@@ -30,10 +31,13 @@ public class CyclesArrayAdapter extends ArrayAdapter<Cycle> {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
-                rowView = inflater.inflate(R.layout.cycle_item, null, true);
+            rowView = inflater.inflate(R.layout.cycle_item, null, true);
         }
-       ((TextView) rowView.findViewById(R.id.cycle_item)).setText(cycles.get(position).convertToString());
-
+        ((TextView) rowView.findViewById(R.id.cycle_item)).setText(cycles.get(position).convertToString());
+        if (position == CyclesActivity.curCycle) {
+            (rowView.findViewById(R.id.cycle_pic)).setVisibility(View.VISIBLE);
+        } else
+            (rowView.findViewById(R.id.cycle_pic)).setVisibility(View.GONE);
         return rowView;
     }
 }

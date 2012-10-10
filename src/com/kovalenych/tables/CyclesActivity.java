@@ -119,22 +119,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         }
     }
 
-    public void onUpdateCurTable(String curTableName) {
-
-//        if (!curCycleSet) {
-//
-//            for (String table : tableList) {
-//                if (table.equals(curTableName)) {
-//                    posOfCurTable = tableList.indexOf(table);
-//                    break;
-//                }
-//            }
-//            invalidateList();
-//            curCycleSet = true;
-//        }
-
-    }
-
     private void subscribeToService() {
         PendingIntent pi;
         Intent intent;
@@ -407,6 +391,15 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         CO2.add(new Cycle(60, 120));
         return CO2;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(LOG_TAG, "onActivityResult" + resultCode);
+        curCycle =  data.getIntExtra(PARAM_CYCLE_NUM,0);
+    }
+
+    public static int curCycle;
 
 }
 

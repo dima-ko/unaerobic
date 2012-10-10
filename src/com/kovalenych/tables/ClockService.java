@@ -107,6 +107,9 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_SUBSCRIBE_TABLE)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
 
+        } else if (destination.equals(FLAG_SUBSCRIBE_CYCLES)) {
+            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
+
         } else if (destination.equals(FLAG_CLICK_BREATH)) {
 
 
