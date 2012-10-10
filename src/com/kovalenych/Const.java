@@ -9,6 +9,7 @@ public interface Const {
     public final static String FLAG = "flag";
 
     public final static String FLAG_CREATE = "create";
+    public final static String FLAG_SUBSCRIBE = "subscribe";
     public final static String FLAG_SHOW_TRAY = "showtray";
     public final static String FLAG_HIDE_TRAY = "hidetray";
     public final static String FLAG_CLICK_BREATH = "click_breath";
@@ -16,6 +17,7 @@ public interface Const {
 
     public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";
+    public final static String PARAM_TABLE = "table_name";
     public final static String PARAM_PROGRESS = "progress";
     public static final String PARAM_TIME = "time";
     public static final String PARAM_BREATHING = "breathing";

@@ -1,6 +1,7 @@
 package com.fragments;
 
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
+import com.kovalenych.Const;
 import com.kovalenych.R;
 import com.kovalenych.Utils;
 import com.kovalenych.tables.ClockService;
@@ -21,7 +23,7 @@ import com.kovalenych.tables.TablesArrayAdapter;
 
 import java.util.*;
 
-public final class TablesFragment extends Fragment {
+public final class TablesFragment extends Fragment implements Const {
 
     Map<String, ?> mapa;                   //Table , file
     SharedPreferences _preferedTables;
@@ -121,11 +123,14 @@ public final class TablesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (Utils.isMyServiceRunning(getActivity()))
+        if (Utils.isMyServiceRunning(getActivity())) {
             stopButton.setVisibility(View.VISIBLE);
-        else
+            subscribeToService();
+
+        } else
             stopButton.setVisibility(View.GONE);
     }
+
 
     private void invalidateList() {
         TablesArrayAdapter adapter = new TablesArrayAdapter(getActivity(), tableList);
@@ -209,5 +214,20 @@ public final class TablesFragment extends Fragment {
             editor.putString(s, "");
         editor.commit();
         super.onDestroyView();
+    }
+
+    private void subscribeToService() {  //todo:  reverse contdown
+        PendingIntent pi;
+        Intent intent;
+
+        // Создаем PendingIntent для Task1
+        pi = getActivity().createPendingResult(1, null, 0);
+        // Создаем Intent для вызова сервиса, кладем туда параметр времени
+        // и созданный PendingIntent
+        intent = new Intent(getActivity(), ClockService.class)
+                .putExtra(FLAG, FLAG_SUBSCRIBE)
+                .putExtra(PARAM_PINTENT, pi);
+        // стартуем сервис
+        getActivity().startService(intent);
     }
 }

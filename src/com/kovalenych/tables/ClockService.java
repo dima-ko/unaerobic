@@ -27,6 +27,7 @@ public class ClockService extends Service implements Soundable, Const {
     private static final int NOTIFY_ID = 1;
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
+    String name;
 
     public boolean showTray = false;
 
@@ -75,6 +76,8 @@ public class ClockService extends Service implements Soundable, Const {
             Log.d(LOG_TAG, FLAG_CREATE);
             Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
+            name = intent.getStringExtra(ClockActivity.PARAM_TABLE);
+            Log.d(LOG_TAG, "tableName  " + name);
             int size = cyclesBundle.getInt("tablesize");
             table = new Table();
 
@@ -98,6 +101,9 @@ public class ClockService extends Service implements Soundable, Const {
 //            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             nMgr.cancel(NOTIFY_ID);
+
+        } else if (destination.equals(FLAG_SUBSCRIBE)) {
+            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
 
         } else if (destination.equals(FLAG_CLICK_BREATH)) {
 

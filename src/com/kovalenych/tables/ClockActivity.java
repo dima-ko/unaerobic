@@ -64,7 +64,8 @@ public class ClockActivity extends Activity implements Const {
         intent = new Intent(this, ClockService.class)
                 .putExtra(FLAG, FLAG_CREATE)
                 .putExtra(PARAM_CYCLES, bun)
-                .putExtra(PARAM_PINTENT, pi);
+                .putExtra(PARAM_PINTENT, pi)
+                .putExtra(PARAM_TABLE, bun.getString("table_name"));
         // стартуем сервис
         startService(intent);
     }

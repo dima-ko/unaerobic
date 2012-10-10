@@ -202,6 +202,7 @@ public class CyclesActivity extends Activity implements Soundable {
                 bun.putIntegerArrayList("voices", curTable.getVoices());
                 bun.putInt("number", position);
                 bun.putBoolean("vibro", isvibro);
+                bun.putString("table_name",name);
                 intent.putExtras(bun);
                 startActivity(intent);
 
