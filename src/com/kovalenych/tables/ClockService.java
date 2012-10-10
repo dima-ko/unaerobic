@@ -67,7 +67,7 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d(LOG_TAG, "ClockService onDestroy");
     }
 
-    public int subscriber;
+    public int subscriber = SUBSCRIBER_CLOCK;
 
 
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -103,13 +103,14 @@ public class ClockService extends Service implements Soundable, Const {
 //            pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             nMgr.cancel(NOTIFY_ID);
-
+            subscriber = SUBSCRIBER_CLOCK;
         } else if (destination.equals(FLAG_SUBSCRIBE_TABLE)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
+            subscriber = SUBSCRIBER_TABLE;
 
         } else if (destination.equals(FLAG_SUBSCRIBE_CYCLES)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
-
+            subscriber = SUBSCRIBER_CYCLE;
         } else if (destination.equals(FLAG_CLICK_BREATH)) {
 
 
@@ -137,7 +138,10 @@ public class ClockService extends Service implements Soundable, Const {
                 .putExtra(ClockActivity.PARAM_CYCLE_NUM, cycle);
         try {
             int stat = breathing ? ClockActivity.STATUS_BREATH : ClockActivity.STATUS_HOLD;
-            pi.send(ClockService.this, stat, intent);
+            if (subscriber == SUBSCRIBER_CLOCK ||
+                    (!breathing && (time == all - 1) && subscriber == SUBSCRIBER_CYCLE)
+                    )
+                pi.send(ClockService.this, stat, intent);
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
         }

@@ -103,6 +103,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public void onClick(View view) {
                 stopService(new Intent(ptr, ClockService.class));
                 stopButton.setVisibility(View.GONE);
+                curCycle = -1;
+                invalidateList();
             }
         });
 
@@ -396,10 +398,11 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
-        curCycle =  data.getIntExtra(PARAM_CYCLE_NUM,0);
+        curCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
+        invalidateList();                                 //todo toast
     }
 
-    public static int curCycle;
+    public static int curCycle = -1;
 
 }
 

@@ -3,7 +3,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
                 android:gravity="center_vertical">
-    <ImageView
+    <ProgressBar
             android:id="@+id/cycle_pic"
             android:layout_centerVertical="true"
             android:layout_height="18pt"
