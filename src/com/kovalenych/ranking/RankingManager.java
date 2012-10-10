@@ -50,7 +50,7 @@ public class RankingManager {
         this.context = Context;
         this.parent = parent;
         this.mPullToRefreshListView = pullToRefreshListView;
-        recordsList = new ArrayList<Record>();
+        recordsList = new ArrayList<Record>();           //todo spinner ICS style
 
 
         mDisciplinesArray = this.context.getResources().getStringArray(R.array.disciplines);

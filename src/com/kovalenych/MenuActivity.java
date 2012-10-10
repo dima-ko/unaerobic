@@ -103,10 +103,5 @@ public class MenuActivity extends FragmentActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (curTab == RANK_TAB) {
-        } else
-            super.onBackPressed();    //TODO: fix
-    }
+
 }

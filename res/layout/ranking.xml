@@ -3,7 +3,29 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
         >
+    <RelativeLayout
+            android:id="@+id/ranking_records"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent">
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+                android:id="@+id/ranking_list"
 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10pt"
+                android:cacheColorHint="#00000000"
+                />
+    </RelativeLayout>
+    <LinearLayout
+            android:background="@drawable/triangle"
+            android:id="@+id/filter_triangle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="30pt"
+            android:layout_height="30pt"
+            />
     <RelativeLayout
             android:id="@+id/ranking_filter"
             android:orientation="vertical"
@@ -149,20 +171,5 @@
                 android:max="200"
                 />
 
-    </RelativeLayout>
-    <RelativeLayout
-            android:id="@+id/ranking_records"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent">
-        <com.handmark.pulltorefresh.library.PullToRefreshListView
-                android:id="@+id/ranking_list"
-
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="10pt"
-                android:cacheColorHint="#00000000"
-                />
     </RelativeLayout>
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.view.animation.TranslateAnimation;
@@ -83,18 +84,16 @@ public final class RankingFragment extends Fragment {
             public void onClick(View view) {
                 rManager.asmFilter();
                 rManager.getRecords();
-                TranslateAnimation animation = new TranslateAnimation(0, 0, 0, Utils.height);
-                animation.setDuration(600);
-                filterView.startAnimation(animation);
+
             }
         });
 
-//        recordsView.findViewById(R.id.ranking_back).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showFilter(true);
-//            }
-//        });
+        tables.findViewById(R.id.filter_triangle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFilter(true);
+            }
+        });
     }
 
     @Override
@@ -122,8 +121,20 @@ public final class RankingFragment extends Fragment {
     public void showFilter(boolean show) {
         if (show) {
             filterView.setVisibility(View.VISIBLE);
+            TranslateAnimation animation = new TranslateAnimation(0, 0, Utils.height, 0);
+            animation.setDuration(600);
+            filterView.startAnimation(animation);
         } else {
-            filterView.setVisibility(View.GONE);
+            TranslateAnimation animation = new TranslateAnimation(0, 0, 0, Utils.height);
+            animation.setDuration(600);
+            filterView.startAnimation(animation);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    filterView.setVisibility(View.GONE);
+                }
+            }, 650);
+
         }
     }
 
