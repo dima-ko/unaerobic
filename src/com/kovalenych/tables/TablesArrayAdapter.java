@@ -37,7 +37,8 @@ public class TablesArrayAdapter extends ArrayAdapter<String> {
         ((TextView) rowView.findViewById(R.id.table_name)).setText(cycles.get(position));
         if (position == TablesFragment.posOfCurTable) {
             (rowView.findViewById(R.id.table_pic)).setVisibility(View.VISIBLE);
-        }
+        } else
+            (rowView.findViewById(R.id.table_pic)).setVisibility(View.GONE);
         return rowView;
     }
 }

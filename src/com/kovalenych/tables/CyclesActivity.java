@@ -2,11 +2,13 @@ package com.kovalenych.tables;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+import com.kovalenych.Const;
 import com.kovalenych.R;
 import com.kovalenych.Table;
 import com.kovalenych.Utils;
@@ -14,7 +16,7 @@ import com.kovalenych.Utils;
 import java.io.*;
 import java.util.ArrayList;
 
-public class CyclesActivity extends Activity implements Soundable {
+public class CyclesActivity extends Activity implements Soundable, Const {
 
     ListView lv;
 
@@ -34,6 +36,7 @@ public class CyclesActivity extends Activity implements Soundable {
     private SharedPreferences _preferedSettings;
     boolean isvibro;
     private Button stopButton;
+    private boolean curCycleSet;
 
 
     @Override
@@ -102,14 +105,49 @@ public class CyclesActivity extends Activity implements Soundable {
                 stopButton.setVisibility(View.GONE);
             }
         });
+
+        curCycleSet = false;
+        stopButton.setVisibility(View.GONE);
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
+            subscribeToService();
             Log.d(LOG_TAG, "onResume VISIBLE");
             Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
         } else {
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
         }
+    }
+
+    public void onUpdateCurTable(String curTableName) {
+
+//        if (!curCycleSet) {
+//
+//            for (String table : tableList) {
+//                if (table.equals(curTableName)) {
+//                    posOfCurTable = tableList.indexOf(table);
+//                    break;
+//                }
+//            }
+//            invalidateList();
+//            curCycleSet = true;
+//        }
+
+    }
+
+    private void subscribeToService() {  //todo:  reverse contdown
+        PendingIntent pi;
+        Intent intent;
+
+        // Создаем PendingIntent для Task1
+        pi = createPendingResult(1, null, 0);
+        // Создаем Intent для вызова сервиса, кладем туда параметр времени
+        // и созданный PendingIntent
+        intent = new Intent(this, ClockService.class)
+                .putExtra(FLAG, FLAG_SUBSCRIBE)
+                .putExtra(PARAM_PINTENT, pi);
+        // стартуем сервис
+        startService(intent);
     }
 
     private void invalidateList() {
@@ -202,7 +240,7 @@ public class CyclesActivity extends Activity implements Soundable {
                 bun.putIntegerArrayList("voices", curTable.getVoices());
                 bun.putInt("number", position);
                 bun.putBoolean("vibro", isvibro);
-                bun.putString("table_name",name);
+                bun.putString("table_name", name);
                 intent.putExtras(bun);
                 startActivity(intent);
 
