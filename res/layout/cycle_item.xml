@@ -4,7 +4,7 @@
                 android:layout_width="fill_parent"
                 android:gravity="center_vertical">
     <ImageView
-            android:src="@drawable/icon"
+            android:id="@+id/cycle_pic"
             android:layout_centerVertical="true"
             android:layout_height="18pt"
             android:layout_width="18pt"

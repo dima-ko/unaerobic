@@ -33,7 +33,6 @@ public final class RankingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -45,7 +44,7 @@ public final class RankingFragment extends Fragment {
         return tables;
     }
 
-    private void initFilterAndProgress(View tables) {       //todo: filter slide down
+    private void initFilterAndProgress(View tables) {
 
         filterView = (RelativeLayout) tables.findViewById(R.id.ranking_filter);
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);

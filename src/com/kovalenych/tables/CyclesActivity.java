@@ -119,7 +119,6 @@ public class CyclesActivity extends Activity implements Soundable {
         lv.setVisibility(View.VISIBLE);
     }
 
-
     @Override
     protected void onPause() {
         try {
