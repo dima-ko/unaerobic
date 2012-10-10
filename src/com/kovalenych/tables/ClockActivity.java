@@ -207,12 +207,13 @@ public class ClockActivity extends Activity implements Const {
         } else if (resultCode == STATUS_HOLD) {
             if (holdTimeText.getVisibility() != View.VISIBLE)
                 holdTimeText.setVisibility(View.VISIBLE);
-            if (breathTimeText.getVisibility() == View.VISIBLE)
+            if (breathTimeText.getVisibility() == View.VISIBLE)    //TODO rotate timer when portrait
                 breathTimeText.setVisibility(View.INVISIBLE);
             holdTimeText.setText(Utils.timeToString(time));
             holdBar.angle = percent;
         } else if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
+            addTray = false;
             finish();
         }
     }

@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
+import android.view.animation.TranslateAnimation;
 import android.widget.*;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.MenuActivity;
@@ -82,15 +83,18 @@ public final class RankingFragment extends Fragment {
             public void onClick(View view) {
                 rManager.asmFilter();
                 rManager.getRecords();
+                TranslateAnimation animation = new TranslateAnimation(0, 0, 0, Utils.height);
+                animation.setDuration(600);
+                filterView.startAnimation(animation);
             }
         });
 
-        recordsView.findViewById(R.id.ranking_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showFilter(true);
-            }
-        });
+//        recordsView.findViewById(R.id.ranking_back).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showFilter(true);
+//            }
+//        });
     }
 
     @Override

@@ -141,8 +141,8 @@ public class ClockService extends Service implements Soundable, Const {
             else if (voices.contains(relatTime))
                 mSoundManager.playSound(relatTime);
         } else {
-//            if (showTray)
-//                showProgressInTray(time, hold, breathing);
+            if (showTray)
+                showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START))                 //hold
                 mSoundManager.playSound(START);
             else if (voices.contains(time))
