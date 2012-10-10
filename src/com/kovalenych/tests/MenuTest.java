@@ -23,7 +23,7 @@ public class MenuTest extends GeneralTest {
         solo.clickOnText("ARTICLES");
         solo.sleep(1000);
 
-        solo.clickOnText("RECORDS");
+        solo.clickOnText("RANKING");
         solo.sleep(1000);
 
         solo.clickOnText("TABLES");
