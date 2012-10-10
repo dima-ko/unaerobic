@@ -126,7 +126,6 @@ public final class TablesFragment extends Fragment implements Const {
     @Override
     public void onResume() {
         super.onResume();
-        curTableSet = false;
         if (Utils.isMyServiceRunning(getActivity())) {
             stopButton.setVisibility(View.VISIBLE);
             subscribeToService();
@@ -235,21 +234,17 @@ public final class TablesFragment extends Fragment implements Const {
         getActivity().startService(intent);
     }
 
-    boolean curTableSet = false;
 
     public void onUpdateCurTable(String curTableName) {
 
-        if (!curTableSet) {
 
-            for (String table : tableList) {
-                if (table.equals(curTableName)) {
-                    posOfCurTable = tableList.indexOf(table);
-                    break;
-                }
+        for (String table : tableList) {
+            if (table.equals(curTableName)) {
+                posOfCurTable = tableList.indexOf(table);
+                break;
             }
-            invalidateList();
-            curTableSet = true;
         }
+        invalidateList();
 
     }
 }
