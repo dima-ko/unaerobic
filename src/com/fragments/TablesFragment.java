@@ -18,7 +18,6 @@ import com.kovalenych.R;
 import com.kovalenych.Utils;
 import com.kovalenych.tables.ClockService;
 import com.kovalenych.tables.CyclesActivity;
-import com.kovalenych.tables.CyclesArrayAdapter;
 import com.kovalenych.tables.TablesArrayAdapter;
 
 import java.util.*;
@@ -230,7 +229,7 @@ public final class TablesFragment extends Fragment implements Const {
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
         intent = new Intent(getActivity(), ClockService.class)
-                .putExtra(FLAG, FLAG_SUBSCRIBE)
+                .putExtra(FLAG, FLAG_SUBSCRIBE_TABLE)
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         getActivity().startService(intent);

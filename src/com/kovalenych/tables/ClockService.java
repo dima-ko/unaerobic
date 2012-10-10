@@ -67,6 +67,8 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d(LOG_TAG, "ClockService onDestroy");
     }
 
+    public int subscriber;
+
 
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "ClockService onStartCommand" + flags);
@@ -102,7 +104,7 @@ public class ClockService extends Service implements Soundable, Const {
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             nMgr.cancel(NOTIFY_ID);
 
-        } else if (destination.equals(FLAG_SUBSCRIBE)) {
+        } else if (destination.equals(FLAG_SUBSCRIBE_TABLE)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
 
         } else if (destination.equals(FLAG_CLICK_BREATH)) {
@@ -128,7 +130,8 @@ public class ClockService extends Service implements Soundable, Const {
                 .putExtra(ClockActivity.PARAM_TIME, time)
                 .putExtra(ClockActivity.PARAM_PROGRESS, all)
                 .putExtra(ClockActivity.PARAM_BREATHING, breathing)
-                .putExtra(ClockActivity.PARAM_TABLE, name);
+                .putExtra(ClockActivity.PARAM_TABLE, name)
+                .putExtra(ClockActivity.PARAM_CYCLE_NUM, cycle);
         try {
             int stat = breathing ? ClockActivity.STATUS_BREATH : ClockActivity.STATUS_HOLD;
             pi.send(ClockService.this, stat, intent);

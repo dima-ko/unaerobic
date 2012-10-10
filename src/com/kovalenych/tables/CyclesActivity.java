@@ -135,7 +135,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
     }
 
-    private void subscribeToService() {  //todo:  reverse contdown
+    private void subscribeToService() {
         PendingIntent pi;
         Intent intent;
 
@@ -144,7 +144,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
         intent = new Intent(this, ClockService.class)
-                .putExtra(FLAG, FLAG_SUBSCRIBE)
+                .putExtra(FLAG, FLAG_SUBSCRIBE_CYCLES)
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
