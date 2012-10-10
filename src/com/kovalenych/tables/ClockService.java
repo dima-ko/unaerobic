@@ -123,11 +123,10 @@ public class ClockService extends Service implements Soundable, Const {
         int breathe = table.getCycles().get(cycle).breathe;
         int hold = table.getCycles().get(cycle).hold;
         int all = breathing ? breathe : hold;
-        int percent = time * 360 / all;
         Log.d(LOG_TAG, "zzzzonTic  time: " + time);
         Intent intent = new Intent()
                 .putExtra(ClockActivity.PARAM_TIME, time)
-                .putExtra(ClockActivity.PARAM_PROGRESS, percent)
+                .putExtra(ClockActivity.PARAM_PROGRESS, all)
                 .putExtra(ClockActivity.PARAM_BREATHING, breathing)
                 .putExtra(ClockActivity.PARAM_TABLE, name);
         try {

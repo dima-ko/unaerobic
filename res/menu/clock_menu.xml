@@ -4,6 +4,6 @@
     <item android:id="@+id/menu_tray"
           android:title="Show/hide in tray"/>
     <item android:id="@+id/countdown"
-          android:title="countdown"/>
+          android:title="Countdown"/>
 
 </menu>

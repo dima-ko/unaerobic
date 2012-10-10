@@ -26,6 +26,8 @@ public class ClockActivity extends Activity implements Const {
     Activity ptr;
     public boolean addTray = true;
 
+    boolean countDown = false;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -194,22 +196,24 @@ public class ClockActivity extends Activity implements Const {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
         int time = data.getIntExtra(ClockActivity.PARAM_TIME, 0);
-        int percent = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
-//        Log.d("zzzzzzz", percent + "");
+        int wholeTime = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
+        Log.d("zzzzzzz", wholeTime + "percent");
         if (resultCode == STATUS_BREATH) {
             if (breathTimeText.getVisibility() != View.VISIBLE)
                 breathTimeText.setVisibility(View.VISIBLE);
             if (holdTimeText.getVisibility() == View.VISIBLE)
                 holdTimeText.setVisibility(View.INVISIBLE);
-            breathBar.angle = percent;
-            breathTimeText.setText(Utils.timeToString(time));
+            breathBar.angle = wholeTime;
+            String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
+            breathTimeText.setText(showTime);
         } else if (resultCode == STATUS_HOLD) {
             if (holdTimeText.getVisibility() != View.VISIBLE)
                 holdTimeText.setVisibility(View.VISIBLE);
             if (breathTimeText.getVisibility() == View.VISIBLE)    //TODO rotate timer when portrait
                 breathTimeText.setVisibility(View.INVISIBLE);
-            holdTimeText.setText(Utils.timeToString(time));
-            holdBar.angle = percent;
+            String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
+            holdTimeText.setText(showTime);
+            holdBar.angle = wholeTime;
         } else if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
             addTray = false;
@@ -232,6 +236,7 @@ public class ClockActivity extends Activity implements Const {
 
         switch (item.getItemId()) {
             case R.id.countdown:
+                countDown = !countDown;
                 return true;
             case R.id.menu_tray:
                 return true;
