@@ -55,7 +55,7 @@
                 />
         <com.kovalenych.roboto.EditTextRoboto
                 android:id="@+id/repeat_edit"
-                android:layout_width="55pt"
+                android:layout_width="35pt"
                 android:layout_height="23pt"
                 android:singleLine="true"
                 android:inputType="phone"

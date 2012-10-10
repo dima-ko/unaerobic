@@ -14,7 +14,7 @@
               android:layout_height="26pt"
               android:singleLine="true"
               android:hint="@string/new_table_name"
-              android:gravity="center_horizontal"
+              android:gravity="center"
             />
 
     <com.kovalenych.roboto.ButtonRoboto
