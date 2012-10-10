@@ -36,7 +36,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private SharedPreferences _preferedSettings;
     boolean isvibro;
     private Button stopButton;
-    private boolean curCycleSet;
 
 
     @Override
@@ -56,6 +55,25 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
         isvibro = _preferedSettings.getBoolean("vibro", true);
 
+        stopButton = (Button) findViewById(R.id.stop_button_cycles);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopService(new Intent(ptr, ClockService.class));
+                stopButton.setVisibility(View.GONE);
+                curCycle = -1;
+                invalidateList();
+            }
+        });
+        if (Utils.isMyServiceRunning(this)) {
+            stopButton.setVisibility(View.VISIBLE);
+            subscribeToService();
+            Log.d(LOG_TAG, "onResume VISIBLE");
+        } else {
+            curCycle = -1;
+            stopButton.setVisibility(View.GONE);
+            Log.d(LOG_TAG, "onResume GONE");
+        }
     }
 
     public void initViews() {
@@ -97,25 +115,18 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     protected void onResume() {
         super.onResume();
         Log.d(LOG_TAG, "onResume ");
-        stopButton = (Button) findViewById(R.id.stop_button_cycles);
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopService(new Intent(ptr, ClockService.class));
-                stopButton.setVisibility(View.GONE);
-                curCycle = -1;
-                invalidateList();
-            }
-        });
+    }
 
-        curCycleSet = false;
-        stopButton.setVisibility(View.GONE);
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
             subscribeToService();
             Log.d(LOG_TAG, "onResume VISIBLE");
             Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
         } else {
+            curCycle = -1;
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
         }
