@@ -152,7 +152,6 @@
     </RelativeLayout>
     <RelativeLayout
             android:id="@+id/ranking_records"
-            android:visibility="gone"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent">
         <com.handmark.pulltorefresh.library.PullToRefreshListView

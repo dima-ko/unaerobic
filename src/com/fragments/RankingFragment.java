@@ -122,10 +122,8 @@ public final class RankingFragment extends Fragment {
     public void showFilter(boolean show) {
         if (show) {
             filterView.setVisibility(View.VISIBLE);
-            recordsView.setVisibility(View.GONE);
         } else {
             filterView.setVisibility(View.GONE);
-            recordsView.setVisibility(View.VISIBLE);
         }
     }
 
