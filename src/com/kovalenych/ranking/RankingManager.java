@@ -71,7 +71,7 @@ public class RankingManager {
         });
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         lv = mPullToRefreshListView.getRefreshableView();
-        unpackSavedTables();       //todo show results on click
+        unpackSavedTables();
     }
 
 
