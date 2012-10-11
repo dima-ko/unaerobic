@@ -70,15 +70,30 @@
                     android:layout_width="wrap_content"
                     android:text="@string/discipline"
                     />
-            <Spinner
+
+            <com.kovalenych.roboto.ButtonRoboto
+                    android:textColor="#FFFFFFFF"
+                    android:paddingBottom="1pt"
+                    android:paddingRight="5pt"
                     android:layout_marginLeft="8pt"
                     android:layout_marginTop="2pt"
-                    android:id="@+id/discipline_spinner"
+                    android:id="@+id/discipline_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginRight="3pt"
+                    android:textSize="9pt"
+                    android:background="@drawable/spin_bl"
+                    />
+
+            <Spinner
+                    android:id="@+id/discipline_spinner"
+                    android:layout_width="1pt"
+                    android:layout_height="1pt"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="3pt"
                     android:prompt="@string/disipline_prompt"
+                    android:visibility="invisible"
 
                     />
         </LinearLayout>

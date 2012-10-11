@@ -17,6 +17,8 @@ import com.kovalenych.R;
 import com.kovalenych.Utils;
 import com.kovalenych.ranking.RankingManager;
 
+import java.util.ArrayList;
+
 public final class RankingFragment extends Fragment {
 
     PullToRefreshListView mPullRefreshListView;
@@ -33,6 +35,7 @@ public final class RankingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        discArray = getResources().getStringArray(R.array.disciplines);
     }
 
     @Override
@@ -43,6 +46,8 @@ public final class RankingFragment extends Fragment {
         initFilterAndProgress(tables);
         return tables;
     }
+
+    String[] discArray;
 
     private void initFilterAndProgress(View tables) {
 
@@ -62,19 +67,30 @@ public final class RankingFragment extends Fragment {
                 }
             }
         });
-        Spinner s = (Spinner) filterView.findViewById(R.id.discipline_spinner);
+
+       final Button s = (Button) filterView.findViewById(R.id.discipline_button);
+        final Spinner spinner = (Spinner) filterView.findViewById(R.id.discipline_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 getActivity(), R.array.disciplines, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(adapter);
-        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 rManager.chosenDisciplNumber = i;
+                s.setText(discArray[i]);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        s.setText("STA");
+        s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spinner.performClick();
             }
         });
 
