@@ -86,17 +86,16 @@ public class ClockService extends Service implements Soundable, Const {
                         new Cycle(cyclesBundle.getInt("breathe" + Integer.toString(i)), cyclesBundle.getInt("hold" + Integer.toString(i)))
                 );
             }
-                                                        //todo volume
-            position = cyclesBundle.getInt("number");
+            position = cyclesBundle.getInt("number");   //todo volume
             vibrationEnabled = cyclesBundle.getBoolean("vibro");
             voices = cyclesBundle.getIntegerArrayList("voices");
-            task = new ClockTask(table, true);
+            task = new ClockTask(table, true);     //todo multiple tables repeat
             task.execute(position);
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
             Log.d(LOG_TAG, FLAG_SHOW_TRAY);
             showTray = true;
-        } else if (destination.equals(FLAG_HIDE_TRAY)) {
+        } else if (destination.equals(FLAG_HIDE_TRAY)) {     //todo: test resolutions
             showTray = false;
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
                 NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

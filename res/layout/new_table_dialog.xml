@@ -10,6 +10,7 @@
 
 
     <com.kovalenych.roboto.EditTextRoboto
+            android:layout_marginTop="5pt"
             android:id="@+id/new_table_edit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
