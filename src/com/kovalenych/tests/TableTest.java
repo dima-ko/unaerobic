@@ -11,10 +11,10 @@ import junit.framework.Assert;
  * by insomniac and angryded
  * for their purposes
  */
-public class DeleteTableTest extends GeneralTest {
+public class TableTest extends GeneralTest {
 
 
-    public void testTables() throws Exception {
+    public void testAddTables() throws Exception {
 
         solo.clickOnText("TABLES");
         solo.sleep(200);
@@ -23,7 +23,7 @@ public class DeleteTableTest extends GeneralTest {
         clickOnViewByID(R.id.add_table);
 
         EditText nameEdit  = (EditText) solo.getView(R.id.new_table_edit);
-        solo.enterText(nameEdit,"blat");
+        solo.enterText(nameEdit,"new");
         solo.clickOnText("add");
 
         solo.clickInList(3);
