@@ -40,7 +40,7 @@ public class ClockActivity extends Activity implements Const {
         initViews();
         Log.d(LOG_TAG, "onCreate");
 
-        setContentView(parent);    //TODO: show in status bar checkbox
+        setContentView(parent);
 
         if (Utils.isMyServiceRunning(this)) {
 
@@ -53,7 +53,7 @@ public class ClockActivity extends Activity implements Const {
                 Log.d(LOG_TAG, "createService FLAG_SHOW_TRAY");
             } else {
                 stopService(new Intent(ptr, ClockService.class));
-                createService(bun);                 //todo
+                createService(bun);
             }
         } else {
             createService(bun);
@@ -180,7 +180,7 @@ public class ClockActivity extends Activity implements Const {
 
     public void setListeners() {
 
-        breathTimeText.setOnLongClickListener(new View.OnLongClickListener() {      //TODO: change on bigger layout
+        breathTimeText.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 startService(new Intent(ptr, ClockService.class)

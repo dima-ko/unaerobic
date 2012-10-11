@@ -227,7 +227,7 @@ public final class TablesFragment extends Fragment implements Const {
         super.onDestroyView();
     }
 
-    private void subscribeToService() {  //todo:  reverse contdown
+    private void subscribeToService() {
         PendingIntent pi;
         Intent intent;
 

@@ -413,7 +413,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             curCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
         else
             curCycle = -1;
-        invalidateList();                                 //todo toast
+        invalidateList();
     }
 
     public static int curCycle = -1;

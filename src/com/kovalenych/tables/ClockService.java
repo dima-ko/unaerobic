@@ -165,7 +165,7 @@ public class ClockService extends Service implements Soundable, Const {
         }
         //vibrate  or sound
 
-        if (time == 0 && vibrationEnabled)      //todo if not clock  update only twice
+        if (time == 0 && vibrationEnabled)
             v.vibrate(300);
         if (breathing) {
             if (showTray)
