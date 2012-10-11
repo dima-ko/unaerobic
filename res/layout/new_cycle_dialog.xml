@@ -62,6 +62,7 @@
                 android:text="1"
                 android:textColor="#FF000000"
                 android:textSize="9pt"
+                android:gravity="center"
                 />
         <com.kovalenych.roboto.TextViewRoboto
                 android:textSize="8pt"
