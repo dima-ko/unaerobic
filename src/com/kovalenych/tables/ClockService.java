@@ -40,27 +40,30 @@ public class ClockService extends Service implements Soundable, Const {
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
         Log.d("showProgressInTray", "zzzzzzzzz");
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
-        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
-        long when = System.currentTimeMillis(); // Выясним системное время
-        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
+        if (ClockActivity.prefTray) {
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
+            int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
+            long when = System.currentTimeMillis(); // Выясним системное время
+            Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
 //                    notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
-        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
-        contentView.setProgressBar(R.id.tray_progress, max, progress, false);
-        contentView.setTextViewText(R.id.tray_text, (breathing ? "breath  " : "hold  ") + Utils.timeToString(progress)); // Привязываем текст к TextView в нашей разметке
-        notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
-        notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
-        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
-
+            Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
+            PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
+            RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
+            contentView.setProgressBar(R.id.tray_progress, max, progress, false);
+            contentView.setTextViewText(R.id.tray_text, (breathing ? "breath  " : "hold  ") + Utils.timeToString(progress)); // Привязываем текст к TextView в нашей разметке
+            notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
+            notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
+            mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
+        }
     }
 
 
     public void onDestroy() {
         super.onDestroy();
-        NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        nMgr.cancel(NOTIFY_ID);
+        if (ClockActivity.prefTray) {
+            NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            nMgr.cancel(NOTIFY_ID);
+        }
         if (task != null)
             task.cancel(true);
         Log.d(LOG_TAG, "ClockService onDestroy");
@@ -100,8 +103,10 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
             showTray = false;
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
-            NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            nMgr.cancel(NOTIFY_ID);
+            if (ClockActivity.prefTray) {
+                NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                nMgr.cancel(NOTIFY_ID);
+            }
             subscriber = SUBSCRIBER_CLOCK;
         } else if (destination.equals(FLAG_SUBSCRIBE_TABLE)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
@@ -156,9 +161,9 @@ public class ClockService extends Service implements Soundable, Const {
         try {
             int stat = breathing ? STATUS_BREATH : STATUS_HOLD;
             if (subscriber == SUBSCRIBER_CLOCK ||
-                    (!breathing && (time == all - 1) && subscriber == SUBSCRIBER_CYCLE)){
+                    (!breathing && (time == all - 1) && subscriber == SUBSCRIBER_CYCLE)) {
                 pi.send(ClockService.this, stat, intent);
-                Log.d(LOG_TAG,  "sendtotable");
+                Log.d(LOG_TAG, "sendtotable");
             }
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
