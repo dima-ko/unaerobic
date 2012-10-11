@@ -27,6 +27,7 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
     private void fillMap() {
         map = new HashMap<String, Integer>();
         map.put("at", R.drawable.at);
+        map.put("au", R.drawable.au);
         map.put("br", R.drawable.br);
         map.put("ca", R.drawable.ca);
         map.put("ch", R.drawable.ch);
@@ -41,6 +42,7 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("hr", R.drawable.hr);
         map.put("it", R.drawable.it);
         map.put("jp", R.drawable.jp);
+        map.put("jm", R.drawable.jm);
         map.put("nl", R.drawable.nl);
         map.put("no", R.drawable.no);
         map.put("nz", R.drawable.nz);
@@ -48,6 +50,8 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("rs", R.drawable.rs);
         map.put("ru", R.drawable.ru);
         map.put("se", R.drawable.se);
+        map.put("si", R.drawable.si);
+        map.put("sk", R.drawable.sk);
         map.put("ua", R.drawable.ua);
         map.put("us", R.drawable.us);
         map.put("ve", R.drawable.ve);
