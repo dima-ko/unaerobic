@@ -35,10 +35,16 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("fi", R.drawable.fi);
         map.put("fr", R.drawable.fr);
         map.put("gb", R.drawable.gb);
+        map.put("gr", R.drawable.gr);
+        map.put("hr", R.drawable.hr);
+        map.put("it", R.drawable.it);
+        map.put("jp", R.drawable.jp);
         map.put("nz", R.drawable.nz);
+        map.put("pl", R.drawable.pl);
         map.put("rs", R.drawable.rs);
         map.put("ru", R.drawable.ru);
         map.put("se", R.drawable.se);
+        map.put("ua", R.drawable.ua);
         map.put("us", R.drawable.us);
 
 
