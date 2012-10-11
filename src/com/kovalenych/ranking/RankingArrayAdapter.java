@@ -28,12 +28,18 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map = new HashMap<String, Integer>();
         map.put("at", R.drawable.at);
         map.put("br", R.drawable.br);
+        map.put("ca", R.drawable.ca);
+        map.put("cz", R.drawable.cz);
         map.put("de", R.drawable.de);
+        map.put("es", R.drawable.es);
+        map.put("fi", R.drawable.fi);
         map.put("fr", R.drawable.fr);
+        map.put("gb", R.drawable.gb);
         map.put("nz", R.drawable.nz);
         map.put("rs", R.drawable.rs);
         map.put("ru", R.drawable.ru);
         map.put("se", R.drawable.se);
+        map.put("us", R.drawable.us);
 
 
 
