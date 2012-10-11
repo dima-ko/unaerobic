@@ -40,7 +40,6 @@ public class ClockService extends Service implements Soundable, Const {
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
         Log.d("showProgressInTray", "zzzzzzzzz");
-        if (ClockActivity.prefTray) {
             NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
             int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
             long when = System.currentTimeMillis(); // Выясним системное время
@@ -54,16 +53,13 @@ public class ClockService extends Service implements Soundable, Const {
             notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
             notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
             mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
-        }
     }
 
 
     public void onDestroy() {
         super.onDestroy();
-        if (ClockActivity.prefTray) {
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             nMgr.cancel(NOTIFY_ID);
-        }
         if (task != null)
             task.cancel(true);
         Log.d(LOG_TAG, "ClockService onDestroy");
@@ -103,10 +99,8 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_HIDE_TRAY)) {
             showTray = false;
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
-            if (ClockActivity.prefTray) {
                 NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 nMgr.cancel(NOTIFY_ID);
-            }
             subscriber = SUBSCRIBER_CLOCK;
         } else if (destination.equals(FLAG_SUBSCRIBE_TABLE)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);

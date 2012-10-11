@@ -27,8 +27,8 @@ public class ClockActivity extends Activity implements Const {
     Activity ptr;
     public boolean addTray = true;
 
-    boolean countDown;
-    static boolean prefTray;
+    public boolean countDown;
+    public boolean prefTray;
     private SharedPreferences _preferences;
 
 
@@ -39,7 +39,7 @@ public class ClockActivity extends Activity implements Const {
         ptr = this;
         Bundle bun = getIntent().getExtras();
         _preferences = getSharedPreferences("clockPrefs", MODE_PRIVATE);
-        prefTray = _preferences.getBoolean("ShowTray", false);
+        prefTray = _preferences.getBoolean("ShowTray", true);
         countDown = _preferences.getBoolean("countdown", false);
 
         initViews();
@@ -171,7 +171,7 @@ public class ClockActivity extends Activity implements Const {
     protected void onStop() {
         Log.d(LOG_TAG, "onStop");
         super.onStop();
-        if (addTray)
+        if (addTray && prefTray)
             startService(new Intent(this, ClockService.class)
                     .putExtra(FLAG, FLAG_SHOW_TRAY));
         SharedPreferences.Editor editor = _preferences.edit();
@@ -260,6 +260,7 @@ public class ClockActivity extends Activity implements Const {
                 countDown = !countDown;
                 return true;
             case R.id.menu_tray:
+                prefTray = !prefTray;
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
