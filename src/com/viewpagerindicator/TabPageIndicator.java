@@ -40,7 +40,9 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * across different configurations or circumstances.
  */
 public class TabPageIndicator extends HorizontalScrollView implements PageIndicator {
-    /** Title text used when no title is provided by the adapter. */
+    /**
+     * Title text used when no title is provided by the adapter.
+     */
     private static final CharSequence EMPTY_TITLE = "";
 
     /**
@@ -59,7 +61,7 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
 
     private final OnClickListener mTabClickListener = new OnClickListener() {
         public void onClick(View view) {
-            TabView tabView = (TabView)view;
+            TabView tabView = (TabView) view;
             final int oldSelected = mViewPager.getCurrentItem();
             final int newSelected = tabView.getIndex();
             mViewPager.setCurrentItem(newSelected);
@@ -103,7 +105,7 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         final int childCount = mTabLayout.getChildCount();
         if (childCount > 1 && (widthMode == MeasureSpec.EXACTLY || widthMode == MeasureSpec.AT_MOST)) {
             if (childCount > 2) {
-                mMaxTabWidth = (int)(MeasureSpec.getSize(widthMeasureSpec) * 0.4f);
+                mMaxTabWidth = (int) (MeasureSpec.getSize(widthMeasureSpec) * 0.4f);
             } else {
                 mMaxTabWidth = MeasureSpec.getSize(widthMeasureSpec) / 2;
             }
@@ -256,9 +258,9 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         public TabView(Context context) {
             super(context, null);
             this.setTextColor(Color.WHITE);
-            this.setTextSize(Utils.dpToPix(9)); //TODO small screen
+            this.setTextSize((Utils.scale > 1.5f) ? 10 : 14);       //todo: emu
             this.setBackgroundResource(R.drawable.vpi__tab_indicator);
-            this.setPadding(0,15,0,15);
+            this.setPadding(0, 15, 0, 15);
             this.setGravity(Gravity.CENTER);
         }
 

@@ -41,7 +41,7 @@
             >
         <com.kovalenych.roboto.TextViewRoboto
                 android:id="@+id/ranking_country"
-                android:layout_width="12pt"
+                android:layout_width="14pt"
                 android:layout_height="fill_parent"
                 android:textSize="7pt"
                 android:gravity="center"
