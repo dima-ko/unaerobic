@@ -44,8 +44,7 @@ public class ClockActivity extends Activity implements Const {
 
         if (Utils.isMyServiceRunning(this)) {
 
-            boolean isSame = bun.getBoolean("isRunning");
-            if (isSame) {
+            if (bun == null || bun.getBoolean("isRunning")) {
                 PendingIntent pi = createPendingResult(1, null, 0);
                 Intent intent = new Intent(this, ClockService.class)
                         .putExtra(FLAG, FLAG_HIDE_TRAY)
@@ -54,7 +53,7 @@ public class ClockActivity extends Activity implements Const {
                 Log.d(LOG_TAG, "createService FLAG_SHOW_TRAY");
             } else {
                 stopService(new Intent(ptr, ClockService.class));
-                createService(bun);
+                createService(bun);                 //todo
             }
         } else {
             createService(bun);

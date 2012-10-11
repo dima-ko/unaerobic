@@ -41,7 +41,9 @@
         <activity android:name=".tables.CyclesActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
-        <activity android:name=".tables.ClockActivity"
+        <activity
+                android:launchMode="singleTask"
+                android:name=".tables.ClockActivity"
                   android:screenOrientation="landscape"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                   android:configChanges="orientation"/>
