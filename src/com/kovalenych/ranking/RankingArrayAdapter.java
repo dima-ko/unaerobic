@@ -35,9 +35,16 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         ((TextView) rowView.findViewById(R.id.ranking_place)).setText((position + 1) + "");
         ((TextView) rowView.findViewById(R.id.ranking_name_surname)).setText(records.get(position).getName());
         ((TextView) rowView.findViewById(R.id.ranking_result)).setText(records.get(position).getResult());
-        if (records.get(position).getCountry().equals("at"))
+        if (records.get(position).getCountry().equals("at")) {
             (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(R.drawable.at);
-        else {
+            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
+        } else if (records.get(position).getCountry().equals("br")) {
+            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(R.drawable.br);
+            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
+        } else if (records.get(position).getCountry().equals("nz")) {
+            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(R.drawable.nz);
+            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
+        } else {
             ((TextView) rowView.findViewById(R.id.ranking_country)).setText(records.get(position).getCountry());
             (rowView.findViewById(R.id.ranking_country)).setBackgroundColor(0xff222222);
         }
