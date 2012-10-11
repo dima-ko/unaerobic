@@ -19,7 +19,7 @@
             />
 
     <com.kovalenych.roboto.ButtonRoboto
-            android:layout_marginTop="3pt"
+            android:layout_marginTop="9pt"
             android:gravity="center"
             android:id="@+id/new_table_ok"
             android:background="#ff333333"

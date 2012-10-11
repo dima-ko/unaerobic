@@ -69,7 +69,7 @@ public final class RankingFragment extends Fragment {
             }
         });
 
-       final Button s = (Button) filterView.findViewById(R.id.discipline_button);
+        final Button s = (Button) filterView.findViewById(R.id.discipline_button);
         final Spinner spinner = (Spinner) filterView.findViewById(R.id.discipline_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 getActivity(), R.array.disciplines, android.R.layout.simple_spinner_item);
@@ -161,7 +161,7 @@ public final class RankingFragment extends Fragment {
             int incr = 0;
             while (!isCancelled()) {
                 publishProgress(incr);
-                incr += 4*(200-incr)/200;
+                incr += Math.ceil(((float) 4 * (200 - incr)) / 200);
                 try {
                     Thread.sleep(101);
                 } catch (InterruptedException e) {
