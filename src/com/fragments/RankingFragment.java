@@ -55,6 +55,7 @@ public final class RankingFragment extends Fragment {
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
 
         progressBar = (ProgressBar) filterView.findViewById(R.id.sending_prog);
+        progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.red_progress));
 
         (filterView.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
             @Override
