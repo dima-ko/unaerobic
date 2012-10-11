@@ -29,8 +29,10 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("at", R.drawable.at);
         map.put("br", R.drawable.br);
         map.put("ca", R.drawable.ca);
+        map.put("ch", R.drawable.ch);
         map.put("cz", R.drawable.cz);
         map.put("de", R.drawable.de);
+        map.put("dk", R.drawable.dk);
         map.put("es", R.drawable.es);
         map.put("fi", R.drawable.fi);
         map.put("fr", R.drawable.fr);
@@ -39,6 +41,8 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("hr", R.drawable.hr);
         map.put("it", R.drawable.it);
         map.put("jp", R.drawable.jp);
+        map.put("nl", R.drawable.nl);
+        map.put("no", R.drawable.no);
         map.put("nz", R.drawable.nz);
         map.put("pl", R.drawable.pl);
         map.put("rs", R.drawable.rs);
@@ -46,6 +50,7 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("se", R.drawable.se);
         map.put("ua", R.drawable.ua);
         map.put("us", R.drawable.us);
+        map.put("ve", R.drawable.ve);
 
 
 
