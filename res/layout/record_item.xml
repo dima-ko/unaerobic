@@ -38,6 +38,7 @@
             android:textSize="7pt"
             android:layout_weight="3"
             android:gravity="center"
+            android:background="#ff222222"
             />
 
 </LinearLayout>

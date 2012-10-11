@@ -32,10 +32,15 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
 
         }
 
-        ((TextView) rowView.findViewById(R.id.ranking_place)).setText((position+1)+"");
+        ((TextView) rowView.findViewById(R.id.ranking_place)).setText((position + 1) + "");
         ((TextView) rowView.findViewById(R.id.ranking_name_surname)).setText(records.get(position).getName());
         ((TextView) rowView.findViewById(R.id.ranking_result)).setText(records.get(position).getResult());
-        ((TextView) rowView.findViewById(R.id.ranking_country)).setText(records.get(position).getCountry());
+        if (records.get(position).getCountry().equals("at"))
+            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(R.drawable.at);
+        else {
+            ((TextView) rowView.findViewById(R.id.ranking_country)).setText(records.get(position).getCountry());
+            (rowView.findViewById(R.id.ranking_country)).setBackgroundColor(0xff222222);
+        }
 
         return rowView;
     }
