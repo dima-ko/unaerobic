@@ -10,16 +10,33 @@ import android.widget.TextView;
 import com.kovalenych.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RankingArrayAdapter extends ArrayAdapter<Record> {
     private final Activity context;
     private ArrayList<Record> records;
-
+    HashMap<String, Integer> map;
 
     public RankingArrayAdapter(Activity context, ArrayList<Record> records) {
         super(context, R.layout.record_item, records);
         this.context = context;
         this.records = records;
+        fillMap();
+    }
+
+    private void fillMap() {
+        map = new HashMap<String, Integer>();
+        map.put("at", R.drawable.at);
+        map.put("br", R.drawable.br);
+        map.put("de", R.drawable.de);
+        map.put("fr", R.drawable.fr);
+        map.put("nz", R.drawable.nz);
+        map.put("rs", R.drawable.rs);
+        map.put("ru", R.drawable.ru);
+
+
+
+        //todo good adapter
     }
 
     @Override
@@ -35,20 +52,15 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         ((TextView) rowView.findViewById(R.id.ranking_place)).setText((position + 1) + "");
         ((TextView) rowView.findViewById(R.id.ranking_name_surname)).setText(records.get(position).getName());
         ((TextView) rowView.findViewById(R.id.ranking_result)).setText(records.get(position).getResult());
-        if (records.get(position).getCountry().equals("at")) {
-            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(R.drawable.at);
-            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
-        } else if (records.get(position).getCountry().equals("br")) {
-            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(R.drawable.br);
-            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
-        } else if (records.get(position).getCountry().equals("nz")) {
-            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(R.drawable.nz);
-            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
-        } else {
+
+        Integer resId = map.get(records.get(position).getCountry());
+        if (resId == null) {
             ((TextView) rowView.findViewById(R.id.ranking_country)).setText(records.get(position).getCountry());
             (rowView.findViewById(R.id.ranking_country)).setBackgroundColor(0xff222222);
+        } else {
+            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(resId);
+            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
         }
-
         return rowView;
     }
 
