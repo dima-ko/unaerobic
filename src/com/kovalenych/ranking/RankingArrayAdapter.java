@@ -56,9 +56,6 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("us", R.drawable.us);
         map.put("ve", R.drawable.ve);
 
-                      //todo zvuk slide
-
-        //todo good adapter
     }
 
     @Override

@@ -37,6 +37,7 @@ public class SoundManager implements Soundable {
         addSound(AFTER_START_4, R.raw.after4min);
         addSound(AFTER_START_5, R.raw.after5min);
         addSound(BREATHE, R.raw.breathe);
+        addSound(BREATHE, R.raw.breathe);
     }
 
     public void addSound(int index, int SoundID) {

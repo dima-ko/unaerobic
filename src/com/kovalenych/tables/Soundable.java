@@ -2,6 +2,7 @@ package com.kovalenych.tables;
 
 
 public interface Soundable {
+    int LIST_DROP= -800;
     int TO_START_2_MIN = -120;
     int TO_START_1_MIN = -60;
     int TO_START_30_SEC    = -30;
