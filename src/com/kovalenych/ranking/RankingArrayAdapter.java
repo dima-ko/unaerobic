@@ -64,26 +64,62 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View rowView = convertView;
-        if (rowView == null) {
-            LayoutInflater inflater = context.getLayoutInflater();
-            rowView = inflater.inflate(R.layout.record_item, null, true);
 
+        ViewHolder viewHolder;
+//
+//        if (convertView == null) {
+//            LayoutInflater inflater = context.getLayoutInflater();
+//            convertView = inflater.inflate(R.layout.task_item, null, true);
+//            viewHolder = new TViewHolder();
+//            viewHolder.textView = (TextView) convertView.findViewById(R.id.task_text);
+//            viewHolder.dateView = (TextView) convertView.findViewById(R.id.date_text);
+//            viewHolder.position= position;
+//            convertView.setTag(viewHolder);
+//
+//        } else {
+//            viewHolder = (TViewHolder) convertView.getTag();
+//        }
+//
+//        viewHolder.textView .setText(tasks.get(tasks.size()-1 - position).text);
+//        viewHolder.dateView .setText(tasks.get(tasks.size()-1 - position).dateString);
+//        viewHolder.position= position;
+//
+//        return convertView;
+
+        if (convertView == null) {
+            LayoutInflater inflater = context.getLayoutInflater();
+            convertView = inflater.inflate(R.layout.record_item, null, true);
+            viewHolder = new ViewHolder();
+            viewHolder.placeView = (TextView) convertView.findViewById(R.id.ranking_place);
+            viewHolder.nameView = (TextView) convertView.findViewById(R.id.ranking_name_surname);
+            viewHolder.resultView = (TextView) convertView.findViewById(R.id.ranking_result);
+            viewHolder.flagView = (TextView) convertView.findViewById(R.id.ranking_country);
+            convertView.setTag(viewHolder);
+
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ((TextView) rowView.findViewById(R.id.ranking_place)).setText((position + 1) + "");
-        ((TextView) rowView.findViewById(R.id.ranking_name_surname)).setText(records.get(position).getName());
-        ((TextView) rowView.findViewById(R.id.ranking_result)).setText(records.get(position).getResult());
+        viewHolder.placeView.setText((position + 1) + "");
+        viewHolder.nameView.setText(records.get(position).getName());
+        viewHolder.resultView.setText(records.get(position).getResult());
 
         Integer resId = map.get(records.get(position).getCountry());
         if (resId == null) {
-            ((TextView) rowView.findViewById(R.id.ranking_country)).setText(records.get(position).getCountry());
-            (rowView.findViewById(R.id.ranking_country)).setBackgroundColor(0xff222222);
+            viewHolder.flagView.setText(records.get(position).getCountry());
+            viewHolder.flagView.setBackgroundColor(0xff222222);
         } else {
-            (rowView.findViewById(R.id.ranking_country)).setBackgroundResource(resId);
-            ((TextView) rowView.findViewById(R.id.ranking_country)).setText("");
+            viewHolder.flagView.setBackgroundResource(resId);
+            viewHolder.flagView.setText("");
         }
-        return rowView;
+        return convertView;
+    }
+
+    static class ViewHolder {
+        TextView placeView;
+        TextView nameView;
+        TextView resultView;
+        TextView flagView;
     }
 
 }
