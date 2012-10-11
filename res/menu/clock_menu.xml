@@ -2,8 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         >
     <item android:id="@+id/menu_tray"
-          android:title="Show/hide notification"/>
+          android:title="Notification on/off"
+          android:icon="@drawable/menu_notig"
+            />
     <item android:id="@+id/countdown"
-          android:title="Countdown/straight"/>
+          android:icon="@drawable/menu_clock"
+          android:title="Countdown on/off"/>
 
 </menu>
