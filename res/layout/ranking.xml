@@ -172,8 +172,8 @@
                 android:layout_alignParentBottom="true"
                 android:id="@+id/sendButton"
                 android:text="@string/show"
-                android:layout_height="wrap_content"
-                android:layout_width="90pt"
+                android:layout_height="25pt"
+                android:layout_width="80pt"
                 android:textSize="8pt"
                 />
 

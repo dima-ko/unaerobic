@@ -161,7 +161,7 @@ public final class RankingFragment extends Fragment {
             int incr = 0;
             while (!isCancelled()) {
                 publishProgress(incr);
-                incr += 2;
+                incr += 3*(200-incr)/200;
                 try {
                     Thread.sleep(101);
                 } catch (InterruptedException e) {

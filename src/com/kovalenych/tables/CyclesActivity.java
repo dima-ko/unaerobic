@@ -27,7 +27,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     Button add_button, ok_button, melody;
     Dialog newDialog;
     Activity ptr;
-    EditText holdEdit, breathEdit;
+    EditText holdEdit, breathEdit, timesEdit;
     Dialog voiceDialog;
     int chosenTable;
     Dialog delDialog;
@@ -95,6 +95,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         newDialog.setCancelable(true);
         newDialog.setContentView(R.layout.new_cycle_dialog);
 
+        timesEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
@@ -300,10 +301,13 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 try {
                     int b = Integer.parseInt(breathEdit.getText().toString());
                     int h = Integer.parseInt(holdEdit.getText().toString());
+                    int times = Integer.parseInt(timesEdit.getText().toString());
 
                     if (b < 3600 && h < 3600) {
-                        curTable.getCycles().add(new Cycle(b, h));
-                        invalidateList();
+                        for (int i = 0; i < times; i++) {
+                            curTable.getCycles().add(new Cycle(b, h));
+                            invalidateList();
+                        }
                     }
                 } catch (NumberFormatException e) {
                     Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();
