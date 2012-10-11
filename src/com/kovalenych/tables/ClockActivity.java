@@ -3,6 +3,7 @@ package com.kovalenych.tables;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,8 +27,9 @@ public class ClockActivity extends Activity implements Const {
     Activity ptr;
     public boolean addTray = true;
 
-    boolean countDown = false;
+    boolean countDown;
     static boolean prefTray;
+    private SharedPreferences _preferences;
 
 
     @Override
@@ -36,6 +38,9 @@ public class ClockActivity extends Activity implements Const {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         ptr = this;
         Bundle bun = getIntent().getExtras();
+        _preferences = getSharedPreferences("clockPrefs", MODE_PRIVATE);
+        prefTray = _preferences.getBoolean("ShowTray", false);
+        countDown = _preferences.getBoolean("countdown", false);
 
         initViews();
         Log.d(LOG_TAG, "onCreate");
@@ -169,6 +174,10 @@ public class ClockActivity extends Activity implements Const {
         if (addTray)
             startService(new Intent(this, ClockService.class)
                     .putExtra(FLAG, FLAG_SHOW_TRAY));
+        SharedPreferences.Editor editor = _preferences.edit();
+        editor.putBoolean("ShowTray", prefTray);
+        editor.putBoolean("countdown", countDown);
+        editor.commit();
 
     }
 
