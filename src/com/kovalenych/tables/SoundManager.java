@@ -44,8 +44,8 @@ public class SoundManager implements Soundable {
     }
 
     public void playSound(int index) {
-        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_RING)*4;
+        streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_RING);
         if (mSoundPool != null && mSoundPoolMap != null)
             mSoundPool.play((Integer) mSoundPoolMap.get(index), streamVolume, streamVolume, 1, 0, 1f);
     }

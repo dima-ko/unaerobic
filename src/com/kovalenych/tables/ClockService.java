@@ -86,7 +86,7 @@ public class ClockService extends Service implements Soundable, Const {
                         new Cycle(cyclesBundle.getInt("breathe" + Integer.toString(i)), cyclesBundle.getInt("hold" + Integer.toString(i)))
                 );
             }
-
+                                                        //todo volume
             position = cyclesBundle.getInt("number");
             vibrationEnabled = cyclesBundle.getBoolean("vibro");
             voices = cyclesBundle.getIntegerArrayList("voices");
