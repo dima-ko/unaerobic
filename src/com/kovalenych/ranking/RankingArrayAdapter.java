@@ -33,6 +33,7 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
         map.put("nz", R.drawable.nz);
         map.put("rs", R.drawable.rs);
         map.put("ru", R.drawable.ru);
+        map.put("se", R.drawable.se);
 
 
 
