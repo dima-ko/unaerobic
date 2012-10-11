@@ -11,11 +11,10 @@
 
     <com.kovalenych.roboto.EditTextRoboto
             android:id="@+id/new_table_edit"
-              android:layout_width="fill_parent"
-              android:layout_height="26pt"
-              android:singleLine="true"
-              android:hint="@string/new_table_name"
-              android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="@string/new_table_name"
             />
 
     <com.kovalenych.roboto.ButtonRoboto

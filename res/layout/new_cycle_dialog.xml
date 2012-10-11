@@ -24,7 +24,7 @@
         <com.kovalenych.roboto.EditTextRoboto
                 android:id="@+id/breath_edit"
                 android:layout_width="55pt"
-                android:layout_height="23pt"
+                android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:inputType="phone"
                 android:hint="breath,s"
@@ -33,7 +33,7 @@
         <com.kovalenych.roboto.EditTextRoboto
                 android:id="@+id/hold_edit"
                 android:layout_width="55pt"
-                android:layout_height="23pt"
+                android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:inputType="phone"
                 android:layout_marginLeft="3pt"
@@ -55,8 +55,8 @@
                 />
         <com.kovalenych.roboto.EditTextRoboto
                 android:id="@+id/repeat_edit"
-                android:layout_width="35pt"
-                android:layout_height="23pt"
+                android:layout_width="25pt"
+                android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:inputType="phone"
                 android:text="1"
