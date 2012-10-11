@@ -95,7 +95,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         newDialog.setCancelable(true);
         newDialog.setContentView(R.layout.new_cycle_dialog);
 
-        timesEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
+        timesEdit = (EditText) newDialog.findViewById(R.id.repeat_edit);
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
@@ -109,7 +109,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
         setListeners();
     }
-
 
     @Override
     protected void onResume() {
@@ -165,7 +164,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream obj_out = new ObjectOutputStream(fos);
             obj_out.writeObject(curTable);
-            obj_out.close();                                                                //TODO: deleted cycles must be deleted!!!
+            obj_out.close();
             fos.close();
 
         } catch (IOException ex) {

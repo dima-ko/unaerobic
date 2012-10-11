@@ -2,6 +2,8 @@ package com.fragments;
 
 import android.app.Dialog;
 import android.app.PendingIntent;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -20,6 +22,7 @@ import com.kovalenych.tables.ClockService;
 import com.kovalenych.tables.CyclesActivity;
 import com.kovalenych.tables.TablesArrayAdapter;
 
+import java.io.File;
 import java.util.*;
 
 public final class TablesFragment extends Fragment implements Const {
@@ -189,10 +192,13 @@ public final class TablesFragment extends Fragment implements Const {
                     infoDialog.show();
                     break;
                 case R.id.add_table:
-//                    tracker.trackPageView("/addTable");
                     newDialog.show();
                     break;
-                case R.id.delete_button:   //todo delete file
+                case R.id.delete_button:
+                    ContextWrapper cw = new ContextWrapper(getActivity());
+                    File tablesDir = cw.getDir("tables", Context.MODE_PRIVATE);
+                    File file = new File(tablesDir.getAbsolutePath() + "/" + tableList.get(chosenTable));
+                    boolean deleted = file.delete();
                     tableList.remove(chosenTable);
                     delDialog.dismiss();
                     invalidateList();

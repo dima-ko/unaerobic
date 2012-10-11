@@ -9,7 +9,8 @@
         >
 
 
-    <com.kovalenych.roboto.EditTextRoboto android:id="@+id/new_table_edit"
+    <com.kovalenych.roboto.EditTextRoboto
+            android:id="@+id/new_table_edit"
               android:layout_width="fill_parent"
               android:layout_height="26pt"
               android:singleLine="true"
