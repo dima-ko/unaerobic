@@ -5,8 +5,7 @@
               android:layout_height="wrap_content"
               android:padding="10dp"
               android:background="#FF000000"
-              android:orientation="vertical"
-        >
+              android:orientation="vertical">
 
 
     <com.kovalenych.roboto.EditTextRoboto

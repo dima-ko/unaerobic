@@ -67,6 +67,7 @@ public final class TablesFragment extends Fragment implements Const {
             tableList.add("CO2 Table");
         } else
             tableList.addAll(tableSet);
+        Collections.sort(tableList);
 
         initDialogs();
 
