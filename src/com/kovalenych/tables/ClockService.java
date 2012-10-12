@@ -84,10 +84,10 @@ public class ClockService extends Service implements Soundable, Const {
                 );
                 Log.d(LOG_TAG, "new cycle" + table.getCycles().get(i).convertToString());
             }
-            position = cyclesBundle.getInt("number");   //todo volume
+            position = cyclesBundle.getInt("number");
             vibrationEnabled = cyclesBundle.getBoolean("vibro");
             voices = cyclesBundle.getIntegerArrayList("voices");
-            task = new ClockTask(table, true);     //todo multiple tables repeat
+            task = new ClockTask(table, true);
             task.execute(position);
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {

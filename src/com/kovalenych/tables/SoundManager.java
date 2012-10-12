@@ -3,6 +3,7 @@ package com.kovalenych.tables;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.util.Log;
 import com.kovalenych.R;
 
 import java.util.HashMap;
@@ -13,6 +14,7 @@ public class SoundManager implements Soundable {
     private HashMap mSoundPoolMap;
     private AudioManager mAudioManager;
     private Context mContext;
+    public static volatile float volume = 25;
 
 
     public SoundManager(Context context) {
@@ -44,13 +46,14 @@ public class SoundManager implements Soundable {
         mSoundPoolMap.put(index, mSoundPool.load(mContext, SoundID, 1));
     }
 
-    public void playSound(int index, float volume) {
-        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC) * volume*10;
+    public void playSound(int index) {
+        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC) * volume * 10;
         streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        if (mSoundPool != null && mSoundPoolMap != null)
+        if (mSoundPool != null && mSoundPoolMap != null) {
             mSoundPool.play((Integer) mSoundPoolMap.get(index), streamVolume, streamVolume, 1, 0, 1f);
+            Log.d("UnaeroApplication ",""+streamVolume + " vol " + volume);
+        }
     }
-
 
 
 }

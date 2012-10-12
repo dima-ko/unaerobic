@@ -10,7 +10,7 @@ import com.nostra13.universalimageloader.imageloader.ImageLoaderConfiguration;
 public class UnaeroApplication extends Application {
 
     SoundManager soundManager;
-    float volume;
+
 
     @Override
     public void onCreate() {
@@ -35,13 +35,12 @@ public class UnaeroApplication extends Application {
     }
 
     public void playSound(int index) {
-        Log.d("UnaeroApplication", "playSound  " + index + "  with volume " + volume);
-        soundManager.playSound(index, volume);
+        soundManager.playSound(index);
     }
 
-    public void setVolume(float volume) {
-        Log.d("UnaeroApplication", "setVolume " + volume);
-        this.volume = volume;
+    public void setVolume(float avolume) {
+        SoundManager.volume = avolume ;
+        Log.d("UnaeroApplication", "setVolume " + avolume);
     }
 
 
