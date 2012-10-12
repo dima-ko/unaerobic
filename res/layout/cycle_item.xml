@@ -18,6 +18,16 @@
             android:textSize="10pt"
             />
 
+    <com.kovalenych.roboto.TextViewRoboto
+            android:id="@+id/cycle_repeat"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="7pt"
+            android:layout_marginRight="6pt"
+
+            />
 </RelativeLayout>
 
 

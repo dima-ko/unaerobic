@@ -2,26 +2,24 @@ package com.kovalenych.tables;
 
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.fragments.TablesFragment;
 import com.kovalenych.R;
 
 import java.util.ArrayList;
 
-public class CyclesArrayAdapter extends ArrayAdapter<Cycle> {
+public class CyclesArrayAdapter extends ArrayAdapter<MultiCycle> {
     private final Activity context;
-    private ArrayList<Cycle> cycles;
+    private ArrayList<MultiCycle> multiCycles;
 
 
-    public CyclesArrayAdapter(Activity context, ArrayList<Cycle> cycles) {
-        super(context, R.layout.cycle_item, cycles);
+    public CyclesArrayAdapter(Activity context, ArrayList<MultiCycle> multiCycles1) {
+        super(context, R.layout.cycle_item, multiCycles1);
         this.context = context;
-        this.cycles = cycles;
+        this.multiCycles = multiCycles1;
     }
 
 
@@ -33,7 +31,18 @@ public class CyclesArrayAdapter extends ArrayAdapter<Cycle> {
             LayoutInflater inflater = context.getLayoutInflater();
             rowView = inflater.inflate(R.layout.cycle_item, null, true);
         }
-        ((TextView) rowView.findViewById(R.id.cycle_item)).setText(cycles.get(position).convertToString());
+
+        ((TextView) rowView.findViewById(R.id.cycle_item)).setText(multiCycles.get(position).
+                cycles.get(0).convertToString());
+
+        int sameCycles = multiCycles.get(position).
+                cycles.size();
+        if (sameCycles == 1)
+            ((TextView) rowView.findViewById(R.id.cycle_repeat)).setText("");
+        else
+            ((TextView) rowView.findViewById(R.id.cycle_repeat)).setText("x" + sameCycles);
+
+        //progress
         if (position == CyclesActivity.curCycle) {
             (rowView.findViewById(R.id.cycle_pic)).setVisibility(View.VISIBLE);
         } else

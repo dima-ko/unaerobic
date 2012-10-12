@@ -176,7 +176,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             }
         }
 
-        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, curTable.getCycles());
+        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, multiCycles);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
