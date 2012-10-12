@@ -35,6 +35,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private SharedPreferences _preferedSettings;
     boolean isvibro;
     private Button stopButton;
+    public ArrayList<MultiCycle> multiCycles;
 
 
     @Override
@@ -43,6 +44,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         ptr = this;
         Bundle bun = getIntent().getExtras();
         name = bun.getString("name");
+        multiCycles = new ArrayList<MultiCycle>();
         Log.d(LOG_TAG, "onCreate");
 
         unPackTable();
@@ -149,9 +151,39 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
     private void invalidateList() {
 
+        multiCycles.clear();
+        int sameCounter = 1;
+        ArrayList<Cycle> cycles = curTable.getCycles();
+        for (int i = 0, size = cycles.size(); i < size; i++) {
+            if (i + 1 < size) {
+                if (cycleEqualsToNext(cycles, i))
+                    sameCounter++;
+                else {
+                    ArrayList<Cycle> sameCycles = new ArrayList<Cycle>();
+                    for (int j = 0; j < sameCounter; j++) {
+                        sameCycles.add(new Cycle(cycles.get(i).breathe, cycles.get(i).hold));
+                    }
+                    multiCycles.add(new MultiCycle(sameCycles));
+                    sameCounter = 1;
+                }
+            } else {
+                ArrayList<Cycle> sameCycles = new ArrayList<Cycle>();
+                for (int j = 0; j < sameCounter; j++) {
+                    sameCycles.add(new Cycle(cycles.get(i).breathe, cycles.get(i).hold));
+                }
+                multiCycles.add(new MultiCycle(sameCycles));
+                sameCounter = 1;
+            }
+        }
+
         CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, curTable.getCycles());
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
+    }
+
+    private boolean cycleEqualsToNext(ArrayList<Cycle> cycles, int i) {
+        return cycles.get(i + 1).breathe == cycles.get(i).breathe &&
+                cycles.get(i + 1).hold == cycles.get(i).hold;
     }
 
     @Override
@@ -297,6 +329,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 try {
                     int b = Integer.parseInt(breathEdit.getText().toString());
                     int h = Integer.parseInt(holdEdit.getText().toString());
@@ -305,8 +339,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                     if (b < 3600 && h < 3600) {
                         for (int i = 0; i < times; i++) {
                             curTable.getCycles().add(new Cycle(b, h));
-                            invalidateList();
                         }
+                        invalidateList();
                     }
                 } catch (NumberFormatException e) {
                     Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();

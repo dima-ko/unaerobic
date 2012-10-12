@@ -9,4 +9,8 @@ import java.util.ArrayList;
  */
 public class MultiCycle {
     public ArrayList<Cycle> cycles;
+
+    public MultiCycle(ArrayList<Cycle> sameCycles) {
+        cycles = sameCycles;
+    }
 }
