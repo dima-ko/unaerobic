@@ -29,7 +29,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     Activity ptr;
     EditText holdEdit, breathEdit, timesEdit;
     Dialog voiceDialog;
-    int chosenTable;
+    int chosenMultiCycle;
     Dialog delDialog;
     private Button del_button;
     private SharedPreferences _preferedSettings;
@@ -152,6 +152,14 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private void invalidateList() {
 
         multiCycles.clear();
+        cyclesToMultiCycles();
+
+        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, multiCycles);
+        lv.setAdapter(adapter);
+        lv.setVisibility(View.VISIBLE);
+    }
+
+    private void cyclesToMultiCycles() {
         int sameCounter = 1;
         ArrayList<Cycle> cycles = curTable.getCycles();
         for (int i = 0, size = cycles.size(); i < size; i++) {
@@ -175,10 +183,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 sameCounter = 1;
             }
         }
-
-        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, multiCycles);
-        lv.setAdapter(adapter);
-        lv.setVisibility(View.VISIBLE);
     }
 
     private boolean cycleEqualsToNext(ArrayList<Cycle> cycles, int i) {
@@ -280,7 +284,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("onLongClick", "zzz");
-                chosenTable = i;
+                chosenMultiCycle = i;
                 delDialog.show();
                 return false;
             }
@@ -289,7 +293,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         del_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                curTable.getCycles().remove(chosenTable);
+
+                multiCycles.remove(chosenMultiCycle);
+                multiCyclesToCycles();
                 delDialog.dismiss();
                 invalidateList();
             }
@@ -351,6 +357,16 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             }
         });
 
+    }
+
+    private void multiCyclesToCycles() {
+        ArrayList<Cycle> cycles = curTable.getCycles();
+        cycles.clear();
+        for (MultiCycle multiCycle : multiCycles) {
+            for (Cycle cycle : multiCycle.cycles) {
+                cycles.add(new Cycle(cycle.breathe, cycle.hold));
+            }
+        }
     }
 
     private void setVoiceRadios() {
