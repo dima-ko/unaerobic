@@ -196,7 +196,7 @@ public class ClockService extends Service implements Soundable, Const {
                 .putExtra(ClockActivity.PARAM_PROGRESS, 0)
                 .putExtra(ClockActivity.PARAM_BREATHING, false);
         try {
-            pi.send(ClockService.this, ClockActivity.STATUS_FINISH, intent);
+            pi.send(ClockService.this, STATUS_FINISH, intent);
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
         }

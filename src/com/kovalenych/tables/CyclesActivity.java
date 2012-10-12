@@ -15,6 +15,8 @@ import com.kovalenych.Utils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeMap;
 
 public class CyclesActivity extends Activity implements Soundable, Const {
 
@@ -62,6 +64,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public void onClick(View view) {
                 stopService(new Intent(ptr, ClockService.class));
                 stopButton.setVisibility(View.GONE);
+                curCycle = -1;
                 curMultiCycle = -1;
                 invalidateList();
             }
@@ -71,6 +74,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             subscribeToService();
             Log.d(LOG_TAG, "onResume VISIBLE");
         } else {
+            curCycle = -1;
             curMultiCycle = -1;
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
@@ -127,6 +131,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             Log.d(LOG_TAG, "onResume VISIBLE");
             Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
         } else {
+            curCycle = -1;
             curMultiCycle = -1;
             invalidateList();
             stopButton.setVisibility(View.GONE);
@@ -150,23 +155,23 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     }
 
     private void invalidateList() {
-
         multiCycles.clear();
         cyclesToMultiCycles();
-
         CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, multiCycles);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
 
     private void cyclesToMultiCycles() {
+        cyclesMap.clear();
         int sameCounter = 1;
         ArrayList<Cycle> cycles = curTable.getCycles();
         for (int i = 0, size = cycles.size(); i < size; i++) {
+            cyclesMap.put(i, multiCycles.size());
             if (i + 1 < size) {
-                if (cycleEqualsToNext(cycles, i))
+                if (cycleEqualsToNext(cycles, i)) {
                     sameCounter++;
-                else {
+                } else {
                     ArrayList<Cycle> sameCycles = new ArrayList<Cycle>();
                     for (int j = 0; j < sameCounter; j++) {
                         sameCycles.add(new Cycle(cycles.get(i).breathe, cycles.get(i).hold));
@@ -183,6 +188,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 sameCounter = 1;
             }
         }
+
+
     }
 
     private boolean cycleEqualsToNext(ArrayList<Cycle> cycles, int i) {
@@ -270,7 +277,15 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 }
 
                 bun.putIntegerArrayList("voices", curTable.getVoices());
-                bun.putInt("number", position);
+
+                int posCycle = 0;
+                for (Integer j : cyclesMap.keySet())
+                    if (cyclesMap.get(j) == position) {
+                        posCycle = j;
+                        break;
+                    }
+
+                bun.putInt("number", posCycle);
                 bun.putBoolean("vibro", isvibro);
                 bun.putString("table_name", name);
                 bun.putBoolean("isRunning", curMultiCycle == position);
@@ -335,7 +350,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 try {
                     int b = Integer.parseInt(breathEdit.getText().toString());
@@ -462,13 +476,23 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
-        if (name.equals(data.getStringExtra(PARAM_TABLE)))
-            curMultiCycle = data.getIntExtra(PARAM_M_CYCLE, 0);
-        else
+        if (name.equals(data.getStringExtra(PARAM_TABLE))) {
+            curCycle = data.getIntExtra(PARAM_M_CYCLE, 0);
+            curMultiCycle = cyclesMap.get(curCycle);
+        } else {
+            curCycle = -1;
             curMultiCycle = -1;
+        }
         invalidateList();
+        if (resultCode == STATUS_FINISH) {
+            Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
+            stopButton.setVisibility(View.GONE);
+        }
     }
 
+    TreeMap<Integer, Integer> cyclesMap = new TreeMap<Integer, Integer>();   //cycle->multicycle
+
+    public static int curCycle = -1;
     public static int curMultiCycle = -1;
 
 }
