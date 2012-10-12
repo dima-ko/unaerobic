@@ -122,11 +122,6 @@ public class ClockService extends Service implements Soundable, Const {
                 e.printStackTrace();
             }
 
-        } else if (destination.equals(FLAG_CLICK_BREATH)) {
-
-
-        } else if (destination.equals(FLAG_CLICK_HOLD)) {
-
         }
 
         return super.onStartCommand(intent, flags, startId);

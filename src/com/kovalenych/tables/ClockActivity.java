@@ -136,9 +136,6 @@ public class ClockActivity extends Activity implements Const {
 //        topTimeText = (TextView) findViewById(R.id.topTime);
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
-
-        setListeners();
-
     }
 
     private static final String LOG_TAG = "CO2 ClockActivity";
@@ -187,30 +184,6 @@ public class ClockActivity extends Activity implements Const {
         Log.d(LOG_TAG, "onResume");
     }
 
-    public void setListeners() {
-
-        breathTimeText.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                startService(new Intent(ptr, ClockService.class)
-                        .putExtra(FLAG, FLAG_CLICK_BREATH)
-                );
-                return true;
-            }
-        });
-
-        holdTimeText.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                startService(new Intent(ptr, ClockService.class)
-                        .putExtra(FLAG, FLAG_CLICK_HOLD)
-                );
-                return true;
-            }
-        });
-
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
