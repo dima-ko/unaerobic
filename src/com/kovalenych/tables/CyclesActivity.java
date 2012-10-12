@@ -463,7 +463,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
         if (name.equals(data.getStringExtra(PARAM_TABLE)))
-            curMultiCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
+            curMultiCycle = data.getIntExtra(PARAM_M_CYCLE, 0);
         else
             curMultiCycle = -1;
         invalidateList();

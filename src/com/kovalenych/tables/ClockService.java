@@ -106,7 +106,7 @@ public class ClockService extends Service implements Soundable, Const {
             subscriber = SUBSCRIBER_TABLE;
             Intent newIntent = new Intent()
                     .putExtra(ClockActivity.PARAM_TABLE, name)
-                    .putExtra(ClockActivity.PARAM_CYCLE_NUM, curCycle);
+                    .putExtra(ClockActivity.PARAM_M_CYCLE, curCycle);
             try {
                 pi.send(ClockService.this, 0, newIntent);
             } catch (PendingIntent.CanceledException e) {
@@ -117,7 +117,7 @@ public class ClockService extends Service implements Soundable, Const {
             subscriber = SUBSCRIBER_CYCLE;
             Intent newIntent = new Intent()
                     .putExtra(ClockActivity.PARAM_TABLE, name)
-                    .putExtra(ClockActivity.PARAM_CYCLE_NUM, curCycle);
+                    .putExtra(ClockActivity.PARAM_M_CYCLE, curCycle);
             try {
                 pi.send(ClockService.this, 0, newIntent);
             } catch (PendingIntent.CanceledException e) {
@@ -150,7 +150,7 @@ public class ClockService extends Service implements Soundable, Const {
                 .putExtra(ClockActivity.PARAM_PROGRESS, all)
                 .putExtra(ClockActivity.PARAM_BREATHING, breathing)
                 .putExtra(ClockActivity.PARAM_TABLE, name)
-                .putExtra(ClockActivity.PARAM_CYCLE_NUM, cycle);
+                .putExtra(ClockActivity.PARAM_M_CYCLE, cycle);
         try {
             int stat = breathing ? STATUS_BREATH : STATUS_HOLD;
             if (subscriber == SUBSCRIBER_CLOCK ||
