@@ -14,10 +14,12 @@ public interface Const {
     public final static String FLAG_SUBSCRIBE_CYCLES = "subscribe_cycles";
     public final static String FLAG_SHOW_TRAY = "showtray";
     public final static String FLAG_HIDE_TRAY = "hidetray";
+    public final static String FLAG_SETVOLUME = "set_volume";
 
     public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";
     public final static String PARAM_TABLE = "table_name";
+    public final static String PARAM_VOLUME = "volume";
     public final static String PARAM_M_CYCLE = "multi_cycles_number";
     public final static String PARAM_PROGRESS = "progress";
     public static final String PARAM_TIME = "time";

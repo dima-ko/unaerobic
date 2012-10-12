@@ -9,7 +9,7 @@ import com.nostra13.universalimageloader.imageloader.ImageLoaderConfiguration;
 
 public class UnaeroApplication extends Application {
 
-    SoundManager soundManager;
+//    SoundManager soundManager;
 
 
     @Override
@@ -31,17 +31,17 @@ public class UnaeroApplication extends Application {
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
 
-        soundManager = new SoundManager(this);
+//        soundManager = new SoundManager(this);
     }
 
-    public void playSound(int index) {
-        soundManager.playSound(index);
-    }
-
-    public void setVolume(float avolume) {
-        SoundManager.volume = avolume ;
-        Log.d("UnaeroApplication", "setVolume " + avolume);
-    }
+//    public void playSound(int index) {
+//        soundManager.playSound(index);
+//    }
+//
+//    public void setVolume(float avolume) {
+//        SoundManager.volume = avolume ;
+//        Log.d("UnaeroApplication", "setVolume " + avolume);
+//    }
 
 
 }

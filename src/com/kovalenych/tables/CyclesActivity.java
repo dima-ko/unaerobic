@@ -146,6 +146,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         // и созданный PendingIntent
         intent = new Intent(this, ClockService.class)
                 .putExtra(FLAG, FLAG_SUBSCRIBE_CYCLES)
+                .putExtra(PARAM_VOLUME, volume)
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
@@ -338,13 +339,18 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
                         getVoiceRadios();
+                        Intent intent = new Intent(ptr, ClockService.class)
+                                .putExtra(FLAG, FLAG_SETVOLUME)
+                                .putExtra(PARAM_VOLUME, volume);
+                        // стартуем сервис
+                        startService(intent);
                     }
                 });
 
-                ((SeekBar)voiceDialog.findViewById(R.id.volume_seekbar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                ((SeekBar) voiceDialog.findViewById(R.id.volume_seekbar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        ((UnaeroApplication)getApplication()).setVolume(progress);
+                        volume = progress;
                     }
 
                     @Override
@@ -387,6 +393,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
     }
 
+    int volume;
+
     private void multiCyclesToCycles() {
         ArrayList<Cycle> cycles = curTable.getCycles();
         cycles.clear();
@@ -396,7 +404,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             }
         }
     }
-                                             //todo savevol
+
+    //todo savevol
     private void setVoiceRadios() {
 
         if (curTable.getVoices().contains(TO_START_2_MIN))

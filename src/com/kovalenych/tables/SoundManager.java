@@ -14,7 +14,7 @@ public class SoundManager implements Soundable {
     private HashMap mSoundPoolMap;
     private AudioManager mAudioManager;
     private Context mContext;
-    public static volatile float volume = 25;
+    public  volatile float volume = 25;
 
 
     public SoundManager(Context context) {
@@ -47,7 +47,7 @@ public class SoundManager implements Soundable {
     }
 
     public void playSound(int index) {
-        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC) * volume * 10;
+        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC) * volume / 30;
         streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         if (mSoundPool != null && mSoundPoolMap != null) {
             mSoundPool.play((Integer) mSoundPoolMap.get(index), streamVolume, streamVolume, 1, 0, 1f);
