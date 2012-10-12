@@ -1,8 +1,6 @@
 package com.fragments;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,8 +14,6 @@ import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
 import com.kovalenych.Utils;
 import com.kovalenych.ranking.RankingManager;
-
-import java.util.ArrayList;
 
 public final class RankingFragment extends Fragment {
 
@@ -55,7 +51,7 @@ public final class RankingFragment extends Fragment {
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
 
         progressBar = (ProgressBar) filterView.findViewById(R.id.sending_prog);
-        progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.red_progress));
+        progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.blue_progress));
 
         (filterView.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
             @Override

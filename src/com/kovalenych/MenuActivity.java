@@ -80,6 +80,11 @@ public class MenuActivity extends FragmentActivity implements Const {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
         tablesFragment.onUpdateCurTable(data.getStringExtra(PARAM_TABLE));
+
+        if (resultCode == STATUS_FINISH) {
+            Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
+           tablesFragment.onTableFinish();
+        }
     }
 
     TablesFragment tablesFragment;

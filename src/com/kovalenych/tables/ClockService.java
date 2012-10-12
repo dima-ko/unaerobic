@@ -154,7 +154,7 @@ public class ClockService extends Service implements Soundable, Const {
         try {
             int stat = breathing ? STATUS_BREATH : STATUS_HOLD;
             if (subscriber == SUBSCRIBER_CLOCK ||
-                    (!breathing && (time == all - 1) && subscriber == SUBSCRIBER_CYCLE)) {
+                    (breathing && (time == 0) && subscriber == SUBSCRIBER_CYCLE)) {
                 pi.send(ClockService.this, stat, intent);
                 Log.d(LOG_TAG, "sendtotable");
             }

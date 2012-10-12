@@ -57,7 +57,7 @@ public final class TablesFragment extends Fragment implements Const {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View tables = inflater.inflate(R.layout.tables, null);
-        _preferedTables = getActivity().getSharedPreferences("sharedTables", getActivity().MODE_PRIVATE);
+        _preferedTables = getActivity().getSharedPreferences("sharedTables", Context.MODE_PRIVATE);
         mapa = _preferedTables.getAll();
 
         tableList = new ArrayList<String>();
@@ -251,8 +251,6 @@ public final class TablesFragment extends Fragment implements Const {
 
 
     public void onUpdateCurTable(String curTableName) {
-
-
         for (String table : tableList) {
             if (table.equals(curTableName)) {
                 posOfCurTable = tableList.indexOf(table);
@@ -260,6 +258,14 @@ public final class TablesFragment extends Fragment implements Const {
             }
         }
         invalidateList();
+    }
+
+
+    public void onTableFinish() {
+
+        posOfCurTable = -1;
+        invalidateList();
+        stopButton.setVisibility(View.GONE);
 
     }
 }
