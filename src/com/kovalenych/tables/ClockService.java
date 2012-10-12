@@ -40,26 +40,26 @@ public class ClockService extends Service implements Soundable, Const {
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
         Log.d("showProgressInTray", "zzzzzzzzz");
-            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
-            int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
-            long when = System.currentTimeMillis(); // Выясним системное время
-            Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
+        int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
+        long when = System.currentTimeMillis(); // Выясним системное время
+        Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
 //                    notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
-            PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
-            RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
-            contentView.setProgressBar(R.id.tray_progress, max, progress, false);
-            contentView.setTextViewText(R.id.tray_text, (breathing ? "breath  " : "hold  ") + Utils.timeToString(progress)); // Привязываем текст к TextView в нашей разметке
-            notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
-            notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
-            mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
+        Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
+        contentView.setProgressBar(R.id.tray_progress, max, progress, false);
+        contentView.setTextViewText(R.id.tray_text, (breathing ? "breath  " : "hold  ") + Utils.timeToString(progress)); // Привязываем текст к TextView в нашей разметке
+        notification.contentIntent = contentIntent; // Присваиваем contentIntent нашему уведомлению
+        notification.contentView = contentView; // Присваиваем contentView нашему уведомлению
+        mNotificationManager.notify(NOTIFY_ID, notification); // Выводим уведомление в строку
     }
 
 
     public void onDestroy() {
         super.onDestroy();
-            NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            nMgr.cancel(NOTIFY_ID);
+        NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancel(NOTIFY_ID);
         if (task != null)
             task.cancel(true);
         Log.d(LOG_TAG, "ClockService onDestroy");
@@ -80,11 +80,11 @@ public class ClockService extends Service implements Soundable, Const {
             Log.d(LOG_TAG, "tableName  " + name);
             int size = cyclesBundle.getInt("tablesize");
             table = new Table();
-
             for (int i = 0; i < size; i++) {
                 table.getCycles().add(
                         new Cycle(cyclesBundle.getInt("breathe" + Integer.toString(i)), cyclesBundle.getInt("hold" + Integer.toString(i)))
                 );
+                Log.d(LOG_TAG, "new cycle" + table.getCycles().get(i).convertToString());
             }
             position = cyclesBundle.getInt("number");   //todo volume
             vibrationEnabled = cyclesBundle.getBoolean("vibro");
@@ -98,8 +98,8 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_HIDE_TRAY)) {     //todo: test resolutions
             showTray = false;
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
-                NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                nMgr.cancel(NOTIFY_ID);
+            NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            nMgr.cancel(NOTIFY_ID);
             subscriber = SUBSCRIBER_CLOCK;
         } else if (destination.equals(FLAG_SUBSCRIBE_TABLE)) {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
@@ -222,11 +222,12 @@ public class ClockService extends Service implements Soundable, Const {
         protected Void doInBackground(Integer... params) {
 
             for (int i = params[0]; i < table.getCycles().size(); i++) {
+                Cycle cycle = table.getCycles().get(i);
                 if (breathing)
-                    for (int t = 0; t < table.getCycles().get(params[0]).breathe; t++) {
+                    for (int t = 0; t < cycle.breathe; t++) {
                         if (isCancelled())
                             return null;
-                        publishProgress(t, params[0]);
+                        publishProgress(t, i);
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException e) {
@@ -235,10 +236,10 @@ public class ClockService extends Service implements Soundable, Const {
                         }
                     }
                 breathing = false;
-                for (int t = 0; t < table.getCycles().get(params[0]).hold; t++) {
+                for (int t = 0; t < cycle.hold; t++) {
                     if (isCancelled())
                         return null;
-                    publishProgress(t, params[0]);
+                    publishProgress(t, i);
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {

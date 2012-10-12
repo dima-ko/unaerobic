@@ -47,6 +47,8 @@
                   android:screenOrientation="landscape"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                   android:configChanges="orientation"/>
-        <service android:enabled="true" android:name=".tables.ClockService" android:process=":clock_process" />
+        <service android:enabled="true"
+                 android:name=".tables.ClockService"
+                 android:process=":clock_process" />
     </application>
 </manifest> 
