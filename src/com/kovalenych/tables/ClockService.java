@@ -37,6 +37,7 @@ public class ClockService extends Service implements Soundable, Const {
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(LOG_TAG, "ClockService onCreate");
         soundManager = new SoundManager(this);
+
     }
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
