@@ -62,7 +62,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public void onClick(View view) {
                 stopService(new Intent(ptr, ClockService.class));
                 stopButton.setVisibility(View.GONE);
-                curCycle = -1;
+                curMultiCycle = -1;
                 invalidateList();
             }
         });
@@ -71,7 +71,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             subscribeToService();
             Log.d(LOG_TAG, "onResume VISIBLE");
         } else {
-            curCycle = -1;
+            curMultiCycle = -1;
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
         }
@@ -127,7 +127,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             Log.d(LOG_TAG, "onResume VISIBLE");
             Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
         } else {
-            curCycle = -1;
+            curMultiCycle = -1;
             invalidateList();
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
@@ -273,7 +273,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 bun.putInt("number", position);
                 bun.putBoolean("vibro", isvibro);
                 bun.putString("table_name", name);
-                bun.putBoolean("isRunning", curCycle == position);
+                bun.putBoolean("isRunning", curMultiCycle == position);
                 intent.putExtras(bun);
                 startActivity(intent);
 
@@ -463,13 +463,13 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
         if (name.equals(data.getStringExtra(PARAM_TABLE)))
-            curCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
+            curMultiCycle = data.getIntExtra(PARAM_CYCLE_NUM, 0);
         else
-            curCycle = -1;
+            curMultiCycle = -1;
         invalidateList();
     }
 
-    public static int curCycle = -1;
+    public static int curMultiCycle = -1;
 
 }
 

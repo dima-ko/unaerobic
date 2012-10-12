@@ -43,7 +43,7 @@ public class CyclesArrayAdapter extends ArrayAdapter<MultiCycle> {
             ((TextView) rowView.findViewById(R.id.cycle_repeat)).setText("x" + sameCycles);
 
         //progress
-        if (position == CyclesActivity.curCycle) {
+        if (position == CyclesActivity.curMultiCycle) {
             (rowView.findViewById(R.id.cycle_pic)).setVisibility(View.VISIBLE);
         } else
             (rowView.findViewById(R.id.cycle_pic)).setVisibility(View.GONE);
