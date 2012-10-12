@@ -8,10 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.kovalenych.Const;
-import com.kovalenych.R;
-import com.kovalenych.Table;
-import com.kovalenych.Utils;
+import com.kovalenych.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -343,6 +340,23 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                         getVoiceRadios();
                     }
                 });
+
+                ((SeekBar)voiceDialog.findViewById(R.id.volume_seekbar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        ((UnaeroApplication)getApplication()).setVolume(progress);
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+                });
                 voiceDialog.show();
             }
         });
@@ -382,7 +396,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             }
         }
     }
-
+                                             //todo savevol
     private void setVoiceRadios() {
 
         if (curTable.getVoices().contains(TO_START_2_MIN))

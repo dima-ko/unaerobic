@@ -17,7 +17,6 @@ import java.util.ArrayList;
  */
 public class ClockService extends Service implements Soundable, Const {
 
-    private SoundManager mSoundManager;
     private int position;
     Table table;
     Vibrator v;
@@ -33,8 +32,7 @@ public class ClockService extends Service implements Soundable, Const {
 
     public void onCreate() {
         super.onCreate();
-        v = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
-        mSoundManager = new SoundManager(this);
+        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(LOG_TAG, "ClockService onCreate");
     }
 
@@ -164,32 +162,32 @@ public class ClockService extends Service implements Soundable, Const {
         //vibrate  or sound
 
         if (time == 0 && vibrationEnabled)
-            v.vibrate(300);
+            v.vibrate(200);
         if (breathing) {
             if (showTray)
                 showProgressInTray(time, breathe, breathing);
             //breath
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE))
-                mSoundManager.playSound(BREATHE);
+                ((UnaeroApplication)getApplication()).playSound(BREATHE);
             else if (voices.contains(relatTime))
-                mSoundManager.playSound(relatTime);
+                ((UnaeroApplication)getApplication()).playSound(relatTime);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START))                 //hold
-                mSoundManager.playSound(START);
+                ((UnaeroApplication)getApplication()).playSound(START);
             else if (voices.contains(time))
-                mSoundManager.playSound(time);
+                ((UnaeroApplication)getApplication()).playSound(time);
         }
     }
 
     public void onTableFinish() {
 
         if (voices.contains(BREATHE))
-            mSoundManager.playSound(BREATHE);
+            ((UnaeroApplication)getApplication()).playSound(BREATHE);
         if (vibrationEnabled)
-            v.vibrate(300);
+            v.vibrate(200);
 
         Intent intent = new Intent()
                 .putExtra(ClockActivity.PARAM_TIME, 0)

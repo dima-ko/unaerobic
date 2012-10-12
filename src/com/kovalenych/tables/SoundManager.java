@@ -15,7 +15,7 @@ public class SoundManager implements Soundable {
     private Context mContext;
 
 
-    SoundManager(Context context) {
+    public SoundManager(Context context) {
         mContext = context;
         initSounds();
     }
@@ -37,18 +37,20 @@ public class SoundManager implements Soundable {
         addSound(AFTER_START_4, R.raw.after4min);
         addSound(AFTER_START_5, R.raw.after5min);
         addSound(BREATHE, R.raw.breathe);
-        addSound(LIST_DROP, R.raw.list_drop);
+        addSound(LIST_DROP, R.raw.list_drop);      //todo test landscape
     }
 
     public void addSound(int index, int SoundID) {
         mSoundPoolMap.put(index, mSoundPool.load(mContext, SoundID, 1));
     }
 
-    public void playSound(int index) {
-        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_RING)*4;
-        streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_RING);
+    public void playSound(int index, float volume) {
+        float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC) * volume*10;
+        streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         if (mSoundPool != null && mSoundPoolMap != null)
             mSoundPool.play((Integer) mSoundPoolMap.get(index), streamVolume, streamVolume, 1, 0, 1f);
     }
+
+
 
 }

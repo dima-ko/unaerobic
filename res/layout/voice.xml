@@ -2,26 +2,28 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:background="#FF000000"
         >
 
     <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             >
         <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:padding="10px"
+                android:weightSum="9"
+                android:padding="2dp"
                 android:baselineAligned="false">
 
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_height="fill_parent"
-                          android:orientation="vertical"
-                          android:layout_weight="1"
-                          android:gravity="center_horizontal"
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="4"
+                    android:gravity="center_horizontal"
                     >
                 <com.kovalenych.roboto.TextViewRoboto
                         android:gravity="center"
@@ -57,9 +59,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/minutes1"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/minutes1"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -73,9 +75,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/seconds30"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/seconds30"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -89,9 +91,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/seconds10"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/seconds10"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -105,9 +107,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/seconds5"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/seconds5"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -121,9 +123,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/start"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/start"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -132,14 +134,14 @@
             <LinearLayout
                     android:layout_height="fill_parent"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="4"
                     android:orientation="vertical"
                     android:gravity="center_horizontal"
                     >
                 <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                          android:text="@string/afterstart"
-                          android:layout_height="wrap_content"
-                          android:layout_width="wrap_content"
+                                                      android:text="@string/afterstart"
+                                                      android:layout_height="wrap_content"
+                                                      android:layout_width="wrap_content"
                         />
                 <LinearLayout
                         android:layout_height="wrap_content"
@@ -151,9 +153,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/minutes1"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/minutes1"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -168,9 +170,9 @@
                             android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/minutes2"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/minutes2"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -184,9 +186,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/minutes3"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/minutes3"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -200,9 +202,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/minutes4"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/minutes4"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -216,9 +218,9 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/minutes5"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/minutes5"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
 
@@ -232,12 +234,20 @@
                               android:layout_width="wrap_content"
                             />
                     <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                              android:text="@string/breathe"
-                              android:layout_height="fill_parent"
-                              android:layout_width="fill_parent"
+                                                          android:text="@string/breathe"
+                                                          android:layout_height="fill_parent"
+                                                          android:layout_width="fill_parent"
                             />
                 </LinearLayout>
             </LinearLayout>
+
+            <com.kovalenych.roboto.VerticalSeekBar
+                    android:progressDrawable="@drawable/blue_progress"
+                    android:id="@+id/volume_seekbar"
+                    android:layout_width="26dp"
+                    android:layout_height="fill_parent"
+                    android:max="30"
+                    />
 
         </LinearLayout>
 
@@ -253,10 +263,10 @@
                       android:layout_width="wrap_content"
                     />
             <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                      android:text="vibro"
-                      android:padding="3pt"
-                      android:layout_height="wrap_content"
-                      android:layout_width="wrap_content"
+                                                  android:text="vibro"
+                                                  android:padding="3pt"
+                                                  android:layout_height="wrap_content"
+                                                  android:layout_width="wrap_content"
                     />
         </LinearLayout>
 
