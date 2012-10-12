@@ -93,7 +93,7 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
             Log.d(LOG_TAG, FLAG_SHOW_TRAY);
             showTray = true;
-        } else if (destination.equals(FLAG_HIDE_TRAY)) {     //todo: test resolutions
+        } else if (destination.equals(FLAG_HIDE_TRAY)) {
             showTray = false;
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
