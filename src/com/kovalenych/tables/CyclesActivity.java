@@ -54,7 +54,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
 
         isvibro = _preferedSettings.getBoolean("vibro", true);
-        volume = _preferedSettings.getInt("volume", 20);
+        volume = _preferedSettings.getInt("volume", 15);
 
         stopButton = (Button) findViewById(R.id.stop_button_cycles);
         stopButton.setOnClickListener(new View.OnClickListener() {
