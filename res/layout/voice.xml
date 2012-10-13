@@ -240,15 +240,39 @@
                             />
                 </LinearLayout>
             </LinearLayout>
-
-            <com.kovalenych.roboto.VerticalSeekBar
-                    android:progressDrawable="@drawable/blue_progress"
-                    android:id="@+id/volume_seekbar"
-                    android:layout_width="26dp"
+            <RelativeLayout
                     android:layout_height="fill_parent"
-                    android:max="30"
-                    />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    >
+                <TextView
+                        android:text="+"
+                        android:id="@+id/plus"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        />
+                <TextView
+                        android:text="-"
+                        android:id="@+id/minus"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        />
 
+                <com.kovalenych.roboto.VerticalSeekBar
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/plus"
+                        android:layout_above="@id/minus"
+                        android:progressDrawable="@drawable/blue_progress"
+                        android:id="@+id/volume_seekbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:max="30"
+                        />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout

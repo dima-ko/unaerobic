@@ -54,6 +54,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
 
         isvibro = _preferedSettings.getBoolean("vibro", true);
+        volume = _preferedSettings.getInt("volume", 20);
 
         stopButton = (Button) findViewById(R.id.stop_button_cycles);
         stopButton.setOnClickListener(new View.OnClickListener() {
@@ -339,28 +340,13 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
                         getVoiceRadios();
-                        Intent intent = new Intent(ptr, ClockService.class)
-                                .putExtra(FLAG, FLAG_SETVOLUME)
-                                .putExtra(PARAM_VOLUME, volume);
-                        // стартуем сервис
-                        startService(intent);
-                    }
-                });
-
-                ((SeekBar) voiceDialog.findViewById(R.id.volume_seekbar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        volume = progress;
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-                        //To change body of implemented methods use File | Settings | File Templates.
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-                        //To change body of implemented methods use File | Settings | File Templates.
+                        if (Utils.isMyServiceRunning(ptr)) {
+                            Intent intent = new Intent(ptr, ClockService.class)
+                                    .putExtra(FLAG, FLAG_SETVOLUME)
+                                    .putExtra(PARAM_VOLUME, volume);
+                            // стартуем сервис
+                            startService(intent);
+                        }
                     }
                 });
                 voiceDialog.show();
@@ -407,7 +393,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
     //todo savevol
     private void setVoiceRadios() {
-
+        ((SeekBar) voiceDialog.findViewById(R.id.volume_seekbar)).setProgress(volume);
         if (curTable.getVoices().contains(TO_START_2_MIN))
             ((CheckBox) voiceDialog.findViewById(R.id.voice2to)).setChecked(true);
         if (curTable.getVoices().contains(TO_START_1_MIN))
@@ -437,6 +423,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     }
 
     private void getVoiceRadios() {
+        volume = ((SeekBar) voiceDialog.findViewById(R.id.volume_seekbar)).getProgress();
         curTable.getVoices().clear();
         if (((CheckBox) voiceDialog.findViewById(R.id.voice2to)).isChecked())
             curTable.getVoices().add(TO_START_2_MIN);
