@@ -285,6 +285,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                     }
 
                 bun.putInt("number", posCycle);
+                bun.putInt(PARAM_VOLUME, volume);
                 bun.putBoolean("vibro", isvibro);
                 bun.putString("table_name", name);
                 bun.putBoolean("isRunning", curMultiCycle == position);
@@ -391,7 +392,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         }
     }
 
-    //todo savevol
+
     private void setVoiceRadios() {
         ((SeekBar) voiceDialog.findViewById(R.id.volume_seekbar)).setProgress(volume);
         if (curTable.getVoices().contains(TO_START_2_MIN))
@@ -453,6 +454,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         SharedPreferences.Editor editor = _preferedSettings.edit();
         isvibro = ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked();
         editor.putBoolean("vibro", ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked());
+        editor.putInt("volume", volume);
         editor.commit();
     }
 

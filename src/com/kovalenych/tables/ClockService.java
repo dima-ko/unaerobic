@@ -31,6 +31,7 @@ public class ClockService extends Service implements Soundable, Const {
     public boolean showTray = false;
 
     SoundManager soundManager;
+    private int volume;
 
     public void onCreate() {
         super.onCreate();
@@ -80,6 +81,8 @@ public class ClockService extends Service implements Soundable, Const {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             name = intent.getStringExtra(ClockActivity.PARAM_TABLE);
             Log.d(LOG_TAG, "tableName  " + name);
+            volume = intent.getIntExtra(PARAM_VOLUME,0);
+            Log.d(LOG_TAG,"set volume " + volume);
             int size = cyclesBundle.getInt("tablesize");
             table = new Table();
             for (int i = 0; i < size; i++) {
@@ -114,10 +117,11 @@ public class ClockService extends Service implements Soundable, Const {
             } catch (PendingIntent.CanceledException e) {
                 e.printStackTrace();
             }
-        } else if (destination.equals(FLAG_SUBSCRIBE_CYCLES)) {     //todo all sounds 22db
+        } else if (destination.equals(FLAG_SUBSCRIBE_CYCLES)) {
             pi = intent.getParcelableExtra(PARAM_PINTENT);
             subscriber = SUBSCRIBER_CYCLE;
-            soundManager.volume = intent.getIntExtra(PARAM_VOLUME,0);
+            volume = intent.getIntExtra(PARAM_VOLUME,0);
+            Log.d(LOG_TAG,"set volume " + volume);
             Intent newIntent = new Intent()
                     .putExtra(ClockActivity.PARAM_TABLE, name)
                     .putExtra(ClockActivity.PARAM_M_CYCLE, curCycle);
@@ -128,7 +132,8 @@ public class ClockService extends Service implements Soundable, Const {
             }
 
         } else if (destination.equals(FLAG_SETVOLUME)) {
-            soundManager.volume = intent.getIntExtra(PARAM_VOLUME,0);
+            Log.d(LOG_TAG,"set volume " + volume);
+            volume = intent.getIntExtra(PARAM_VOLUME,0);
         }
 
         return super.onStartCommand(intent, flags, startId);
@@ -171,23 +176,23 @@ public class ClockService extends Service implements Soundable, Const {
             //breath
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE))
-                soundManager.playSound(BREATHE);
+                soundManager.playSound(BREATHE,volume);
             else if (voices.contains(relatTime))
-                soundManager.playSound(relatTime);
+                soundManager.playSound(relatTime,volume);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START))                 //hold
-                soundManager.playSound(START);
+                soundManager.playSound(START,volume);
             else if (voices.contains(time))
-                soundManager.playSound(time);
+                soundManager.playSound(time,volume);
         }
     }
 
     public void onTableFinish() {
 
         if (voices.contains(BREATHE))
-            soundManager.playSound(BREATHE);
+            soundManager.playSound(BREATHE, volume);
         if (vibrationEnabled)
             v.vibrate(200);
 
