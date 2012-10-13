@@ -114,7 +114,8 @@ public final class RankingFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        task.cancel(true);
+        if (task != null && task.getStatus() == AsyncTask.Status.RUNNING)   //todo vieo on youtube with test cases
+            task.cancel(true);
         rManager.cancelTask();
         rManager.packSavedTables();
         rManager.closeDBHelpers();
