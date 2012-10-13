@@ -94,6 +94,10 @@ public final class RankingFragment extends Fragment {
         filterView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (progressBar.getVisibility() == View.VISIBLE)
+                    return;
+
                 rManager.asmFilter();
                 rManager.getRecords();
 
@@ -110,6 +114,7 @@ public final class RankingFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        task.cancel(true);
         rManager.cancelTask();
         rManager.packSavedTables();
         rManager.closeDBHelpers();
