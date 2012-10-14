@@ -56,8 +56,6 @@ public final class VideoFragment extends Fragment {
         return tables;
     }
 
-
-
     private void fillList() {
         videoList.add(new Video("WEIGHTLESS - Emotional Freediving", "http://www.youtube.com/watch?v=jOM75l225Qg&feature=player_embedded"));
         videoList.add(new Video("TANYA STREETER: Shark Therapy", "http://www.youtube.com/watch?feature=player_embedded&v=T1knyXu4QuQ"));

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 import com.google.gson.Gson;
-import com.kovalenych.R;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -36,7 +35,7 @@ public class Main extends Activity {
 
         Reader reader = new InputStreamReader(source);
 
-        SearchResponse response = gson.fromJson(reader, SearchResponse.class);
+        VideoResponse response = gson.fromJson(reader, VideoResponse.class);
 
         Toast.makeText(this, response.query, Toast.LENGTH_SHORT).show();
 
@@ -101,7 +100,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.javacodegeeks.android.json.model.Result;
-import com.javacodegeeks.android.json.model.SearchResponse;
+import com.javacodegeeks.android.json.model.VideoResponse;
 
 public class JsonParsingActivity extends Activity {
 
@@ -119,7 +118,7 @@ public class JsonParsingActivity extends Activity {
 
         Reader reader = new InputStreamReader(source);
 
-        SearchResponse response = gson.fromJson(reader, SearchResponse.class);
+        VideoResponse response = gson.fromJson(reader, VideoResponse.class);
 
         Toast.makeText(this, response.query, Toast.LENGTH_SHORT).show();
 

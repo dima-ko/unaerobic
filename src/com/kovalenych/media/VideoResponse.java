@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class SearchResponse {
+public class VideoResponse {
 
     public List<Video> videos;
 

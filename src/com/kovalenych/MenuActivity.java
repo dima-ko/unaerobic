@@ -11,11 +11,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 import com.fragments.*;
 import com.google.gson.Gson;
-import com.kovalenych.media.SearchResponse;
+import com.kovalenych.media.VideoResponse;
 import com.kovalenych.media.Video;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
@@ -90,7 +89,7 @@ public class MenuActivity extends FragmentActivity implements Const {
 
         Reader reader = new InputStreamReader(source);
 
-        SearchResponse response = gson.fromJson(reader, SearchResponse.class);
+        VideoResponse response = gson.fromJson(reader, VideoResponse.class);
 
         Toast.makeText(this, response.query, Toast.LENGTH_SHORT).show();
 
