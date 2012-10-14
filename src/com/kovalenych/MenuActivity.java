@@ -1,6 +1,7 @@
 package com.kovalenych;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -9,12 +10,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.View;
 import com.fragments.*;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 
 
-public class MenuActivity extends FragmentActivity {
+public class MenuActivity extends FragmentActivity implements Const {
 
     private static String[] CONTENT;
     public static final int TABLE_TAB = 0;
@@ -25,6 +28,7 @@ public class MenuActivity extends FragmentActivity {
     protected ViewPager mPager;
     protected PageIndicator mIndicator;
     public int curTab = 0;
+    private static final String LOG_TAG = "MenuActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,20 @@ public class MenuActivity extends FragmentActivity {
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(LOG_TAG, "onActivityResult" + resultCode);
+        tablesFragment.onUpdateCurTable(data.getStringExtra(PARAM_TABLE));
+
+        if (resultCode == STATUS_FINISH) {
+            Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
+           tablesFragment.onTableFinish();
+        }
+    }
+
+    TablesFragment tablesFragment;
+
     class FreeDivingAdapter extends FragmentPagerAdapter {
         public FreeDivingAdapter(FragmentManager fm) {
             super(fm);
@@ -81,7 +99,8 @@ public class MenuActivity extends FragmentActivity {
 
             switch (position) {
                 case TABLE_TAB:
-                    return TablesFragment.newInstance();
+                    tablesFragment = TablesFragment.newInstance();
+                    return tablesFragment;
                 case RANK_TAB:
                     return RankingFragment.newInstance();
                 case ART_TAB:
@@ -103,10 +122,5 @@ public class MenuActivity extends FragmentActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (curTab == RANK_TAB) {
-        } else
-            super.onBackPressed();
-    }
+
 }

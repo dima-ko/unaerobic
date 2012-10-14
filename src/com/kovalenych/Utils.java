@@ -5,8 +5,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.util.DisplayMetrics;
 
@@ -22,6 +21,7 @@ public class Utils {
     public static boolean isSmall;
     public static boolean isPortrait;
     public static float scale;
+    public static Typeface roboto_light;
 
     public static void resolvePlatform(Activity activity) {
         DisplayMetrics metrics = new DisplayMetrics();
@@ -47,6 +47,7 @@ public class Utils {
 
         scale = activity.getResources().getDisplayMetrics().density;
 
+        roboto_light = Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Light.ttf");
     }
 
     public static boolean isMyServiceRunning(Activity activity) {

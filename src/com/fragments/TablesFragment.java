@@ -1,8 +1,9 @@
 package com.fragments;
 
-import android.app.ActivityManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -14,15 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
-import com.kovalenych.Fonts;
+import com.kovalenych.Const;
 import com.kovalenych.R;
 import com.kovalenych.Utils;
+import com.kovalenych.tables.ClockService;
 import com.kovalenych.tables.CyclesActivity;
-import com.kovalenych.tables.TableViewBinder;
+import com.kovalenych.tables.TablesArrayAdapter;
 
+import java.io.File;
 import java.util.*;
 
-public final class TablesFragment extends Fragment {
+public final class TablesFragment extends Fragment implements Const {
 
     Map<String, ?> mapa;                   //Table , file
     SharedPreferences _preferedTables;
@@ -37,6 +40,8 @@ public final class TablesFragment extends Fragment {
     ListView lv;
     private Button stopButton;
 
+    public static int posOfCurTable = -1;
+
     public static TablesFragment newInstance() {
         return new TablesFragment();
     }
@@ -46,14 +51,13 @@ public final class TablesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View tables = inflater.inflate(R.layout.tables, null);
-        _preferedTables = getActivity().getSharedPreferences("sharedTables", getActivity().MODE_PRIVATE);
+        _preferedTables = getActivity().getSharedPreferences("sharedTables", Context.MODE_PRIVATE);
         mapa = _preferedTables.getAll();
 
         tableList = new ArrayList<String>();
@@ -63,22 +67,28 @@ public final class TablesFragment extends Fragment {
             tableList.add("CO2 Table");
         } else
             tableList.addAll(tableSet);
+        Collections.sort(tableList);
 
         initDialogs();
 
-        stopButton = (Button) tables.findViewById(R.id.stop_button);
+        stopButton = (Button) tables.findViewById(R.id.stop_button_tables);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().stopService(new Intent(getActivity(), ClockService.class));
+                stopButton.setVisibility(View.GONE);
+                posOfCurTable = -1;
+                invalidateList();
+            }
+        });
         if (Utils.isMyServiceRunning(getActivity()))
             stopButton.setVisibility(View.VISIBLE);
         else
             stopButton.setVisibility(View.GONE);
-        lv = (ListView) tables.findViewById(R.id.cycles_list);
-
 
         lv = (ListView) tables.findViewById(R.id.tables_list);
-        lv.setTextFilterEnabled(true);
-        lv.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.table_item, tableList));
         lv.setVisibility(View.VISIBLE);
-//        invalidateList();
+        invalidateList();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -117,29 +127,30 @@ public final class TablesFragment extends Fragment {
         return tables;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
-    private void invalidateList() {
-
-        SimpleAdapter adapter = new SimpleAdapter(getActivity(), createTablesList(), R.layout.table_item,
-                new String[]{"text"},
-                new int[]{R.id.table_name});
-
-        adapter.setViewBinder(new TableViewBinder(Fonts.BELIGERENT));
-        lv.setAdapter(adapter);
-        lv.setVisibility(View.VISIBLE);
     }
 
-    private List<? extends Map<String, ?>> createTablesList() {
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (Utils.isMyServiceRunning(getActivity())) {
+            stopButton.setVisibility(View.VISIBLE);
+            subscribeToService();
 
-        List<Map<String, ?>> items = new ArrayList<Map<String, ?>>();
-
-        for (int i = 0; i < tableList.size(); i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("text", tableList.get(i));
-            items.add(map);
+        } else {
+            stopButton.setVisibility(View.GONE);
+            posOfCurTable = -1;
+            invalidateList();
         }
+    }
 
-        return items;
+    private void invalidateList() {
+        TablesArrayAdapter adapter = new TablesArrayAdapter(getActivity(), tableList);
+        lv.setAdapter(adapter);
+        lv.setVisibility(View.VISIBLE);
     }
 
 
@@ -160,14 +171,6 @@ public final class TablesFragment extends Fragment {
         infoDialog.setCancelable(true);
         infoDialog.setContentView(R.layout.info_dialog);
 
-        edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
-        ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
-        ok_button.setTypeface(Fonts.BELIGERENT);
-        del_button = (Button) delDialog.findViewById(R.id.delete_button);
-
-        ((TextView) infoDialog.findViewById(R.id.infot)).setTypeface(Fonts.BELIGERENT);
-        ((TextView) infoDialog.findViewById(R.id.title)).setTypeface(Fonts.BELIGERENT);
-
         infoDialog.findViewById(R.id.stars).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,6 +178,10 @@ public final class TablesFragment extends Fragment {
                 getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
             }
         });
+
+        edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
+        ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
+        del_button = (Button) delDialog.findViewById(R.id.delete_button);
     }
 
 
@@ -186,10 +193,13 @@ public final class TablesFragment extends Fragment {
                     infoDialog.show();
                     break;
                 case R.id.add_table:
-//                    tracker.trackPageView("/addTable");
                     newDialog.show();
                     break;
                 case R.id.delete_button:
+                    ContextWrapper cw = new ContextWrapper(getActivity());
+                    File tablesDir = cw.getDir("tables", Context.MODE_PRIVATE);
+                    File file = new File(tablesDir.getAbsolutePath() + "/" + tableList.get(chosenTable));
+                    boolean deleted = file.delete();
                     tableList.remove(chosenTable);
                     delDialog.dismiss();
                     invalidateList();
@@ -222,5 +232,40 @@ public final class TablesFragment extends Fragment {
             editor.putString(s, "");
         editor.commit();
         super.onDestroyView();
+    }
+
+    private void subscribeToService() {
+        PendingIntent pi;
+        Intent intent;
+
+        // Создаем PendingIntent для Task1
+        pi = getActivity().createPendingResult(1, null, 0);
+        // Создаем Intent для вызова сервиса, кладем туда параметр времени
+        // и созданный PendingIntent
+        intent = new Intent(getActivity(), ClockService.class)
+                .putExtra(FLAG, FLAG_SUBSCRIBE_TABLE)
+                .putExtra(PARAM_PINTENT, pi);
+        // стартуем сервис
+        getActivity().startService(intent);
+    }
+
+
+    public void onUpdateCurTable(String curTableName) {
+        for (String table : tableList) {
+            if (table.equals(curTableName)) {
+                posOfCurTable = tableList.indexOf(table);
+                break;
+            }
+        }
+        invalidateList();
+    }
+
+
+    public void onTableFinish() {
+
+        posOfCurTable = -1;
+        invalidateList();
+        stopButton.setVisibility(View.GONE);
+
     }
 }

@@ -64,7 +64,7 @@ public class PullToRefreshGridView extends PullToRefreshAdapterViewBase<GridView
 	protected final GridView createRefreshableView(Context context, AttributeSet attrs) {
 		GridView gv = new InternalGridView(context, attrs);
 
-		// Use Generated ID (from res/values/ids.xml)
+		// Use Generated STOP_CLOCK_ID (from res/values/ids.xml)
 		gv.setId(R.id.gridview);
 		return gv;
 	}

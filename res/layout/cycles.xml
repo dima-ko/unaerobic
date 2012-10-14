@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             />
 
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:id="@+id/add_cycle"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
@@ -20,7 +20,7 @@
             android:background="@drawable/plus_action"
 
             />
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:id="@+id/melody"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
@@ -29,7 +29,7 @@
             android:background="@drawable/muz_action"
 
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/chosen_table_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
 
 
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/holdtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:gravity="right"
             android:padding="2pt"
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/breathtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,8 +77,8 @@
             android:padding="2pt"
             />
 
-    <Button
-            android:id="@+id/stop_button"
+    <com.kovalenych.roboto.ButtonRoboto
+            android:id="@+id/stop_button_cycles"
             android:layout_marginBottom="5pt"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"

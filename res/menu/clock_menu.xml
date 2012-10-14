@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        >
+    <item android:id="@+id/menu_tray"
+          android:title="Notification on/off"
+          android:icon="@drawable/menu_notig"
+            />
+    <item android:id="@+id/countdown"
+          android:icon="@drawable/menu_clock"
+          android:title="Countdown on/off"/>
+
+</menu>

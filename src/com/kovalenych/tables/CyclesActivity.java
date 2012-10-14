@@ -1,44 +1,40 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.kovalenych.Fonts;
-import com.kovalenych.R;
-import com.kovalenych.Table;
-import com.kovalenych.Utils;
+import com.kovalenych.*;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.TreeMap;
 
-public class CyclesActivity extends Activity implements Soundable {
+public class CyclesActivity extends Activity implements Soundable, Const {
 
     ListView lv;
 
     Table curTable;
-    int curCycleId;
 
-    private static final String LOG_TAG = "zzz CyclesActivity";
+    private static final String LOG_TAG = "CO2 CyclesActivity";
     String name;
     Button add_button, ok_button, melody;
     Dialog newDialog;
     Activity ptr;
-    EditText holdEdit, breathEdit;
+    EditText holdEdit, breathEdit, timesEdit;
     Dialog voiceDialog;
-    int chosenTable;
+    int chosenMultiCycle;
     Dialog delDialog;
     private Button del_button;
     private SharedPreferences _preferedSettings;
     boolean isvibro;
     private Button stopButton;
+    public ArrayList<MultiCycle> multiCycles;
 
 
     @Override
@@ -47,6 +43,7 @@ public class CyclesActivity extends Activity implements Soundable {
         ptr = this;
         Bundle bun = getIntent().getExtras();
         name = bun.getString("name");
+        multiCycles = new ArrayList<MultiCycle>();
         Log.d(LOG_TAG, "onCreate");
 
         unPackTable();
@@ -57,7 +54,29 @@ public class CyclesActivity extends Activity implements Soundable {
         _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
 
         isvibro = _preferedSettings.getBoolean("vibro", true);
+        volume = _preferedSettings.getInt("volume", 15);
 
+        stopButton = (Button) findViewById(R.id.stop_button_cycles);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopService(new Intent(ptr, ClockService.class));
+                stopButton.setVisibility(View.GONE);
+                curCycle = -1;
+                curMultiCycle = -1;
+                invalidateList();
+            }
+        });
+        if (Utils.isMyServiceRunning(this)) {
+            stopButton.setVisibility(View.VISIBLE);
+            subscribeToService();
+            Log.d(LOG_TAG, "onResume VISIBLE");
+        } else {
+            curCycle = -1;
+            curMultiCycle = -1;
+            stopButton.setVisibility(View.GONE);
+            Log.d(LOG_TAG, "onResume GONE");
+        }
     }
 
     public void initViews() {
@@ -76,14 +95,14 @@ public class CyclesActivity extends Activity implements Soundable {
 
 
         newDialog = new Dialog(ptr);
-        newDialog.setTitle(getResources().getString(R.string.new_cycle));
+        newDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         newDialog.setCancelable(true);
         newDialog.setContentView(R.layout.new_cycle_dialog);
 
+        timesEdit = (EditText) newDialog.findViewById(R.id.repeat_edit);
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
-        ok_button.setTypeface(Fonts.BELIGERENT);
 
 
         invalidateList();
@@ -91,35 +110,92 @@ public class CyclesActivity extends Activity implements Soundable {
         add_button = (Button) findViewById(R.id.add_cycle);
         melody = (Button) findViewById(R.id.melody);
 
-        ((TextView) findViewById(R.id.holdtime)).setTypeface(Fonts.BELIGERENT);
-        ((TextView) findViewById(R.id.breathtime)).setTypeface(Fonts.BELIGERENT);
-        id.setTypeface(Fonts.BELIGERENT);
 
         setListeners();
     }
-
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(LOG_TAG, "onResume ");
-        stopButton = (Button) findViewById(R.id.stop_button);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
+            subscribeToService();
             Log.d(LOG_TAG, "onResume VISIBLE");
+            Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
         } else {
+            curCycle = -1;
+            curMultiCycle = -1;
+            invalidateList();
             stopButton.setVisibility(View.GONE);
             Log.d(LOG_TAG, "onResume GONE");
         }
     }
 
-    private void invalidateList() {
+    private void subscribeToService() {
+        PendingIntent pi;
+        Intent intent;
 
-        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, curTable.getCycles());
+        // Создаем PendingIntent для Task1
+        pi = createPendingResult(1, null, 0);
+        // Создаем Intent для вызова сервиса, кладем туда параметр времени
+        // и созданный PendingIntent
+        intent = new Intent(this, ClockService.class)
+                .putExtra(FLAG, FLAG_SUBSCRIBE_CYCLES)
+                .putExtra(PARAM_VOLUME, volume)
+                .putExtra(PARAM_PINTENT, pi);
+        // стартуем сервис
+        startService(intent);
+    }
+
+    private void invalidateList() {
+        multiCycles.clear();
+        cyclesToMultiCycles();
+        CyclesArrayAdapter adapter = new CyclesArrayAdapter(this, multiCycles);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
 
+    private void cyclesToMultiCycles() {
+        cyclesMap.clear();
+        int sameCounter = 1;
+        if (curTable == null) curTable = new Table();
+        ArrayList<Cycle> cycles = curTable.getCycles();
+        for (int i = 0, size = cycles.size(); i < size; i++) {
+            cyclesMap.put(i, multiCycles.size());
+            if (i + 1 < size) {
+                if (cycleEqualsToNext(cycles, i)) {
+                    sameCounter++;
+                } else {
+                    ArrayList<Cycle> sameCycles = new ArrayList<Cycle>();
+                    for (int j = 0; j < sameCounter; j++) {
+                        sameCycles.add(new Cycle(cycles.get(i).breathe, cycles.get(i).hold));
+                    }
+                    multiCycles.add(new MultiCycle(sameCycles));
+                    sameCounter = 1;
+                }
+            } else {
+                ArrayList<Cycle> sameCycles = new ArrayList<Cycle>();
+                for (int j = 0; j < sameCounter; j++) {
+                    sameCycles.add(new Cycle(cycles.get(i).breathe, cycles.get(i).hold));
+                }
+                multiCycles.add(new MultiCycle(sameCycles));
+                sameCounter = 1;
+            }
+        }
+
+
+    }
+
+    private boolean cycleEqualsToNext(ArrayList<Cycle> cycles, int i) {
+        return cycles.get(i + 1).breathe == cycles.get(i).breathe &&
+                cycles.get(i + 1).hold == cycles.get(i).hold;
+    }
 
     @Override
     protected void onPause() {
@@ -131,7 +207,7 @@ public class CyclesActivity extends Activity implements Soundable {
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream obj_out = new ObjectOutputStream(fos);
             obj_out.writeObject(curTable);
-            obj_out.close();                                                                //TODO: deleted cycles must be deleted!!!
+            obj_out.close();
             fos.close();
 
         } catch (IOException ex) {
@@ -187,9 +263,8 @@ public class CyclesActivity extends Activity implements Soundable {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                stopService(new Intent(ptr, ClockService.class));
+//                stopService(new Intent(ptr, ClockService.class));
 
-                curCycleId = position;
                 Intent intent = new Intent(lv.getContext(), ClockActivity.class);
                 Bundle bun = new Bundle();
 
@@ -202,8 +277,19 @@ public class CyclesActivity extends Activity implements Soundable {
                 }
 
                 bun.putIntegerArrayList("voices", curTable.getVoices());
-                bun.putInt("number", position);
+
+                int posCycle = 0;
+                for (Integer j : cyclesMap.keySet())
+                    if (cyclesMap.get(j) == position) {
+                        posCycle = j;
+                        break;
+                    }
+
+                bun.putInt("number", posCycle);
+                bun.putInt(PARAM_VOLUME, volume);
                 bun.putBoolean("vibro", isvibro);
+                bun.putString("table_name", name);
+                bun.putBoolean("isRunning", curMultiCycle == position);
                 intent.putExtras(bun);
                 startActivity(intent);
 
@@ -214,7 +300,7 @@ public class CyclesActivity extends Activity implements Soundable {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("onLongClick", "zzz");
-                chosenTable = i;
+                chosenMultiCycle = i;
                 delDialog.show();
                 return false;
             }
@@ -223,7 +309,9 @@ public class CyclesActivity extends Activity implements Soundable {
         del_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                curTable.getCycles().remove(chosenTable);
+
+                multiCycles.remove(chosenMultiCycle);
+                multiCyclesToCycles();
                 delDialog.dismiss();
                 invalidateList();
             }
@@ -254,6 +342,13 @@ public class CyclesActivity extends Activity implements Soundable {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
                         getVoiceRadios();
+                        if (Utils.isMyServiceRunning(ptr)) {
+                            Intent intent = new Intent(ptr, ClockService.class)
+                                    .putExtra(FLAG, FLAG_SETVOLUME)
+                                    .putExtra(PARAM_VOLUME, volume);
+                            // стартуем сервис
+                            startService(intent);
+                        }
                     }
                 });
                 voiceDialog.show();
@@ -263,11 +358,21 @@ public class CyclesActivity extends Activity implements Soundable {
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int b = Integer.parseInt(breathEdit.getText().toString());
-                int h = Integer.parseInt(holdEdit.getText().toString());
-                if (b < 3600 && h < 3600) {
-                    curTable.getCycles().add(new Cycle(b, h));
-                    invalidateList();
+
+                try {
+                    int b = Integer.parseInt(breathEdit.getText().toString());
+                    int h = Integer.parseInt(holdEdit.getText().toString());
+                    int times = Integer.parseInt(timesEdit.getText().toString());
+
+                    if (b < 3600 && h < 3600) {
+                        for (int i = 0; i < times; i++) {
+                            curTable.getCycles().add(new Cycle(b, h));
+                        }
+                        invalidateList();
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();
+                } finally {
                     newDialog.dismiss();
                 }
 
@@ -276,8 +381,21 @@ public class CyclesActivity extends Activity implements Soundable {
 
     }
 
-    private void setVoiceRadios() {
+    int volume;
 
+    private void multiCyclesToCycles() {
+        ArrayList<Cycle> cycles = curTable.getCycles();
+        cycles.clear();
+        for (MultiCycle multiCycle : multiCycles) {
+            for (Cycle cycle : multiCycle.cycles) {
+                cycles.add(new Cycle(cycle.breathe, cycle.hold));
+            }
+        }
+    }
+
+
+    private void setVoiceRadios() {
+        ((SeekBar) voiceDialog.findViewById(R.id.volume_seekbar)).setProgress(volume);
         if (curTable.getVoices().contains(TO_START_2_MIN))
             ((CheckBox) voiceDialog.findViewById(R.id.voice2to)).setChecked(true);
         if (curTable.getVoices().contains(TO_START_1_MIN))
@@ -307,6 +425,7 @@ public class CyclesActivity extends Activity implements Soundable {
     }
 
     private void getVoiceRadios() {
+        volume = ((SeekBar) voiceDialog.findViewById(R.id.volume_seekbar)).getProgress();
         curTable.getVoices().clear();
         if (((CheckBox) voiceDialog.findViewById(R.id.voice2to)).isChecked())
             curTable.getVoices().add(TO_START_2_MIN);
@@ -336,6 +455,7 @@ public class CyclesActivity extends Activity implements Soundable {
         SharedPreferences.Editor editor = _preferedSettings.edit();
         isvibro = ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked();
         editor.putBoolean("vibro", ((CheckBox) voiceDialog.findViewById(R.id.vibro)).isChecked());
+        editor.putInt("volume", volume);
         editor.commit();
     }
 
@@ -364,6 +484,29 @@ public class CyclesActivity extends Activity implements Soundable {
         CO2.add(new Cycle(60, 120));
         return CO2;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(LOG_TAG, "onActivityResult" + resultCode);
+        if (name.equals(data.getStringExtra(PARAM_TABLE))) {
+            curCycle = data.getIntExtra(PARAM_M_CYCLE, 0);
+            curMultiCycle = cyclesMap.get(curCycle);
+        } else {
+            curCycle = -1;
+            curMultiCycle = -1;
+        }
+        invalidateList();
+        if (resultCode == STATUS_FINISH) {
+            Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
+            stopButton.setVisibility(View.GONE);
+        }
+    }
+
+    TreeMap<Integer, Integer> cyclesMap = new TreeMap<Integer, Integer>();   //cycle->multicycle
+
+    public static int curCycle = -1;
+    public static int curMultiCycle = -1;
 
 }
 

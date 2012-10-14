@@ -20,7 +20,7 @@
             android:layout_marginTop="10pt"
             android:cacheColorHint="#00000000"
             />
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:id="@+id/add_table"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
@@ -29,7 +29,7 @@
             android:background="@drawable/plus_action"
             />
 
-    <Button
+    <com.kovalenych.roboto.ButtonRoboto
             android:id="@+id/info_button"
             android:layout_marginBottom="3pt"
             android:layout_marginLeft="3pt"
@@ -40,8 +40,8 @@
             android:background="@drawable/quest"
             />
 
-    <Button
-            android:id="@+id/stop_button"
+    <com.kovalenych.roboto.ButtonRoboto
+            android:id="@+id/stop_button_tables"
             android:layout_marginBottom="5pt"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"

@@ -3,13 +3,14 @@
               android:layout_width="fill_parent"
               android:layout_height="30pt"
               android:orientation="horizontal"
+              android:background="#FF000000"
         >
     <ImageView
             android:id="@+id/video_image"
             android:layout_width="43pt"
             android:layout_height="29pt"
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:layout_marginLeft="6pt"
             android:id="@+id/video_text"
             android:layout_width="fill_parent"

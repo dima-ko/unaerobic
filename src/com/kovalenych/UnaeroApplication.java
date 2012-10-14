@@ -2,10 +2,15 @@ package com.kovalenych;
 
 import android.app.Application;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import com.kovalenych.tables.SoundManager;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
 import com.nostra13.universalimageloader.imageloader.ImageLoaderConfiguration;
 
 public class UnaeroApplication extends Application {
+
+//    SoundManager soundManager;
+
 
     @Override
     public void onCreate() {
@@ -25,5 +30,7 @@ public class UnaeroApplication extends Application {
                 .build();
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
+
     }
+
 }

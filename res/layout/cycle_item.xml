@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_height="wrap_content"
-              android:layout_width="fill_parent"
-              android:gravity="center_vertical">
-    <TextView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_vertical">
+    <ProgressBar
+            android:id="@+id/cycle_pic"
+            android:layout_centerVertical="true"
+            android:layout_height="18pt"
+            android:layout_width="18pt"
+            />
+
+    <com.kovalenych.roboto.TextViewRoboto
             android:gravity="center"
             android:id="@+id/cycle_item"
             android:layout_width="fill_parent"
             android:layout_height="25pt"
             android:textSize="10pt"
             />
-</LinearLayout>
+
+    <com.kovalenych.roboto.TextViewRoboto
+            android:id="@+id/cycle_repeat"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="7pt"
+            android:layout_marginRight="6pt"
+
+            />
+</RelativeLayout>
 
 
 

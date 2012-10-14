@@ -9,7 +9,6 @@
     <string name="tables">Таблицы</string>
     <string name="info">
         - Нажмите \"+\" чтобы добавить таблицу или цикл\n
-        - Нажмите и держите круг таймера, чтобы начать немедленно\n
         - Нажмите иконку динамика для настройка голосовых оповещений\n
         - Нажмите и держите на таблице или цикле, чтобы удалить \n
         Новые видео и статьи приветсвуются :)
@@ -48,6 +47,8 @@
     <string name="discipline">Дисциплина:</string>
     <string name="disc_hint">Не знаешь, что это? Тебе\t</string>
     <string name="here">сюда</string>
+    <string name="new_table_name">New table name</string>
+    <string name="add">add</string>
 
 
 </resources>

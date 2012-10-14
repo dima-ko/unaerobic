@@ -1,13 +1,13 @@
 package com.fragments;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.*;
+import android.view.animation.TranslateAnimation;
 import android.widget.*;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.MenuActivity;
@@ -31,7 +31,7 @@ public final class RankingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        discArray = getResources().getStringArray(R.array.disciplines);
     }
 
     @Override
@@ -43,12 +43,15 @@ public final class RankingFragment extends Fragment {
         return tables;
     }
 
+    String[] discArray;
+
     private void initFilterAndProgress(View tables) {
 
         filterView = (RelativeLayout) tables.findViewById(R.id.ranking_filter);
         recordsView = (RelativeLayout) tables.findViewById(R.id.ranking_records);
 
         progressBar = (ProgressBar) filterView.findViewById(R.id.sending_prog);
+        progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.blue_progress));
 
         (filterView.findViewById(R.id.disc_info)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,15 +64,18 @@ public final class RankingFragment extends Fragment {
                 }
             }
         });
-        Spinner s = (Spinner) filterView.findViewById(R.id.discipline_spinner);
+
+        final Button s = (Button) filterView.findViewById(R.id.discipline_button);
+        final Spinner spinner = (Spinner) filterView.findViewById(R.id.discipline_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 getActivity(), R.array.disciplines, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(adapter);
-        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 rManager.chosenDisciplNumber = i;
+                s.setText(discArray[i]);
             }
 
             @Override
@@ -77,15 +83,28 @@ public final class RankingFragment extends Fragment {
             }
         });
 
-        filterView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+        s.setText("STA");
+        s.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                rManager.asmFilter();
-                rManager.getRecords();
+            public void onClick(View v) {
+                spinner.performClick();
             }
         });
 
-        recordsView.findViewById(R.id.ranking_back).setOnClickListener(new View.OnClickListener() {
+        filterView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (progressBar.getVisibility() == View.VISIBLE)
+                    return;
+
+                rManager.asmFilter();
+                rManager.getRecords();
+
+            }
+        });
+
+        tables.findViewById(R.id.filter_triangle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showFilter(true);
@@ -95,6 +114,8 @@ public final class RankingFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        if (task != null && task.getStatus() == AsyncTask.Status.RUNNING)   //todo vieo on youtube with test cases  like magic
+            task.cancel(true);
         rManager.cancelTask();
         rManager.packSavedTables();
         rManager.closeDBHelpers();
@@ -118,10 +139,20 @@ public final class RankingFragment extends Fragment {
     public void showFilter(boolean show) {
         if (show) {
             filterView.setVisibility(View.VISIBLE);
-            recordsView.setVisibility(View.GONE);
+            TranslateAnimation animation = new TranslateAnimation(0, 0, Utils.height, 0);
+            animation.setDuration(600);
+            filterView.startAnimation(animation);
         } else {
-            filterView.setVisibility(View.GONE);
-            recordsView.setVisibility(View.VISIBLE);
+            TranslateAnimation animation = new TranslateAnimation(0, 0, 0, Utils.height);
+            animation.setDuration(600);
+            filterView.startAnimation(animation);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    filterView.setVisibility(View.GONE);
+                }
+            }, 650);
+
         }
     }
 
@@ -132,7 +163,7 @@ public final class RankingFragment extends Fragment {
             int incr = 0;
             while (!isCancelled()) {
                 publishProgress(incr);
-                incr += 2;
+                incr += Math.ceil(((float) 4 * (200 - incr)) / 200);
                 try {
                     Thread.sleep(101);
                 } catch (InterruptedException e) {

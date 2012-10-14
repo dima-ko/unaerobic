@@ -79,7 +79,7 @@ public class RankingManager {
         RankingArrayAdapter adapter = new RankingArrayAdapter((MenuActivity)context, recordsList);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
-        //TODO: more info in landscape mode
+        //more info in landscape mode
     }
 
     public void setTypicalRequestProps(HttpURLConnection conn) {

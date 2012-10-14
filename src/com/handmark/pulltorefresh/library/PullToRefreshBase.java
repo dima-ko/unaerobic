@@ -685,7 +685,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout {
 	 * need to use a custom View (such as a custom ListView), override this
 	 * method and return an instance of your custom class.
 	 * 
-	 * Be sure to set the ID of the view in this method, especially if you're
+	 * Be sure to set the STOP_CLOCK_ID of the view in this method, especially if you're
 	 * using a ListActivity or ListFragment.
 	 * 
 	 * @param context

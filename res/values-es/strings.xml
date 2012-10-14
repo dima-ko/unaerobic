@@ -7,7 +7,6 @@
 
     <string name="info">
         - Pulse \"+\" botón para agregar la nueva tabla o en ciclo\n
-        - Pulsación larga en el círculo de temporizador para comenzar de inmediato\n
         - Pulse el icono de volumen para personalizar las alarmas de voz\n
         - Pulsación larga en el ciclo o la tabla para eliminar\n
         Si desea que su idioma que se añade, por favor
@@ -44,5 +43,7 @@
     <string name="discipline">Discipline:</string>
     <string name="disc_hint">No sé lo que es? Haga clic </string>
     <string name="here">aquí</string>
+    <string name="new_table_name">New table name</string>
+    <string name="add">add</string>
 
 </resources>

@@ -5,19 +5,20 @@
               android:layout_height="wrap_content"
               android:padding="10dp"
               android:background="#FF000000"
-              android:orientation="vertical"
-        >
+              android:orientation="vertical">
 
 
-    <EditText android:id="@+id/new_table_edit"
-              android:layout_width="fill_parent"
-              android:layout_height="26pt"
-              android:singleLine="true"
-              android:hint="new table name"
+    <com.kovalenych.roboto.EditTextRoboto
+            android:layout_marginTop="5pt"
+            android:id="@+id/new_table_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="@string/new_table_name"
             />
 
-    <Button
-            android:layout_marginTop="3pt"
+    <com.kovalenych.roboto.ButtonRoboto
+            android:layout_marginTop="9pt"
             android:gravity="center"
             android:id="@+id/new_table_ok"
             android:background="#ff333333"
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:padding="8pt"
             android:textColor="#FFFFFFFF"
-            android:text="add"
+            android:text="@string/add"
             android:textSize="6pt"
             />
 

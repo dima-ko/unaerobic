@@ -4,7 +4,7 @@
               android:layout_height="25pt"
               android:background="#ff222222"
         >
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/ranking_place"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -13,7 +13,7 @@
             android:background="#ff123345"
             android:gravity="center"
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/ranking_name_surname"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -22,7 +22,7 @@
             android:background="#ff128675"
             android:gravity="center"
             />
-    <TextView
+    <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/ranking_result"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -31,13 +31,22 @@
             android:background="#ff123431"
             android:gravity="center"
             />
-    <TextView
-            android:id="@+id/ranking_country"
+
+    <LinearLayout
+                android:gravity="center_horizontal"
+            android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:textSize="7pt"
-            android:layout_weight="3"
-            android:gravity="center"
-            />
+
+            >
+        <com.kovalenych.roboto.TextViewRoboto
+                android:id="@+id/ranking_country"
+                android:layout_width="14pt"
+                android:layout_height="fill_parent"
+                android:textSize="7pt"
+                android:gravity="center"
+                android:background="#ff222222"
+                />
+    </LinearLayout>
 
 </LinearLayout>

@@ -3,7 +3,29 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
         >
+    <RelativeLayout
+            android:id="@+id/ranking_records"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent">
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+                android:id="@+id/ranking_list"
 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10pt"
+                android:cacheColorHint="#00000000"
+                />
+    </RelativeLayout>
+    <LinearLayout
+            android:background="@drawable/triangle"
+            android:id="@+id/filter_triangle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="30pt"
+            android:layout_height="30pt"
+            />
     <RelativeLayout
             android:id="@+id/ranking_filter"
             android:orientation="vertical"
@@ -13,7 +35,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             >
-        <TextView
+        <com.kovalenych.roboto.TextViewRoboto
                 android:layout_centerHorizontal="true"
                 android:id="@+id/powered"
                 android:text="powered by"
@@ -41,21 +63,38 @@
                 android:gravity="center_vertical"
                 >
 
-            <TextView
+            <com.kovalenych.roboto.TextViewRoboto
+                    android:id="@+id/disciplin_text"
                     android:textSize="10pt"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/discipline"
                     />
-            <Spinner
+
+            <com.kovalenych.roboto.ButtonRoboto
+                    android:textColor="#FFFFFFFF"
+                    android:paddingBottom="1pt"
+                    android:paddingRight="5pt"
                     android:layout_marginLeft="8pt"
                     android:layout_marginTop="2pt"
-                    android:id="@+id/discipline_spinner"
+                    android:id="@+id/discipline_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginRight="3pt"
+                    android:textSize="9pt"
+                    android:background="@drawable/spin_bl"
+                    />
+
+            <Spinner
+                    android:id="@+id/discipline_spinner"
+                    android:layout_width="1pt"
+                    android:layout_height="1pt"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="3pt"
                     android:prompt="@string/disipline_prompt"
+                    android:visibility="invisible"
+
                     />
         </LinearLayout>
 
@@ -65,13 +104,13 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 >
-            <TextView
+            <com.kovalenych.roboto.TextViewRoboto
                     android:textSize="6pt"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/disc_hint"
                     />
-            <TextView
+            <com.kovalenych.roboto.TextViewRoboto
                     android:textSize="7pt"
                     android:textColor="#FF8855FF"
                     android:id="@+id/disc_info"
@@ -100,7 +139,7 @@
         <!--android:layout_height="80px"-->
         <!--android:layout_width="fill_parent"-->
         <!-->-->
-        <!--<TextView-->
+        <!--<com.kovalenych.roboto.TextViewRoboto-->
         <!--android:layout_marginLeft="30px"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_width="330px"-->
@@ -115,7 +154,7 @@
         <!--android:layout_height="80px"-->
         <!--android:layout_width="fill_parent"-->
         <!-->-->
-        <!--<TextView-->
+        <!--<com.kovalenych.roboto.TextViewRoboto-->
         <!--android:layout_marginLeft="30px"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_width="330px"-->
@@ -127,14 +166,15 @@
         <!--/>-->
         <!--</LinearLayout>-->
 
-        <Button
+        <com.kovalenych.roboto.ButtonRoboto
                 android:layout_marginBottom="4pt"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:id="@+id/sendButton"
                 android:text="@string/show"
-                android:layout_height="wrap_content"
-                android:layout_width="90pt"
+                android:layout_height="25pt"
+                android:layout_width="80pt"
+                android:textSize="8pt"
                 />
 
         <ProgressBar
@@ -148,31 +188,5 @@
                 android:max="200"
                 />
 
-    </RelativeLayout>
-    <RelativeLayout
-            android:id="@+id/ranking_records"
-            android:visibility="gone"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent">
-        <com.handmark.pulltorefresh.library.PullToRefreshListView
-                android:id="@+id/ranking_list"
-
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="10pt"
-                android:cacheColorHint="#00000000"
-                />
-        <Button
-                android:background="@drawable/arrow"
-                android:id="@+id/ranking_back"
-                android:layout_marginBottom="5pt"
-                android:layout_marginRight="5pt"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_height="25pt"
-                android:layout_width="25pt"
-                />
     </RelativeLayout>
 </RelativeLayout>

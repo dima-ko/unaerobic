@@ -8,4 +8,6 @@
     <string name="discipline">Discipline:</string>
     <string name="disc_hint">Je ne sais pas ce que c\'est? Cliquez</string>
     <string name="here">ici</string>
+    <string name="new_table_name">New table name</string>
+    <string name="add">add</string>
 </resources>
