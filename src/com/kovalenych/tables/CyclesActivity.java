@@ -164,6 +164,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private void cyclesToMultiCycles() {
         cyclesMap.clear();
         int sameCounter = 1;
+        if (curTable == null) curTable = new Table();
         ArrayList<Cycle> cycles = curTable.getCycles();
         for (int i = 0, size = cycles.size(); i < size; i++) {
             cyclesMap.put(i, multiCycles.size());
