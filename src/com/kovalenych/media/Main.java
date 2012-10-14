@@ -24,7 +24,7 @@ public class Main extends Activity {
      */
 
 
-    String url = "http://search.twitter.com/search.json?q=javacodegeeks";
+    String url = "http://unaerobic.appspot.com/co2gae";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

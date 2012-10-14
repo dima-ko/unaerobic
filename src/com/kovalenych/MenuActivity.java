@@ -12,9 +12,24 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 import com.fragments.*;
+import com.google.gson.Gson;
+import com.kovalenych.media.SearchResponse;
+import com.kovalenych.media.Video;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.List;
 
 
 public class MenuActivity extends FragmentActivity implements Const {
@@ -60,6 +75,60 @@ public class MenuActivity extends FragmentActivity implements Const {
             public void onPageScrollStateChanged(int i) {
             }
         });
+
+
+        updateVideo();
+    }
+
+    String url = "http://search.twitter.com/search.json?q=javacodegeeks";
+
+    private void updateVideo() {
+
+        InputStream source = retrieveStream(url);
+
+        Gson gson = new Gson();
+
+        Reader reader = new InputStreamReader(source);
+
+        SearchResponse response = gson.fromJson(reader, SearchResponse.class);
+
+        Toast.makeText(this, response.query, Toast.LENGTH_SHORT).show();
+
+        List<Video> videos = response.videos;
+
+        for (Video video : videos) {
+//            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private InputStream retrieveStream(String url) {
+
+        DefaultHttpClient client = new DefaultHttpClient();
+
+        HttpGet getRequest = new HttpGet(url);
+
+        try {
+
+            HttpResponse getResponse = client.execute(getRequest);
+            final int statusCode = getResponse.getStatusLine().getStatusCode();
+
+            if (statusCode != HttpStatus.SC_OK) {
+                Log.w(getClass().getSimpleName(),
+                        "Error " + statusCode + " for URL " + url);
+                return null;
+            }
+
+            HttpEntity getResponseEntity = getResponse.getEntity();
+            return getResponseEntity.getContent();
+
+        } catch (IOException e) {
+            getRequest.abort();
+            Log.w(getClass().getSimpleName(), "Error for URL " + url, e);
+        }
+
+        return null;
+
     }
 
 
@@ -83,9 +152,10 @@ public class MenuActivity extends FragmentActivity implements Const {
 
         if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
-           tablesFragment.onTableFinish();
+            tablesFragment.onTableFinish();
         }
     }
+
 
     TablesFragment tablesFragment;
 

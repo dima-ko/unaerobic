@@ -34,8 +34,6 @@ public class Video {
         int picIdBegin = uri.indexOf("v=") + 2;
         String youTubeID = uri.substring(picIdBegin, picIdBegin + 11);
         pictureUri = "http://i3.ytimg.com/vi/" + youTubeID + "/default.jpg";
-
-
     }
 
 
