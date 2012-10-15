@@ -4,17 +4,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
+import com.kovalenych.UnaeroApplication;
 import com.kovalenych.media.Video;
 import com.nostra13.universalimageloader.imageloader.DisplayImageOptions;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
 import com.nostra13.universalimageloader.imageloader.ImageLoadingListener;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +27,14 @@ public final class VideoFragment extends Fragment {
 
     public static VideoFragment newInstance() {
 
-        return  new VideoFragment();
+        return new VideoFragment();
     }
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             if (((MenuActivity) getActivity()).haveInternet()) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoList.get(i).getUri()));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoList.get(videoList.size() - i).getUri()));
                 startActivity(intent);
             } else {
                 Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectVid), Toast.LENGTH_SHORT).show();
@@ -50,6 +53,17 @@ public final class VideoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        ArrayDeque<Video> videos = ((UnaeroApplication) getActivity().getApplication()).getVideos();
+
+        for (Video video : videos) {
+            if (!videoList.contains(video))
+                videoList.add(0, video);
+            Log.d("VideoFra new video ", "" + video.getTitle() + "    uri " + video.getUri());
+            //the end
+        }
+
+        videos.clear();
+
         View tables = inflater.inflate(R.layout.videos, null);
         ((ListView) tables.findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
         ((ListView) tables.findViewById(R.id.video_list)).setOnItemClickListener(listener);
@@ -57,6 +71,7 @@ public final class VideoFragment extends Fragment {
     }
 
     private void fillList() {
+
         videoList.add(new Video("WEIGHTLESS - Emotional Freediving", "http://www.youtube.com/watch?v=jOM75l225Qg&feature=player_embedded"));
         videoList.add(new Video("TANYA STREETER: Shark Therapy", "http://www.youtube.com/watch?feature=player_embedded&v=T1knyXu4QuQ"));
         videoList.add(new Video("FreeDive.mov", "http://www.youtube.com/watch?feature=player_embedded&v=wuVgrY4FjY0"));
@@ -82,6 +97,9 @@ public final class VideoFragment extends Fragment {
         super.onDestroy();
     }
 
+    // todo: database
+
+
     class ItemAdapter extends BaseAdapter {
 
         private List<String> imageUrls;
@@ -89,8 +107,9 @@ public final class VideoFragment extends Fragment {
         private ItemAdapter() {
 
             imageUrls = new ArrayList<String>(videoList.size());
-            for (Video video : videoList)
+            for (Video video : videoList) {
                 imageUrls.add(video.getPictureUri());
+            }
         }
 
         public int getCount() {

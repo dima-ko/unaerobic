@@ -74,60 +74,6 @@ public class MenuActivity extends FragmentActivity implements Const {
             public void onPageScrollStateChanged(int i) {
             }
         });
-
-
-        updateVideo();
-    }
-
-    String url = "http://search.twitter.com/search.json?q=javacodegeeks";
-
-    private void updateVideo() {
-
-        InputStream source = retrieveStream(url);
-
-        Gson gson = new Gson();
-
-        Reader reader = new InputStreamReader(source);
-
-        VideoResponse response = gson.fromJson(reader, VideoResponse.class);
-
-        Toast.makeText(this, response.query, Toast.LENGTH_SHORT).show();
-
-        List<Video> videos = response.videos;
-
-        for (Video video : videos) {
-//            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    private InputStream retrieveStream(String url) {
-
-        DefaultHttpClient client = new DefaultHttpClient();
-
-        HttpGet getRequest = new HttpGet(url);
-
-        try {
-
-            HttpResponse getResponse = client.execute(getRequest);
-            final int statusCode = getResponse.getStatusLine().getStatusCode();
-
-            if (statusCode != HttpStatus.SC_OK) {
-                Log.w(getClass().getSimpleName(),
-                        "Error " + statusCode + " for URL " + url);
-                return null;
-            }
-
-            HttpEntity getResponseEntity = getResponse.getEntity();
-            return getResponseEntity.getContent();
-
-        } catch (IOException e) {
-            getRequest.abort();
-            Log.w(getClass().getSimpleName(), "Error for URL " + url, e);
-        }
-
-        return null;
-
     }
 
 
