@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2012 Hai Bison
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<resources>
+
+    <string name="afc_pkey_display_view_type">display.view_type</string>
+    <string name="afc_pkey_display_sort_type">display.sort_type</string>
+    <string name="afc_pkey_display_sort_ascending">display.sort_ascending</string>
+    <string name="afc_pkey_display_show_time_for_old_days_this_year">display.show_time_for_old_days_this_year</string>
+    <string name="afc_pkey_display_show_time_for_old_days">display.show_time_for_old_days</string>
+    <string name="afc_pkey_display_remember_last_location">display.remember_last_location</string>
+    <string name="afc_pkey_display_last_location">display.last_location</string>
+
+    <integer name="afc_pkey_display_view_type_def">0</integer>
+    <integer name="afc_pkey_display_sort_type_def">0</integer>
+
+    <bool name="afc_pkey_display_sort_ascending_def">true</bool>
+    <bool name="afc_pkey_display_show_time_for_old_days_this_year_def">false</bool>
+    <bool name="afc_pkey_display_show_time_for_old_days_def">false</bool>
+    <bool name="afc_pkey_display_remember_last_location_def">true</bool>
+
+</resources>

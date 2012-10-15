@@ -43,8 +43,11 @@
         <activity android:name=".tables.CyclesActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                   android:screenOrientation="portrait"
-
                 />
+        <activity android:name="group.pals.android.lib.ui.filechooser.FileChooserActivity"
+                  android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+                />
+        <service android:name="group.pals.android.lib.ui.filechooser.services.LocalFileProvider" />
         <activity
                 android:launchMode="singleTask"
                 android:name=".tables.ClockActivity"
