@@ -30,11 +30,12 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     Dialog voiceDialog;
     int chosenMultiCycle;
     Dialog delDialog;
-    private Button del_button;
+    private Button del_button, edit_button;
     private SharedPreferences _preferedSettings;
     boolean isvibro;
     private Button stopButton;
     public ArrayList<MultiCycle> multiCycles;
+    private boolean isEditingExistingItem;
 
 
     @Override
@@ -89,10 +90,10 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         delDialog = new Dialog(ptr);
         delDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         delDialog.setCancelable(true);
-        delDialog.setContentView(R.layout.delete_dialog);
+        delDialog.setContentView(R.layout.delete_cycle_dialog);
 
-        del_button = (Button) delDialog.findViewById(R.id.delete_button);
-
+        del_button = (Button) delDialog.findViewById(R.id.delete_cycle_button);
+        edit_button = (Button) delDialog.findViewById(R.id.edit_cucle_button);
 
         newDialog = new Dialog(ptr);
         newDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -188,14 +189,21 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 sameCounter = 1;
             }
         }
-
-
     }
 
     private boolean cycleEqualsToNext(ArrayList<Cycle> cycles, int i) {
         return cycles.get(i + 1).breathe == cycles.get(i).breathe &&
                 cycles.get(i + 1).hold == cycles.get(i).hold;
     }
+    // todo 1
+    // The time is not accurate, 2 seconds are lost every minute.
+
+    //todo 2
+    // - The voice is not very good, weak, and the lady speaking has a terrible accent.
+
+    //todo 3
+    // Is it possible to replace the voice with own generated media? Where to put the files?
+
 
     @Override
     protected void onPause() {
@@ -317,12 +325,23 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             }
         });
 
+        edit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newDialog.show();
+                isEditingExistingItem = true;
+                Cycle fillEdits = multiCycles.get(chosenMultiCycle).cycles.get(0);
+                holdEdit.setText(Integer.toString(fillEdits.hold));
+                breathEdit.setText(Integer.toString(fillEdits.breathe));
+                timesEdit.setText(Integer.toString(multiCycles.get(chosenMultiCycle).cycles.size()));
+            }
+        });
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 newDialog.show();
-
+                isEditingExistingItem = false;
             }
         });
 
@@ -358,21 +377,60 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isEditingExistingItem) {
+                    try {
+                        int b = Integer.parseInt(breathEdit.getText().toString());
+                        int h = Integer.parseInt(holdEdit.getText().toString());
+                        int times = Integer.parseInt(timesEdit.getText().toString());
 
-                try {
-                    int b = Integer.parseInt(breathEdit.getText().toString());
-                    int h = Integer.parseInt(holdEdit.getText().toString());
-                    int times = Integer.parseInt(timesEdit.getText().toString());
+                        if (b < 3600 && h < 3600) {
+                            //delete old cycles and adding new on there place
 
-                    if (b < 3600 && h < 3600) {
-                        for (int i = 0; i < times; i++) {
-                            curTable.getCycles().add(new Cycle(b, h));
+                            int posOfEditedCycle = -1;
+                            for (int i = 0; i < cyclesMap.keySet().size(); i++) {
+
+                                if (cyclesMap.get(i) == chosenMultiCycle && posOfEditedCycle == -1) {
+                                    posOfEditedCycle = i;
+                                    break;
+                                }
+                            }
+
+                            for (int i = cyclesMap.keySet().size() - 1; i >= 0; i--) {
+                                if (cyclesMap.get(i) == chosenMultiCycle) {
+                                    curTable.getCycles().remove(i);
+                                    Log.d("zzzzzzzzzz", "remove " + i + "chosen" + chosenMultiCycle);
+                                }
+                            }
+
+                            for (int i = 0; i < times; i++) {
+                                curTable.getCycles().add(posOfEditedCycle, new Cycle(b, h));
+                            }
+
+                            invalidateList();
+
                         }
-                        invalidateList();
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();
+                        newDialog.dismiss();
                     }
-                } catch (NumberFormatException e) {
-                    Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();
-                } finally {
+                    delDialog.dismiss();
+                    newDialog.dismiss();
+                } else {
+                    try {
+                        int b = Integer.parseInt(breathEdit.getText().toString());
+                        int h = Integer.parseInt(holdEdit.getText().toString());
+                        int times = Integer.parseInt(timesEdit.getText().toString());
+
+                        if (b < 3600 && h < 3600) {
+                            for (int i = 0; i < times; i++) {
+                                curTable.getCycles().add(new Cycle(b, h));
+                            }
+                            invalidateList();
+                        }
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();
+                        newDialog.dismiss();
+                    }
                     newDialog.dismiss();
                 }
 
