@@ -81,8 +81,8 @@ public class ClockService extends Service implements Soundable, Const {
             pi = intent.getParcelableExtra(ClockActivity.PARAM_PINTENT);
             name = intent.getStringExtra(ClockActivity.PARAM_TABLE);
             Log.d(LOG_TAG, "tableName  " + name);
-            volume = intent.getIntExtra(PARAM_VOLUME,0);
-            Log.d(LOG_TAG,"set volume " + volume);
+            volume = intent.getIntExtra(PARAM_VOLUME, 0);
+            Log.d(LOG_TAG, "set volume " + volume);
             int size = cyclesBundle.getInt("tablesize");
             table = new Table();
             for (int i = 0; i < size; i++) {
@@ -120,8 +120,8 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_SUBSCRIBE_CYCLES)) {
             pi = intent.getParcelableExtra(PARAM_PINTENT);
             subscriber = SUBSCRIBER_CYCLE;
-            volume = intent.getIntExtra(PARAM_VOLUME,0);
-            Log.d(LOG_TAG,"set volume " + volume);
+            volume = intent.getIntExtra(PARAM_VOLUME, 0);
+            Log.d(LOG_TAG, "set volume " + volume);
             Intent newIntent = new Intent()
                     .putExtra(ClockActivity.PARAM_TABLE, name)
                     .putExtra(ClockActivity.PARAM_M_CYCLE, curCycle);
@@ -132,8 +132,8 @@ public class ClockService extends Service implements Soundable, Const {
             }
 
         } else if (destination.equals(FLAG_SETVOLUME)) {
-            Log.d(LOG_TAG,"set volume " + volume);
-            volume = intent.getIntExtra(PARAM_VOLUME,0);
+            Log.d(LOG_TAG, "set volume " + volume);
+            volume = intent.getIntExtra(PARAM_VOLUME, 0);
         }
 
         return super.onStartCommand(intent, flags, startId);
@@ -176,16 +176,16 @@ public class ClockService extends Service implements Soundable, Const {
             //breath
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE))
-                soundManager.playSound(BREATHE,volume);
+                soundManager.playSound(BREATHE, volume);
             else if (voices.contains(relatTime))
-                soundManager.playSound(relatTime,volume);
+                soundManager.playSound(relatTime, volume);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START))                 //hold
-                soundManager.playSound(START,volume);
+                soundManager.playSound(START, volume);
             else if (voices.contains(time))
-                soundManager.playSound(time,volume);
+                soundManager.playSound(time, volume);
         }
     }
 
@@ -226,7 +226,9 @@ public class ClockService extends Service implements Soundable, Const {
         @Override
         protected Void doInBackground(Integer... params) {
 
+            long tableStart = System.currentTimeMillis();
             for (int i = params[0]; i < table.getCycles().size(); i++) {
+                long cycleStart = System.currentTimeMillis();
                 Cycle cycle = table.getCycles().get(i);
                 if (breathing)
                     for (int t = 0; t < cycle.breathe; t++) {
@@ -234,19 +236,22 @@ public class ClockService extends Service implements Soundable, Const {
                             return null;
                         publishProgress(t, i);
                         try {
-                            Thread.sleep(1000);
+                            long adjust = System.currentTimeMillis() - cycleStart - 1000 * t;
+                            Thread.sleep(1000 - adjust);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                             return null;
                         }
                     }
                 breathing = false;
+                cycleStart = System.currentTimeMillis();
                 for (int t = 0; t < cycle.hold; t++) {
                     if (isCancelled())
                         return null;
                     publishProgress(t, i);
                     try {
-                        Thread.sleep(1000);
+                        long adjust = System.currentTimeMillis() - cycleStart - 1000 * t;
+                        Thread.sleep(1000 - adjust);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                         return null;
@@ -254,6 +259,7 @@ public class ClockService extends Service implements Soundable, Const {
                 }
                 breathing = true;
             }
+            Log.d("table made in ", "" + (System.currentTimeMillis() - tableStart));
             return null;
         }
 

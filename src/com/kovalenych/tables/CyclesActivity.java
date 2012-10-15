@@ -198,9 +198,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     // todo 1
     // The time is not accurate, 2 seconds are lost every minute.
 
-    //todo 2
-    // - The voice is not very good, weak, and the lady speaking has a terrible accent.
-
     //todo 3
     // Is it possible to replace the voice with own generated media? Where to put the files?
 
