@@ -369,14 +369,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 voiceDialog.findViewById(R.id.edit_sounds).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        Intent intent = new Intent(ptr, FileChooserActivity.class);
-                        /*
-                         * by default, if not specified, default rootpath is sdcard,
-                         * if sdcard is not available, "/" will be used
-                         */
-//                        intent.putExtra(FileChooserActivity._RegexFilenameFilter, "(?si).*\\.(zip|7z)$");
-                        startActivityForResult(intent, _ReqChooseFile);
+                        startActivity(new Intent(ptr, FileChooserActivity.class));
                     }
                 });
                 voiceDialog.show();
@@ -447,7 +440,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         });
 
     }
-    private static final int _ReqChooseFile = 600;
+
 
     int volume;
 
@@ -557,27 +550,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
-        switch (requestCode) {
-            case _ReqChooseFile:
-                if (resultCode == RESULT_OK) {
-                    /*
-                    * you can use two flags included in data
-                    */
-                    IFileProvider.FilterMode filterMode = (IFileProvider.FilterMode)
-                            data.getSerializableExtra(FileChooserActivity._FilterMode);
-                    boolean saveDialog = data.getBooleanExtra(FileChooserActivity._SaveDialog, false);
 
-                    /*
-                    * a list of files will always return,
-                    * if selection mode is single, the list contains one file
-                    */
-                    List<LocalFile> files = (List<LocalFile>)
-                            data.getSerializableExtra(FileChooserActivity._Results);
-//                    for (File f : files)
-//                    ...
-                }
-                break;
-        }
         if (name.equals(data.getStringExtra(PARAM_TABLE))) {
             curCycle = data.getIntExtra(PARAM_M_CYCLE, 0);
             curMultiCycle = cyclesMap.get(curCycle);
@@ -590,6 +563,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
             stopButton.setVisibility(View.GONE);
         }
+
     }
 
     TreeMap<Integer, Integer> cyclesMap = new TreeMap<Integer, Integer>();   //cycle->multicycle
