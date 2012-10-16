@@ -11,12 +11,12 @@ import java.util.Random;
  * by insomniac and angryded
  * for their purposes
  */
-public class EditCycleTest extends GeneralTest {
+public class editCycleTest extends GeneralTest {
 
 
     public String NEW_TABLE_NAME = "newTable";
 
-    public EditCycleTest() {
+    public editCycleTest() {
         super();
         NEW_TABLE_NAME += new Random().nextInt(12345);
     }
