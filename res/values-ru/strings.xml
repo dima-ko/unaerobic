@@ -49,6 +49,7 @@
     <string name="here">сюда</string>
     <string name="new_table_name">New table name</string>
     <string name="add">add</string>
+    <string name="edit_sounds">edit sounds</string>
 
 
 </resources>

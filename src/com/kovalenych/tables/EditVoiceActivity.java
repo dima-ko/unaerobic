@@ -20,25 +20,30 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
     ListView lv;
 
     ArrayList<Sound> sounds;
+    private SharedPreferences _preferedSettings;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sounds_edit);
+
+        _preferedSettings = getSharedPreferences("voice_files", MODE_PRIVATE);
+
         sounds = new ArrayList<Sound>();
 
-        sounds.add(new Sound("2 min to start", "to2min.mp3"));
-        sounds.add(new Sound("1 min to start", "to1min.mp3"));
-        sounds.add(new Sound("30 sec to start", "to30sec.mp3"));
-        sounds.add(new Sound("10 sec to start", "to10sec.mp3"));
-        sounds.add(new Sound("5 sec to start", "to5sec.mp3"));
-        sounds.add(new Sound("start", "start.mp3"));
-        sounds.add(new Sound("1 min after start", "after1min.mp3"));
-        sounds.add(new Sound("2 min after start", "after2min.mp3"));
-        sounds.add(new Sound("3 min after start", "after3min.mp3"));
-        sounds.add(new Sound("4 min after start", "after4min.mp3"));
-        sounds.add(new Sound("5 min after start", "after5min.mp3"));
-        sounds.add(new Sound("breathe", "breathe.mp3"));
+        sounds.add(new Sound(TO_START_2_MIN, "2 min to start", "to2min.mp3"));
+        sounds.add(new Sound(TO_START_1_MIN, "1 min to start", "to1min.mp3"));
+        sounds.add(new Sound(TO_START_30_SEC, "30 sec to start", "to30sec.mp3"));
+        sounds.add(new Sound(TO_START_10_SEC, "10 sec to start", "to10sec.mp3"));
+        sounds.add(new Sound(TO_START_5_SEC, "5 sec to start", "to5sec.mp3"));
+        sounds.add(new Sound(START, "start", "start.mp3"));
+        sounds.add(new Sound(AFTER_START_1, "1 min after start", "after1min.mp3"));
+        sounds.add(new Sound(AFTER_START_2, "2 min after start", "after2min.mp3"));
+        sounds.add(new Sound(AFTER_START_3, "3 min after start", "after3min.mp3"));
+        sounds.add(new Sound(AFTER_START_4, "4 min after start", "after4min.mp3"));
+        sounds.add(new Sound(AFTER_START_5, "5 min after start", "after5min.mp3"));
+        sounds.add(new Sound(BREATHE, "breathe", "breathe.mp3"));
 
         Toast.makeText(this, "click to edit", Toast.LENGTH_SHORT).show();
 
@@ -89,13 +94,17 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
             */
             List<LocalFile> files = (List<LocalFile>) data.getSerializableExtra(FileChooserActivity._Results);
 
-            sounds.get(requestCode).fileName = files.get(0).getName();
+            String name = files.get(0).getName();
+            sounds.get(requestCode).fileName = name;
             String path = files.get(0).getAbsolutePath();
+
 
             invalidateList();
         }
 //                break;
 //        }
     }
+
+    //todo: in menu button: restore defaults
 
 }

@@ -266,7 +266,7 @@
                     android:gravity="center"
                     android:padding="2pt"
                     android:id="@+id/edit_sounds"
-                    android:text="edit sounds"
+                    android:text="@string/edit_sounds"
                     android:layout_height="19pt"
                     android:layout_width="fill_parent"
                     />
