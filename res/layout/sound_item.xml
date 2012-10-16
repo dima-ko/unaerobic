@@ -17,6 +17,7 @@
             />
 
     <TextView
+            android:textColor="#FF22BBFF"
             android:singleLine="true"
             android:layout_weight="7"
             android:id="@+id/sound_path"

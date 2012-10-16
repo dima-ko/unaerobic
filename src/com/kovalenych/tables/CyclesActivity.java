@@ -272,7 +272,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 Intent intent = new Intent(lv.getContext(), ClockActivity.class);
                 Bundle bun = new Bundle();
 
-
                 bun.putInt("tablesize", curTable.getCycles().size());
 
                 for (int i = 0; i < curTable.getCycles().size(); i++) {
