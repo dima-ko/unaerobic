@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="30pt"
+              android:orientation="horizontal"
+              android:background="#FF000000"
+        >
+
+    <com.kovalenych.roboto.TextViewRoboto
+            android:layout_weight="7"
+            android:id="@+id/sound_name"
+            android:layout_width="0dp"
+            android:layout_height="29pt"
+            />
+
+    <com.kovalenych.roboto.TextViewRoboto
+            android:layout_weight="7"
+            android:id="@+id/sound_path"
+            android:layout_width="0dp"
+            android:layout_height="29pt"
+            />
+    <com.kovalenych.roboto.ButtonRoboto
+            android:text="Edit"
+            android:layout_weight="2"
+            android:id="@+id/sound_button"
+            android:layout_width="0dp"
+            android:layout_height="29pt"
+            />
+</LinearLayout>

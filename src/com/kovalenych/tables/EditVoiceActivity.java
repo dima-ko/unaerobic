@@ -24,17 +24,45 @@ import java.util.TreeMap;
 
 public class EditVoiceActivity extends Activity implements Soundable, Const {
 
+    ListView lv;
+
+    ArrayList<Sound> sounds;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this, FileChooserActivity.class);
-        /*
-        * by default, if not specified, default rootpath is sdcard,
-        * if sdcard is not available, "/" will be used
-        */
+        sounds = new ArrayList<Sound>();
+        sounds.add(new Sound("asd", "asdasd"));
+        sounds.add(new Sound("asasd", "asdasd"));
+        sounds.add(new Sound("asd", "adsdasd"));
+        sounds.add(new Sound("asad", "asddasd"));
+        sounds.add(new Sound("ashf", "asddasd"));
+        sounds.add(new Sound("asad", "asddasd"));
+
+        lv = (ListView) findViewById(R.id.sounds_edit_list);
+        invalidateList();
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(EditVoiceActivity.this, FileChooserActivity.class);
+                /*
+                * by default, if not specified, default rootpath is sdcard,
+                * if sdcard is not available, "/" will be used
+                */
 //                        intent.putExtra(FileChooserActivity._RegexFilenameFilter, "(?si).*\\.(zip|7z)$");
-        startActivityForResult(intent, _ReqChooseFile);
+                startActivityForResult(intent, _ReqChooseFile);
+            }
+        });
+
+
+    }
+
+    public void invalidateList() {
+        SoundsArrayAdapter adapter = new SoundsArrayAdapter(this, sounds);
+        lv.setAdapter(adapter);
     }
 
     private static final int _ReqChooseFile = 600;
