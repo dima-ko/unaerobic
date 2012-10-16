@@ -242,7 +242,9 @@ public class ClockService extends Service implements Soundable, Const {
                         publishProgress(t, i);
                         try {
                             long adjust = System.currentTimeMillis() - cycleStart - 1000 * t;
-                            Thread.sleep(1000 - adjust);
+                            long sleeptime = 1000 - adjust;
+                            if (sleeptime > 0)
+                                Thread.sleep(sleeptime);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                             return null;
@@ -256,7 +258,9 @@ public class ClockService extends Service implements Soundable, Const {
                     publishProgress(t, i);
                     try {
                         long adjust = System.currentTimeMillis() - cycleStart - 1000 * t;
-                        Thread.sleep(1000 - adjust);
+                        long sleeptime = 1000 - adjust;
+                        if (sleeptime > 0)
+                            Thread.sleep(sleeptime);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                         return null;

@@ -12,6 +12,7 @@ import group.pals.android.lib.ui.filechooser.FileChooserActivity;
 import group.pals.android.lib.ui.filechooser.io.localfile.LocalFile;
 import group.pals.android.lib.ui.filechooser.services.IFileProvider;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +78,6 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
 
-
-//        switch (requestCode) {
-//            case _ReqChooseFile:
         if (resultCode == RESULT_OK) {  //todo: long click selection blue
             /*
             * you can use two flags included in data
@@ -97,12 +95,55 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
             String name = files.get(0).getName();
             sounds.get(requestCode).fileName = name;
             String path = files.get(0).getAbsolutePath();
-
-
+            Log.d("Edit activity path", path);
+            copyFileToAppFolder(path, name);
+            //todo: add to prefs
             invalidateList();
         }
-//                break;
-//        }
+    }
+
+
+    private void copyFileToAppFolder(String fromPath, String name) {
+        InputStream myInput;
+
+        try {
+            myInput = new FileInputStream(fromPath);
+
+            // Set the output folder on the SDcard
+            File cache = this.getExternalCacheDir();
+//            File directory = new File("/sdcard/some_folder");
+            // Create the folder if it doesn't exist:
+            if (!cache.exists()) {
+                cache.mkdirs();
+            }
+            // Set the output file stream up:
+
+//            OutputStream myOutput = new FileOutputStream(directory.getPath() +
+//                    "/database_name.backup");
+
+            OutputStream myOutput = new FileOutputStream(cache.getPath() +
+                    "/" + name);
+            // Transfer bytes from the input file to the output file
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = myInput.read(buffer)) > 0) {
+                myOutput.write(buffer, 0, length);
+            }
+            // Close and clear the streams
+            myOutput.flush();
+
+            myOutput.close();
+
+            myInput.close();
+
+        } catch (FileNotFoundException e) {
+            Toast.makeText(EditVoiceActivity.this, "Backup Unsuccesfull!", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        } catch (IOException e) {
+            Toast.makeText(EditVoiceActivity.this, "Backup Unsuccesfull!", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+        Toast.makeText(EditVoiceActivity.this, "Backup Done Succesfully!", Toast.LENGTH_LONG).show();
     }
 
     //todo: in menu button: restore defaults

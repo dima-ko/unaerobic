@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Sound implements Serializable {
 
-    private int index;
+    public int index;
     public String name;
     public String fileName;
 
