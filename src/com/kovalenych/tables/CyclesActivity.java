@@ -317,6 +317,10 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 multiCycles.remove(chosenMultiCycle);
                 multiCyclesToCycles();
                 delDialog.dismiss();
+                stopService(new Intent(ptr, ClockService.class));
+                stopButton.setVisibility(View.GONE);
+                curCycle = -1;
+                curMultiCycle = -1;
                 invalidateList();
             }
         });
@@ -435,7 +439,10 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                     }
                     newDialog.dismiss();
                 }
-
+                stopService(new Intent(ptr, ClockService.class));
+                stopButton.setVisibility(View.GONE);
+                curCycle = -1;
+                curMultiCycle = -1;
             }
         });
 
