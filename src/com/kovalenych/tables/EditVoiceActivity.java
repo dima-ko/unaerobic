@@ -31,14 +31,23 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.sounds_edit);
         sounds = new ArrayList<Sound>();
-        sounds.add(new Sound("asd", "asdasd"));
-        sounds.add(new Sound("asasd", "asdasd"));
-        sounds.add(new Sound("asd", "adsdasd"));
-        sounds.add(new Sound("asad", "asddasd"));
-        sounds.add(new Sound("ashf", "asddasd"));
-        sounds.add(new Sound("asad", "asddasd"));
+
+        sounds.add(new Sound("2 min to start", "to2min.mp3"));
+        sounds.add(new Sound("1 min to start", "to1min.mp3"));
+        sounds.add(new Sound("30 sec to start", "to30sec.mp3"));
+        sounds.add(new Sound("10 sec to start", "to10sec.mp3"));
+        sounds.add(new Sound("5 sec to start", "to5sec.mp3"));
+        sounds.add(new Sound("start", "start.mp3"));
+        sounds.add(new Sound("1 min after start", "after1min.mp3"));
+        sounds.add(new Sound("2 min after start", "after2min.mp3"));
+        sounds.add(new Sound("3 min after start", "after3min.mp3"));
+        sounds.add(new Sound("4 min after start", "after4min.mp3"));
+        sounds.add(new Sound("5 min after start", "after5min.mp3"));
+        sounds.add(new Sound("breathe", "breathe.mp3"));
+
+        Toast.makeText(this, "click to edit", Toast.LENGTH_SHORT).show();
 
         lv = (ListView) findViewById(R.id.sounds_edit_list);
         invalidateList();
@@ -56,8 +65,6 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
                 startActivityForResult(intent, _ReqChooseFile);
             }
         });
-
-
     }
 
     public void invalidateList() {

@@ -8,7 +8,8 @@ public class Sound implements Serializable {
     public String path;
 
     Sound(String name, String path) {
-
+        this.name = name;
+        this.path = path;
     }
 
 }

@@ -5,25 +5,24 @@
               android:orientation="horizontal"
               android:background="#FF000000"
         >
-
-    <com.kovalenych.roboto.TextViewRoboto
-            android:layout_weight="7"
+    <TextView
+            android:layout_weight="4"
             android:id="@+id/sound_name"
             android:layout_width="0dp"
-            android:layout_height="29pt"
+            android:layout_height="19pt"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center"
+            android:textSize="7pt"
+            android:singleLine="true"
             />
 
-    <com.kovalenych.roboto.TextViewRoboto
+    <TextView
+            android:singleLine="true"
             android:layout_weight="7"
             android:id="@+id/sound_path"
             android:layout_width="0dp"
-            android:layout_height="29pt"
-            />
-    <com.kovalenych.roboto.ButtonRoboto
-            android:text="Edit"
-            android:layout_weight="2"
-            android:id="@+id/sound_button"
-            android:layout_width="0dp"
-            android:layout_height="29pt"
+            android:layout_height="19pt"
+            android:gravity="center"
+            android:textSize="6pt"
             />
 </LinearLayout>

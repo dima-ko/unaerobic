@@ -373,7 +373,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 voiceDialog.findViewById(R.id.edit_sounds).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(ptr, FileChooserActivity.class));
+                        startActivity(new Intent(ptr, EditVoiceActivity.class));
                     }
                 });
                 voiceDialog.show();
