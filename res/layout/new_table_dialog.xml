@@ -22,10 +22,10 @@
             android:gravity="center"
             android:id="@+id/new_table_ok"
             android:background="#ff333333"
+            android:textColor="#FFFFFFFF"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="8pt"
-            android:textColor="#FFFFFFFF"
             android:text="@string/add"
             android:textSize="6pt"
             />

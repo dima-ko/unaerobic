@@ -1,28 +1,19 @@
 package com.kovalenych.tables;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.PendingIntent;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.*;
 import com.kovalenych.Const;
 import com.kovalenych.R;
-import com.kovalenych.Table;
-import com.kovalenych.Utils;
 import group.pals.android.lib.ui.filechooser.FileChooserActivity;
 import group.pals.android.lib.ui.filechooser.io.localfile.LocalFile;
 import group.pals.android.lib.ui.filechooser.services.IFileProvider;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
 public class EditVoiceActivity extends Activity implements Soundable, Const {
 
@@ -98,7 +89,9 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
             */
             List<LocalFile> files = (List<LocalFile>) data.getSerializableExtra(FileChooserActivity._Results);
 
-            sounds.get(requestCode).path = files.get(0).getAbsolutePath();
+            sounds.get(requestCode).fileName = files.get(0).getName();
+            String path = files.get(0).getAbsolutePath();
+
             invalidateList();
         }
 //                break;

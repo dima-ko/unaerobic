@@ -157,6 +157,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
+
+
+
     }
 
     private void invalidateList() {

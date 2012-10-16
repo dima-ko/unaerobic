@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class Sound implements Serializable {
 
     public String name;
-    public String path;
+    public String fileName;
 
     Sound(String name, String path) {
         this.name = name;
-        this.path = path;
+        this.fileName = path;
     }
 
 }

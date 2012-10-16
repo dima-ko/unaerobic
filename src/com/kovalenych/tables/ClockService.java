@@ -3,6 +3,7 @@ package com.kovalenych.tables;
 import android.app.*;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.*;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -32,6 +33,7 @@ public class ClockService extends Service implements Soundable, Const {
 
     SoundManager soundManager;
     private int volume;
+    private SharedPreferences _preferedSettings;
 
     public void onCreate() {
         super.onCreate();
@@ -39,6 +41,9 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d(LOG_TAG, "ClockService onCreate");
         soundManager = new SoundManager(this);
 
+        _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
+        int bla = _preferedSettings.getInt("volume", 15);
+        Log.d("zzzzzzbla", "" + bla);
     }
 
     private void showProgressInTray(int progress, int max, boolean breathing) {

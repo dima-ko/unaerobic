@@ -32,7 +32,7 @@ public class SoundsArrayAdapter extends ArrayAdapter<Sound> {
         }
 
         ((TextView) rowView.findViewById(R.id.sound_name)).setText(sounds.get(position).name);
-        ((TextView) rowView.findViewById(R.id.sound_path)).setText(sounds.get(position).path);
+        ((TextView) rowView.findViewById(R.id.sound_path)).setText(sounds.get(position).fileName);
 
         return rowView;
     }

@@ -260,11 +260,14 @@
             </LinearLayout>
 
             <com.kovalenych.roboto.ButtonRoboto
+                    android:layout_marginTop="1pt"
+                    android:background="#ff333333"
+                    android:textColor="#FFFFFFFF"
                     android:gravity="center"
                     android:padding="2pt"
                     android:id="@+id/edit_sounds"
                     android:text="edit sounds"
-                    android:layout_height="wrap_content"
+                    android:layout_height="19pt"
                     android:layout_width="fill_parent"
                     />
             <LinearLayout
