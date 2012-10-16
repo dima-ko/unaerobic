@@ -189,7 +189,7 @@ public final class TablesFragment extends Fragment implements Const {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.info_button:                      //todo:  stop service when editin all!!!
+                case R.id.info_button:
                     infoDialog.show();
                     break;
                 case R.id.add_table:

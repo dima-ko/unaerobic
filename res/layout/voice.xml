@@ -30,10 +30,12 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice2to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
+                <CheckBox
+                        android:button="@drawable/btn_radio"
+                        android:id="@+id/voice2to"
+                        android:layout_height="fill_parent"
+                        android:layout_width="wrap_content"
+
                         />
                 <com.kovalenych.roboto.TextViewRoboto
                         android:gravity="center"
@@ -47,15 +49,17 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
-                          android:id="@+id/voice1to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
+                <CheckBox
+                        android:button="@drawable/btn_radio"
+                        android:id="@+id/voice1to"
+                        android:layout_height="fill_parent"
+                        android:layout_width="wrap_content"
                         />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/minutes1"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
+                <com.kovalenych.roboto.TextViewRoboto
+                        android:gravity="center"
+                        android:text="@string/minutes1"
+                        android:layout_height="fill_parent"
+                        android:layout_width="fill_parent"
                         />
             </LinearLayout>
 
@@ -63,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voice30to"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -79,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voice10to"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -95,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voice5to"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -111,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voicestart"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -129,7 +133,7 @@
                     android:orientation="horizontal"
                     android:gravity="center"
                     >
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/vibro"
                           android:layout_height="wrap_content"
                           android:layout_width="wrap_content"
@@ -159,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voice1after"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -176,7 +180,7 @@
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
                 <CheckBox
-                        style="@android:style/Widget.CompoundButton.RadioButton"
+                        android:button="@drawable/btn_radio"
                         android:id="@+id/voice2after"
                         android:layout_height="fill_parent"
                         android:layout_width="wrap_content"
@@ -192,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voice3after"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -208,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voice4after"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -224,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voice5after"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -240,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:orientation="horizontal">
-                <CheckBox style="@android:style/Widget.CompoundButton.RadioButton"
+                <CheckBox android:button="@drawable/btn_radio"
                           android:id="@+id/voicebreathe"
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
@@ -253,6 +257,7 @@
             </LinearLayout>
 
             <com.kovalenych.roboto.ButtonRoboto
+                    android:visibility="invisible"
                     android:id="@+id/edit_sounds"
                     android:text="edit sounds"
                     android:layout_height="fill_parent"
