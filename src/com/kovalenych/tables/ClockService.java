@@ -11,7 +11,9 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import com.kovalenych.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * this class was made
@@ -30,10 +32,10 @@ public class ClockService extends Service implements Soundable, Const {
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
     String name;
+    HashMap<Integer, Object> soundPool = new HashMap<Integer, Object>();
 
     public boolean showTray = false;
 
-    //    SoundManager soundManager;
     MediaPlayer mediaPlayer;
     private int volume;
     private SharedPreferences _preferedSettings;
@@ -42,12 +44,29 @@ public class ClockService extends Service implements Soundable, Const {
         super.onCreate();
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(LOG_TAG, "ClockService onCreate");
-//        soundManager = new SoundManager(this);
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
         int bla = _preferedSettings.getInt("volume", 15);
         Log.d("zzzzzzbla", "" + bla);
+
+        fillPool();
+    }
+
+    private void fillPool() {
+        soundPool.put(TO_START_2_MIN, R.raw.to2min);
+        soundPool.put(TO_START_1_MIN, R.raw.to1min);
+        soundPool.put(TO_START_30_SEC, R.raw.to30sec);
+        soundPool.put(TO_START_10_SEC, R.raw.to10sec);
+        soundPool.put(TO_START_5_SEC, R.raw.to5sec);
+        soundPool.put(START, R.raw.start);
+        soundPool.put(AFTER_START_1, R.raw.after1min);
+        soundPool.put(AFTER_START_2, R.raw.after2min);
+        soundPool.put(AFTER_START_3, R.raw.after3min);
+        soundPool.put(AFTER_START_4, R.raw.after4min);
+        soundPool.put(AFTER_START_5, R.raw.after5min);
+        soundPool.put(BREATHE, R.raw.breathe);
+
     }
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
@@ -179,6 +198,8 @@ public class ClockService extends Service implements Soundable, Const {
         }
         //vibrate  or sound
 
+//        mediaPlayer.setDataSrouce(appContext, Uri.parse("android.resource://com.package.name/raw/song"));
+
         if (time == 0 && vibrationEnabled)
             v.vibrate(200);
         if (breathing) {
@@ -187,22 +208,31 @@ public class ClockService extends Service implements Soundable, Const {
             //breath
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE)) {
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.breathe);
-                mediaPlayer.start();
-//                soundManager.playSound(BREATHE, volume);
-            } else if (voices.contains(relatTime)) ;
-//                soundManager.playSound(relatTime, volume);
+                playSound(BREATHE);
+            } else if (voices.contains(relatTime))         //todo: volume
+                playSound(relatTime);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
-            if (time == 0 && voices.contains(START)) {
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.start);
-                mediaPlayer.start();
-            }                 //hold
-//                soundManager.playSound(START, volume);
-//            else if (voices.contains(time))
-//                soundManager.playSound(time, volume);
+            if (time == 0 && voices.contains(START))
+                playSound(START);
+            else if (voices.contains(time))
+                playSound(time);
         }
+    }
+
+    private void playSound(int key) {
+        Object obj = soundPool.get(key);
+        if (obj instanceof Integer)
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), (Integer) obj);
+        else
+            try {
+                mediaPlayer.setDataSource((String) soundPool.get(key));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        mediaPlayer.start();
     }
 
 
