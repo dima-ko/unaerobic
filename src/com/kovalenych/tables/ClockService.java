@@ -120,7 +120,7 @@ public class ClockService extends Service implements Soundable, Const {
             Log.d(LOG_TAG, "tableName  " + name);
             volume = intent.getIntExtra(PARAM_VOLUME, 0);
             Log.d(LOG_TAG, "set volume " + volume);
-            int size = cyclesBundle.getInt("tablesize");  //todo: test on real devices
+            int size = cyclesBundle.getInt("tablesize");
             table = new Table();
             for (int i = 0; i < size; i++) {
                 table.getCycles().add(
@@ -218,7 +218,7 @@ public class ClockService extends Service implements Soundable, Const {
                 playSound(relatTime);
         } else {
             if (showTray)
-                showProgressInTray(time, hold, breathing); //todo: test 5 sec
+                showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START))
                 playSound(START);
             else if (voices.contains(time))
