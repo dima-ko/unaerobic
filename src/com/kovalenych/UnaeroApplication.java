@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.kovalenych.media.Article;
+import com.kovalenych.media.ArticleResponse;
 import com.kovalenych.media.Video;
 import com.kovalenych.media.VideoResponse;
 import com.kovalenych.tables.SoundManager;
@@ -61,26 +62,39 @@ public class UnaeroApplication extends Application {
                 public void run() {
 
                     updateVideo();
-                    //  updateArticles();
+                    updateArticles();
 
                 }
             }.start();
 
     }
 
-    String videoUrl = "http://unaerobic.appspot.com/co2gae";
+    private void updateArticles() {
+        InputStream source = retrieveStream(articleUrl);
+        Gson gson = new Gson();
+        Reader reader = new InputStreamReader(source);
+        ArticleResponse response = gson.fromJson(reader, ArticleResponse.class);
+
+        List<Article> articles = response.articles;
+
+        for (Article article : articles) {
+            Log.d("added new video ", "" + article.getName() + "    uri " + article.getUri());
+//            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
+            articleQueue.add(article);
+        }
+
+        Toast.makeText(this, "Video updated", Toast.LENGTH_SHORT).show();
+    }
+
+    final String videoUrl = "http://unaerobic.appspot.com/co2gaevideo";
+    final String articleUrl = "http://unaerobic.appspot.com/co2gaearticle";
 
     private void updateVideo() {
 
         InputStream source = retrieveStream(videoUrl);
-
         Gson gson = new Gson();
-
         Reader reader = new InputStreamReader(source);
-
         VideoResponse response = gson.fromJson(reader, VideoResponse.class);
-
-//        Toast.makeText(this, response.query, Toast.LENGTH_SHORT).show();
 
         List<Video> videos = response.videos;
 
@@ -90,6 +104,7 @@ public class UnaeroApplication extends Application {
             videoQueue.add(video);
         }
 
+        Toast.makeText(this, "Video updated", Toast.LENGTH_SHORT).show();
     }
 
     public ArrayDeque<Video> getVideos() {
