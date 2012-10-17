@@ -4,6 +4,8 @@ import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.*;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -31,7 +33,8 @@ public class ClockService extends Service implements Soundable, Const {
 
     public boolean showTray = false;
 
-    SoundManager soundManager;
+    //    SoundManager soundManager;
+    MediaPlayer mediaPlayer;
     private int volume;
     private SharedPreferences _preferedSettings;
 
@@ -39,8 +42,9 @@ public class ClockService extends Service implements Soundable, Const {
         super.onCreate();
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(LOG_TAG, "ClockService onCreate");
-        soundManager = new SoundManager(this);
-
+//        soundManager = new SoundManager(this);
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
         int bla = _preferedSettings.getInt("volume", 15);
         Log.d("zzzzzzbla", "" + bla);
@@ -70,6 +74,8 @@ public class ClockService extends Service implements Soundable, Const {
         nMgr.cancel(NOTIFY_ID);
         if (task != null)
             task.cancel(true);
+        mediaPlayer.release();
+        mediaPlayer = null;
         Log.d(LOG_TAG, "ClockService onDestroy");
     }
 
@@ -180,24 +186,33 @@ public class ClockService extends Service implements Soundable, Const {
                 showProgressInTray(time, breathe, breathing);
             //breath
             int relatTime = time - breathe;
-            if (time == 0 && voices.contains(BREATHE))
-                soundManager.playSound(BREATHE, volume);
-            else if (voices.contains(relatTime))
-                soundManager.playSound(relatTime, volume);
+            if (time == 0 && voices.contains(BREATHE)) {
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.breathe);
+                mediaPlayer.start();
+//                soundManager.playSound(BREATHE, volume);
+            } else if (voices.contains(relatTime)) ;
+//                soundManager.playSound(relatTime, volume);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
-            if (time == 0 && voices.contains(START))                 //hold
-                soundManager.playSound(START, volume);
-            else if (voices.contains(time))
-                soundManager.playSound(time, volume);
+            if (time == 0 && voices.contains(START)) {
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.start);
+                mediaPlayer.start();
+            }                 //hold
+//                soundManager.playSound(START, volume);
+//            else if (voices.contains(time))
+//                soundManager.playSound(time, volume);
         }
     }
 
+
     public void onTableFinish() {
 
-        if (voices.contains(BREATHE))
-            soundManager.playSound(BREATHE, volume);
+        if (voices.contains(BREATHE)) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.breathe);
+            mediaPlayer.start();
+        }
+//            soundManager.playSound(BREATHE, volume);
         if (vibrationEnabled)
             v.vibrate(200);
 
@@ -216,6 +231,12 @@ public class ClockService extends Service implements Soundable, Const {
     public IBinder onBind(Intent arg0) {
         return null;
     }
+
+//    @Override
+//    public void onPrepared(MediaPlayer mp) {
+//        if (mediaPlayer != null)
+//            mediaPlayer.start();
+//    }
 
 
     class ClockTask extends AsyncTask<Integer, Integer, Void> {
