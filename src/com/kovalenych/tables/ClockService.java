@@ -46,7 +46,7 @@ public class ClockService extends Service implements Soundable, Const {
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(LOG_TAG, "ClockService onCreate");
         mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
         _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
         int bla = _preferedSettings.getInt("volume", 15);
         Log.d("zzzzzzbla", "" + bla);
@@ -112,6 +112,7 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d(LOG_TAG, "ClockService onStartCommand" + flags);
 
         String destination = intent.getStringExtra(FLAG);
+
         if (destination.equals(FLAG_CREATE)) {
             Log.d(LOG_TAG, FLAG_CREATE);
             Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
@@ -214,7 +215,7 @@ public class ClockService extends Service implements Soundable, Const {
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE)) {
                 playSound(BREATHE);
-            } else if (voices.contains(relatTime))         //todo: volume
+            } else if (voices.contains(relatTime))
                 playSound(relatTime);
         } else {
             if (showTray)
@@ -233,6 +234,7 @@ public class ClockService extends Service implements Soundable, Const {
         else
             try {
                 mediaPlayer = new MediaPlayer();
+                mediaPlayer.setVolume(0.00f,0.00f);
                 mediaPlayer.setDataSource(cachePath + soundPool.get(key));
                 mediaPlayer.prepare();
             } catch (IOException e) {
