@@ -128,7 +128,6 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
 
             // Set the output folder on the SDcard
             File cache = this.getExternalCacheDir();
-//            File directory = new File("/sdcard/some_folder");
             // Create the folder if it doesn't exist:
             if (!cache.exists()) {
                 cache.mkdirs();
@@ -154,13 +153,13 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
             myInput.close();
 
         } catch (FileNotFoundException e) {
-            Toast.makeText(EditVoiceActivity.this, "Backup Unsuccesfull!", Toast.LENGTH_LONG).show();
+            Toast.makeText(EditVoiceActivity.this, "Changed Unsuccesfull!", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         } catch (IOException e) {
-            Toast.makeText(EditVoiceActivity.this, "Backup Unsuccesfull!", Toast.LENGTH_LONG).show();
+            Toast.makeText(EditVoiceActivity.this, "Changed Unsuccesfull!", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
-        Toast.makeText(EditVoiceActivity.this, "Backup Done Succesfully!", Toast.LENGTH_LONG).show();
+        Toast.makeText(EditVoiceActivity.this, "Changed Done Succesfully!", Toast.LENGTH_LONG).show();
     }
 
 
