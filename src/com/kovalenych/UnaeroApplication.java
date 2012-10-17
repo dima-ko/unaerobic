@@ -12,7 +12,6 @@ import com.kovalenych.media.Article;
 import com.kovalenych.media.ArticleResponse;
 import com.kovalenych.media.Video;
 import com.kovalenych.media.VideoResponse;
-import com.kovalenych.tables.SoundManager;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
 import com.nostra13.universalimageloader.imageloader.ImageLoaderConfiguration;
 import org.apache.http.HttpEntity;
@@ -56,16 +55,16 @@ public class UnaeroApplication extends Application {
         videoQueue = new ArrayDeque<Video>();
         articleQueue = new ArrayDeque<Article>();
 
-        if (haveInternet())
-            new Thread() {
-                @Override
-                public void run() {
-
-                    updateVideo();
-                    updateArticles();
-
-                }
-            }.start();
+//        if (haveInternet())
+//            new Thread() {
+//                @Override
+//                public void run() {
+//
+//                    updateVideo();
+//                    updateArticles();
+//
+//                }
+//            }.start();
 
     }
 
@@ -80,10 +79,10 @@ public class UnaeroApplication extends Application {
         for (Article article : articles) {
             Log.d("added new article ", "" + article.getName() + "    uri " + article.getUri());
 //            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
+            article.toDomain();
             articleQueue.add(article);
         }
 
-        Toast.makeText(this, "Video updated", Toast.LENGTH_SHORT).show();
     }
 
     final String videoUrl = "http://unaerobic.appspot.com/co2gaevideo";
@@ -104,7 +103,7 @@ public class UnaeroApplication extends Application {
             videoQueue.add(video);
         }
 
-        Toast.makeText(this, "Video updated", Toast.LENGTH_SHORT).show();
+
     }
 
     public ArrayDeque<Video> getVideos() {

@@ -6,7 +6,7 @@ public class Article {
     private final String name;
     private final String author;
     private final String uri;
-    private final String domain;
+    private  String domain;
 
     public String getName() {
         return name;
@@ -28,20 +28,20 @@ public class Article {
         this.name = name;
         this.author = author;
         this.uri = uri;
-        this.domain = toDomain(uri);
+        toDomain();
     }
 
 
     /**
      * finding domain by url
      */
-    private String toDomain(String uri) {
+    public void toDomain() {
         String noHttp = uri.substring(7, uri.length());
         String noEnd;
         if (noHttp.contains("/"))
             noEnd = noHttp.substring(0, noHttp.indexOf("/"));
         else noEnd = noHttp;
-        return noEnd;
+        domain = noEnd;
     }
 
 

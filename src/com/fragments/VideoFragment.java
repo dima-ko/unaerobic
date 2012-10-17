@@ -60,6 +60,7 @@ public final class VideoFragment extends Fragment {
                 videoList.add(0, video);
             Log.d("VideoFra new video ", "" + video.getTitle() + "    uri " + video.getUri());
             //the end
+            Toast.makeText(getActivity(), "Video updated", Toast.LENGTH_SHORT).show();
         }
 
         //videos.clear();
