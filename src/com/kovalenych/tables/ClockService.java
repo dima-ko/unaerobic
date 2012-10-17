@@ -226,16 +226,22 @@ public class ClockService extends Service implements Soundable, Const {
         }
     }
 
+    public static final int maxVolume = 30;
+
     private void playSound(int key) {
         Object obj = soundPool.get(key);
-        if (obj instanceof Integer)
+        if (obj instanceof Integer) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), (Integer) obj);
-        else
+            float log1 = (float) (Math.log(maxVolume - volume) / Math.log(maxVolume));
+            mediaPlayer.setVolume(1 - log1, 1 - log1);
+
+        } else
             try {
                 mediaPlayer = new MediaPlayer();
                 mediaPlayer.setDataSource(cachePath + soundPool.get(key));
                 mediaPlayer.prepare();
-                mediaPlayer.setVolume(0.00f,0.00f);
+                float log1 = (float) (Math.log(maxVolume - volume) / Math.log(maxVolume));
+                mediaPlayer.setVolume(1 - log1, 1 - log1);
             } catch (IOException e) {
                 e.printStackTrace();
             }
