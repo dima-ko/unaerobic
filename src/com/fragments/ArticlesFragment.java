@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,13 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.kovalenych.MenuActivity;
+import com.kovalenych.UnaeroApplication;
 import com.kovalenych.media.Article;
 import com.kovalenych.R;
 import com.kovalenych.media.ArticleArrayAdapter;
+import com.kovalenych.media.Video;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class ArticlesFragment extends Fragment {
 
@@ -43,6 +43,17 @@ public final class ArticlesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        ArrayDeque<Article> articles = ((UnaeroApplication) getActivity().getApplication()).getArticles();
+
+        for (Article article : articles) {
+            if (!artList.contains(article))
+                artList.add(0, article);
+            Log.d("ArtFrag new article ", "" + article.getName() + "    uri " + article.getUri());
+            //the end
+        }
+
+
         View tables = inflater.inflate(R.layout.articles, null);
         lv = (ListView) tables.findViewById(R.id.articles_list);
         lv.setOnItemClickListener(listener);

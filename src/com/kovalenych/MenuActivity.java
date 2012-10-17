@@ -11,10 +11,24 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.View;
+import android.widget.Toast;
 import com.fragments.*;
+import com.google.gson.Gson;
+import com.kovalenych.media.VideoResponse;
+import com.kovalenych.media.Video;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.List;
 
 
 public class MenuActivity extends FragmentActivity implements Const {
@@ -83,9 +97,10 @@ public class MenuActivity extends FragmentActivity implements Const {
 
         if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
-           tablesFragment.onTableFinish();
+            tablesFragment.onTableFinish();
         }
     }
+
 
     TablesFragment tablesFragment;
 
