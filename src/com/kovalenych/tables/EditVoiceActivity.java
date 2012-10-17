@@ -93,7 +93,7 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
 
-        if (resultCode == RESULT_OK) {  //todo: long click selection blue
+        if (resultCode == RESULT_OK) {
             /*
             * you can use two flags included in data
             */
