@@ -23,7 +23,6 @@ import java.util.Map;
  */
 public class ClockService extends Service implements Soundable, Const {
 
-    private int position;
     Table table;
     Vibrator v;
     PendingIntent pi;
@@ -84,7 +83,6 @@ public class ClockService extends Service implements Soundable, Const {
         int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
         long when = System.currentTimeMillis(); // Выясним системное время
         Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
-//                    notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
         PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
         RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
@@ -122,7 +120,7 @@ public class ClockService extends Service implements Soundable, Const {
             Log.d(LOG_TAG, "tableName  " + name);
             volume = intent.getIntExtra(PARAM_VOLUME, 0);
             Log.d(LOG_TAG, "set volume " + volume);
-            int size = cyclesBundle.getInt("tablesize");
+            int size = cyclesBundle.getInt("tablesize");  //todo: test on real devices
             table = new Table();
             for (int i = 0; i < size; i++) {
                 table.getCycles().add(
@@ -130,7 +128,7 @@ public class ClockService extends Service implements Soundable, Const {
                 );
                 Log.d(LOG_TAG, "new cycle" + table.getCycles().get(i).convertToString());
             }
-            position = cyclesBundle.getInt("number");
+            int position = cyclesBundle.getInt("number");
             vibrationEnabled = cyclesBundle.getBoolean("vibro");
             voices = cyclesBundle.getIntegerArrayList("voices");
             task = new ClockTask(table, true);
@@ -207,8 +205,6 @@ public class ClockService extends Service implements Soundable, Const {
         }
         //vibrate  or sound
 
-//        mediaPlayer.setDataSrouce(appContext, Uri.parse("android.resource://com.package.name/raw/song"));
-
         if (time == 0 && vibrationEnabled)
             v.vibrate(200);
         if (breathing) {
@@ -222,7 +218,7 @@ public class ClockService extends Service implements Soundable, Const {
                 playSound(relatTime);
         } else {
             if (showTray)
-                showProgressInTray(time, hold, breathing);
+                showProgressInTray(time, hold, breathing); //todo: test 5 sec
             if (time == 0 && voices.contains(START))
                 playSound(START);
             else if (voices.contains(time))
@@ -252,7 +248,6 @@ public class ClockService extends Service implements Soundable, Const {
         if (voices.contains(BREATHE)) {
             playSound(BREATHE);
         }
-//            soundManager.playSound(BREATHE, volume);
         if (vibrationEnabled)
             v.vibrate(200);
 
@@ -271,12 +266,6 @@ public class ClockService extends Service implements Soundable, Const {
     public IBinder onBind(Intent arg0) {
         return null;
     }
-
-//    @Override
-//    public void onPrepared(MediaPlayer mp) {
-//        if (mediaPlayer != null)
-//            mediaPlayer.start();
-//    }
 
 
     class ClockTask extends AsyncTask<Integer, Integer, Void> {
