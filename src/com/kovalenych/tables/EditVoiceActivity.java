@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import com.kovalenych.Const;
@@ -160,12 +163,33 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
         Toast.makeText(EditVoiceActivity.this, "Backup Done Succesfully!", Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.edit_sound_menu, menu);
+        return true;
     }
 
-    //todo: in menu button: restore defaults
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+
+        switch (item.getItemId()) {
+            case R.id.menu_restore_sounds:
+                SharedPreferences.Editor editor = _preferedSettings.edit();
+                editor.clear();
+                editor.commit();
+                sounds.clear();
+                addDefaultSounds();
+                invalidateList();
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 }
