@@ -4,7 +4,6 @@ import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.*;
 import android.util.Log;
@@ -234,9 +233,9 @@ public class ClockService extends Service implements Soundable, Const {
         else
             try {
                 mediaPlayer = new MediaPlayer();
-                mediaPlayer.setVolume(0.00f,0.00f);
                 mediaPlayer.setDataSource(cachePath + soundPool.get(key));
                 mediaPlayer.prepare();
+                mediaPlayer.setVolume(0.00f,0.00f);
             } catch (IOException e) {
                 e.printStackTrace();
             }
