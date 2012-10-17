@@ -127,7 +127,7 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
             myInput = new FileInputStream(fromPath);
 
             // Set the output folder on the SDcard
-            File cache = this.getExternalCacheDir();
+            File cache = getExternalCacheDir();
             // Create the folder if it doesn't exist:
             if (!cache.exists()) {
                 cache.mkdirs();

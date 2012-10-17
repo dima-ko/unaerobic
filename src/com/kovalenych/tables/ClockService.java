@@ -14,6 +14,7 @@ import com.kovalenych.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * this class was made
@@ -39,6 +40,7 @@ public class ClockService extends Service implements Soundable, Const {
     MediaPlayer mediaPlayer;
     private int volume;
     private SharedPreferences _preferedSettings;
+    private String cachePath;
 
     public void onCreate() {
         super.onCreate();
@@ -51,6 +53,7 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d("zzzzzzbla", "" + bla);
 
         fillPool();
+        cachePath = getExternalCacheDir().getPath() + "/";
     }
 
     private void fillPool() {
@@ -66,6 +69,12 @@ public class ClockService extends Service implements Soundable, Const {
         soundPool.put(AFTER_START_4, R.raw.after4min);
         soundPool.put(AFTER_START_5, R.raw.after5min);
         soundPool.put(BREATHE, R.raw.breathe);
+
+        SharedPreferences voiceFileSettings = getSharedPreferences("voice_files", MODE_PRIVATE);
+        Map<String, String> savedSounds = (Map<String, String>) voiceFileSettings.getAll();
+        for (String key : savedSounds.keySet()) {
+            soundPool.put(Integer.parseInt(key), savedSounds.get(key));
+        }
 
     }
 
@@ -227,7 +236,9 @@ public class ClockService extends Service implements Soundable, Const {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), (Integer) obj);
         else
             try {
-                mediaPlayer.setDataSource((String) soundPool.get(key));
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer.setDataSource(cachePath + soundPool.get(key));
+                mediaPlayer.prepare();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -239,8 +250,7 @@ public class ClockService extends Service implements Soundable, Const {
     public void onTableFinish() {
 
         if (voices.contains(BREATHE)) {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.breathe);
-            mediaPlayer.start();
+            playSound(BREATHE);
         }
 //            soundManager.playSound(BREATHE, volume);
         if (vibrationEnabled)
