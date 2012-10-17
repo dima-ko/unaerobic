@@ -62,7 +62,7 @@ public final class VideoFragment extends Fragment {
             //the end
         }
 
-        videos.clear();
+        //videos.clear();
 
         View tables = inflater.inflate(R.layout.videos, null);
         ((ListView) tables.findViewById(R.id.video_list)).setAdapter(new ItemAdapter());

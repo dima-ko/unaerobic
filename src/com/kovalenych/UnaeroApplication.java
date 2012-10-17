@@ -78,7 +78,7 @@ public class UnaeroApplication extends Application {
         List<Article> articles = response.articles;
 
         for (Article article : articles) {
-            Log.d("added new video ", "" + article.getName() + "    uri " + article.getUri());
+            Log.d("added new article ", "" + article.getName() + "    uri " + article.getUri());
 //            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
             articleQueue.add(article);
         }
@@ -109,6 +109,10 @@ public class UnaeroApplication extends Application {
 
     public ArrayDeque<Video> getVideos() {
         return videoQueue;
+    }
+
+    public ArrayDeque<Article> getArticles() {
+        return articleQueue;
     }
 
     private InputStream retrieveStream(String url) {
