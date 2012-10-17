@@ -31,7 +31,7 @@ public class SoundsArrayAdapter extends ArrayAdapter<Sound> {
             rowView = inflater.inflate(R.layout.sound_item, null, true);
         }
 
-        ((TextView) rowView.findViewById(R.id.sound_name)).setText(sounds.get(position).name);
+        ((TextView) rowView.findViewById(R.id.sound_name)).setText(sounds.get(position).label);
         ((TextView) rowView.findViewById(R.id.sound_path)).setText(sounds.get(position).fileName);
 
         return rowView;

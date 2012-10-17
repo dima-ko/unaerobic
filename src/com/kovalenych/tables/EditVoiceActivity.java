@@ -15,6 +15,7 @@ import group.pals.android.lib.ui.filechooser.services.IFileProvider;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class EditVoiceActivity extends Activity implements Soundable, Const {
 
@@ -29,22 +30,18 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sounds_edit);
 
-        _preferedSettings = getSharedPreferences("voice_files", MODE_PRIVATE);
-
         sounds = new ArrayList<Sound>();
+        addDefaultSounds();
 
-        sounds.add(new Sound(TO_START_2_MIN, "2 min to start", "to2min.mp3"));
-        sounds.add(new Sound(TO_START_1_MIN, "1 min to start", "to1min.mp3"));
-        sounds.add(new Sound(TO_START_30_SEC, "30 sec to start", "to30sec.mp3"));
-        sounds.add(new Sound(TO_START_10_SEC, "10 sec to start", "to10sec.mp3"));
-        sounds.add(new Sound(TO_START_5_SEC, "5 sec to start", "to5sec.mp3"));
-        sounds.add(new Sound(START, "start", "start.mp3"));
-        sounds.add(new Sound(AFTER_START_1, "1 min after start", "after1min.mp3"));
-        sounds.add(new Sound(AFTER_START_2, "2 min after start", "after2min.mp3"));
-        sounds.add(new Sound(AFTER_START_3, "3 min after start", "after3min.mp3"));
-        sounds.add(new Sound(AFTER_START_4, "4 min after start", "after4min.mp3"));
-        sounds.add(new Sound(AFTER_START_5, "5 min after start", "after5min.mp3"));
-        sounds.add(new Sound(BREATHE, "breathe", "breathe.mp3"));
+        _preferedSettings = getSharedPreferences("voice_files", MODE_PRIVATE);
+        Map<String, String> savedSounds = (Map<String, String>) _preferedSettings.getAll();
+        for (String key : savedSounds.keySet()) {
+            for (int i = 0; i < sounds.size(); i++) {
+                Sound sound = sounds.get(i);
+                if (sound.index == Integer.parseInt(key))
+                    sound.fileName = savedSounds.get(key);
+            }
+        }
 
         Toast.makeText(this, "click to edit", Toast.LENGTH_SHORT).show();
 
@@ -64,6 +61,21 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
                 startActivityForResult(intent, position);
             }
         });
+    }
+
+    private void addDefaultSounds() {
+        sounds.add(new Sound(TO_START_2_MIN, "2 min to start", "to2min.mp3"));
+        sounds.add(new Sound(TO_START_1_MIN, "1 min to start", "to1min.mp3"));
+        sounds.add(new Sound(TO_START_30_SEC, "30 sec to start", "to30sec.mp3"));
+        sounds.add(new Sound(TO_START_10_SEC, "10 sec to start", "to10sec.mp3"));
+        sounds.add(new Sound(TO_START_5_SEC, "5 sec to start", "to5sec.mp3"));
+        sounds.add(new Sound(START, "start", "start.mp3"));
+        sounds.add(new Sound(AFTER_START_1, "1 min after start", "after1min.mp3"));
+        sounds.add(new Sound(AFTER_START_2, "2 min after start", "after2min.mp3"));
+        sounds.add(new Sound(AFTER_START_3, "3 min after start", "after3min.mp3"));
+        sounds.add(new Sound(AFTER_START_4, "4 min after start", "after4min.mp3"));
+        sounds.add(new Sound(AFTER_START_5, "5 min after start", "after5min.mp3"));
+        sounds.add(new Sound(BREATHE, "breathe", "breathe.mp3"));
     }
 
     public void invalidateList() {
@@ -97,7 +109,9 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
             String path = files.get(0).getAbsolutePath();
             Log.d("Edit activity path", path);
             copyFileToAppFolder(path, name);
-            //todo: add to prefs
+            SharedPreferences.Editor editor = _preferedSettings.edit();
+            editor.putString("" + sounds.get(requestCode).index, name);
+            editor.commit();
             invalidateList();
         }
     }
@@ -144,6 +158,12 @@ public class EditVoiceActivity extends Activity implements Soundable, Const {
             e.printStackTrace();
         }
         Toast.makeText(EditVoiceActivity.this, "Backup Done Succesfully!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
     }
 
     //todo: in menu button: restore defaults
