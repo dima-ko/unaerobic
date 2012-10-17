@@ -157,6 +157,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
+
+
+
     }
 
     private void invalidateList() {
@@ -272,7 +275,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 Intent intent = new Intent(lv.getContext(), ClockActivity.class);
                 Bundle bun = new Bundle();
 
-
                 bun.putInt("tablesize", curTable.getCycles().size());
 
                 for (int i = 0; i < curTable.getCycles().size(); i++) {
@@ -373,7 +375,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 voiceDialog.findViewById(R.id.edit_sounds).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(ptr, FileChooserActivity.class));
+                        startActivity(new Intent(ptr, EditVoiceActivity.class));
                     }
                 });
                 voiceDialog.show();

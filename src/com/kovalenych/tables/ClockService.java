@@ -3,12 +3,17 @@ package com.kovalenych.tables;
 import android.app.*;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.*;
 import android.util.Log;
 import android.widget.RemoteViews;
 import com.kovalenych.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * this class was made
@@ -17,7 +22,6 @@ import java.util.ArrayList;
  */
 public class ClockService extends Service implements Soundable, Const {
 
-    private int position;
     Table table;
     Vibrator v;
     PendingIntent pi;
@@ -27,17 +31,48 @@ public class ClockService extends Service implements Soundable, Const {
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
     String name;
+    HashMap<Integer, Object> soundPool = new HashMap<Integer, Object>();
 
     public boolean showTray = false;
 
-    SoundManager soundManager;
+    MediaPlayer mediaPlayer;
     private int volume;
+    private SharedPreferences _preferedSettings;
+    private String cachePath;
 
     public void onCreate() {
         super.onCreate();
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(LOG_TAG, "ClockService onCreate");
-        soundManager = new SoundManager(this);
+        mediaPlayer = new MediaPlayer();
+
+        _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
+        int bla = _preferedSettings.getInt("volume", 15);
+        Log.d("zzzzzzbla", "" + bla);
+
+        fillPool();
+        cachePath = getExternalCacheDir().getPath() + "/";
+    }
+
+    private void fillPool() {
+        soundPool.put(TO_START_2_MIN, R.raw.to2min);
+        soundPool.put(TO_START_1_MIN, R.raw.to1min);
+        soundPool.put(TO_START_30_SEC, R.raw.to30sec);
+        soundPool.put(TO_START_10_SEC, R.raw.to10sec);
+        soundPool.put(TO_START_5_SEC, R.raw.to5sec);
+        soundPool.put(START, R.raw.start);
+        soundPool.put(AFTER_START_1, R.raw.after1min);
+        soundPool.put(AFTER_START_2, R.raw.after2min);
+        soundPool.put(AFTER_START_3, R.raw.after3min);
+        soundPool.put(AFTER_START_4, R.raw.after4min);
+        soundPool.put(AFTER_START_5, R.raw.after5min);
+        soundPool.put(BREATHE, R.raw.breathe);
+
+        SharedPreferences voiceFileSettings = getSharedPreferences("voice_files", MODE_PRIVATE);
+        Map<String, String> savedSounds = (Map<String, String>) voiceFileSettings.getAll();
+        for (String key : savedSounds.keySet()) {
+            soundPool.put(Integer.parseInt(key), savedSounds.get(key));
+        }
 
     }
 
@@ -47,7 +82,6 @@ public class ClockService extends Service implements Soundable, Const {
         int icon = R.drawable.tray_icon; // Иконка для уведомления, я решил воспользоваться стандартной иконкой для Email
         long when = System.currentTimeMillis(); // Выясним системное время
         Intent notificationIntent = new Intent(this, ClockActivity.class); // Создаем экземпляр Intent
-//                    notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         Notification notification = new Notification(icon, null, when); // Создаем экземпляр уведомления, и передаем ему наши параметры
         PendingIntent contentIntent = PendingIntent.getActivity(this, 5, notificationIntent, 0); // Подробное описание смотреть в UPD к статье
         RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notif); // Создаем экземпляр RemoteViews указывая использовать разметку нашего уведомления
@@ -65,6 +99,8 @@ public class ClockService extends Service implements Soundable, Const {
         nMgr.cancel(NOTIFY_ID);
         if (task != null)
             task.cancel(true);
+        mediaPlayer.release();
+        mediaPlayer = null;
         Log.d(LOG_TAG, "ClockService onDestroy");
     }
 
@@ -75,6 +111,7 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d(LOG_TAG, "ClockService onStartCommand" + flags);
 
         String destination = intent.getStringExtra(FLAG);
+
         if (destination.equals(FLAG_CREATE)) {
             Log.d(LOG_TAG, FLAG_CREATE);
             Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);
@@ -91,7 +128,7 @@ public class ClockService extends Service implements Soundable, Const {
                 );
                 Log.d(LOG_TAG, "new cycle" + table.getCycles().get(i).convertToString());
             }
-            position = cyclesBundle.getInt("number");
+            int position = cyclesBundle.getInt("number");
             vibrationEnabled = cyclesBundle.getBoolean("vibro");
             voices = cyclesBundle.getIntegerArrayList("voices");
             task = new ClockTask(table, true);
@@ -175,24 +212,49 @@ public class ClockService extends Service implements Soundable, Const {
                 showProgressInTray(time, breathe, breathing);
             //breath
             int relatTime = time - breathe;
-            if (time == 0 && voices.contains(BREATHE))
-                soundManager.playSound(BREATHE, volume);
-            else if (voices.contains(relatTime))
-                soundManager.playSound(relatTime, volume);
+            if (time == 0 && voices.contains(BREATHE)) {
+                playSound(BREATHE);
+            } else if (voices.contains(relatTime))
+                playSound(relatTime);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
-            if (time == 0 && voices.contains(START))                 //hold
-                soundManager.playSound(START, volume);
+            if (time == 0 && voices.contains(START))
+                playSound(START);
             else if (voices.contains(time))
-                soundManager.playSound(time, volume);
+                playSound(time);
         }
     }
 
+    public static final int MAX_VOLUME = 30;
+
+    private void playSound(int key) {
+        Object obj = soundPool.get(key);
+        if (obj instanceof Integer) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), (Integer) obj);
+            float log1 = (float) (Math.log(MAX_VOLUME - volume) / Math.log(MAX_VOLUME));
+            mediaPlayer.setVolume(1 - log1, 1 - log1);
+
+        } else
+            try {
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer.setDataSource(cachePath + soundPool.get(key));
+                mediaPlayer.prepare();
+                float log1 = (float) (Math.log(MAX_VOLUME - volume) / Math.log(MAX_VOLUME));
+                mediaPlayer.setVolume(1 - log1, 1 - log1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        mediaPlayer.start();
+    }
+
+
     public void onTableFinish() {
 
-        if (voices.contains(BREATHE))
-            soundManager.playSound(BREATHE, volume);
+        if (voices.contains(BREATHE)) {
+            playSound(BREATHE);
+        }
         if (vibrationEnabled)
             v.vibrate(200);
 

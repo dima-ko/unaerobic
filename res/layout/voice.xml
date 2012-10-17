@@ -201,10 +201,11 @@
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
                         />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/minutes3"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
+                <com.kovalenych.roboto.TextViewRoboto
+                        android:gravity="center"
+                        android:text="@string/minutes3"
+                        android:layout_height="fill_parent"
+                        android:layout_width="fill_parent"
                         />
             </LinearLayout>
 
@@ -217,10 +218,11 @@
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
                         />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/minutes4"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
+                <com.kovalenych.roboto.TextViewRoboto
+                        android:gravity="center"
+                        android:text="@string/minutes4"
+                        android:layout_height="fill_parent"
+                        android:layout_width="fill_parent"
                         />
             </LinearLayout>
 
@@ -233,10 +235,11 @@
                           android:layout_height="fill_parent"
                           android:layout_width="wrap_content"
                         />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/minutes5"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
+                <com.kovalenych.roboto.TextViewRoboto
+                        android:gravity="center"
+                        android:text="@string/minutes5"
+                        android:layout_height="fill_parent"
+                        android:layout_width="fill_parent"
                         />
             </LinearLayout>
 
@@ -257,11 +260,20 @@
             </LinearLayout>
 
             <com.kovalenych.roboto.ButtonRoboto
-                    android:visibility="invisible"
+                    android:layout_marginTop="1pt"
+                    android:background="#ff333333"
+                    android:textColor="#FFFFFFFF"
+                    android:gravity="center"
+                    android:padding="2pt"
                     android:id="@+id/edit_sounds"
-                    android:text="edit sounds"
-                    android:layout_height="fill_parent"
+                    android:text="@string/edit_sounds"
+                    android:layout_height="19pt"
                     android:layout_width="fill_parent"
+                    />
+            <LinearLayout
+                    android:background="#00000000"
+                    android:layout_height="6pt"
+                    android:layout_width="1dp"
                     />
 
         </LinearLayout>
