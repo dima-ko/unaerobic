@@ -53,7 +53,7 @@ public final class VideoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ArrayDeque<Video> videos = ((UnaeroApplication) getActivity().getApplication()).getVideos();
+        ArrayList<Video> videos = ((UnaeroApplication) getActivity().getApplication()).getVideos();
 
         for (Video video : videos) {
             if (!videoList.contains(video))

@@ -44,7 +44,7 @@ public final class ArticlesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ArrayDeque<Article> articles = ((UnaeroApplication) getActivity().getApplication()).getArticles();
+        ArrayList<Article> articles = ((UnaeroApplication) getActivity().getApplication()).getArticles();
 
         for (Article article : articles) {
             if (!artList.contains(article))

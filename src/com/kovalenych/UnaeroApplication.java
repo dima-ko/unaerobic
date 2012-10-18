@@ -25,13 +25,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
 public class UnaeroApplication extends Application {
 
-    ArrayDeque<Video> videoQueue;
-    ArrayDeque<Article> articleQueue;
+    ArrayList<Video> videoQueue;
+    ArrayList<Article> articleQueue;
 
     @Override
     public void onCreate() {
@@ -52,8 +53,8 @@ public class UnaeroApplication extends Application {
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
 
-        videoQueue = new ArrayDeque<Video>();
-        articleQueue = new ArrayDeque<Article>();
+        videoQueue = new ArrayList<Video>();
+        articleQueue = new ArrayList<Article>();
 
 //        if (haveInternet())
 //            new Thread() {
@@ -106,11 +107,11 @@ public class UnaeroApplication extends Application {
 
     }
 
-    public ArrayDeque<Video> getVideos() {
+    public ArrayList<Video> getVideos() {
         return videoQueue;
     }
 
-    public ArrayDeque<Article> getArticles() {
+    public ArrayList<Article> getArticles() {
         return articleQueue;
     }
 
