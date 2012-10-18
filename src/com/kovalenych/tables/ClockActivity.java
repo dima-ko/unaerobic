@@ -131,7 +131,9 @@ public class ClockActivity extends Activity implements Const {
 
 
         holdBar = (ClockView) rightCircle.findViewById(R.id.run_static_progress);
+        holdBar.setDimensions(w);
         breathBar = (ClockView) leftCircle.findViewById(R.id.run_ventilate_progress);
+        breathBar.setDimensions(w);
 
 
 //        topTimeText = (TextView) findViewById(R.id.topTime);
@@ -198,17 +200,22 @@ public class ClockActivity extends Activity implements Const {
                 breathTimeText.setVisibility(View.VISIBLE);
             if (holdTimeText.getVisibility() == View.VISIBLE)
                 holdTimeText.setVisibility(View.INVISIBLE);
-            breathBar.angle = wholeTime;
+            breathBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
+            breathBar.invalidateClock();
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
             breathTimeText.setText(showTime);
         } else if (resultCode == STATUS_HOLD) {
-            if (holdTimeText.getVisibility() != View.VISIBLE)
+            if (holdTimeText.getVisibility() != View.VISIBLE) {
                 holdTimeText.setVisibility(View.VISIBLE);
+                breathBar.angle = (float) (2 * Math.PI);
+                breathBar.invalidateClock();
+            }
             if (breathTimeText.getVisibility() == View.VISIBLE)    //TODO rotate timer when portrait
                 breathTimeText.setVisibility(View.INVISIBLE);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
             holdTimeText.setText(showTime);
-            holdBar.angle = wholeTime;
+            holdBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
+            holdBar.invalidateClock();
         } else if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
             addTray = false;
