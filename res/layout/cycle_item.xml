@@ -7,16 +7,16 @@
     <ProgressBar
             android:id="@+id/cycle_pic"
             android:layout_centerVertical="true"
-            android:layout_height="18pt"
-            android:layout_width="18pt"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
             />
 
     <com.kovalenych.roboto.TextViewRoboto
             android:gravity="center"
             android:id="@+id/cycle_item"
             android:layout_width="fill_parent"
-            android:layout_height="25pt"
-            android:textSize="10pt"
+            android:layout_height="65dp"
+            android:textSize="19dp"
             />
 
     <com.kovalenych.roboto.TextViewRoboto
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
-            android:textSize="7pt"
+            android:textSize="18dp"
             android:layout_marginRight="6pt"
 
             />

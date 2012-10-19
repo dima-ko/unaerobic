@@ -239,7 +239,7 @@ public final class TablesFragment extends Fragment implements Const {
         Intent intent;
 
         // Создаем PendingIntent для Task1
-        pi = getActivity().createPendingResult(1, null, 0);
+        pi = getActivity().createPendingResult(1, new Intent(), 0);
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
         intent = new Intent(getActivity(), ClockService.class)

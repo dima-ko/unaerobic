@@ -148,7 +148,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         Intent intent;
 
         // Создаем PendingIntent для Task1
-        pi = createPendingResult(1, null, 0);
+        pi = createPendingResult(1, new Intent(), 0);
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
         intent = new Intent(this, ClockService.class)
