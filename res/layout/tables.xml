@@ -12,6 +12,7 @@
             />
 
     <ListView
+            android:listSelector="@drawable/list_bg"
             android:id="@+id/tables_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,8 +25,8 @@
             android:id="@+id/add_table"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="35pt"
-            android:layout_height="35pt"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:background="@drawable/plus_action"
             />
 
@@ -35,8 +36,8 @@
             android:layout_marginLeft="3pt"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="28pt"
-            android:layout_height="28pt"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:background="@drawable/quest"
             />
 
@@ -45,8 +46,8 @@
             android:layout_marginBottom="5pt"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="26pt"
-            android:layout_height="26pt"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
             android:background="@drawable/stop_button"
             />
 
