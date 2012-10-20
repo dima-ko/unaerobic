@@ -38,8 +38,6 @@ public final class ArticlesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        artList = new ArrayList<Article>();
-        fillList();
         // http://www.aidainternational.org/freediving/history
 
     }
@@ -47,14 +45,17 @@ public final class ArticlesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        artList = new ArrayList<Article>();
+        fillList();
+
         if (!UnaeroApplication.updLock) {
             MediaDBHelper mediaDBHelper = new MediaDBHelper(getActivity());
             SQLiteDatabase db = mediaDBHelper.getReadableDatabase();
             Cursor cursor = db.query(MediaDBHelper.ARTICLES_TABLE, new String[]{MediaDBHelper.C_ID, MediaDBHelper.C_ART_NAME, MediaDBHelper.C_ART_URL, MediaDBHelper.C_ART_AUTHOR},
                     null, null, null, null, null);
             int nameColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_NAME);
-            int urlColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_AUTHOR);
-            int authorColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_URL);
+            int urlColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_URL);
+            int authorColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_AUTHOR);
 
             while (cursor.moveToNext()) {
                 artList.add(0, new Article(cursor.getString(nameColumn), cursor.getString(authorColumn), cursor.getString(urlColumn)));

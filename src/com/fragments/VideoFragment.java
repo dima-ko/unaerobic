@@ -39,7 +39,7 @@ public final class VideoFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             if (((MenuActivity) getActivity()).haveInternet()) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoList.get(videoList.size() - i).getUri()));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoList.get(i).getUri()));
                 startActivity(intent);
             } else {
                 Toast.makeText(getActivity(), getActivity().getString(R.string.noConnectVid), Toast.LENGTH_SHORT).show();
@@ -50,13 +50,13 @@ public final class VideoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        videoList = new ArrayList<Video>();
-        fillList();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        videoList = new ArrayList<Video>();
+        fillList();
 
         if (!UnaeroApplication.updLock) {
             MediaDBHelper mediaDBHelper = new MediaDBHelper(getActivity());

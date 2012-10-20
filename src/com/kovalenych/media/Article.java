@@ -39,12 +39,7 @@ public class Article {
      */
     public void toDomain() {
         String noHttp = "";
-        try {
-            noHttp = uri.substring(7, uri.length());
-        } catch (Exception e) {
-            Log.e("exceptionzzzzz", uri + "\n");
-            e.printStackTrace();
-        }
+        noHttp = uri.substring(7, uri.length());
         String noEnd;
         if (noHttp.contains("/"))
             noEnd = noHttp.substring(0, noHttp.indexOf("/"));
