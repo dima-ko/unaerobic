@@ -27,8 +27,8 @@ public class MediaDBHelper extends SQLiteOpenHelper {
     public static final String C_VIDEO_NAME = "video_name";
     public static final String C_VIDEO_URL = "video_url";
 
-    public MediaDBHelper(Context context, String filename) {
-        super(context, filename, null, DB_VERSION);
+    public MediaDBHelper(Context context) {
+        super(context, FILE_NAME, null, DB_VERSION);
     }
 
     @Override

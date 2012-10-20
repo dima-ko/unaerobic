@@ -1,18 +1,18 @@
 package com.kovalenych;
 
 import android.app.Application;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 import com.google.gson.Gson;
-import com.kovalenych.media.Article;
-import com.kovalenych.media.ArticleResponse;
-import com.kovalenych.media.Video;
-import com.kovalenych.media.VideoResponse;
+import com.kovalenych.media.*;
+import com.kovalenych.ranking.DBHelper;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
 import com.nostra13.universalimageloader.imageloader.ImageLoaderConfiguration;
 import org.apache.http.HttpEntity;
@@ -29,11 +29,9 @@ import java.util.*;
 
 public class UnaeroApplication extends Application {
 
-    ArrayList<Video> videoQueue;
-    ArrayList<Article> articleQueue;
-
 
     SharedPreferences preferences;
+    private MediaDBHelper dbHelper;
 
     @Override
     public void onCreate() {
@@ -57,9 +55,6 @@ public class UnaeroApplication extends Application {
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
 
-        videoQueue = new ArrayList<Video>();
-        articleQueue = new ArrayList<Article>();
-
         if (haveInternet())
             new Thread() {
                 @Override
@@ -75,22 +70,32 @@ public class UnaeroApplication extends Application {
 
 
     private void updateArticles(long lastUpdTime) {
+
+
         InputStream source = retrieveStream(articleUrl + "?lasttime=" + lastUpdTime);
+        if (source == null)
+            return;
+
         Gson gson = new Gson();
         Reader reader = new InputStreamReader(source);
         ArticleResponse response = gson.fromJson(reader, ArticleResponse.class);
 
         List<Article> articles = response.articles;
 
+        dbHelper = new MediaDBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         for (Article article : articles) {
-            Log.d("added new article ", "" + article.getName() + "    uri " + article.getUri());
-//            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
-            article.toDomain();
-            articleQueue.add(article);
+            ContentValues cv = new ContentValues();
+            cv.put(MediaDBHelper.C_ART_NAME, article.getName());
+            cv.put(MediaDBHelper.C_ART_URL, article.getUri());
+            cv.put(MediaDBHelper.C_ART_AUTHOR, article.getAuthor());
+            db.insert(MediaDBHelper.ARTICLES_TABLE, null, cv);
         }
+        db.close();
+        dbHelper.close();
 
-        if (source != null)
-            preferences.edit().putLong("lastUpd", new Date().getTime());
+        preferences.edit().putLong("lastUpd", new Date().getTime());
+
     }
 
     final String videoUrl = "http://unaerobic.appspot.com/co2gaevideo";
@@ -99,31 +104,29 @@ public class UnaeroApplication extends Application {
     private void updateVideo(long lastUpdTime) {
 
         InputStream source = retrieveStream(videoUrl + "?lasttime=" + lastUpdTime);
+        if (source == null)
+            return;
         Gson gson = new Gson();
         Reader reader = new InputStreamReader(source);
         VideoResponse response = gson.fromJson(reader, VideoResponse.class);
 
         List<Video> videos = response.videos;
 
+
+        dbHelper = new MediaDBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         for (Video video : videos) {
-            Log.d("added new video ", "" + video.getTitle() + "    uri " + video.getUri());
-//            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
-            videoQueue.add(video);
+            ContentValues cv = new ContentValues();
+            cv.put(MediaDBHelper.C_VIDEO_NAME, video.getTitle());
+            cv.put(MediaDBHelper.C_VIDEO_URL, video.getUri());
+            db.insert(MediaDBHelper.VIDEO_TABLE, null, cv);
         }
+        db.close();
+        dbHelper.close();
 
-        if (source != null)
-            preferences.edit().putLong("lastUpd", new Date().getTime());
 
-        //add to db
+        preferences.edit().putLong("lastUpd", new Date().getTime());
 
-    }
-
-    public ArrayList<Video> getVideos() {
-        return videoQueue;
-    }
-
-    public ArrayList<Article> getArticles() {
-        return articleQueue;
     }
 
     private InputStream retrieveStream(String url) {
