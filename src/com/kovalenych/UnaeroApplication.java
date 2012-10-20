@@ -24,10 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class UnaeroApplication extends Application {
 
@@ -56,21 +53,23 @@ public class UnaeroApplication extends Application {
         videoQueue = new ArrayList<Video>();
         articleQueue = new ArrayList<Article>();
 
-//        if (haveInternet())
-//            new Thread() {
-//                @Override
-//                public void run() {
-//
-//                    updateVideo();
-//                    updateArticles();
-//
-//                }
-//            }.start();
+        if (haveInternet())
+            new Thread() {
+                @Override
+                public void run() {
+
+                    updateVideo();
+                    updateArticles();
+
+                }
+            }.start();
 
     }
 
+
     private void updateArticles() {
-        InputStream source = retrieveStream(articleUrl);
+        Date now = new Date();
+        InputStream source = retrieveStream(articleUrl + "?lasttime=" + now.getTime());
         Gson gson = new Gson();
         Reader reader = new InputStreamReader(source);
         ArticleResponse response = gson.fromJson(reader, ArticleResponse.class);
