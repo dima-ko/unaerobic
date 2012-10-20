@@ -1,12 +1,14 @@
 package com.kovalenych.media;
 
 
+import android.util.Log;
+
 public class Article {
 
     private final String name;
     private final String author;
     private final String uri;
-    private  String domain;
+    private String domain;
 
     public String getName() {
         return name;
@@ -36,7 +38,13 @@ public class Article {
      * finding domain by url
      */
     public void toDomain() {
-        String noHttp = uri.substring(7, uri.length());
+        String noHttp = "";
+        try {
+            noHttp = uri.substring(7, uri.length());
+        } catch (Exception e) {
+            Log.e("exceptionzzzzz", uri + "\n");
+            e.printStackTrace();
+        }
         String noEnd;
         if (noHttp.contains("/"))
             noEnd = noHttp.substring(0, noHttp.indexOf("/"));

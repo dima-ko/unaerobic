@@ -47,7 +47,6 @@ public final class ArticlesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
         if (!UnaeroApplication.updLock) {
             MediaDBHelper mediaDBHelper = new MediaDBHelper(getActivity());
             SQLiteDatabase db = mediaDBHelper.getReadableDatabase();
@@ -63,6 +62,7 @@ public final class ArticlesFragment extends Fragment {
             db.close();
             mediaDBHelper.close();
         }
+
 
         View tables = inflater.inflate(R.layout.articles, null);
         lv = (ListView) tables.findViewById(R.id.articles_list);

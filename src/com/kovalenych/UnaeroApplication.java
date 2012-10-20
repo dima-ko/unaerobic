@@ -64,6 +64,7 @@ public class UnaeroApplication extends Application {
                     updateVideo(lastUpdTime);
                     updateArticles(lastUpdTime);
                     updLock = false;
+                    Log.d("Unaer", "updated");
 
                 }
             }.start();
@@ -72,7 +73,6 @@ public class UnaeroApplication extends Application {
 
 
     private void updateArticles(long lastUpdTime) {
-
 
         InputStream source = retrieveStream(articleUrl + "?lasttime=" + lastUpdTime);
         if (source == null)
