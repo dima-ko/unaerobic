@@ -1,6 +1,8 @@
 package com.fragments;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import com.kovalenych.UnaeroApplication;
 import com.kovalenych.media.Article;
 import com.kovalenych.R;
 import com.kovalenych.media.ArticleArrayAdapter;
+import com.kovalenych.media.MediaDBHelper;
 import com.kovalenych.media.Video;
 
 import java.util.*;
@@ -44,13 +47,21 @@ public final class ArticlesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ArrayList<Article> articles = ((UnaeroApplication) getActivity().getApplication()).getArticles();
 
-        for (Article article : articles) {
-            if (!artList.contains(article))
-                artList.add(0, article);
-            Log.d("ArtFrag new article ", "" + article.getName() + "    uri " + article.getUri());
-            //the end
+        if (!UnaeroApplication.updLock) {
+            MediaDBHelper mediaDBHelper = new MediaDBHelper(getActivity());
+            SQLiteDatabase db = mediaDBHelper.getReadableDatabase();
+            Cursor cursor = db.query(MediaDBHelper.ARTICLES_TABLE, new String[]{MediaDBHelper.C_ID, MediaDBHelper.C_ART_NAME, MediaDBHelper.C_ART_URL, MediaDBHelper.C_ART_AUTHOR},
+                    null, null, null, null, null);
+            int nameColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_NAME);
+            int urlColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_AUTHOR);
+            int authorColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_URL);
+
+            while (cursor.moveToNext()) {
+                artList.add(0, new Article(cursor.getString(nameColumn), cursor.getString(authorColumn), cursor.getString(urlColumn)));
+            }
+            db.close();
+            mediaDBHelper.close();
         }
 
         View tables = inflater.inflate(R.layout.articles, null);
