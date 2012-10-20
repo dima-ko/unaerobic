@@ -2,6 +2,7 @@ package com.kovalenych;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.DisplayMetrics;
@@ -31,9 +32,15 @@ public class UnaeroApplication extends Application {
     ArrayList<Video> videoQueue;
     ArrayList<Article> articleQueue;
 
+
+    SharedPreferences preferences;
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        preferences = getSharedPreferences("mediaUpdate", Context.MODE_PRIVATE);
+        final long lastUpdTime = preferences.getLong("lastUpd", 0);
 
         DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
         // This configuration tuning is custom. You can tune every option, you may tune some of them,
@@ -58,8 +65,8 @@ public class UnaeroApplication extends Application {
                 @Override
                 public void run() {
 
-                    updateVideo();
-                    updateArticles();
+                    updateVideo(lastUpdTime);
+                    updateArticles(lastUpdTime);
 
                 }
             }.start();
@@ -67,9 +74,8 @@ public class UnaeroApplication extends Application {
     }
 
 
-    private void updateArticles() {
-        Date now = new Date();
-        InputStream source = retrieveStream(articleUrl + "?lasttime=" + now.getTime());
+    private void updateArticles(long lastUpdTime) {
+        InputStream source = retrieveStream(articleUrl + "?lasttime=" + lastUpdTime);
         Gson gson = new Gson();
         Reader reader = new InputStreamReader(source);
         ArticleResponse response = gson.fromJson(reader, ArticleResponse.class);
@@ -83,15 +89,16 @@ public class UnaeroApplication extends Application {
             articleQueue.add(article);
         }
 
+        if (source != null)
+            preferences.edit().putLong("lastUpd", new Date().getTime());
     }
 
     final String videoUrl = "http://unaerobic.appspot.com/co2gaevideo";
     final String articleUrl = "http://unaerobic.appspot.com/co2gaearticle";
 
-    private void updateVideo() {
-        Date now = new Date();
-        Log.d("lastttime", "" + now.getTime());
-        InputStream source = retrieveStream(videoUrl + "?lasttime=" + now.getTime());
+    private void updateVideo(long lastUpdTime) {
+
+        InputStream source = retrieveStream(videoUrl + "?lasttime=" + lastUpdTime);
         Gson gson = new Gson();
         Reader reader = new InputStreamReader(source);
         VideoResponse response = gson.fromJson(reader, VideoResponse.class);
@@ -103,6 +110,12 @@ public class UnaeroApplication extends Application {
 //            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
             videoQueue.add(video);
         }
+
+        if (source != null)
+            preferences.edit().putLong("lastUpd", new Date().getTime());
+
+        //add to db
+
     }
 
     public ArrayList<Video> getVideos() {
