@@ -1,6 +1,8 @@
 package com.fragments;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +14,10 @@ import android.widget.*;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
 import com.kovalenych.UnaeroApplication;
+import com.kovalenych.media.MediaDBHelper;
 import com.kovalenych.media.Video;
+import com.kovalenych.ranking.DBHelper;
+import com.kovalenych.ranking.Record;
 import com.nostra13.universalimageloader.imageloader.DisplayImageOptions;
 import com.nostra13.universalimageloader.imageloader.ImageLoader;
 import com.nostra13.universalimageloader.imageloader.ImageLoadingListener;
@@ -53,17 +58,20 @@ public final class VideoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ArrayList<Video> videos = ((UnaeroApplication) getActivity().getApplication()).getVideos();
+        if (!UnaeroApplication.updLock) {
+            MediaDBHelper mediaDBHelper = new MediaDBHelper(getActivity());
+            SQLiteDatabase db = mediaDBHelper.getReadableDatabase();
+            Cursor cursor = db.query(MediaDBHelper.VIDEO_TABLE, new String[]{MediaDBHelper.C_ID, MediaDBHelper.C_VIDEO_NAME, MediaDBHelper.C_VIDEO_URL},
+                    null, null, null, null, null);
+            int nameColumn = cursor.getColumnIndex(MediaDBHelper.C_VIDEO_NAME);
+            int urlColumn = cursor.getColumnIndex(MediaDBHelper.C_VIDEO_URL);
 
-        for (Video video : videos) {
-            if (!videoList.contains(video))
-                videoList.add(0, video);
-            Log.d("VideoFra new video ", "" + video.getTitle() + "    uri " + video.getUri());
-            //the end
-            Toast.makeText(getActivity(), "Video updated", Toast.LENGTH_SHORT).show();
+            while (cursor.moveToNext()) {
+                videoList.add(new Video(cursor.getString(nameColumn), cursor.getString(urlColumn)));
+            }
+            db.close();
+            mediaDBHelper.close();
         }
-
-        //videos.clear();
 
         View tables = inflater.inflate(R.layout.videos, null);
         ((ListView) tables.findViewById(R.id.video_list)).setAdapter(new ItemAdapter());

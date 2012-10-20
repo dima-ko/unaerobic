@@ -32,6 +32,7 @@ public class UnaeroApplication extends Application {
 
     SharedPreferences preferences;
     private MediaDBHelper dbHelper;
+    public static volatile boolean updLock = false;
 
     @Override
     public void onCreate() {
@@ -59,9 +60,10 @@ public class UnaeroApplication extends Application {
             new Thread() {
                 @Override
                 public void run() {
-
+                    updLock = true;
                     updateVideo(lastUpdTime);
                     updateArticles(lastUpdTime);
+                    updLock = false;
 
                 }
             }.start();
