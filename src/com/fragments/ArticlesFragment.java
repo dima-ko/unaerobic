@@ -53,7 +53,6 @@ public final class ArticlesFragment extends Fragment {
             //the end
         }
 
-
         View tables = inflater.inflate(R.layout.articles, null);
         lv = (ListView) tables.findViewById(R.id.articles_list);
         lv.setOnItemClickListener(listener);

@@ -89,8 +89,9 @@ public class UnaeroApplication extends Application {
     final String articleUrl = "http://unaerobic.appspot.com/co2gaearticle";
 
     private void updateVideo() {
-
-        InputStream source = retrieveStream(videoUrl);
+        Date now = new Date();
+        Log.d("lastttime", "" + now.getTime());
+        InputStream source = retrieveStream(videoUrl + "?lasttime=" + now.getTime());
         Gson gson = new Gson();
         Reader reader = new InputStreamReader(source);
         VideoResponse response = gson.fromJson(reader, VideoResponse.class);
@@ -102,8 +103,6 @@ public class UnaeroApplication extends Application {
 //            Toast.makeText(this, video.fromUser, Toast.LENGTH_SHORT).show();
             videoQueue.add(video);
         }
-
-
     }
 
     public ArrayList<Video> getVideos() {
