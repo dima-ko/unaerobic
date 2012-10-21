@@ -233,7 +233,8 @@ public class ClockService extends Service implements Soundable, Const {
         if (obj instanceof Integer) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), (Integer) obj);
             float log1 = (float) (Math.log(MAX_VOLUME - volume) / Math.log(MAX_VOLUME));
-            mediaPlayer.setVolume(1 - log1, 1 - log1);
+            if (mediaPlayer != null)
+                mediaPlayer.setVolume(1 - log1, 1 - log1);
 
         } else
             try {
