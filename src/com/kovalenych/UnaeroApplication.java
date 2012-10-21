@@ -98,6 +98,7 @@ public class UnaeroApplication extends Application {
 
         preferences.edit().putLong("lastUpd", new Date().getTime());
 
+        //todo: notifyDataSetChanged();
     }
 
     final String videoUrl = "http://unaerobic.appspot.com/co2gaevideo";

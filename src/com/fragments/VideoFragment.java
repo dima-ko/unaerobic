@@ -67,7 +67,9 @@ public final class VideoFragment extends Fragment {
             int urlColumn = cursor.getColumnIndex(MediaDBHelper.C_VIDEO_URL);
 
             while (cursor.moveToNext()) {
-                videoList.add(0, new Video(cursor.getString(nameColumn), cursor.getString(urlColumn)));
+                Video video = new Video(cursor.getString(nameColumn), cursor.getString(urlColumn));
+                if (!videoList.contains(video))
+                    videoList.add(0, video);
             }
             db.close();
             mediaDBHelper.close();
@@ -106,7 +108,7 @@ public final class VideoFragment extends Fragment {
         super.onDestroy();
     }
 
-    // todo: database
+
 
 
     class ItemAdapter extends BaseAdapter {

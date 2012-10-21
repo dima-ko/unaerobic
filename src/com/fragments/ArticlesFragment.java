@@ -58,7 +58,9 @@ public final class ArticlesFragment extends Fragment {
             int authorColumn = cursor.getColumnIndex(MediaDBHelper.C_ART_AUTHOR);
 
             while (cursor.moveToNext()) {
-                artList.add(0, new Article(cursor.getString(nameColumn), cursor.getString(authorColumn), cursor.getString(urlColumn)));
+                Article object = new Article(cursor.getString(nameColumn), cursor.getString(authorColumn), cursor.getString(urlColumn));
+                if (!artList.contains(object))
+                    artList.add(0, object);
             }
             db.close();
             mediaDBHelper.close();
