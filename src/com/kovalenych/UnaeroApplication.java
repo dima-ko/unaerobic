@@ -97,7 +97,7 @@ public class UnaeroApplication extends Application {
         dbHelper.close();
 
         preferences.edit().putLong("lastUpd", new Date().getTime());
-
+        preferences.edit().commit();
         //todo: notifyDataSetChanged();
     }
 
@@ -129,6 +129,7 @@ public class UnaeroApplication extends Application {
 
 
         preferences.edit().putLong("lastUpd", new Date().getTime());
+        preferences.edit().commit();
 
     }
 
