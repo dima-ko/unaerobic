@@ -25,6 +25,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     ListView lv;
 
     Table curTable;
+    public boolean isRaising = false;
 
     private static final String LOG_TAG = "CO2 CyclesActivity";
     String name;
@@ -41,6 +42,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private Button stopButton;
     public ArrayList<MultiCycle> multiCycles;
     private boolean isEditingExistingItem;
+    private Button raise_button;
+    private EditText holdEditPerc;
+    private EditText breathEditPerc;
 
 
     @Override
@@ -108,14 +112,16 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         timesEdit = (EditText) newDialog.findViewById(R.id.repeat_edit);
         holdEdit = (EditText) newDialog.findViewById(R.id.hold_edit);
         breathEdit = (EditText) newDialog.findViewById(R.id.breath_edit);
+        holdEditPerc = (EditText) newDialog.findViewById(R.id.raise_hold_edit);
+        breathEditPerc = (EditText) newDialog.findViewById(R.id.raise_breath_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
+        raise_button = (Button) newDialog.findViewById(R.id.raise_check);
 
 
         invalidateList();
 
         add_button = (Button) findViewById(R.id.add_cycle);
         melody = (Button) findViewById(R.id.melody);
-
 
         setListeners();
     }
@@ -157,7 +163,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 .putExtra(PARAM_PINTENT, pi);
         // стартуем сервис
         startService(intent);
-
 
 
     }
@@ -332,6 +337,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public void onClick(View view) {
                 newDialog.show();
                 isEditingExistingItem = true;
+                isRaising = false;
+                raise_button.setVisibility(View.GONE);
                 Cycle fillEdits = multiCycles.get(chosenMultiCycle).cycles.get(0);
                 holdEdit.setText(Integer.toString(fillEdits.hold));
                 breathEdit.setText(Integer.toString(fillEdits.breathe));
@@ -343,7 +350,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             @Override
             public void onClick(View view) {
                 newDialog.show();
+                isRaising = false;
                 isEditingExistingItem = false;
+                raise_button.setVisibility(View.VISIBLE);
             }
         });
 
@@ -379,6 +388,15 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                     }
                 });
                 voiceDialog.show();
+            }
+        });
+
+        raise_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isRaising = !isRaising;
+                newDialog.findViewById(R.id.raise_lay).setVisibility(isRaising ? View.VISIBLE : View.GONE);
+                raise_button.setBackgroundResource(isRaising ? R.drawable.straight : R.drawable.raise);
             }
         });
 
@@ -430,9 +448,20 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                         int times = Integer.parseInt(timesEdit.getText().toString());
 
                         if (b < 3600 && h < 3600) {
-                            for (int i = 0; i < times; i++) {
-                                curTable.getCycles().add(new Cycle(b, h));
-                            }
+                            if (isRaising) {
+                                int bperc = Integer.parseInt(breathEditPerc.getText().toString());
+                                int hperc = Integer.parseInt(holdEditPerc.getText().toString());
+                                for (int i = 0; i < times; i++) {
+                                    int newB = (int) (b * Math.pow(((double) bperc / 100), i));
+                                    int newH = (int) (h * Math.pow(((double) hperc / 100), i));
+                                    Log.d("newPerce1 ", bperc + "  " + hperc);
+                                    Log.d("newPerce ", newB + "  " + newH);
+                                    curTable.getCycles().add(new Cycle(newB, newH));
+                                }
+                            } else
+                                for (int i = 0; i < times; i++) {
+                                    curTable.getCycles().add(new Cycle(b, h));
+                                }
                             invalidateList();
                         }
                     } catch (NumberFormatException e) {

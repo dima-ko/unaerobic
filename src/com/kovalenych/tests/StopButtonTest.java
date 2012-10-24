@@ -23,11 +23,11 @@ public class StopButtonTest extends GeneralTest {
 
         solo.clickInList(2);
 
-        solo.sleep(1000);
+        solo.sleep(3000);
 
         solo.goBack();
 
-        solo.sleep(2000);
+        solo.sleep(5000);
 
         View view = solo.getView(R.id.stop_button_cycles);
         Assert.assertTrue(view.getVisibility() == View.VISIBLE);
