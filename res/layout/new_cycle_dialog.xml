@@ -47,7 +47,7 @@
             android:gravity="center_horizontal"
             >
         <com.kovalenych.roboto.TextViewRoboto
-                 android:textSize="8pt"
+                android:textSize="8pt"
                 android:layout_height="23pt"
                 android:layout_width="wrap_content"
                 android:text="repeat "
@@ -55,7 +55,7 @@
                 />
         <com.kovalenych.roboto.EditTextRoboto
                 android:id="@+id/repeat_edit"
-                android:layout_width="25pt"
+                android:layout_width="15pt"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:inputType="phone"
@@ -71,6 +71,70 @@
                 android:text=" times"
 
                 />
+        <Button
+                android:id="@+id/raise_check"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/raise"
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/raise_lay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+        <com.kovalenych.roboto.TextViewRoboto
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="generates cycles, each is x% of previous"
+                />
+        <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                >
+            <com.kovalenych.roboto.EditTextRoboto
+                    android:id="@+id/raise_breath_edit"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="phone"
+                    android:text="100"
+                    android:textColor="#FF000000"
+                    />
+            <com.kovalenych.roboto.TextViewRoboto
+                    android:textSize="8pt"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:text="%"
+                    android:layout_weight="1"
+                    />
+            <com.kovalenych.roboto.EditTextRoboto
+                    android:layout_weight="3"
+                    android:id="@+id/raise_hold_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="phone"
+                    android:layout_marginLeft="3pt"
+                    android:textColor="#FF000000"
+                    android:text="100"
+                    />
+            <com.kovalenych.roboto.TextViewRoboto
+                    android:textSize="8pt"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:text="%"
+                    />
+        </LinearLayout>
 
 
     </LinearLayout>

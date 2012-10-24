@@ -246,8 +246,8 @@ public class ClockService extends Service implements Soundable, Const {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-        mediaPlayer.start();
+        if (mediaPlayer != null)
+            mediaPlayer.start();
     }
 
 
