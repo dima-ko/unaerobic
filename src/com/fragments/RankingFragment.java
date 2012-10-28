@@ -138,6 +138,7 @@ public final class RankingFragment extends Fragment {
 
     public void showFilter(boolean show) {
         if (show) {
+            filterView.bringToFront();
             filterView.setVisibility(View.VISIBLE);
             TranslateAnimation animation = new TranslateAnimation(0, 0, Utils.height, 0);
             animation.setDuration(600);

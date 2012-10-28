@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
@@ -142,6 +143,7 @@ public class ClockActivity extends Activity implements Const {
     }
 
     private static final String LOG_TAG = "CO2 ClockActivity";
+
 
 
     @Override

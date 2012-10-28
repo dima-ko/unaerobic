@@ -23,6 +23,8 @@ public class CyclesArrayAdapter extends ArrayAdapter<MultiCycle> {
     }
 
 
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

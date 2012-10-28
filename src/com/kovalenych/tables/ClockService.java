@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import com.kovalenych.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,7 +52,11 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d("zzzzzzbla", "" + bla);
 
         fillPool();
-        cachePath = getExternalCacheDir().getPath() + "/";
+        File externalCacheDir = getExternalCacheDir();
+        if (externalCacheDir == null)
+            cachePath = null;
+        else
+            cachePath = externalCacheDir.getPath() + "/";
     }
 
     private void fillPool() {
@@ -238,6 +243,8 @@ public class ClockService extends Service implements Soundable, Const {
 
         } else
             try {
+                if (cachePath == null)
+                    return;
                 mediaPlayer = new MediaPlayer();
                 mediaPlayer.setDataSource(cachePath + soundPool.get(key));
                 mediaPlayer.prepare();

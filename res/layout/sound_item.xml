@@ -4,15 +4,16 @@
               android:layout_height="30pt"
               android:orientation="horizontal"
               android:background="#FF000000"
+              android:padding="4dp"
         >
     <TextView
             android:layout_weight="4"
             android:id="@+id/sound_name"
             android:layout_width="0dp"
-            android:layout_height="19pt"
+            android:layout_height="30dp"
             android:textColor="#FFFFFFFF"
             android:gravity="center"
-            android:textSize="7pt"
+            android:textSize="18dp"
             android:singleLine="true"
             />
 
@@ -22,8 +23,8 @@
             android:layout_weight="7"
             android:id="@+id/sound_path"
             android:layout_width="0dp"
-            android:layout_height="19pt"
+            android:layout_height="30dp"
             android:gravity="center"
-            android:textSize="6pt"
+            android:textSize="18dp"
             />
 </LinearLayout>

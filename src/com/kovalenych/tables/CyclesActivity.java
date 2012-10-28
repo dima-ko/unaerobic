@@ -337,8 +337,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public void onClick(View view) {
                 newDialog.show();
                 isEditingExistingItem = true;
-                isRaising = false;
-                raise_button.setVisibility(View.GONE);
                 Cycle fillEdits = multiCycles.get(chosenMultiCycle).cycles.get(0);
                 holdEdit.setText(Integer.toString(fillEdits.hold));
                 breathEdit.setText(Integer.toString(fillEdits.breathe));
@@ -350,9 +348,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             @Override
             public void onClick(View view) {
                 newDialog.show();
-                isRaising = false;
                 isEditingExistingItem = false;
-                raise_button.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -381,6 +378,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                         }
                     }
                 });
+                if (getExternalCacheDir() == null)
+                    voiceDialog.findViewById(R.id.edit_sounds).setVisibility(View.INVISIBLE);
+
                 voiceDialog.findViewById(R.id.edit_sounds).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
