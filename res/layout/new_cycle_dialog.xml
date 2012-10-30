@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:inputType="phone"
-                android:hint="breath,s"
+                android:hint="@string/breath_s"
                 android:textColor="#FF000000"
                 />
         <com.kovalenych.roboto.EditTextRoboto
@@ -37,7 +37,7 @@
                 android:singleLine="true"
                 android:inputType="phone"
                 android:layout_marginLeft="3pt"
-                android:hint="hold,s"
+                android:hint="@string/hold_s"
                 android:textColor="#FF000000"
                 />
     </LinearLayout>
@@ -50,7 +50,7 @@
                 android:textSize="8pt"
                 android:layout_height="23pt"
                 android:layout_width="wrap_content"
-                android:text="repeat "
+                android:text="@string/repeat"
 
                 />
         <com.kovalenych.roboto.EditTextRoboto
@@ -68,7 +68,7 @@
                 android:textSize="8pt"
                 android:layout_height="23pt"
                 android:layout_width="wrap_content"
-                android:text=" times"
+                android:text="@string/x_times"
 
                 />
         <Button
@@ -93,7 +93,7 @@
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="generates cycles, each is x% of previous"
+                android:text="@string/gen_cycles"
                 />
         <LinearLayout
                 android:layout_height="60dp"
@@ -147,7 +147,7 @@
             android:background="#ff333333"
             android:layout_width="113pt"
             android:layout_height="50dp"
-            android:text="add"
+            android:text="@string/add"
             android:textColor="#FFFFFFFF"
             android:textSize="16dp"
             android:layout_marginTop="8dp"

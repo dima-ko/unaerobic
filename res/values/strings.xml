@@ -209,6 +209,16 @@
     <string name="new_table_name">New table name</string>
     <string name="add">add</string>
     <string name="edit_sounds">edit sounds</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="timer_00">00:00</string>
+    <string name="breathe_s">breath,s</string>
+    <string name="powered_by">powered by</string>
+    <string name="repeat">repeat</string>
+    <string name="rate_us">Rate us!</string>
+    <string name="x_times">times</string>
+    <string name="gen_cycles">generates cycles, each is x% of previous</string>
+    <string name="vibro">vibro</string>
 
 
 </resources>

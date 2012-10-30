@@ -53,7 +53,7 @@
                 android:id="@+id/rateus"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Rate us!"
+                android:text="@string/rate_us"
                 />
         <ImageView
                 android:layout_marginLeft="5pt"

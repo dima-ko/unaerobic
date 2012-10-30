@@ -38,7 +38,6 @@ public class ClockService extends Service implements Soundable, Const {
 
     MediaPlayer mediaPlayer;
     private int volume;
-    private SharedPreferences _preferedSettings;
     private String cachePath;
 
     public void onCreate() {
@@ -47,7 +46,7 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d(LOG_TAG, "ClockService onCreate");
         mediaPlayer = new MediaPlayer();
 
-        _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
+        SharedPreferences _preferedSettings = getSharedPreferences("sharedSettings", MODE_PRIVATE);
         int bla = _preferedSettings.getInt("volume", 15);
         Log.d("zzzzzzbla", "" + bla);
 

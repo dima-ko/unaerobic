@@ -5,7 +5,6 @@
                 android:padding="2dp"
         >
     <ImageView
-            android:contentDescription="icon_in_notif"
             android:layout_marginLeft="2pt"
             android:layout_centerVertical="true"
             android:id="@+id/icon"
