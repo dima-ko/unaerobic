@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="100pt"
-              android:layout_height="30pt"
+              android:layout_height="wrap_content"
               android:background="#FF000000"
-              android:gravity="center"
         >
 
 
@@ -13,7 +12,7 @@
             android:id="@+id/delete_button"
             android:background="#FF000000"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="30pt"
             android:text="Delete"
             android:textColor="#FFFFFFFF"
             android:textSize="8pt"
@@ -23,8 +22,8 @@
             android:id="@+id/history_button"
             android:background="#FF000000"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Delete"
+            android:layout_height="30pt"
+            android:text="History"
             android:textColor="#FFFFFFFF"
             android:textSize="8pt"
             />

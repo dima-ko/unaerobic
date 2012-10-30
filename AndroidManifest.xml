@@ -58,7 +58,7 @@
                 android:screenOrientation="landscape"
                 android:theme="@android:style/Theme.Black.NoTitleBar"
                 android:configChanges="orientation"/>
-        <activity android:name="org.achartengine.GraphicalActivity" />
+        <activity android:name="org.achartengine.GraphicalActivity" android:screenOrientation="landscape"/>
         <service android:enabled="true"
                  android:name=".tables.ClockService"
                  android:process=":clock_process"/>

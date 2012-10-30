@@ -45,7 +45,6 @@ public class MenuActivity extends FragmentActivity implements Const {
     public int curTab = 0;
     private static final String LOG_TAG = "MenuActivity";
 
-//    startActivity(new SalesStackedBarChart().execute(this));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

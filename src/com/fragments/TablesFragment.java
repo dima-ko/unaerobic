@@ -21,6 +21,7 @@ import com.kovalenych.Utils;
 import com.kovalenych.tables.ClockService;
 import com.kovalenych.tables.CyclesActivity;
 import com.kovalenych.tables.TablesArrayAdapter;
+import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
 
 import java.io.File;
 import java.util.*;
@@ -41,6 +42,7 @@ public final class TablesFragment extends Fragment implements Const {
     private Button stopButton;
 
     public static int posOfCurTable = -1;
+    private Button hist_button;
 
     public static TablesFragment newInstance() {
         return new TablesFragment();
@@ -182,6 +184,7 @@ public final class TablesFragment extends Fragment implements Const {
         edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
         del_button = (Button) delDialog.findViewById(R.id.delete_button);
+        hist_button = (Button) delDialog.findViewById(R.id.history_button);
     }
 
 
@@ -189,6 +192,10 @@ public final class TablesFragment extends Fragment implements Const {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
+                case R.id.history_button:
+                    delDialog.dismiss();
+                    startActivity(new SalesStackedBarChart().execute(getActivity()));
+                    break;
                 case R.id.info_button:
                     infoDialog.show();
                     break;
@@ -221,6 +228,7 @@ public final class TablesFragment extends Fragment implements Const {
         add_button.setOnClickListener(buttonListener);
         info_button.setOnClickListener(buttonListener);
         del_button.setOnClickListener(buttonListener);
+        hist_button.setOnClickListener(buttonListener);
         ok_button.setOnClickListener(buttonListener);
     }
 
