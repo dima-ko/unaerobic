@@ -18,6 +18,7 @@ import com.kovalenych.media.VideoResponse;
 import com.kovalenych.media.Video;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
+import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -43,6 +44,8 @@ public class MenuActivity extends FragmentActivity implements Const {
     protected PageIndicator mIndicator;
     public int curTab = 0;
     private static final String LOG_TAG = "MenuActivity";
+
+//    startActivity(new SalesStackedBarChart().execute(this));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
