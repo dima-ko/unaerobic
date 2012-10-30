@@ -18,11 +18,8 @@ public class ClockActivity extends Activity implements Const {
 
     ClockView breathBar;
     ClockView holdBar;
-    ImageView holdBar_left;
-    ImageView holdBar_right;
 
     TextView breathTimeText, holdTimeText;
-
 
     RelativeLayout parent;
     Activity ptr;
@@ -88,6 +85,7 @@ public class ClockActivity extends Activity implements Const {
     }
 
     Button stopButton;
+    Button contrButton;
 
     public void initViews() {
 
@@ -125,10 +123,25 @@ public class ClockActivity extends Activity implements Const {
         });
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 4, w / 4);
-        params.setMargins(0, 0, 0, 5);
-        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+        params.setMargins(0, 5, 0, 5);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         parent.addView(stopButton, params);
+
+        contrButton = new Button(this);
+        contrButton.setId(STOP_CLOCK_ID);
+        contrButton.setBackgroundResource(R.drawable.contraction);
+        contrButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(w / 4, w / 4);
+        params2.setMargins(0, 5, 0, 5);
+        params2.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+        params2.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+        parent.addView(contrButton, params2);
 
 
         holdBar = (ClockView) rightCircle.findViewById(R.id.run_static_progress);
@@ -143,7 +156,6 @@ public class ClockActivity extends Activity implements Const {
     }
 
     private static final String LOG_TAG = "CO2 ClockActivity";
-
 
 
     @Override
