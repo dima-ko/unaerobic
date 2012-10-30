@@ -24,7 +24,6 @@ public final class RankingFragment extends Fragment {
     RankingManager rManager;
 
     public static RankingFragment newInstance() {
-
         return new RankingFragment();
     }
 

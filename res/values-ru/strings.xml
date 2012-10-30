@@ -47,18 +47,17 @@
     <string name="discipline">Дисциплина:</string>
     <string name="disc_hint">Не знаешь, что это? Тебе\t</string>
     <string name="here">сюда</string>
-    <string name="new_table_name">New table name</string>
-    <string name="add">add</string>
-    <string name="edit_sounds">edit sounds</string>
-    <string name="edit">Edit</string>
-    <string name="delete">Delete</string>
-    <string name="timer_00">00:00</string>
-    <string name="powered_by">powered by</string>
-    <string name="repeat">repeat</string>
-    <string name="rate_us">Rate us!</string>
-    <string name="x_times">times</string>
-    <string name="gen_cycles">generates cycles, each is x% of previous</string>
-    <string name="vibro">vibro</string>
+    <string name="new_table_name">Название</string>
+    <string name="add">добавить</string>
+    <string name="edit_sounds">изменить звуки</string>
+    <string name="edit">Изменить</string>
+    <string name="delete">Удалить</string>
+    <string name="powered_by">предоставлен</string>
+    <string name="repeat">повторить</string>
+    <string name="rate_us">Лайкнуть!</string>
+    <string name="x_times">раз</string>
+    <string name="gen_cycles">сгенерировать циклы, каждый равен x% от предыдущего</string>
+    <string name="vibro">вибро</string>
 
 
 </resources>

@@ -194,14 +194,6 @@
 
         \n-----------------------------1397366148113562428080587968--</string>
     <string name="sendingRequest">downloading info ...</string>
-    <string name="frenchRequest">\tHello, my French friends! \n
-        \n
-    \tSorry for speaking to you not in your mother language, but my French is poor :(
-    Thats why I ask you for help. I found a beautiful film about freediving, that is called \"La vie sans air\".
-    If you please, you could help me to write an english subtitles to the part of the film.
-    So, if you can do that, wrote on my email:\n insomniac.robot@gmail.com for cooperation.
-      \n\n  Thanks again.
-    </string>
     <string name="show">Show</string>
     <string name="discipline">Discipline:</string>
     <string name="disc_hint">Don\'t know what is it? Click \t</string>

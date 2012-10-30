@@ -151,7 +151,6 @@
             android:textColor="#FFFFFFFF"
             android:textSize="16dp"
             android:layout_marginTop="8dp"
-            android:layout_centerHorizontal="true"
             />
 
 
