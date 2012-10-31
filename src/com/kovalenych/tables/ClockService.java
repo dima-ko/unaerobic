@@ -109,7 +109,7 @@ public class ClockService extends Service implements Soundable, Const {
         mediaPlayer = null;
         Log.d(LOG_TAG, "ClockService onDestroy");
 
-        //close db
+        // todo: close db
     }
 
     public int subscriber = SUBSCRIBER_CLOCK;
@@ -142,6 +142,7 @@ public class ClockService extends Service implements Soundable, Const {
             task = new ClockTask(table, true);
             task.execute(position);
             dao = new StatsDAO(this, name);
+            dao.onStartSession();
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
             Log.d(LOG_TAG, FLAG_SHOW_TRAY);

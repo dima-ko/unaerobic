@@ -59,6 +59,7 @@
     <string name="gen_cycles">сгенерировать циклы, каждый равен x% от предыдущего</string>
     <string name="vibro">вибро</string>
     <string name="history">История</string>
+    <string name="no_history">no history yet</string>
 
 
 </resources>

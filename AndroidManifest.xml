@@ -32,7 +32,6 @@
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                   android:screenOrientation="portrait"
-
                 >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -52,7 +51,7 @@
                   android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
                 />
         <service android:name="group.pals.android.lib.ui.filechooser.services.LocalFileProvider"/>
-        <activity android:name=".stats.HistoryChooseActivity"
+        <activity android:name=".stats.SessionChooserActivity"
                   android:screenOrientation="portrait"
                 />
         <activity

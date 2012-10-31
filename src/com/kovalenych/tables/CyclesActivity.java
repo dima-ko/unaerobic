@@ -5,20 +5,14 @@ import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.*;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import com.kovalenych.*;
-import group.pals.android.lib.ui.filechooser.FileChooserActivity;
-import group.pals.android.lib.ui.filechooser.io.localfile.LocalFile;
-import group.pals.android.lib.ui.filechooser.services.IFileProvider;
-import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
+import com.kovalenych.stats.SessionChooserActivity;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.TreeMap;
 
 public class CyclesActivity extends Activity implements Soundable, Const {
@@ -83,7 +77,9 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         statButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new SalesStackedBarChart().execute(ptr));
+                Intent intent = new Intent(ptr, SessionChooserActivity.class);
+                intent.putExtra("tableName", name);
+                startActivity(intent);
             }
         });
         if (Utils.isMyServiceRunning(this)) {
@@ -148,6 +144,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         super.onRestart();
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
+            statButton.setVisibility(View.GONE);
             subscribeToService();
             Log.d(LOG_TAG, "onResume VISIBLE");
             Toast.makeText(CyclesActivity.this, "timer is still running", Toast.LENGTH_SHORT).show();
@@ -156,6 +153,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             curMultiCycle = -1;
             invalidateList();
             stopButton.setVisibility(View.GONE);
+            statButton.setVisibility(View.VISIBLE);
             Log.d(LOG_TAG, "onResume GONE");
         }
     }

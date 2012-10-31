@@ -57,5 +57,6 @@
     <string name="gen_cycles">generates cycles, each is x% of previous</string>
     <string name="vibro">vibro</string>
     <string name="history">History</string>
+    <string name="no_history">no history yet</string>
 
 </resources>

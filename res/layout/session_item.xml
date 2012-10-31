@@ -3,6 +3,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
                 android:gravity="center_vertical"
+                android:background="#FF000000"
         >
 
     <com.kovalenych.roboto.TextViewRoboto

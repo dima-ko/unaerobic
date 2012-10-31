@@ -26,6 +26,7 @@ public class StatsDBHelper extends SQLiteOpenHelper {
     public static final String C_SESSION = "session";
     public static final String C_CYCLE_NUM = "cycle_num";
     public static final String C_EVENT_TYPE = "event_type";
+    public static final String C_EVENT_TIME = "event_time";
 
     public StatsDBHelper(Context context) {
         super(context, FILE_NAME, null, DB_VERSION);
