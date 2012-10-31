@@ -25,7 +25,8 @@ public class SessionChooserActivity extends Activity {
         context = this;
         tableName = getIntent().getStringExtra("tableName");
         setContentView(R.layout.session_chooser);
-        StatsDAO dao = new StatsDAO(this, tableName);
+        StatsDAO dao = new StatsDAO(this, tableName, false);
+        dao.refresh();
         StatsAdapter adapter = new StatsAdapter(this, dao);
         ListView list = (ListView) findViewById(R.id.session_list);
         list.setAdapter(adapter);
@@ -37,4 +38,7 @@ public class SessionChooserActivity extends Activity {
         });
 
     }
+
+
+    //todo: destroy
 }

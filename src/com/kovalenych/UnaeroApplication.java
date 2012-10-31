@@ -102,6 +102,8 @@ public class UnaeroApplication extends Application {
         //todo: notifyDataSetChanged();
     }
 
+    //todo: singleInstance
+
     final String videoUrl = "http://unaerobic.appspot.com/co2gaevideo";
     final String articleUrl = "http://unaerobic.appspot.com/co2gaearticle";
 

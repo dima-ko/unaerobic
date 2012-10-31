@@ -141,7 +141,7 @@ public class ClockService extends Service implements Soundable, Const {
             voices = cyclesBundle.getIntegerArrayList("voices");
             task = new ClockTask(table, true);
             task.execute(position);
-            dao = new StatsDAO(this, name);
+            dao = new StatsDAO(this, name, true);
             dao.onStartSession();
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
@@ -224,14 +224,16 @@ public class ClockService extends Service implements Soundable, Const {
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE)) {
                 playSound(BREATHE);
+                dao.onCycleLife(breathing, cycle, time);
             } else if (voices.contains(relatTime))
                 playSound(relatTime);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
-            if (time == 0 && voices.contains(START))
+            if (time == 0 && voices.contains(START)) {
                 playSound(START);
-            else if (voices.contains(time))
+                dao.onCycleLife(breathing, cycle, time);
+            } else if (voices.contains(time))
                 playSound(time);
         }
     }

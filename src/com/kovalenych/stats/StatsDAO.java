@@ -7,31 +7,30 @@ import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
-import java.util.HashMap;
+import com.kovalenych.Const;
 
 /**
  * this class was made
  * by insomniac and angryded
  * for their purposes
  */
-public class StatsDAO {
+public class StatsDAO implements Const {
 
 
-    public Cursor sessionsCursor;
+    private Cursor sessionsCursor;
     private SQLiteDatabase database;
     private StatsDBHelper dbOpenHelper;
     private Context context;
     private String tableName;
+    private boolean inService;
 
-    public static final int BREATH_FINISHED = 0;
-    public static final int HOLD_FINISHED = 1;
-    public static final int CONTRACTION = 2;
-
-    public StatsDAO(Context context, String tableName) {
+    public StatsDAO(Context context, String tableName, boolean inService) {
         this.context = context;
         this.tableName = tableName;
+        this.inService = inService;
         init();
+        if (inService)
+            refresh();
     }
 
     // Инициализация адаптера: открываем базу и создаем курсор
@@ -55,17 +54,17 @@ public class StatsDAO {
 
     public void onStartSession() {
         ContentValues values = new ContentValues();
-        values.put(StatsDBHelper.C_START_TIME, System.currentTimeMillis());
-        values.put(StatsDBHelper.C_COMMENT, "no comment");
+        values.put(C_START_TIME, System.currentTimeMillis());
+        values.put(C_COMMENT, "no comment");
         curSessionId = database.insert(StatsDBHelper.SESSIONS_TABLE, null, values);
         Log.d("cursessionid ", curSessionId + "");
     }
 
     public void onEndSession() {
         ContentValues values = new ContentValues();
-        values.put(StatsDBHelper.C_END_TIME, System.currentTimeMillis());
+        values.put(C_END_TIME, System.currentTimeMillis());
         database.update(StatsDBHelper.SESSIONS_TABLE, values,
-                StatsDBHelper.C_ID + "=?", new String[]{curSessionId + ""});
+                C_ID + "=?", new String[]{curSessionId + ""});
     }
 
     public void onContraction() {
@@ -74,10 +73,10 @@ public class StatsDAO {
 
     public void onCycleLife(boolean isBrething, int numberOdCycle, int time) {
         ContentValues values = new ContentValues();
-        values.put(StatsDBHelper.C_SESSION, curSessionId);
-        values.put(StatsDBHelper.C_CYCLE_NUM, numberOdCycle);
-        values.put(StatsDBHelper.C_EVENT_TYPE, isBrething ? BREATH_FINISHED : HOLD_FINISHED);
-        values.put(StatsDBHelper.C_EVENT_TIME, time);
+        values.put(C_SESSION, curSessionId);
+        values.put(C_CYCLE_NUM, numberOdCycle);
+        values.put(C_EVENT_TYPE, isBrething ? BREATH_FINISHED : HOLD_FINISHED);
+        values.put(C_EVENT_TIME, time);
         curSessionId = database.insert(StatsDBHelper.CYCLE_EVENTS_TABLE, null, values);
     }
 
@@ -90,9 +89,9 @@ public class StatsDAO {
         if (sessionsCursor.moveToPosition(position)) {
             long id = sessionsCursor.getLong(0);
             Session siteOnPositon = new Session(id);
-            siteOnPositon.start = sessionsCursor.getLong(sessionsCursor.getColumnIndex(StatsDBHelper.C_START_TIME));
-            siteOnPositon.end = sessionsCursor.getLong(sessionsCursor.getColumnIndex(StatsDBHelper.C_END_TIME));
-            siteOnPositon.comment = sessionsCursor.getString(sessionsCursor.getColumnIndex(StatsDBHelper.C_COMMENT));
+            siteOnPositon.start = sessionsCursor.getLong(sessionsCursor.getColumnIndex(C_START_TIME));
+            siteOnPositon.end = sessionsCursor.getLong(sessionsCursor.getColumnIndex(C_END_TIME));
+            siteOnPositon.comment = sessionsCursor.getString(sessionsCursor.getColumnIndex(C_COMMENT));
             return siteOnPositon;
         } else {
             throw new CursorIndexOutOfBoundsException(
@@ -101,24 +100,26 @@ public class StatsDAO {
     }
 
 
-    //Прочие служебные методыв
     //todo: explicitly
     public void onDestroy() {
-        sessionsCursor.close();
+        if (!inService)
+            sessionsCursor.close();
         dbOpenHelper.close();
     }
 
     //Вызывает обновление вида
-    private void refresh() {
-        sessionsCursor = getAllSessions();
+    public void refresh() {
+        sessionsCursor = getAllSessionsOfTable();
     }
 
-    public Cursor getAllSessions() {
+    public Cursor getAllSessionsOfTable() {
         //Список колонок базы, которые следует включить в результат
 
         // составляем запрос к базе
-        return database.query(StatsDBHelper.SESSIONS_TABLE, new String[]{},
-                null, null, null, null, StatsDBHelper.C_ID);
+        return database.query(StatsDBHelper.SESSIONS_TABLE,
+                new String[]{C_ID, C_START_TIME, C_END_TIME, C_COMMENT},
+                C_ATABLE_NAME + " like " + "'%"
+                        + tableName + "%'", null, null, null, C_ID);
     }
     //TODO: close cursor!!!
 

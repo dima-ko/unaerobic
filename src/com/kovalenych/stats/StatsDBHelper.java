@@ -4,29 +4,21 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import com.kovalenych.Const;
 
 /**
  * this class was made
  * by insomniac and angryded
  * for their purposes
  */
-public class StatsDBHelper extends SQLiteOpenHelper {
+public class StatsDBHelper extends SQLiteOpenHelper implements Const {
 
     public static final String SESSIONS_TABLE = "sessions";
     public static final String CYCLE_EVENTS_TABLE = "cycle_events";
     public static final String FILE_NAME = "stats.db";
     private static final int DB_VERSION = 1;
 
-    public static final String C_ID = BaseColumns._ID;
-    public static final String C_ATABLE_NAME = "atable_name";
-    public static final String C_START_TIME = "start_time";
-    public static final String C_END_TIME = "end_time";
-    public static final String C_COMMENT = "comment";
 
-    public static final String C_SESSION = "session";
-    public static final String C_CYCLE_NUM = "cycle_num";
-    public static final String C_EVENT_TYPE = "event_type";
-    public static final String C_EVENT_TIME = "event_time";
 
     public StatsDBHelper(Context context) {
         super(context, FILE_NAME, null, DB_VERSION);
