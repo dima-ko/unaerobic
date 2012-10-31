@@ -193,7 +193,7 @@
         \n
 
         \n-----------------------------1397366148113562428080587968--</string>
-    <string name="sendingRequest">downloading info ...</string>
+    <string name="sendingRequest">downloading info …</string>
     <string name="show">Show</string>
     <string name="discipline">Discipline:</string>
     <string name="disc_hint">Don\'t know what is it? Click \t</string>
@@ -211,6 +211,7 @@
     <string name="x_times">times</string>
     <string name="gen_cycles">generates cycles, each is x% of previous</string>
     <string name="vibro">vibro</string>
+    <string name="history">History</string>
 
 
 </resources>

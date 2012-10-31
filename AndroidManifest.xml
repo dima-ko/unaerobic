@@ -52,6 +52,9 @@
                   android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
                 />
         <service android:name="group.pals.android.lib.ui.filechooser.services.LocalFileProvider"/>
+        <activity android:name=".stats.HistoryChooseActivity"
+                  android:screenOrientation="portrait"
+                />
         <activity
                 android:launchMode="singleTask"
                 android:name=".tables.ClockActivity"

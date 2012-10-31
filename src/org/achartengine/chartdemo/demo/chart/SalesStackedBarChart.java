@@ -56,16 +56,16 @@ public class SalesStackedBarChart extends AbstractDemoChart {
      * @return the built intent
      */
     public Intent execute(Context context) {
-        String[] titles = new String[]{"2008", "2007"};
+        String[] titles = new String[]{"Breathe", "Hold"};
         List<double[]> values = new ArrayList<double[]>();
-        values.add(new double[]{14230, 12300, 14240, 15244, 15900, 19200, 22030, 21200, 19500, 15500,
-                12600, 14000});
-        values.add(new double[]{5230, 7300, 9240, 10540, 7900, 9200, 12030, 11200, 9500, 10500,
-                11600, 13500});
+        values.add(new double[]{-300, -350, -200, -400, -350, -100, -100, -350, -200, -90,
+                -400, -100});
+        values.add(new double[]{5230, 300, 100, 200, 300, 100, 200, 300, 400, 200,
+                100, 350});
         int[] colors = new int[]{Color.BLUE, Color.CYAN};
         XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-        setChartSettings(renderer, "Monthly sales in the last 2 years", "Month", "Units sold", 0.5,
-                12.5, 0, 24000, Color.GRAY, Color.LTGRAY);
+        setChartSettings(renderer, "Statistics", "Cycles", "Time,s", 0.5,
+                12.5, -4 * 60, +4 * 60, Color.GRAY, Color.LTGRAY);
         renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
         renderer.getSeriesRendererAt(1).setDisplayChartValues(true);
         renderer.setXLabels(12);
