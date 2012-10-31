@@ -9,6 +9,7 @@ import android.os.*;
 import android.util.Log;
 import android.widget.RemoteViews;
 import com.kovalenych.*;
+import com.kovalenych.stats.StatsDAO;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +34,7 @@ public class ClockService extends Service implements Soundable, Const {
     private ArrayList<Integer> voices;
     String name;
     HashMap<Integer, Object> soundPool = new HashMap<Integer, Object>();
-    int curSessionID;
+    StatsDAO dao;
 
     public boolean showTray = false;
 
@@ -140,6 +141,7 @@ public class ClockService extends Service implements Soundable, Const {
             voices = cyclesBundle.getIntegerArrayList("voices");
             task = new ClockTask(table, true);
             task.execute(position);
+            dao = new StatsDAO(this, name);
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
             Log.d(LOG_TAG, FLAG_SHOW_TRAY);
@@ -261,6 +263,9 @@ public class ClockService extends Service implements Soundable, Const {
 
 
     public void onTableFinish() {
+
+        dao.onEndSession();
+        dao.onDestroy();
 
         if (voices.contains(BREATHE)) {
             playSound(BREATHE);
