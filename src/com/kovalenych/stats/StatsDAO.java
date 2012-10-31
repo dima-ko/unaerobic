@@ -2,6 +2,7 @@ package com.kovalenych.stats;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -31,7 +32,6 @@ public class StatsDAO {
      */
     int curSessionId;
 
-
     public void onEndSession() {
 
     }
@@ -44,19 +44,39 @@ public class StatsDAO {
 
     }
 
+    public long getItemId(int position) {
+        Session nameOnPosition = getItem(position);
+        return nameOnPosition.getId();
+    }
+
+    public Session getItem(int position) {
+        if (sessionsCursor.moveToPosition(position)) {
+            long id = sessionsCursor.getLong(0);
+            Session siteOnPositon = new Session(id);
+            siteOnPositon.start = sessionsCursor.getLong(sessionsCursor.getColumnIndex(StatsDBHelper.C_START_TIME));
+            siteOnPositon.end = sessionsCursor.getLong(sessionsCursor.getColumnIndex(StatsDBHelper.C_END_TIME));
+            siteOnPositon.comment = sessionsCursor.getString(sessionsCursor.getColumnIndex(StatsDBHelper.C_COMMENT));
+            return siteOnPositon;
+        } else {
+            throw new CursorIndexOutOfBoundsException(
+                    "Cant move cursor to postion");
+        }
+    }
+
 
     //Прочие служебные методыв
-
+    //todo: explicitly
     public void onDestroy() {
+        sessionsCursor.close();
         dbOpenHelper.close();
     }
 
     //Вызывает обновление вида
     private void refresh() {
-//        sessionsCursor = getAllEntries();
+        sessionsCursor = getAllSessions();
     }
 
-    public Cursor getAllSessions(String tableName) {
+    public Cursor getAllSessions() {
         //Список колонок базы, которые следует включить в результат
 
         // составляем запрос к базе

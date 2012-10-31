@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_vertical"
+        >
+
+    <com.kovalenych.roboto.TextViewRoboto
+            android:padding="8dp"
+            android:gravity="center"
+            android:id="@+id/session_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            />
+
+    <com.kovalenych.roboto.TextViewRoboto
+            android:layout_below="@id/session_start"
+            android:id="@+id/session_length"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="16dp"
+            />
+
+    <com.kovalenych.roboto.TextViewRoboto
+            android:layout_toRightOf="@id/session_start"
+            android:id="@+id/session_comment"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15dp"
+            />
+
+</RelativeLayout>
+
+
+
