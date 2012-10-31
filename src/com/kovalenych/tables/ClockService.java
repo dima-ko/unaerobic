@@ -33,6 +33,7 @@ public class ClockService extends Service implements Soundable, Const {
     private ArrayList<Integer> voices;
     String name;
     HashMap<Integer, Object> soundPool = new HashMap<Integer, Object>();
+    int curSessionID;
 
     public boolean showTray = false;
 
@@ -106,6 +107,8 @@ public class ClockService extends Service implements Soundable, Const {
         mediaPlayer.release();
         mediaPlayer = null;
         Log.d(LOG_TAG, "ClockService onDestroy");
+
+        //close db
     }
 
     public int subscriber = SUBSCRIBER_CLOCK;

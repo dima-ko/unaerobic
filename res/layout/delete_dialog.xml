@@ -18,15 +18,4 @@
             android:textSize="8pt"
             />
 
-    <com.kovalenych.roboto.ButtonRoboto
-            android:id="@+id/history_button"
-            android:background="#FF000000"
-            android:layout_width="fill_parent"
-            android:layout_height="30pt"
-            android:text="@string/history"
-            android:textColor="#FFFFFFFF"
-            android:textSize="8pt"
-            />
-
-
 </LinearLayout>

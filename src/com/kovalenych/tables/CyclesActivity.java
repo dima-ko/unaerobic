@@ -13,6 +13,7 @@ import com.kovalenych.*;
 import group.pals.android.lib.ui.filechooser.FileChooserActivity;
 import group.pals.android.lib.ui.filechooser.io.localfile.LocalFile;
 import group.pals.android.lib.ui.filechooser.services.IFileProvider;
+import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private Button raise_button;
     private EditText holdEditPerc;
     private EditText breathEditPerc;
+    private Button statButton;
 
 
     @Override
@@ -67,6 +69,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         volume = _preferedSettings.getInt("volume", 15);
 
         stopButton = (Button) findViewById(R.id.stop_button_cycles);
+        statButton = (Button) findViewById(R.id.stats_button_cycles);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,14 +80,22 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 invalidateList();
             }
         });
+        statButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new SalesStackedBarChart().execute(ptr));
+            }
+        });
         if (Utils.isMyServiceRunning(this)) {
             stopButton.setVisibility(View.VISIBLE);
+            statButton.setVisibility(View.GONE);
             subscribeToService();
             Log.d(LOG_TAG, "onResume VISIBLE");
         } else {
             curCycle = -1;
             curMultiCycle = -1;
             stopButton.setVisibility(View.GONE);
+            statButton.setVisibility(View.VISIBLE);
             Log.d(LOG_TAG, "onResume GONE");
         }
     }
