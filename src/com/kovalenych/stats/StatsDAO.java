@@ -29,7 +29,7 @@ public class StatsDAO implements Const {
         this.tableName = tableName;
         this.inService = inService;
         init();
-        if (inService)
+        if (!inService)
             refresh();
     }
 
@@ -54,8 +54,9 @@ public class StatsDAO implements Const {
 
     public void onStartSession() {
         ContentValues values = new ContentValues();
+        values.put(C_ATABLE_NAME, tableName);
         values.put(C_START_TIME, System.currentTimeMillis());
-        values.put(C_COMMENT, "no comment");
+        values.put(C_COMMENT, "long click to \nadd comment");
         curSessionId = database.insert(StatsDBHelper.SESSIONS_TABLE, null, values);
         Log.d("cursessionid ", curSessionId + "");
     }
@@ -77,7 +78,7 @@ public class StatsDAO implements Const {
         values.put(C_CYCLE_NUM, numberOdCycle);
         values.put(C_EVENT_TYPE, isBrething ? BREATH_FINISHED : HOLD_FINISHED);
         values.put(C_EVENT_TIME, time);
-        curSessionId = database.insert(StatsDBHelper.CYCLE_EVENTS_TABLE, null, values);
+        database.insert(StatsDBHelper.CYCLE_EVENTS_TABLE, null, values);
     }
 
     public long getItemId(int position) {
@@ -99,8 +100,6 @@ public class StatsDAO implements Const {
         }
     }
 
-
-    //todo: explicitly
     public void onDestroy() {
         if (!inService)
             sessionsCursor.close();
@@ -110,6 +109,7 @@ public class StatsDAO implements Const {
     //Вызывает обновление вида
     public void refresh() {
         sessionsCursor = getAllSessionsOfTable();
+        Log.d("stats getView", "getAllSessionsOfTable()" + sessionsCursor.getCount());
     }
 
     public Cursor getAllSessionsOfTable() {
@@ -118,11 +118,21 @@ public class StatsDAO implements Const {
         // составляем запрос к базе
         return database.query(StatsDBHelper.SESSIONS_TABLE,
                 new String[]{C_ID, C_START_TIME, C_END_TIME, C_COMMENT},
-                C_ATABLE_NAME + " like " + "'%"
-                        + tableName + "%'", null, null, null, C_ID);
+                C_ATABLE_NAME + " like " + "'%" + tableName + "%'",
+                null, null, null, C_ID);
     }
-    //TODO: close cursor!!!
 
+    public Cursor getSessionTimeLine(long SessionId) {
+        //Список колонок базы, которые следует включить в результат
+
+        // составляем запрос к базе
+        return database.query(StatsDBHelper.CYCLE_EVENTS_TABLE,
+                new String[]{C_ID, C_CYCLE_NUM, C_EVENT_TYPE, C_EVENT_TIME},
+//                C_SESSION + "=?", new String[]{SessionId + ""},
+                null, null,
+                null, null,
+                C_ID);
+    }
 
     public int getSessionsCount() {
         return sessionsCursor.getCount();

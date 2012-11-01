@@ -12,26 +12,29 @@
             android:id="@+id/session_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17dp"
+            android:textSize="14dp"
             />
-
     <com.kovalenych.roboto.TextViewRoboto
-            android:layout_below="@id/session_start"
-            android:id="@+id/session_length"
-            android:layout_centerVertical="true"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="16dp"
-            />
-
-    <com.kovalenych.roboto.TextViewRoboto
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/session_start"
             android:id="@+id/session_comment"
             android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:textSize="15dp"
             />
+    <com.kovalenych.roboto.TextViewRoboto
+            android:layout_toLeftOf="@id/session_comment"
+            android:gravity="center"
+            android:layout_below="@id/session_start"
+            android:id="@+id/session_length"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:textSize="16dp"
+            android:textColor="@color/light_blue"
+            />
+
 
 </RelativeLayout>
 

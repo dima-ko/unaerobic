@@ -31,6 +31,37 @@ import android.graphics.Paint.Align;
  * Sales demo bar chart.
  */
 public class SalesStackedBarChart extends AbstractDemoChart {
+    public int yMin;
+    public int yMax;
+    public double xMax;
+
+    public List<double[]> values = new ArrayList<double[]>();
+    public String[] titles;
+    public int[] colors;
+
+
+    public Intent execute(Context context) {
+        titles = new String[]{"Breathe", "Hold"};
+        colors = new int[]{Color.BLUE, Color.CYAN};
+        XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
+
+        setChartSettings(renderer, "Statistics", "Cycles", "Time,s", 0.5,
+                xMax, yMin * 1.1, yMax * 1.1, Color.GRAY, Color.LTGRAY);
+        renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
+        renderer.getSeriesRendererAt(1).setDisplayChartValues(true);
+        renderer.setXLabels(12);
+        renderer.setYLabels(10);
+        renderer.setXLabelsAlign(Align.LEFT);
+        renderer.setYLabelsAlign(Align.LEFT);
+        renderer.setPanEnabled(true, false);
+        // renderer.setZoomEnabled(false);
+        renderer.setZoomRate(1.1f);
+        renderer.setBarSpacing(0.5f);
+        return ChartFactory.getBarChartIntent(context, buildBarDataset(titles, values), renderer,
+                Type.STACKED);
+    }
+
+
     /**
      * Returns the chart name.
      *
@@ -55,29 +86,6 @@ public class SalesStackedBarChart extends AbstractDemoChart {
      * @param context the context
      * @return the built intent
      */
-    public Intent execute(Context context) {
-        String[] titles = new String[]{"Breathe", "Hold"};
-        List<double[]> values = new ArrayList<double[]>();
-        values.add(new double[]{-300, -350, -200, -400, -350, -100, -100, -350, -200, -90,
-                -400, -100});
-        values.add(new double[]{5230, 300, 100, 200, 300, 100, 200, 300, 400, 200,
-                100, 350});
-        int[] colors = new int[]{Color.BLUE, Color.CYAN};
-        XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-        setChartSettings(renderer, "Statistics", "Cycles", "Time,s", 0.5,
-                12.5, -4 * 60, +4 * 60, Color.GRAY, Color.LTGRAY);
-        renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
-        renderer.getSeriesRendererAt(1).setDisplayChartValues(true);
-        renderer.setXLabels(12);
-        renderer.setYLabels(10);
-        renderer.setXLabelsAlign(Align.LEFT);
-        renderer.setYLabelsAlign(Align.LEFT);
-        renderer.setPanEnabled(true, false);
-        // renderer.setZoomEnabled(false);
-        renderer.setZoomRate(1.1f);
-        renderer.setBarSpacing(0.5f);
-        return ChartFactory.getBarChartIntent(context, buildBarDataset(titles, values), renderer,
-                Type.STACKED);
-    }
+
 
 }

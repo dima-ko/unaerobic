@@ -2,12 +2,19 @@ package com.kovalenych.stats;
 
 import android.app.Activity;
 import android.content.Context;
+
+import java.text.DateFormat;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.kovalenych.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -23,6 +30,8 @@ public class StatsAdapter extends BaseAdapter {
 
     Context context;
     private StatsDAO dao;
+    DateFormat dateFormat;
+    DateFormat timeFormat;
 
     //Далее следуют обязательные к перегрузке методы адаптера
 
@@ -30,6 +39,8 @@ public class StatsAdapter extends BaseAdapter {
         super();
         this.context = context;
         this.dao = dao;
+        dateFormat = new SimpleDateFormat("E, dd MMM yyyy");
+        timeFormat = new SimpleDateFormat("HH:mm:ss");
     }
 
     @Override
@@ -50,20 +61,26 @@ public class StatsAdapter extends BaseAdapter {
             holder = (ViewHolder) rowView.getTag();
         }
 
-        holder.startView.setText(" start:" + getItem(position).start);
-        holder.lengthView.setText("length:" + (getItem(position).start - getItem(position).end));
-        holder.commentView.setText("comment:" + (getItem(position).comment));
+        Session item = getItem(position);
+        Date startDate = new Date(item.start);
+        holder.startView.setText(dateFormat.format(startDate) + "\n" + timeFormat.format(startDate));
+        holder.lengthView.setText((item.end - item.start) / 1000 + " s");
+        holder.commentView.setText((item.comment));
+
+        Log.d("stats getView", "start" + item.start);
 
         return rowView;
     }
 
     @Override
     public int getCount() {
+        Log.d("stats getCount", "" + dao.getSessionsCount());
         return dao.getSessionsCount();
     }
 
     @Override
     public Session getItem(int i) {
+        Log.d("stats getItem", "start");
         return dao.getItem(i);
     }
 

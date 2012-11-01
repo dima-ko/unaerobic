@@ -38,7 +38,7 @@ public class StatsDBHelper extends SQLiteOpenHelper implements Const {
 
         String sql2 = String.format("CREATE TABLE IF NOT EXISTS " + CYCLE_EVENTS_TABLE +
                 "(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s INTEGER, %s INTEGER, %s INTEGER, %s INTEGER)",
-                C_ID, C_ATABLE_NAME, C_START_TIME, C_END_TIME, C_COMMENT);
+                C_ID, C_SESSION, C_CYCLE_NUM, C_EVENT_TYPE, C_EVENT_TIME);
         db.execSQL(sql2);
 
     }

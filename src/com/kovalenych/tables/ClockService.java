@@ -108,8 +108,7 @@ public class ClockService extends Service implements Soundable, Const {
         mediaPlayer.release();
         mediaPlayer = null;
         Log.d(LOG_TAG, "ClockService onDestroy");
-
-        // todo: close db
+        dao.onDestroy();
     }
 
     public int subscriber = SUBSCRIBER_CLOCK;
@@ -224,17 +223,19 @@ public class ClockService extends Service implements Soundable, Const {
             int relatTime = time - breathe;
             if (time == 0 && voices.contains(BREATHE)) {
                 playSound(BREATHE);
-                dao.onCycleLife(breathing, cycle, time);
             } else if (voices.contains(relatTime))
                 playSound(relatTime);
+            if (time == breathe - 1)
+                dao.onCycleLife(breathing, cycle, time + 1);
         } else {
             if (showTray)
                 showProgressInTray(time, hold, breathing);
             if (time == 0 && voices.contains(START)) {
                 playSound(START);
-                dao.onCycleLife(breathing, cycle, time);
             } else if (voices.contains(time))
                 playSound(time);
+            if (time == hold - 1)
+                dao.onCycleLife(breathing, cycle, time + 1);
         }
     }
 
