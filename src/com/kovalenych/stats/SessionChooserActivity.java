@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import com.kovalenych.Const;
 import com.kovalenych.R;
 import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
@@ -40,6 +41,8 @@ public class SessionChooserActivity extends Activity implements Const {
                 showPlot(i);
             }
         });
+
+        Toast.makeText(this,"long click to add comment",Toast.LENGTH_LONG).show();
 
     }
 

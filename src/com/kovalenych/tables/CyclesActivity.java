@@ -70,6 +70,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public void onClick(View view) {
                 stopService(new Intent(ptr, ClockService.class));
                 stopButton.setVisibility(View.GONE);
+                statButton.setVisibility(View.VISIBLE);
                 curCycle = -1;
                 curMultiCycle = -1;
                 invalidateList();

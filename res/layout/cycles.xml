@@ -108,7 +108,7 @@
                        android:layout_width="20dip"
                        android:layout_height="20dip"
                        android:layout_centerHorizontal="true"
-                       android:src="@drawable/statistics"
+                       android:src="@drawable/stat_tab"
                     />
 
             <TextView android:id="@+id/title"
