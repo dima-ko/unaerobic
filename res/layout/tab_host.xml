@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/tab_bar"
+              android:layout_alignParentBottom="true"
+              android:layout_height="wrap_content"
+              android:layout_width="fill_parent"
+              android:baselineAligned="false">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="0dip"
+                    android:layout_height="55dip"
+                    android:layout_weight="1"
+
+                    android:id="@+id/melody"
+                    android:orientation="vertical"
+                    android:background="@drawable/tab_indicator"
+                    android:padding="5dp">
+
+        <ImageView android:id="@+id/icon"
+                   android:layout_width="20dip"
+                   android:layout_height="20dip"
+                   android:layout_centerHorizontal="true"
+                   android:src="@drawable/music_tab"
+
+                />
+
+        <TextView android:id="@+id/title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true"
+                  android:layout_centerHorizontal="true"
+                  style="?android:attr/tabWidgetStyle"
+                  android:text="sounds"
+                />
+    </RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="0dip"
+                    android:layout_height="55dip"
+                    android:layout_weight="1"
+                    android:id="@+id/stop_button_cycles"
+                    android:orientation="vertical"
+                    android:background="@drawable/tab_indicator"
+                    android:padding="5dp">
+
+        <ImageView android:id="@+id/icon"
+                   android:layout_width="20dip"
+                   android:layout_height="20dip"
+                   android:layout_centerHorizontal="true"
+                   android:src="@drawable/stop_tab"
+
+                />
+
+        <TextView android:id="@+id/title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true"
+                  android:layout_centerHorizontal="true"
+                  style="?android:attr/tabWidgetStyle"
+                  android:text="stop timer"
+                />
+    </RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="0dip"
+                    android:layout_height="55dip"
+                    android:id="@+id/add_cycle"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/tab_indicator"
+                    android:padding="5dp">
+
+        <ImageView android:id="@+id/icon"
+                   android:layout_width="20dip"
+                   android:layout_height="20dip"
+                   android:layout_centerHorizontal="true"
+                   android:src="@drawable/plus_tab"
+                />
+
+        <TextView android:id="@+id/title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true"
+                  android:layout_centerHorizontal="true"
+                  style="?android:attr/tabWidgetStyle"
+                  android:text="add cycle"
+                />
+    </RelativeLayout>
+
+
+</LinearLayout>

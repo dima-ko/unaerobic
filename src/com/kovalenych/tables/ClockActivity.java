@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -14,17 +12,17 @@ import com.kovalenych.*;
 
 public class ClockActivity extends Activity implements Const {
     public static final int STOP_CLOCK_ID = 500;
-
-
+    public static final int TOP_CIRCLE_ID = 234;
+    private static final int BOTTOM_CIRCLE_ID = 4123;
     ClockView breathBar;
+
     ClockView holdBar;
 
     TextView breathTimeText, holdTimeText;
-
     RelativeLayout parent;
     Activity ptr;
-    public boolean addTray = true;
 
+    public boolean addTray = true;
     public boolean countDown;
     public boolean prefTray;
     private SharedPreferences _preferences;
@@ -94,54 +92,68 @@ public class ClockActivity extends Activity implements Const {
         RelativeLayout leftCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_left, null, false);
         RelativeLayout rightCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_right, null, false);
 
-        int w = Utils.smaller2dim - 30;
+        int w = (int) (Utils.height * 0.4);
 
         RelativeLayout.LayoutParams paramsLeft = new RelativeLayout.LayoutParams(w, w);
-        paramsLeft.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        paramsLeft.setMargins(0, (int) (Utils.smaller2dim * 0.04), 0, 0);
+        paramsLeft.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+        leftCircle.setId(TOP_CIRCLE_ID);
         parent.addView(leftCircle, paramsLeft);
 
-        RelativeLayout.LayoutParams paramsRight = new RelativeLayout.LayoutParams(w, w);
-        paramsRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-        paramsRight.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-        parent.addView(rightCircle, paramsRight);
+        RelativeLayout.LayoutParams paramsBottom = new RelativeLayout.LayoutParams(w, w);
+        paramsBottom.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        paramsBottom.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+        rightCircle.setId(BOTTOM_CIRCLE_ID);
+        paramsBottom.setMargins(0, 0, 0, (int) (Utils.smaller2dim * 0.04));
+        parent.addView(rightCircle, paramsBottom);
 
-        stopButton = new Button(this);
-        stopButton.setId(STOP_CLOCK_ID);
-        stopButton.setBackgroundResource(R.drawable.stop_button);
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopService(new Intent(ptr, ClockService.class));
-                addTray = false;
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                finish();
-            }
-        });
+        LinearLayout tabHost = (LinearLayout) inflater.inflate(R.layout.tab_host, null, false);
+        RelativeLayout.LayoutParams paramsCenter = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);
+        paramsCenter.addRule(RelativeLayout.BELOW, TOP_CIRCLE_ID);
+        paramsCenter.addRule(RelativeLayout.ABOVE, BOTTOM_CIRCLE_ID);
+        rightCircle.setId(BOTTOM_CIRCLE_ID);
+        paramsCenter.setMargins(0, (int) (Utils.smaller2dim * 0.05),
+                0, (int) (Utils.smaller2dim * 0.05));
+        parent.addView(tabHost, paramsCenter);
 
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 4, w / 4);
-        params.setMargins(0, 5, 0, 5);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        parent.addView(stopButton, params);
+//        stopButton = new Button(this);
+//        stopButton.setId(STOP_CLOCK_ID);
+//        stopButton.setBackgroundResource(R.drawable.stop_button);
+//        stopButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                stopService(new Intent(ptr, ClockService.class));
+//                addTray = false;
+//                try {
+//                    Thread.sleep(100);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                finish();
+//            }
+//        });
 
-        contrButton = new Button(this);
-        contrButton.setId(STOP_CLOCK_ID);
-        contrButton.setBackgroundResource(R.drawable.contraction);
-        contrButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
-        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(w / 4, w / 4);
-        params2.setMargins(0, 5, 0, 5);
-        params2.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
-        params2.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        parent.addView(contrButton, params2);
+//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 4, w / 4);
+//        params.setMargins(0, 5, 0, 5);
+//        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+//        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+//        parent.addView(stopButton, params);
+//
+//        contrButton = new Button(this);
+//        contrButton.setId(STOP_CLOCK_ID);
+//        contrButton.setBackgroundResource(R.drawable.contraction);
+//        contrButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            }
+//        });
+//
+//        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(w / 4, w / 4);
+//        params2.setMargins(0, 5, 0, 5);
+//        params2.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+//        params2.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+//        parent.addView(contrButton, params2);
 
 
         holdBar = (ClockView) rightCircle.findViewById(R.id.run_static_progress);
