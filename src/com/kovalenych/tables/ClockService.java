@@ -79,7 +79,6 @@ public class ClockService extends Service implements Soundable, Const {
         for (String key : savedSounds.keySet()) {
             soundPool.put(Integer.parseInt(key), savedSounds.get(key));
         }
-
     }
 
     private void showProgressInTray(int progress, int max, boolean breathing) {
@@ -108,6 +107,7 @@ public class ClockService extends Service implements Soundable, Const {
         mediaPlayer.release();
         mediaPlayer = null;
         Log.d(LOG_TAG, "ClockService onDestroy");
+        dao.onEndSession();
         dao.onDestroy();
     }
 
@@ -268,8 +268,8 @@ public class ClockService extends Service implements Soundable, Const {
 
     public void onTableFinish() {
 
-        dao.onEndSession();
-        dao.onDestroy();
+//        dao.onEndSession();
+//        dao.onDestroy();
 
         if (voices.contains(BREATHE)) {
             playSound(BREATHE);

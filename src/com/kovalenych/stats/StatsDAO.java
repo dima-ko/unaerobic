@@ -56,7 +56,7 @@ public class StatsDAO implements Const {
         ContentValues values = new ContentValues();
         values.put(C_ATABLE_NAME, tableName);
         values.put(C_START_TIME, System.currentTimeMillis());
-        values.put(C_COMMENT, "long click to \nadd comment");
+        values.put(C_COMMENT, "no comment");
         curSessionId = database.insert(StatsDBHelper.SESSIONS_TABLE, null, values);
         Log.d("cursessionid ", curSessionId + "");
     }
@@ -64,15 +64,22 @@ public class StatsDAO implements Const {
     public void onEndSession() {
         ContentValues values = new ContentValues();
         values.put(C_END_TIME, System.currentTimeMillis());
-        database.update(StatsDBHelper.SESSIONS_TABLE, values,
-                C_ID + "=?", new String[]{curSessionId + ""});
+        if (sessionEmpty)
+            database.delete(StatsDBHelper.SESSIONS_TABLE, C_ID + "=?",
+                    new String[]{curSessionId + ""});
+        else
+            database.update(StatsDBHelper.SESSIONS_TABLE, values,
+                    C_ID + "=?", new String[]{curSessionId + ""});
     }
 
     public void onContraction() {
 
     }
 
+    private boolean sessionEmpty = true;
+
     public void onCycleLife(boolean isBrething, int numberOdCycle, int time) {
+        sessionEmpty = false;
         ContentValues values = new ContentValues();
         values.put(C_SESSION, curSessionId);
         values.put(C_CYCLE_NUM, numberOdCycle);
@@ -128,8 +135,8 @@ public class StatsDAO implements Const {
         // составляем запрос к базе
         return database.query(StatsDBHelper.CYCLE_EVENTS_TABLE,
                 new String[]{C_ID, C_CYCLE_NUM, C_EVENT_TYPE, C_EVENT_TIME},
-//                C_SESSION + "=?", new String[]{SessionId + ""},
-                null, null,
+                C_SESSION + "=?", new String[]{SessionId + ""},
+//                null, null,
                 null, null,
                 C_ID);
     }

@@ -66,6 +66,8 @@ public class StatsAdapter extends BaseAdapter {
         holder.startView.setText(dateFormat.format(startDate) + "\n" + timeFormat.format(startDate));
         holder.lengthView.setText((item.end - item.start) / 1000 + " s");
         holder.commentView.setText((item.comment));
+        if(item.comment.equals("no comment"))
+            holder.commentView.setTextColor(0xff888888);
 
         Log.d("stats getView", "start" + item.start);
 

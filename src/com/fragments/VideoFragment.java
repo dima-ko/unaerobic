@@ -75,6 +75,8 @@ public final class VideoFragment extends Fragment {
             mediaDBHelper.close();
         }
 
+        //todo: add video with demo
+
         View tables = inflater.inflate(R.layout.videos, null);
         ((ListView) tables.findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
         ((ListView) tables.findViewById(R.id.video_list)).setOnItemClickListener(listener);

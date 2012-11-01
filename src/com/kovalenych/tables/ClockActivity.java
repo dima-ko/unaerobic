@@ -121,8 +121,8 @@ public class ClockActivity extends Activity implements Const {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stopService(new Intent(ptr, ClockService.class));
                 Log.d(LOG_TAG, "stopButt");
+                stopService(new Intent(ptr, ClockService.class));
                 addTray = false;
                 try {
                     Thread.sleep(100);
@@ -132,10 +132,11 @@ public class ClockActivity extends Activity implements Const {
                 finish();
             }
         });
-        contrButton = (RelativeLayout) tabHost.findViewById(R.id.stop_button_host);
+        contrButton = (RelativeLayout) tabHost.findViewById(R.id.contraction);
         contrButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(LOG_TAG, "contrButt");
             }
         });
 
@@ -143,7 +144,6 @@ public class ClockActivity extends Activity implements Const {
         holdBar.setDimensions(w);
         breathBar = (ClockView) leftCircle.findViewById(R.id.run_ventilate_progress);
         breathBar.setDimensions(w);
-
 
 //        topTimeText = (TextView) findViewById(R.id.topTime);
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
