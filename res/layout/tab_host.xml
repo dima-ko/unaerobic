@@ -10,7 +10,7 @@
                     android:layout_width="0dip"
                     android:layout_height="55dip"
                     android:layout_weight="1"
-
+                    android:visibility="gone"
                     android:id="@+id/melody"
                     android:orientation="vertical"
                     android:background="@drawable/tab_indicator"
@@ -37,7 +37,7 @@
                     android:layout_width="0dip"
                     android:layout_height="55dip"
                     android:layout_weight="1"
-                    android:id="@+id/stop_button_cycles"
+                    android:id="@+id/stop_button_host"
                     android:orientation="vertical"
                     android:background="@drawable/tab_indicator"
                     android:padding="5dp">
@@ -62,7 +62,7 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="0dip"
                     android:layout_height="55dip"
-                    android:id="@+id/add_cycle"
+                    android:id="@+id/contraction"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:background="@drawable/tab_indicator"
@@ -72,7 +72,7 @@
                    android:layout_width="20dip"
                    android:layout_height="20dip"
                    android:layout_centerHorizontal="true"
-                   android:src="@drawable/plus_tab"
+                   android:src="@drawable/contract_tab"
                 />
 
         <TextView android:id="@+id/title"
@@ -81,7 +81,7 @@
                   android:layout_alignParentBottom="true"
                   android:layout_centerHorizontal="true"
                   style="?android:attr/tabWidgetStyle"
-                  android:text="add cycle"
+                  android:text="contraction"
                 />
     </RelativeLayout>
 

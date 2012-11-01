@@ -82,8 +82,8 @@ public class ClockActivity extends Activity implements Const {
         startService(intent);
     }
 
-    Button stopButton;
-    Button contrButton;
+    RelativeLayout stopButton;
+    RelativeLayout contrButton;
 
     public void initViews() {
 
@@ -117,44 +117,27 @@ public class ClockActivity extends Activity implements Const {
                 0, (int) (Utils.smaller2dim * 0.05));
         parent.addView(tabHost, paramsCenter);
 
-//        stopButton = new Button(this);
-//        stopButton.setId(STOP_CLOCK_ID);
-//        stopButton.setBackgroundResource(R.drawable.stop_button);
-//        stopButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                stopService(new Intent(ptr, ClockService.class));
-//                addTray = false;
-//                try {
-//                    Thread.sleep(100);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//                finish();
-//            }
-//        });
-
-//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w / 4, w / 4);
-//        params.setMargins(0, 5, 0, 5);
-//        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-//        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-//        parent.addView(stopButton, params);
-//
-//        contrButton = new Button(this);
-//        contrButton.setId(STOP_CLOCK_ID);
-//        contrButton.setBackgroundResource(R.drawable.contraction);
-//        contrButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//            }
-//        });
-//
-//        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(w / 4, w / 4);
-//        params2.setMargins(0, 5, 0, 5);
-//        params2.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
-//        params2.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-//        parent.addView(contrButton, params2);
-
+        stopButton = (RelativeLayout) tabHost.findViewById(R.id.stop_button_host);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopService(new Intent(ptr, ClockService.class));
+                Log.d(LOG_TAG, "stopButt");
+                addTray = false;
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finish();
+            }
+        });
+        contrButton = (RelativeLayout) tabHost.findViewById(R.id.stop_button_host);
+        contrButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
 
         holdBar = (ClockView) rightCircle.findViewById(R.id.run_static_progress);
         holdBar.setDimensions(w);
