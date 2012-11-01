@@ -74,6 +74,7 @@ public class SessionChooserActivity extends Activity implements Const {
         chart.values.add(toArray(breathList));
         chart.values.add(toArray(holdList));
         chart.xMax = breathList.size() + 0.5;
+        if (chart.xMax < 8) chart.xMax = 8;
 
         startActivity(chart.execute(context));
     }

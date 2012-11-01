@@ -180,10 +180,15 @@ public class ClockService extends Service implements Soundable, Const {
         } else if (destination.equals(FLAG_SETVOLUME)) {
             Log.d(LOG_TAG, "set volume " + volume);
             volume = intent.getIntExtra(PARAM_VOLUME, 0);
+        } else if (destination.equals(FLAG_CONTRACTION)) {
+            Log.d(LOG_TAG, "set volume " + volume);
+            contrConsumed = false;
         }
 
         return super.onStartCommand(intent, flags, startId);
     }
+
+    boolean contrConsumed = true;
 
     ClockTask task;
     int curCycle = -1;
@@ -236,6 +241,10 @@ public class ClockService extends Service implements Soundable, Const {
                 playSound(time);
             if (time == hold - 1)
                 dao.onCycleLife(breathing, cycle, time + 1);
+            if (!contrConsumed) {
+                contrConsumed = true;
+                dao.onContraction(cycle, time + 1);
+            }
         }
     }
 

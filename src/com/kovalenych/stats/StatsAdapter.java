@@ -67,7 +67,7 @@ public class StatsAdapter extends BaseAdapter {
         holder.lengthView.setText((item.end - item.start) / 1000 + " s");
         holder.commentView.setText((item.comment));
         if(item.comment.equals("no comment"))
-            holder.commentView.setTextColor(0xff888888);
+            holder.commentView.setTextColor(0xff666666);
 
         Log.d("stats getView", "start" + item.start);
 

@@ -137,6 +137,10 @@ public class ClockActivity extends Activity implements Const {
             @Override
             public void onClick(View view) {
                 Log.d(LOG_TAG, "contrButt");
+                Intent intent = new Intent(ptr, ClockService.class)
+                        .putExtra(FLAG, FLAG_CONTRACTION);
+                // стартуем сервис
+                startService(intent);
             }
         });
 

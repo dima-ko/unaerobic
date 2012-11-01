@@ -72,8 +72,14 @@ public class StatsDAO implements Const {
                     C_ID + "=?", new String[]{curSessionId + ""});
     }
 
-    public void onContraction() {
-
+    public void onContraction(int cycle, int i) {
+        sessionEmpty = false;
+        ContentValues values = new ContentValues();
+        values.put(C_SESSION, curSessionId);
+        values.put(C_CYCLE_NUM, cycle);
+        values.put(C_EVENT_TYPE, CONTRACTION);
+        values.put(C_EVENT_TIME, i);
+        database.insert(StatsDBHelper.CYCLE_EVENTS_TABLE, null, values);
     }
 
     private boolean sessionEmpty = true;

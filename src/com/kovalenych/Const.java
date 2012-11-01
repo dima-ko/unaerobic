@@ -17,6 +17,7 @@ public interface Const {
     public final static String FLAG_SHOW_TRAY = "showtray";
     public final static String FLAG_HIDE_TRAY = "hidetray";
     public final static String FLAG_SETVOLUME = "set_volume";
+    public final static String FLAG_CONTRACTION = "contraction";
 
     public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";
