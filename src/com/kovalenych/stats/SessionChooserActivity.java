@@ -41,8 +41,7 @@ public class SessionChooserActivity extends Activity implements Const {
                 showPlot(i);
             }
         });
-
-        Toast.makeText(this,"long click to add comment",Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "long click to add comment", Toast.LENGTH_LONG).show();
 
     }
 
@@ -55,7 +54,6 @@ public class SessionChooserActivity extends Activity implements Const {
         ArrayList<Double> holdList = new ArrayList<Double>();
 
         while (cursor.moveToNext()) {
-
             switch (cursor.getInt(cursor.getColumnIndex(C_EVENT_TYPE))) {
                 case BREATH_FINISHED:
                     int object = -cursor.getInt(cursor.getColumnIndex(C_EVENT_TIME));
@@ -75,7 +73,7 @@ public class SessionChooserActivity extends Activity implements Const {
 
         chart.values.add(toArray(breathList));
         chart.values.add(toArray(holdList));
-        chart.xMax = breathList.size()+0.5;
+        chart.xMax = breathList.size() + 0.5;
 
         startActivity(chart.execute(context));
     }
@@ -87,7 +85,6 @@ public class SessionChooserActivity extends Activity implements Const {
         for (int i = 0; i < breathArr.length; i++) {
             breathArrPrim[i] = breathArr[i];
         }
-
         return breathArrPrim;
     }
 
