@@ -12,50 +12,7 @@
             android:layout_height="wrap_content"
             />
 
-    <com.kovalenych.roboto.ButtonRoboto
-            android:id="@+id/add_cycle"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/plus_action"
 
-            />
-    <com.kovalenych.roboto.ButtonRoboto
-            android:id="@+id/melody"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/muz_action"
-
-            />
-    <com.kovalenych.roboto.TextViewRoboto
-            android:id="@+id/chosen_table_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@id/melody"
-            android:layout_toRightOf="@id/add_cycle"
-            android:textSize="9pt"
-            android:textColor="#FF444444"
-            android:layout_marginBottom="10pt"
-            android:gravity="center"
-            />
-
-    <ListView
-            android:listSelector="@drawable/list_bg"
-            android:id="@+id/cycles_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="10pt"
-            android:layout_above="@id/add_cycle"
-            android:cacheColorHint="#00000000"
-
-
-            />
     <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/holdtime"
             android:layout_width="wrap_content"
@@ -79,23 +36,131 @@
             android:padding="2pt"
             />
 
-    <com.kovalenych.roboto.ButtonRoboto
-            android:id="@+id/stats_button_cycles"
-            android:layout_marginBottom="5pt"
-            android:layout_centerHorizontal="true"
+    <LinearLayout
+            android:id="@+id/tab_bar"
             android:layout_alignParentBottom="true"
-            android:layout_width="66dp"
-            android:layout_height="66dp"
-            android:background="@drawable/statistics"
-            />
-    <com.kovalenych.roboto.ButtonRoboto
-            android:id="@+id/stop_button_cycles"
-            android:layout_marginBottom="5pt"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_width="66dp"
-            android:layout_height="66dp"
-            android:background="@drawable/stop_button"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:baselineAligned="false">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="0dip"
+                        android:layout_height="55dip"
+                        android:layout_weight="1"
+
+                        android:id="@+id/melody"
+                        android:orientation="vertical"
+                        android:background="@drawable/tab_indicator"
+                        android:padding="5dp">
+
+            <ImageView android:id="@+id/icon"
+                       android:layout_width="20dip"
+                       android:layout_height="20dip"
+                       android:layout_centerHorizontal="true"
+                       android:src="@drawable/music_tab"
+
+                    />
+
+            <TextView android:id="@+id/title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentBottom="true"
+                      android:layout_centerHorizontal="true"
+                      style="?android:attr/tabWidgetStyle"
+                      android:text="sounds"
+                    />
+        </RelativeLayout>
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="0dip"
+                        android:layout_height="55dip"
+                        android:layout_weight="1"
+                        android:id="@+id/stop_button_cycles"
+                        android:orientation="vertical"
+                        android:background="@drawable/tab_indicator"
+                        android:padding="5dp">
+
+            <ImageView android:id="@+id/icon"
+                       android:layout_width="20dip"
+                       android:layout_height="20dip"
+                       android:layout_centerHorizontal="true"
+                       android:src="@drawable/stop_tab"
+
+                    />
+
+            <TextView android:id="@+id/title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentBottom="true"
+                      android:layout_centerHorizontal="true"
+                      style="?android:attr/tabWidgetStyle"
+                      android:text="stop timer"
+                    />
+        </RelativeLayout>
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="0dip"
+                        android:layout_height="55dip"
+                        android:id="@+id/stats_button_cycles"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="@drawable/tab_indicator"
+                        android:padding="5dp">
+
+            <ImageView android:id="@+id/icon"
+                       android:layout_width="20dip"
+                       android:layout_height="20dip"
+                       android:layout_centerHorizontal="true"
+                       android:src="@drawable/statistics"
+                    />
+
+            <TextView android:id="@+id/title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentBottom="true"
+                      android:layout_centerHorizontal="true"
+                      style="?android:attr/tabWidgetStyle"
+                      android:text="statistics"
+                    />
+        </RelativeLayout>
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="0dip"
+                        android:layout_height="55dip"
+                        android:id="@+id/add_cycle"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="@drawable/tab_indicator"
+                        android:padding="5dp">
+
+            <ImageView android:id="@+id/icon"
+                       android:layout_width="20dip"
+                       android:layout_height="20dip"
+                       android:layout_centerHorizontal="true"
+                       android:src="@drawable/plus_tab"
+                    />
+
+            <TextView android:id="@+id/title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentBottom="true"
+                      android:layout_centerHorizontal="true"
+                      style="?android:attr/tabWidgetStyle"
+                      android:text="add cycle"
+                    />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <ListView
+            android:listSelector="@drawable/list_bg"
+            android:id="@+id/cycles_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10pt"
+            android:layout_above="@id/tab_bar"
+            android:cacheColorHint="#00000000"
+
+
             />
 
 </RelativeLayout>

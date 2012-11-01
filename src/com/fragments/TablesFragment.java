@@ -35,11 +35,12 @@ public final class TablesFragment extends Fragment implements Const {
     Dialog newDialog;
     Dialog infoDialog;
     Dialog delDialog;
-    Button add_button, info_button, ok_button, del_button;
+    Button ok_button, del_button;
+    RelativeLayout add_button, info_button;
     EditText edit;
     int chosenTable;
     ListView lv;
-    private Button stopButton;
+    private RelativeLayout stopButton;
 
     public static int posOfCurTable = -1;
 
@@ -72,7 +73,7 @@ public final class TablesFragment extends Fragment implements Const {
 
         initDialogs();
 
-        stopButton = (Button) tables.findViewById(R.id.stop_button_tables);
+        stopButton = (RelativeLayout) tables.findViewById(R.id.stop_button_tables);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,8 +114,8 @@ public final class TablesFragment extends Fragment implements Const {
             }
         });
 //
-        add_button = (Button) tables.findViewById(R.id.add_table);
-        info_button = (Button) tables.findViewById(R.id.info_button);
+        add_button = (RelativeLayout) tables.findViewById(R.id.add_table);
+        info_button = (RelativeLayout) tables.findViewById(R.id.info_button);
 
         setButtonListeners();
 

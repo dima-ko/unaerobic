@@ -24,7 +24,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
     private static final String LOG_TAG = "CO2 CyclesActivity";
     String name;
-    Button add_button, ok_button, melody;
+    RelativeLayout add_button, melody;
+    Button ok_button;
     Dialog newDialog;
     Activity ptr;
     EditText holdEdit, breathEdit, timesEdit;
@@ -34,13 +35,13 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private Button del_button, edit_button;
     private SharedPreferences _preferedSettings;
     boolean isvibro;
-    private Button stopButton;
+    private RelativeLayout stopButton;
     public ArrayList<MultiCycle> multiCycles;
     private boolean isEditingExistingItem;
     private Button raise_button;
     private EditText holdEditPerc;
     private EditText breathEditPerc;
-    private Button statButton;
+    private RelativeLayout statButton;
 
 
     @Override
@@ -62,8 +63,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         isvibro = _preferedSettings.getBoolean("vibro", true);
         volume = _preferedSettings.getInt("volume", 15);
 
-        stopButton = (Button) findViewById(R.id.stop_button_cycles);
-        statButton = (Button) findViewById(R.id.stats_button_cycles);
+        stopButton = (RelativeLayout) findViewById(R.id.stop_button_cycles);
+        statButton = (RelativeLayout) findViewById(R.id.stats_button_cycles);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,9 +101,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
         lv = (ListView) findViewById(R.id.cycles_list);
 
-        TextView id = (TextView) findViewById(R.id.chosen_table_name);
-        id.setText(name);
-
         delDialog = new Dialog(ptr);
         delDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         delDialog.setCancelable(true);
@@ -127,8 +125,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
         invalidateList();
 
-        add_button = (Button) findViewById(R.id.add_cycle);
-        melody = (Button) findViewById(R.id.melody);
+        add_button = (RelativeLayout) findViewById(R.id.add_cycle);
+        melody = (RelativeLayout) findViewById(R.id.melody);
 
         setListeners();
     }
