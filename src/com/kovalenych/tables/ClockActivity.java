@@ -212,26 +212,26 @@ public class ClockActivity extends Activity implements Const {
             if (breathTimeText.getVisibility() != View.VISIBLE) {
                 breathTimeText.setVisibility(View.VISIBLE);
                 holdBar.angle = 0;
-                holdBar.invalidateClock();
+                holdBar.invalidateClock(true);
             }
             if (holdTimeText.getVisibility() == View.VISIBLE)
                 holdTimeText.setVisibility(View.INVISIBLE);
             breathBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
-            breathBar.invalidateClock();
+            breathBar.invalidateClock(false);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
             breathTimeText.setText(showTime);
         } else if (resultCode == STATUS_HOLD) {
             if (holdTimeText.getVisibility() != View.VISIBLE) {
                 holdTimeText.setVisibility(View.VISIBLE);
                 breathBar.angle = (float) (2 * Math.PI);
-                breathBar.invalidateClock();
+                breathBar.invalidateClock(false);
             }
-            if (breathTimeText.getVisibility() == View.VISIBLE)    //TODO rotate timer when portrait
+            if (breathTimeText.getVisibility() == View.VISIBLE)
                 breathTimeText.setVisibility(View.INVISIBLE);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
             holdTimeText.setText(showTime);
             holdBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
-            holdBar.invalidateClock();
+            holdBar.invalidateClock(true);
         } else if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
             addTray = false;

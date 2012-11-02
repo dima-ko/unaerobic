@@ -33,10 +33,11 @@ public class ClockView extends SurfaceView {
         super(context, attrs, defStyle);
     }
 
-    public void invalidateClock() {
+    public void invalidateClock(boolean isDark) {
 
         if (bg == null) {
-            Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.progress_blue);
+            int id = isDark ? R.drawable.progress_dark_blue : R.drawable.progress_blue;
+            Bitmap src = BitmapFactory.decodeResource(getResources(), id);
             bg = Bitmap.createScaledBitmap(src, dim, dim, true);
         }
 
@@ -90,7 +91,7 @@ public class ClockView extends SurfaceView {
         } else if (angle > 3 * pi / 4) {
             y3 = dim;
         } else {
-            y3 = dim / 2 - dim / 2 *tg(pi / 2 - angle);
+            y3 = dim / 2 - dim / 2 * tg(pi / 2 - angle);
         }
         float verts[] = {
                 dim, dim,
@@ -130,7 +131,7 @@ public class ClockView extends SurfaceView {
         } else if (angle > 7 * pi / 4) {
             y3 = 0;
         } else {
-            y3 = dim / 2 + dim / 2 *tg(3 * pi / 2 - angle);
+            y3 = dim / 2 + dim / 2 * tg(3 * pi / 2 - angle);
         }
         float verts[] = {
                 0, 0,

@@ -115,7 +115,7 @@ public class SessionChooserActivity extends Activity implements Const {
 
         for (int i = 2; i < numberOfLayersMax; i++) {
             chart.colors[i] = Color.rgb((i) * 60 + 30, 0, 250 - (i) * 50);
-            chart.titles[i] = "after " + (i - 1) + " contracation";
+            chart.titles[i] = "after " + (i - 1) + ((i == 2) ? " contraction" : " c/a");
         }
 
 
@@ -132,5 +132,5 @@ public class SessionChooserActivity extends Activity implements Const {
         dao.onDestroy();
     }
 
-    //todo: destroy
+
 }
