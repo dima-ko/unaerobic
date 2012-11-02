@@ -242,8 +242,8 @@ public class ClockActivity extends Activity implements Const {
                     finish();
                 }
             }, 300);
-
         }
+        //todo immediate breath
     }
 
 

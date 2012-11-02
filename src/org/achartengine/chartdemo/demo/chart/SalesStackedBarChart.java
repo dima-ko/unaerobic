@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.kovalenych.R;
 import com.kovalenych.Utils;
 import org.achartengine.ChartFactory;
 import org.achartengine.chart.BarChart.Type;
@@ -50,7 +51,8 @@ public class SalesStackedBarChart extends AbstractDemoChart {
         Utils.reverseStringArray(titles);
         XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
 
-        setChartSettings(renderer, "Statistics", "Cycles", "Time,s", 0.5,
+        setChartSettings(renderer, context.getString(R.string.statistics),
+                context.getString(R.string.cycles), context.getString(R.string.time_s), 0.5,
                 xMax, yMin * 1.1, yMax * 1.1, Color.GRAY, Color.LTGRAY);
         for (int i = 0; i < colors.length; i++) {
             renderer.getSeriesRendererAt(i).setDisplayChartValues(true);

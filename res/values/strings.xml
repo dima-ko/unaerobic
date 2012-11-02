@@ -221,6 +221,8 @@
     <string name="add_table">add table</string>
     <string name="add_cycle">add cycle</string>
     <string name="statistics">statistics</string>
+    <string name="cycles">Cycles</string>
+    <string name="time_s">Time, s</string>
 
 
 </resources>

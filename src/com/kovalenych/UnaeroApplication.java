@@ -99,7 +99,7 @@ public class UnaeroApplication extends Application {
         SharedPreferences.Editor edit = preferences.edit();
         edit.putLong("lastUpd", new Date().getTime());
         edit.commit();
-        //todo: notifyDataSetChanged();
+
     }
 
     //todo: singleInstance
