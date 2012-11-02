@@ -183,12 +183,17 @@ public class ClockService extends Service implements Soundable, Const {
             Log.d(LOG_TAG, "set volume " + volume);
             if (!isBreathing)
                 contrConsumed = false;
+        } else if (destination.equals(FLAG_IMMEDIATE_BREATH)) {
+            Log.d(LOG_TAG, "set volume " + volume);
+            if (!isBreathing)
+                immediateConsumed = false;
         }
 
         return super.onStartCommand(intent, flags, startId);
     }
 
     boolean contrConsumed = true;
+    boolean immediateConsumed = true;
     boolean isBreathing;
     ClockTask task;
     int curCycle = -1;
@@ -303,7 +308,9 @@ public class ClockService extends Service implements Soundable, Const {
     class ClockTask extends AsyncTask<Integer, Integer, Void> {
 
         Table table;
-        boolean breathing;
+        volatile boolean breathing;
+        public static final int IMMEDIATE = 0;
+        public static final int NOT_IMMEDIATE = 1;
 
         public ClockTask(Table table, boolean breathing) {
             this.table = table;
@@ -321,7 +328,7 @@ public class ClockService extends Service implements Soundable, Const {
                     for (int t = 0; t < cycle.breathe; t++) {
                         if (isCancelled())
                             return null;
-                        publishProgress(t, i);
+                        publishProgress(t, i, NOT_IMMEDIATE);
                         try {
                             long adjust = System.currentTimeMillis() - cycleStart - 1000 * t;
                             long sleeptime = 1000 - adjust;
@@ -337,7 +344,13 @@ public class ClockService extends Service implements Soundable, Const {
                 for (int t = 0; t < cycle.hold; t++) {
                     if (isCancelled())
                         return null;
-                    publishProgress(t, i);
+                    if (immediateConsumed)
+                        publishProgress(t, i, NOT_IMMEDIATE);
+                    else {
+                        immediateConsumed = true;
+                        publishProgress(cycle.hold - 1, i, IMMEDIATE);
+                        break;
+                    }
                     try {
                         long adjust = System.currentTimeMillis() - cycleStart - 1000 * t;
                         long sleeptime = 1000 - adjust;
@@ -354,10 +367,14 @@ public class ClockService extends Service implements Soundable, Const {
             return null;
         }
 
+
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            onTic(values[0], values[1], breathing);
+            if (values[2] == NOT_IMMEDIATE)
+                onTic(values[0], values[1], breathing);
+            else
+                onImmediateBreath(values[0], values[1]);
         }
 
         @Override
@@ -365,6 +382,10 @@ public class ClockService extends Service implements Soundable, Const {
             super.onPostExecute(aVoid);
             onTableFinish();
         }
+    }
+
+    private void onImmediateBreath(Integer cycle, Integer time) {
+        dao.onCycleLife(false, cycle, time + 1);
     }
 
 }

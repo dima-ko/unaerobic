@@ -18,6 +18,7 @@ public interface Const {
     public final static String FLAG_HIDE_TRAY = "hidetray";
     public final static String FLAG_SETVOLUME = "set_volume";
     public final static String FLAG_CONTRACTION = "contraction";
+    public final static String FLAG_IMMEDIATE_BREATH = "immediate_breath";
 
     public final static String PARAM_CYCLES = "cycles";
     public final static String PARAM_PINTENT = "pendingIntent";
@@ -42,7 +43,6 @@ public interface Const {
     public static final int BREATH_FINISHED = 0;
     public static final int HOLD_FINISHED = 1;
     public static final int CONTRACTION = 2;
-
 
 
     public static final int STATUS_BREATH = 1;

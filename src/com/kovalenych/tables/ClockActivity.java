@@ -137,7 +137,7 @@ public class ClockActivity extends Activity implements Const {
         contrButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(LOG_TAG, "contrButt");
+                Log.d(LOG_TAG, FLAG_CONTRACTION);
                 Intent intent = new Intent(ptr, ClockService.class)
                         .putExtra(FLAG, FLAG_CONTRACTION);
                 // стартуем сервис
@@ -147,10 +147,20 @@ public class ClockActivity extends Activity implements Const {
 
         holdBar = (ClockView) rightCircle.findViewById(R.id.run_static_progress);
         holdBar.setDimensions(w);
+        rightCircle.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Log.d(LOG_TAG, FLAG_IMMEDIATE_BREATH);
+                Intent intent = new Intent(ptr, ClockService.class)
+                        .putExtra(FLAG, FLAG_IMMEDIATE_BREATH);
+                // стартуем сервис
+                startService(intent);
+                return true;
+            }
+        });
         breathBar = (ClockView) leftCircle.findViewById(R.id.run_ventilate_progress);
         breathBar.setDimensions(w);
 
-//        topTimeText = (TextView) findViewById(R.id.topTime);
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
     }
