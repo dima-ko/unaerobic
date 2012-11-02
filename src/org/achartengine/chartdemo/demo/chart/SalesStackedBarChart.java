@@ -16,8 +16,11 @@
 package org.achartengine.chartdemo.demo.chart;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import com.kovalenych.Utils;
 import org.achartengine.ChartFactory;
 import org.achartengine.chart.BarChart.Type;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
@@ -41,14 +44,17 @@ public class SalesStackedBarChart extends AbstractDemoChart {
 
 
     public Intent execute(Context context) {
-        titles = new String[]{"Breathe", "Hold"};
-        colors = new int[]{Color.BLUE, Color.CYAN};
+
+        Collections.reverse(values);
+        Utils.reverseIntArray(colors);
+        Utils.reverseStringArray(titles);
         XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
 
         setChartSettings(renderer, "Statistics", "Cycles", "Time,s", 0.5,
                 xMax, yMin * 1.1, yMax * 1.1, Color.GRAY, Color.LTGRAY);
-        renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
-        renderer.getSeriesRendererAt(1).setDisplayChartValues(true);
+        for (int i = 0; i < colors.length; i++) {
+            renderer.getSeriesRendererAt(i).setDisplayChartValues(true);
+        }
         renderer.setXLabels(12);
         renderer.setYLabels(10);
         renderer.setXLabelsAlign(Align.LEFT);

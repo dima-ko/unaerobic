@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 import com.kovalenych.Const;
 
@@ -137,12 +138,10 @@ public class StatsDAO implements Const {
 
     public Cursor getSessionTimeLine(long SessionId) {
         //Список колонок базы, которые следует включить в результат
-
         // составляем запрос к базе
         return database.query(StatsDBHelper.CYCLE_EVENTS_TABLE,
                 new String[]{C_ID, C_CYCLE_NUM, C_EVENT_TYPE, C_EVENT_TIME},
                 C_SESSION + "=?", new String[]{SessionId + ""},
-//                null, null,
                 null, null,
                 C_ID);
     }
@@ -152,4 +151,16 @@ public class StatsDAO implements Const {
     }
 
 
+//    public int getCyclesNumber(long sessioId) {
+//        Cursor cursor = database.query(StatsDBHelper.CYCLE_EVENTS_TABLE,
+//                new String[]{C_CYCLE_NUM},
+//                C_CYCLE_NUM + "=(SELECT " + "MAX(" + C_CYCLE_NUM + ") from " + StatsDBHelper.CYCLE_EVENTS_TABLE + ")"
+//                        + " and " + C_SESSION + "=?",
+//                new String[]{sessioId + ""},
+//                null, null,
+//                C_ID);
+//        if (cursor != null && cursor.moveToFirst()) {
+//            return cursor.getInt(cursor.getColumnIndex(C_CYCLE_NUM));
+//        } else return -1;
+//    }
 }

@@ -182,19 +182,20 @@ public class ClockService extends Service implements Soundable, Const {
             volume = intent.getIntExtra(PARAM_VOLUME, 0);
         } else if (destination.equals(FLAG_CONTRACTION)) {
             Log.d(LOG_TAG, "set volume " + volume);
-            contrConsumed = false;
+            if (!isBreathing)
+                contrConsumed = false;
         }
 
         return super.onStartCommand(intent, flags, startId);
     }
 
     boolean contrConsumed = true;
-
+    boolean isBreathing;
     ClockTask task;
     int curCycle = -1;
 
     private void onTic(int time, int cycle, boolean breathing) {
-
+        isBreathing = breathing;
         //evaluate percent progress
         curCycle = cycle;
         int breathe = table.getCycles().get(cycle).breathe;
