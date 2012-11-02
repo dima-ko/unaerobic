@@ -104,11 +104,13 @@ public class SessionChooserActivity extends Activity implements Const {
 
         chart.colors = new int[numberOfLayersMax];
         chart.colors[0] = Color.CYAN;
-        chart.colors[1] = Color.BLUE;
+        if (chart.colors.length > 1)
+            chart.colors[1] = Color.BLUE;
 
         chart.titles = new String[numberOfLayersMax];
         chart.titles[0] = "Breathe";
-        chart.titles[1] = "Normal hold";
+        if (chart.titles.length > 1)
+            chart.titles[1] = "Normal hold";
 
 
         for (int i = 2; i < numberOfLayersMax; i++) {
