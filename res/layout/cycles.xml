@@ -91,7 +91,7 @@
                       android:layout_alignParentBottom="true"
                       android:layout_centerHorizontal="true"
                       style="?android:attr/tabWidgetStyle"
-                      android:text="stop timer"
+                      android:text="@string/stop_timer"
                     />
         </RelativeLayout>
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -116,7 +116,7 @@
                       android:layout_alignParentBottom="true"
                       android:layout_centerHorizontal="true"
                       style="?android:attr/tabWidgetStyle"
-                      android:text="statistics"
+                      android:text="@string/statistics"
                     />
         </RelativeLayout>
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -141,7 +141,7 @@
                       android:layout_alignParentBottom="true"
                       android:layout_centerHorizontal="true"
                       style="?android:attr/tabWidgetStyle"
-                      android:text="add cycle"
+                      android:text="@string/add_cycle"
                     />
         </RelativeLayout>
 

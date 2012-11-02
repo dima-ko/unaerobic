@@ -9,7 +9,7 @@
         >
     <com.kovalenych.roboto.EditTextRoboto
             android:id="@+id/session_comment_edit"
-            android:hint="comment"
+            android:hint="@string/comment"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:minWidth="200dp"

@@ -51,7 +51,7 @@
                       android:layout_alignParentBottom="true"
                       android:layout_centerHorizontal="true"
                       style="?android:attr/tabWidgetStyle"
-                      android:text="how it works"
+                      android:text="@string/how_it_works"
                     />
         </RelativeLayout>
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -102,7 +102,7 @@
                       android:layout_alignParentBottom="true"
                       android:layout_centerHorizontal="true"
                       style="?android:attr/tabWidgetStyle"
-                      android:text="add table"
+                      android:text="@string/add_table"
                     />
         </RelativeLayout>
 

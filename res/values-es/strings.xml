@@ -58,5 +58,13 @@
     <string name="vibro">vibro</string>
     <string name="history">History</string>
     <string name="no_history">no history yet</string>
+    <string name="comment">comment</string>
+    <string name="sounds">sounds</string>
+    <string name="how_it_works">how it works</string>
+    <string name="stop_timer">stop timer</string>
+    <string name="contraction">contraction</string>
+    <string name="add_table">add table</string>
+    <string name="add_cycle">add cycle</string>
+    <string name="statistics">statistics</string>
 
 </resources>
