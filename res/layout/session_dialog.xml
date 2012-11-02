@@ -33,7 +33,7 @@
                 android:background="#FF555555"
                 android:layout_width="fill_parent"
                 android:layout_height="48dp"
-                android:text="OK"
+                android:text="@string/save"
                 android:textColor="#FFFFFFFF"
                 android:textSize="8pt"
                 />

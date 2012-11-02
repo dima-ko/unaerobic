@@ -33,6 +33,7 @@ public class StatsAdapter extends BaseAdapter {
     private StatsDAO dao;
     DateFormat dateFormat;
     DateFormat timeFormat;
+    Date now;
 
     //Далее следуют обязательные к перегрузке методы адаптера
 
@@ -42,6 +43,7 @@ public class StatsAdapter extends BaseAdapter {
         this.dao = dao;
         dateFormat = new SimpleDateFormat("E, dd MMM yyyy");
         timeFormat = new SimpleDateFormat("HH:mm:ss");
+        now = new Date();
     }
 
     @Override
@@ -64,7 +66,8 @@ public class StatsAdapter extends BaseAdapter {
 
         Session item = getItem(position);
         Date startDate = new Date(item.start);
-        holder.startView.setText(dateFormat.format(startDate) + "\n" + timeFormat.format(startDate));
+        String dayMonth = (startDate.getDate() == now.getDate()) ? context.getString(R.string.today) : dateFormat.format(startDate);
+        holder.startView.setText(dayMonth + "\n" + timeFormat.format(startDate));
         holder.lengthView.setText((item.end - item.start) / 1000 + " s");
         holder.commentView.setText((item.comment));
         if (item.comment.equals("no comment"))

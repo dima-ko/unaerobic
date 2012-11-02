@@ -31,8 +31,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     EditText holdEdit, breathEdit, timesEdit;
     Dialog voiceDialog;
     int chosenMultiCycle;
-    Dialog delDialog;
-    private Button del_button, edit_button;
+    private Button del_button;
     private SharedPreferences _preferedSettings;
     boolean isvibro;
     private RelativeLayout stopButton;
@@ -102,14 +101,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
         lv = (ListView) findViewById(R.id.cycles_list);
 
-        delDialog = new Dialog(ptr);
-        delDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        delDialog.setCancelable(true);
-        delDialog.setContentView(R.layout.delete_cycle_dialog);
-
-        del_button = (Button) delDialog.findViewById(R.id.delete_cycle_button);
-        edit_button = (Button) delDialog.findViewById(R.id.edit_cucle_button);
-
         newDialog = new Dialog(ptr);
         newDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         newDialog.setCancelable(true);
@@ -122,6 +113,7 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         breathEditPerc = (EditText) newDialog.findViewById(R.id.raise_breath_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_cycle_ok);
         raise_button = (Button) newDialog.findViewById(R.id.raise_check);
+        del_button = (Button) newDialog.findViewById(R.id.cycle_delete);
 
 
         invalidateList();
@@ -311,7 +303,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 bun.putBoolean("isRunning", curMultiCycle == position);
                 intent.putExtras(bun);
                 startActivity(intent);
-
             }
         });
 
@@ -320,18 +311,23 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("onLongClick", "zzz");
                 chosenMultiCycle = i;
-                delDialog.show();
-                return false;
+                newDialog.show();
+                del_button.setVisibility(View.VISIBLE);
+                isEditingExistingItem = true;
+                Cycle fillEdits = multiCycles.get(chosenMultiCycle).cycles.get(0);
+                holdEdit.setText(Integer.toString(fillEdits.hold));
+                breathEdit.setText(Integer.toString(fillEdits.breathe));
+                timesEdit.setText(Integer.toString(multiCycles.get(chosenMultiCycle).cycles.size()));
+                return true;
             }
         });
 
         del_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 multiCycles.remove(chosenMultiCycle);
                 multiCyclesToCycles();
-                delDialog.dismiss();
+                newDialog.dismiss();
                 stopService(new Intent(ptr, ClockService.class));
                 stopButton.setVisibility(View.GONE);
                 curCycle = -1;
@@ -340,24 +336,16 @@ public class CyclesActivity extends Activity implements Soundable, Const {
             }
         });
 
-        edit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                newDialog.show();
-                isEditingExistingItem = true;
-                Cycle fillEdits = multiCycles.get(chosenMultiCycle).cycles.get(0);
-                holdEdit.setText(Integer.toString(fillEdits.hold));
-                breathEdit.setText(Integer.toString(fillEdits.breathe));
-                timesEdit.setText(Integer.toString(multiCycles.get(chosenMultiCycle).cycles.size()));
-            }
-        });
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 newDialog.show();
+                del_button.setVisibility(View.GONE);
                 isEditingExistingItem = false;
-
+                holdEdit.setText("");
+                breathEdit.setText("");
+                timesEdit.setText("1");
             }
         });
 
@@ -447,7 +435,6 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                         Toast.makeText(CyclesActivity.this, "Wrong format", Toast.LENGTH_LONG).show();
                         newDialog.dismiss();
                     }
-                    delDialog.dismiss();
                     newDialog.dismiss();
                 } else {
                     try {

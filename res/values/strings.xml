@@ -211,7 +211,6 @@
     <string name="x_times">times</string>
     <string name="gen_cycles">generates cycles, each is x% of previous</string>
     <string name="vibro">vibro</string>
-    <string name="history">History</string>
     <string name="no_history">no history yet</string>
     <string name="comment">comment</string>
     <string name="sounds">sounds</string>
@@ -223,6 +222,7 @@
     <string name="statistics">statistics</string>
     <string name="cycles">Cycles</string>
     <string name="time_s">Time, s</string>
+    <string name="save">save</string>
 
 
 </resources>

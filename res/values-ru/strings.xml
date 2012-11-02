@@ -69,6 +69,7 @@
     <string name="statistics">статистика</string>
     <string name="cycles">Циклы</string>
     <string name="time_s">Время, с</string>
+    <string name="save">сохранить</string>
 
 
 </resources>

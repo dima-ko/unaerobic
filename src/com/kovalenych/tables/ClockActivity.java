@@ -220,6 +220,7 @@ public class ClockActivity extends Activity implements Const {
         int wholeTime = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
         Log.d("zzzzzzz", wholeTime + "percent");
         if (resultCode == STATUS_BREATH) {
+            contrButton.setVisibility(View.GONE);
             if (breathTimeText.getVisibility() != View.VISIBLE) {
                 breathTimeText.setVisibility(View.VISIBLE);
                 holdBar.angle = 0;
@@ -232,6 +233,7 @@ public class ClockActivity extends Activity implements Const {
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
             breathTimeText.setText(showTime);
         } else if (resultCode == STATUS_HOLD) {
+            contrButton.setVisibility(View.VISIBLE);
             if (holdTimeText.getVisibility() != View.VISIBLE) {
                 holdTimeText.setVisibility(View.VISIBLE);
                 breathBar.angle = (float) (2 * Math.PI);
