@@ -133,7 +133,24 @@ public class StatsDAO implements Const {
         return database.query(StatsDBHelper.SESSIONS_TABLE,
                 new String[]{C_ID, C_START_TIME, C_END_TIME, C_COMMENT},
                 C_ATABLE_NAME + " like " + "'%" + tableName + "%'",
-                null, null, null, C_ID+ " DESC");
+                null, null, null, C_ID + " DESC");
+    }
+
+
+    public void deleteSession(int tmpKeyPosition) {
+        long sessionId = getItemId(tmpKeyPosition);
+        boolean isDeleted = (database.delete(StatsDBHelper.SESSIONS_TABLE, C_ID + "=?",
+                new String[]{sessionId + ""})) > 0;
+        refresh();
+    }
+
+    public void updateComment(int tmpKeyPosition, String newComment) {
+        ContentValues values = new ContentValues();
+        long sessionId = getItemId(tmpKeyPosition);
+        values.put(C_COMMENT, newComment);
+        database.update(StatsDBHelper.SESSIONS_TABLE, values,
+                C_ID + "=?", new String[]{sessionId + ""});
+        refresh();
     }
 
     public Cursor getSessionTimeLine(long SessionId) {
@@ -143,7 +160,7 @@ public class StatsDAO implements Const {
                 new String[]{C_ID, C_CYCLE_NUM, C_EVENT_TYPE, C_EVENT_TIME},
                 C_SESSION + "=?", new String[]{SessionId + ""},
                 null, null,
-                C_ID );
+                C_ID);
     }
 
     public int getSessionsCount() {
@@ -163,4 +180,6 @@ public class StatsDAO implements Const {
 //            return cursor.getInt(cursor.getColumnIndex(C_CYCLE_NUM));
 //        } else return -1;
 //    }
+
+
 }

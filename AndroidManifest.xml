@@ -60,7 +60,9 @@
                 android:screenOrientation="portrait"
                 android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
                 android:configChanges="orientation"/>
-        <activity android:name="org.achartengine.GraphicalActivity" android:screenOrientation="landscape"/>
+        <activity android:name="org.achartengine.GraphicalActivity"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:screenOrientation="landscape"/>
         <service android:enabled="true"
                  android:name=".tables.ClockService"
                  android:process=":clock_process"/>

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.text.DateFormat;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,9 +67,10 @@ public class StatsAdapter extends BaseAdapter {
         holder.startView.setText(dateFormat.format(startDate) + "\n" + timeFormat.format(startDate));
         holder.lengthView.setText((item.end - item.start) / 1000 + " s");
         holder.commentView.setText((item.comment));
-        if(item.comment.equals("no comment"))
-            holder.commentView.setTextColor(0xff666666);
-
+        if (item.comment.equals("no comment"))
+            holder.commentView.setTextColor(Color.GRAY);
+        else
+            holder.commentView.setTextColor(Color.WHITE);
         Log.d("stats getView", "start" + item.start);
 
         return rowView;

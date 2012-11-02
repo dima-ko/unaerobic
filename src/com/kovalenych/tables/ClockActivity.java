@@ -241,7 +241,7 @@ public class ClockActivity extends Activity implements Const {
                 public void run() {
                     finish();
                 }
-            }, 200);
+            }, 300);
 
         }
     }

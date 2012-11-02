@@ -1,13 +1,17 @@
 package com.kovalenych.stats;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.kovalenych.Const;
@@ -27,6 +31,10 @@ public class SessionChooserActivity extends Activity implements Const {
     String tableName;
     Context context;
     StatsDAO dao;
+    ListView list;
+    private int tmpKeyPosition;
+    private Dialog dialog;
+    StatsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +43,9 @@ public class SessionChooserActivity extends Activity implements Const {
         tableName = getIntent().getStringExtra("tableName");
         setContentView(R.layout.session_chooser);
         dao = new StatsDAO(this, tableName, false);
-        StatsAdapter adapter = new StatsAdapter(this, dao);
-        ListView list = (ListView) findViewById(R.id.session_list);
+
+        adapter = new StatsAdapter(this, dao);
+        list = (ListView) findViewById(R.id.session_list);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -45,6 +54,37 @@ public class SessionChooserActivity extends Activity implements Const {
             }
         });
         Toast.makeText(this, "long click to add comment", Toast.LENGTH_LONG).show();
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                dialog = new Dialog(context);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.session_dialog);
+                dialog.show();
+                tmpKeyPosition = i;
+
+                dialog.findViewById(R.id.session_delete).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dao.deleteSession(tmpKeyPosition);
+                        adapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.findViewById(R.id.session_ok_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String newComment = ((EditText) dialog.findViewById(R.id.session_comment_edit)).getText().toString();
+                        dao.updateComment(tmpKeyPosition, newComment);
+                        adapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+                return true;
+            }
+        });
 
     }
 
