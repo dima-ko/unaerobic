@@ -113,7 +113,6 @@ public class ClockService extends Service implements Soundable, Const {
 
     public int subscriber = SUBSCRIBER_CLOCK;
 
-
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "ClockService onStartCommand" + flags);
 
@@ -277,9 +276,6 @@ public class ClockService extends Service implements Soundable, Const {
 
 
     public void onTableFinish() {
-
-//        dao.onEndSession();
-//        dao.onDestroy();
 
         if (voices.contains(BREATHE)) {
             playSound(BREATHE);
