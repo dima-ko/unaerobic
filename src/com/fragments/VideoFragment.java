@@ -75,7 +75,7 @@ public final class VideoFragment extends Fragment {
             mediaDBHelper.close();
         }
 
-        //todo: add video with demo
+        videoList.add(0, new Video("Unaerobic trainer manual", "http://www.youtube.com/watch?v=M-l043CyPOs"));
 
         View tables = inflater.inflate(R.layout.videos, null);
         ((ListView) tables.findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
@@ -108,8 +108,6 @@ public final class VideoFragment extends Fragment {
         imageLoader.stop();
         super.onDestroy();
     }
-
-
 
 
     class ItemAdapter extends BaseAdapter {

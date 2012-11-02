@@ -181,6 +181,13 @@ public final class TablesFragment extends Fragment implements Const {
             }
         });
 
+        infoDialog.findViewById(R.id.you_tubeman).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=M-l043CyPOs")));
+            }
+        });
+
         edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
         del_button = (Button) delDialog.findViewById(R.id.delete_button);

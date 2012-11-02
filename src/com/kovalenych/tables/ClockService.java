@@ -202,7 +202,7 @@ public class ClockService extends Service implements Soundable, Const {
         isBreathing = breathing;
         //evaluate percent progress
         curCycle = cycle;
-        int breathe = table.getCycles().get(cycle).breathe;   //todo: change cycle edit doalog
+        int breathe = table.getCycles().get(cycle).breathe;
         int hold = table.getCycles().get(cycle).hold;
         int all = breathing ? breathe : hold;
         Log.d(LOG_TAG, "zzzzonTic  time: " + time);

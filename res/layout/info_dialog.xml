@@ -9,24 +9,6 @@
               android:background="#FF000000"
         >
 
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            >
-        <com.kovalenych.roboto.TextViewRoboto
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/info_title"
-                android:textSize="10pt"
-                android:textColor="#FFFFFF"
-                android:layout_gravity="center_horizontal"
-                />
-
-
-    </LinearLayout>
     <com.kovalenych.roboto.TextViewRoboto
             android:id="@+id/infot"
             android:layout_width="wrap_content"
@@ -34,14 +16,25 @@
             android:text="@string/info"
             android:textSize="16dp"
             />
-    <!--<Spinner-->
-    <!--android:layout_marginTop="5px"-->
-    <!--android:layout_marginLeft="100px"-->
-    <!--android:id="@+id/info_spinner"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center_horizontal"-->
-    <!--/>-->
+
+    <LinearLayout
+            android:id="@+id/you_tubeman"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center"
+            >
+        <com.kovalenych.roboto.TextViewRoboto
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="extended manual: "
+                />
+        <ImageView
+                android:layout_marginLeft="5pt"
+                android:layout_height="20pt"
+                android:layout_width="20pt"
+                android:src="@drawable/you_tube"
+                />
+    </LinearLayout>
     <LinearLayout
 
             android:id="@+id/stars"

@@ -134,6 +134,7 @@ public class ClockActivity extends Activity implements Const {
             }
         });
         contrButton = (RelativeLayout) tabHost.findViewById(R.id.contraction);
+        contrButton.setVisibility(View.GONE);
         contrButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -255,7 +256,7 @@ public class ClockActivity extends Activity implements Const {
                 }
             }, 300);
         }
-        //todo immediate breath
+
     }
 
 
