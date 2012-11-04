@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unaerobic</string>
+    <string name="articles">Artikelen</string>
+    <string name="videos">Video's</string>
+    <string name="ranking">Ranking</string>
+    <string name="info_title">Info</string>
+    <string name="heart">Hart</string>
+    <string name="tables">Tabellen</string>
+    <string name="info">
+        - Druk \"+\" toets voor het toevoegen van een nieuwe tabel of cyclus\n
+        - Druk op de volume icoon voor het aanpassen van de stem bestanden\n
+        - Lang drukken op cyclus of tabel voor het verwijderen\n
+        Wanneer gewenst kan een andere taal worden toegevoegd, verstuur
+        artikelen, geluids bestanden en vertaalde teksten.
+        Of youtube filmpjes. \n
+        \t\t Veel succes met uw duik.
+    </string>
+    <string name="noConnect">Sorry,u moet verbonden zijn met het internet</string>
+    <string name="noConnectArt">Sorry,u moet verbonden zijn met het internet \n voor het lezen van de artikelen</string>
+    <string name="noConnectVid">Sorry,u moet verbonden zijn met het internet \n voor het bekijken van de video's</string>
+    <string name="credits">Voor vragen en opmerkingen kunt u contact opnemen met: \ninsomniac.robot@gmail.com</string>
+    <string name="under_construction">Sorry, is nog onder constructie</string>
+    <string name="disipline_prompt">discipline</string>
+
+    <string name="minutes1">minuut</string>
+    <string name="minutes2">2 minuten</string>
+    <string name="minutes3">3 minuten</string>
+    <string name="minutes4">4 minuten</string>
+    <string name="minutes5">5 minuten</string>
+    <string name="seconds30">30 seconden</string>
+    <string name="seconds10">10 seconden</string>
+    <string name="seconds5">5 seconden</string>
+    <string name="start">start</string>
+    <string name="tostart">OM TE BEGINNEN</string>
+    <string name="afterstart">NA DE START</string>
+    <string name="breathe">Ademen</string>
+    <string name="voices">Stemmen</string>
+    <string name="new_table">Nieuwe tabel</string>
+    <string name="new_cycle">Nieuwe ronde</string>
+    <string name="hold_s">vasthouden, s</string>
+    <string name="breath_s">Adem, s</string>
+    <string name="breathe_time">adem\n tijd</string>
+    <string name="hold_time">vasthouden\n tijd</string>
+    <string name="updated">"aangepast: "</string>
+    <string name="today">" vandaag"</string>
+    <string name="sendingRequest">download info ...</string>
+    <string name="show">Weergeven</string>
+    <string name="discipline">Discipline:</string>
+    <string name="disc_hint">Weet niet wat het is? Klik \t</string>
+    <string name="here">hier</string>
+    <string name="new_table_name">Nieuwe tabel naam</string>
+    <string name="add">Toevoegen</string>
+    <string name="edit_sounds">geluiden aanpassen</string>
+    <string name="edit">Aanpassen</string>
+    <string name="delete">Verwijderen</string>
+    <string name="timer_00">00:00</string>
+    <string name="breathe_s">Adem,s</string>
+    <string name="powered_by">Gemaakt door</string>
+    <string name="repeat">herhaal</string>
+    <string name="rate_us">Beoordeel ons!</string>
+    <string name="x_times">tijden</string>
+    <string name="gen_cycles">genereer cyclus, elke is x% van de vorige</string>
+    <string name="vibro">trillen</string>
+
+
+</resources>
