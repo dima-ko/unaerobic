@@ -1,0 +1,20 @@
+<resources>
+    <string-array name="tabs">
+        <item>TABELLEN</item>
+        <item>RANKING</item>
+        <item>ARTIKELEN</item>
+        <item>VIDEO'S</item>
+    </string-array>
+
+
+    <string-array name="disciplines">
+        <item>STA</item>
+        <item>DYN</item>
+        <item>DNF</item>
+        <item>CWT</item>
+        <item>FIM</item>
+        <item>CNF</item>
+        <!--<item>NL</item>-->
+    </string-array>
+
+</resources>

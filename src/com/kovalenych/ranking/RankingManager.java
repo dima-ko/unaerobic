@@ -16,10 +16,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.kovalenych.MenuActivity;
 import com.kovalenych.R;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
@@ -76,7 +73,7 @@ public class RankingManager {
 
 
     public void invalidateList() {
-        RankingArrayAdapter adapter = new RankingArrayAdapter((MenuActivity)context, recordsList);
+        RankingArrayAdapter adapter = new RankingArrayAdapter((MenuActivity) context, recordsList);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
         //more info in landscape mode
@@ -118,7 +115,10 @@ public class RankingManager {
         out.flush();
         out.close();
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        InputStream inputStream = conn.getInputStream();
+        if (inputStream == null)
+            return;
+        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
         String line = "";
         int i = 0;
         while ((line = in.readLine()) != null) {
