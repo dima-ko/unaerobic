@@ -24,13 +24,16 @@
                 />
         <com.kovalenych.roboto.EditTextRoboto
                 android:id="@+id/hold_edit"
-                android:layout_width="55pt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:inputType="phone"
                 android:layout_marginLeft="3pt"
                 android:hint="@string/hold_s"
                 android:textColor="#FF000000"
+                android:textSize="20dp"
+                android:minWidth="55dp"
+
                 />
     </LinearLayout>
     <LinearLayout

@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Unaerobic</string>
     <string name="articles">Artikelen</string>
-    <string name="videos">Video's</string>
+    <string name="videos">Video\'s</string>
     <string name="ranking">Ranking</string>
     <string name="info_title">Info</string>
     <string name="heart">Hart</string>
@@ -18,7 +18,7 @@
     </string>
     <string name="noConnect">Sorry,u moet verbonden zijn met het internet</string>
     <string name="noConnectArt">Sorry,u moet verbonden zijn met het internet \n voor het lezen van de artikelen</string>
-    <string name="noConnectVid">Sorry,u moet verbonden zijn met het internet \n voor het bekijken van de video's</string>
+    <string name="noConnectVid">Sorry,u moet verbonden zijn met het internet \n voor het bekijken van de video\'s</string>
     <string name="credits">Voor vragen en opmerkingen kunt u contact opnemen met: \ninsomniac.robot@gmail.com</string>
     <string name="under_construction">Sorry, is nog onder constructie</string>
     <string name="disipline_prompt">discipline</string>
@@ -62,6 +62,18 @@
     <string name="x_times">tijden</string>
     <string name="gen_cycles">genereer cyclus, elke is x% van de vorige</string>
     <string name="vibro">trillen</string>
+    <string name="no_history">nog geen statistieken</string>
+    <string name="comment">commentaar</string>
+    <string name="sounds"> geluiden </string>
+    <string name="how_it_works"> hoe het werkt </string>
+    <string name="stop_timer"> stop timer </string>
+    <string name="contraction"> krimp </string>
+    <string name="add_table"> voeg een tabel </string>
+    <string name="add_cycle"> add looping </string>
+    <string name="statistics"> statistieken </string>
+     <string name="cycles"> cycli </string>
+     <string name="time_s"> Tijd s </string>
+     <string name="save"> besparen </string>
 
 
 </resources>

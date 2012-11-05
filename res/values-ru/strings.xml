@@ -57,7 +57,6 @@
     <string name="x_times">раз</string>
     <string name="gen_cycles">сгенерировать циклы, каждый равен x% от предыдущего</string>
     <string name="vibro">вибро</string>
-    <string name="history">История</string>
     <string name="no_history">пока статистики нет</string>
     <string name="comment">комментарий</string>
     <string name="sounds">sounds</string>
