@@ -65,7 +65,7 @@
                       android:layout_alignParentBottom="true"
                       android:layout_centerHorizontal="true"
                       style="?android:attr/tabWidgetStyle"
-                      android:text="sounds"
+                      android:text="@string/sounds"
                     />
         </RelativeLayout>
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

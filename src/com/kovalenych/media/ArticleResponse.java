@@ -14,7 +14,7 @@ public class ArticleResponse {
     public long maxId;
 
     @SerializedName("since_id")
-    public int sinceId;
+    public long sinceId;
 
     public String query;
 

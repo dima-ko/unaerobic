@@ -40,6 +40,7 @@ public class UnaeroApplication extends Application {
 
         preferences = getSharedPreferences("mediaUpdate", Context.MODE_PRIVATE);
         final long lastUpdTime = preferences.getLong("lastUpd", 0);
+        final long lastUpdVideoTime = preferences.getLong("lastUpdVod", 0);
 
         DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
         // This configuration tuning is custom. You can tune every option, you may tune some of them,
@@ -61,7 +62,7 @@ public class UnaeroApplication extends Application {
                 @Override
                 public void run() {
                     updLock = true;
-                    updateVideo(lastUpdTime);
+                    updateVideo(lastUpdVideoTime);
                     updateArticles(lastUpdTime);
                     updLock = false;
                     Log.d("Unaer", "updated");
@@ -97,7 +98,7 @@ public class UnaeroApplication extends Application {
         dbHelper.close();
 
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putLong("lastUpd", new Date().getTime());
+        edit.putLong("lastUpd", response.sinceId);
         edit.commit();
 
     }
@@ -130,9 +131,9 @@ public class UnaeroApplication extends Application {
         db.close();
         dbHelper.close();
 
-
+        Log.d("lastUpd",response.sinceId + "");
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putLong("lastUpd", new Date().getTime());
+        edit.putLong("lastUpdVod", response.sinceId);
         edit.commit();
 
     }

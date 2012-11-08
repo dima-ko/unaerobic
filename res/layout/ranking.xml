@@ -175,7 +175,7 @@
                 android:layout_height="25pt"
                 android:layout_width="80pt"
                 android:textSize="8pt"
-                android:background="#ff333333"
+                android:background="@drawable/roboto_button"
                 android:textColor="#FFFFFFFF"
 
                 />

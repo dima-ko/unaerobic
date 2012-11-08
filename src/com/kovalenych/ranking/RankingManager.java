@@ -4,6 +4,7 @@ package com.kovalenych.ranking;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -138,6 +139,7 @@ public class RankingManager {
         savedTables.put(filter, df.format(new Date()));
 
     }
+
 
     DBHelper recodsDBHelper;
     DBHelper requestsDBHelper;

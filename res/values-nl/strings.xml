@@ -11,9 +11,7 @@
         - Druk \"+\" toets voor het toevoegen van een nieuwe tabel of cyclus\n
         - Druk op de volume icoon voor het aanpassen van de stem bestanden\n
         - Lang drukken op cyclus of tabel voor het verwijderen\n
-        Wanneer gewenst kan een andere taal worden toegevoegd, verstuur
-        artikelen, geluids bestanden en vertaalde teksten.
-        Of youtube filmpjes. \n
+            vertaald door Dieuwert-Jebbe van Leest
         \t\t Veel succes met uw duik.
     </string>
     <string name="noConnect">Sorry,u moet verbonden zijn met het internet</string>
@@ -66,14 +64,14 @@
     <string name="comment">commentaar</string>
     <string name="sounds"> geluiden </string>
     <string name="how_it_works"> hoe het werkt </string>
-    <string name="stop_timer"> stop timer </string>
+    <string name="stop_timer"> stoppen van de timer </string>
     <string name="contraction"> krimp </string>
     <string name="add_table"> voeg een tabel </string>
-    <string name="add_cycle"> add looping </string>
+    <string name="add_cycle"> add cyclus </string>
     <string name="statistics"> statistieken </string>
-     <string name="cycles"> cycli </string>
-     <string name="time_s"> Tijd s </string>
-     <string name="save"> besparen </string>
+    <string name="cycles"> cycli </string>
+    <string name="time_s"> Tijd s </string>
+    <string name="save"> besparen </string>
 
 
 </resources>

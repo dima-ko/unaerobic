@@ -2,8 +2,10 @@
 <resources>
     <color name="blue">#aa0044aa</color>
     <color name="light_blue">#dd00cccc</color>
+    <color name="roboto_blue">#ff11ccff</color>
     <color name="green">#aa00ffaa</color>
     <color name="black">#ff000000</color>
+    <color name="dark">#ff333333</color>
     <color name="glass">#00000000</color>
     <color name="faint">#88000000</color>
 
