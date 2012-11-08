@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -118,7 +119,6 @@ public class UnaeroApplication extends Application {
         VideoResponse response = gson.fromJson(reader, VideoResponse.class);
 
         List<Video> videos = response.videos;
-       //todo: strings
 
         dbHelper = new MediaDBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();

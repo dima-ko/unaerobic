@@ -68,7 +68,7 @@ public final class VideoFragment extends Fragment {
 
             while (cursor.moveToNext()) {
                 Video video = new Video(cursor.getString(nameColumn), cursor.getString(urlColumn));
-                if (!videoList.contains(video))
+                if (!containsVideo(video.getTitle()))
                     videoList.add(0, video);
             }
             db.close();
@@ -81,6 +81,14 @@ public final class VideoFragment extends Fragment {
         ((ListView) tables.findViewById(R.id.video_list)).setAdapter(new ItemAdapter());
         ((ListView) tables.findViewById(R.id.video_list)).setOnItemClickListener(listener);
         return tables;
+    }
+
+    private boolean containsVideo(String name) {
+        for (Video video : videoList) {
+            if (video.getTitle().equals(name))
+                return true;
+        }
+        return false;
     }
 
     private void fillList() {
