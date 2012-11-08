@@ -58,18 +58,18 @@ public class UnaeroApplication extends Application {
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
 
-        if (haveInternet())
-            new Thread() {
-                @Override
-                public void run() {
-                    updLock = true;
-                    updateVideo(lastUpdVideoTime);
-                    updateArticles(lastUpdTime);
-                    updLock = false;
-                    Log.d("Unaer", "updated");
-
-                }
-            }.start();
+//        if (haveInternet())
+//            new Thread() {
+//                @Override
+//                public void run() {
+//                    updLock = true;
+//                    updateVideo(lastUpdVideoTime);
+//                    updateArticles(lastUpdTime);
+//                    updLock = false;
+//                    Log.d("Unaer", "updated");
+//
+//                }
+//            }.start();
 
     }
 

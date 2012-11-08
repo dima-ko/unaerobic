@@ -92,7 +92,7 @@ public final class VideoFragment extends Fragment {
     }
 
     private void fillList() {
-
+        videoList.add(new Video("La technique du virage apnee dynamique", "http://www.youtube.com/watch?v=9x7GeBaMKTE"));
         videoList.add(new Video("WEIGHTLESS - Emotional Freediving", "http://www.youtube.com/watch?v=jOM75l225Qg&feature=player_embedded"));
         videoList.add(new Video("TANYA STREETER: Shark Therapy", "http://www.youtube.com/watch?feature=player_embedded&v=T1knyXu4QuQ"));
         videoList.add(new Video("FreeDive.mov", "http://www.youtube.com/watch?feature=player_embedded&v=wuVgrY4FjY0"));
