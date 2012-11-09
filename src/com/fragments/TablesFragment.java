@@ -188,6 +188,38 @@ public final class TablesFragment extends Fragment implements Const {
             }
         });
 
+        infoDialog.findViewById(R.id.mailto).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+                /* Fill it with Data */
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"insomniac.robot@gmail.com"});
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Unaerobic");
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+
+                /* Send it off to the Activity-Chooser */
+                getActivity().startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            }
+        });
+
+        infoDialog.findViewById(R.id.translated_by).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+                /* Fill it with Data */
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.translated_email)});
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Unaerobic");
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+
+                /* Send it off to the Activity-Chooser */
+                getActivity().startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            }
+        });
+
         edit = (EditText) newDialog.findViewById(R.id.new_table_edit);
         ok_button = (Button) newDialog.findViewById(R.id.new_table_ok);
         del_button = (Button) delDialog.findViewById(R.id.delete_button);

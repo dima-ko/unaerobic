@@ -7,6 +7,7 @@
     <string name="info_title">Info</string>
     <string name="heart">Heart</string>
     <string name="tables">Tables</string>
+    <string name="credits_email">insomniac.robot@gmail.com</string>
     <string name="info">
         - Press \"+\" button to add new table or cycle\n
         - Press volume icon to customize voice alarms\n
@@ -15,6 +16,10 @@
         send articles, sounds and translated text.
         Or exciting youtube clips. \n
         \t\t Good luck in your dive
+    </string>
+    <string name="translated">
+    </string>
+    <string name="translated_email">
     </string>
     <string name="noConnect">Sorry,you must be connected to internet</string>
     <string name="noConnectArt">Sorry,you must be connected to internet \n to read this article</string>
@@ -223,6 +228,8 @@
     <string name="cycles">Cycles</string>
     <string name="time_s">Time, s</string>
     <string name="save">save</string>
+    <string name="extended_man">Extended manual</string>
+    <string name="hold_hint">can\'t hold anymore - \n long press here</string>
 
 
 </resources>

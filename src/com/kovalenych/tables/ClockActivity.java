@@ -27,6 +27,7 @@ public class ClockActivity extends Activity implements Const {
     public boolean countDown;
     public boolean prefTray;
     private SharedPreferences _preferences;
+    private TextView holdTimeTextHint;
 
 
     @Override
@@ -164,6 +165,7 @@ public class ClockActivity extends Activity implements Const {
 
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
+        holdTimeTextHint = (TextView) rightCircle.findViewById(R.id.run_time_hold_hint);
     }
 
     private static final String LOG_TAG = "CO2 ClockActivity";
@@ -227,8 +229,10 @@ public class ClockActivity extends Activity implements Const {
                 holdBar.angle = 0;
                 holdBar.invalidateClock(true);
             }
-            if (holdTimeText.getVisibility() == View.VISIBLE)
+            if (holdTimeText.getVisibility() == View.VISIBLE) {
                 holdTimeText.setVisibility(View.INVISIBLE);
+                holdTimeTextHint.setVisibility(View.INVISIBLE);
+            }
             breathBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
             breathBar.invalidateClock(false);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
@@ -237,6 +241,7 @@ public class ClockActivity extends Activity implements Const {
             contrButton.setVisibility(View.VISIBLE);
             if (holdTimeText.getVisibility() != View.VISIBLE) {
                 holdTimeText.setVisibility(View.VISIBLE);
+                holdTimeTextHint.setVisibility(View.VISIBLE);
                 breathBar.angle = (float) (2 * Math.PI);
                 breathBar.invalidateClock(false);
             }

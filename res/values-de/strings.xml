@@ -9,9 +9,13 @@
     <string name="noConnect">"Leider müssen Sie mit dem Internet verbunden werden"</string>
     <string name="noConnectArt">"Leider müssen Sie internet \n angeschlossen werden, um diesen Artikel lesen"</string>
     <string name="noConnectVid">"Leider müssen Sie internet \n angeschlossen werden, um dieses Video zu sehen"</string>
-    <string name="credits">"Für Vorschläge und Kritik zu schreiben: \ninsomniac.robot @ gmail.com"</string>
+    <string name="credits">"Für Vorschläge und Kritik zu schreiben:</string>
     <string name="under_construction">"Sorry, under construction"</string>
     <string name="disipline_prompt">"Disziplin"</string>
+    <string name="translated">
+    </string>
+    <string name="translated_email">
+    </string>
 
     <string name="minutes1">"Minute"</string>
     <string name="minutes2">"2 Minuten"</string>
@@ -63,6 +67,7 @@
     <string name="cycles">"Frequenz"</string>
     <string name="time_s">"Zeit: %s"</string>
     <string name="save">"sparen"</string>
+    <string name="hold_hint">can\'t hold anymore \n long press here</string>
 
 
 </resources>

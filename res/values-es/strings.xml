@@ -17,7 +17,11 @@
 
     </string>
     <string name="noConnect">Lo sentimos, usted debe estar conectado a internet</string>
-    <string name="credits">De proposiciones y críticos que escriben sobre: \ninsomniac.robot@gmail.com
+    <string name="credits">De proposiciones y críticos que escriben sobre:
+    </string>
+    <string name="translated">
+    </string>
+    <string name="translated_email">
     </string>
 
     <string name="minutes1">minuto</string>
@@ -68,5 +72,6 @@
     <string name="statistics">statistics</string>
     <string name="cycles">Cycles</string>
     <string name="time_s">Time,s</string>
+    <string name="hold_hint">can\'t hold anymore \n long press here</string>
 
 </resources>

@@ -24,5 +24,17 @@
             android:layout_centerInParent="true"
             android:visibility="invisible"
             />
+    <com.kovalenych.roboto.TextViewRoboto
+
+            android:layout_below="@id/run_time_hold"
+            android:id="@+id/run_time_hold_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="8dp"
+            android:gravity="center"
+            android:text="@string/hold_hint"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            />
 </RelativeLayout>
 

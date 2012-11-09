@@ -34,6 +34,11 @@
     <string name="disc_hint">Je ne sais pas ce que c\'est? Cliquez</string>
     <string name="here">ici</string>
 
+    <string name="translated">
+    </string>
+    <string name="translated_email">
+    </string>
+
     <string name="new_table_name">nom</string>
     <string name="add">ajouter</string>
     <string name="edit_sounds">changer les sons</string>
@@ -56,4 +61,5 @@
     <string name="cycles">Cycles</string>
     <string name="time_s">Temps, s</string>
     <string name="save">sauver</string>
+    <string name="hold_hint">can\'t hold anymore \n long press here</string>
 </resources>

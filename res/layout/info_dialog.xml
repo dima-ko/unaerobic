@@ -16,6 +16,15 @@
             android:text="@string/info"
             android:textSize="16dp"
             />
+    <com.kovalenych.roboto.TextViewRoboto
+            android:id="@+id/translated_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/translated"
+            android:textColor="@color/roboto_blue"
+            android:textSize="16dp"
+            android:singleLine="true"
+            />
 
     <LinearLayout
             android:id="@+id/you_tubeman"
@@ -26,7 +35,7 @@
         <com.kovalenych.roboto.TextViewRoboto
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="extended manual: "
+                android:text="@string/extended_man"
                 />
         <ImageView
                 android:layout_marginLeft="5pt"
@@ -76,7 +85,6 @@
                 />
     </LinearLayout>
     <com.kovalenych.roboto.TextViewRoboto
-            android:id="@+id/mailto"
             android:layout_marginTop="2pt"
             android:gravity="center"
             android:layout_width="wrap_content"
@@ -84,7 +92,15 @@
             android:text="@string/credits"
             android:textSize="6pt"
             />
-    <!--<ImageButton></ImageButton>-->       <!--donate-->
-
+    <com.kovalenych.roboto.TextViewRoboto
+            android:id="@+id/mailto"
+            android:layout_marginTop="2pt"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/credits_email"
+            android:textColor="@color/roboto_blue"
+            android:textSize="6pt"
+            />
 
 </LinearLayout>

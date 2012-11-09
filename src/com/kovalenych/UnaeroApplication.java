@@ -55,7 +55,9 @@ public class UnaeroApplication extends Application {
                 .discCacheDir("UniversalImageLoaderApp/Cache")
                 .memoryCacheSize(1500000)
                 .build();
-        // Initialize ImageLoader with configuration.
+        // Initialize ImageLoader with configuration.     //todo: when there will be no
+                                                        //versions 26 - 38 fix and fix server int->long
+                                                        //     updating
         ImageLoader.getInstance().init(config);
 
 //        if (haveInternet())
