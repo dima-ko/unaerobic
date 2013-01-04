@@ -1,14 +1,23 @@
 package com.kovalenych.tables;
 
-import android.app.*;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.os.*;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.RemoteViews;
-import com.kovalenych.*;
+import com.kovalenych.Const;
+import com.kovalenych.R;
+import com.kovalenych.Table;
+import com.kovalenych.Utils;
 import com.kovalenych.stats.StatsDAO;
 
 import java.io.File;
@@ -104,11 +113,14 @@ public class ClockService extends Service implements Soundable, Const {
         nMgr.cancel(NOTIFY_ID);
         if (task != null)
             task.cancel(true);
-        mediaPlayer.release();
+        if (mediaPlayer != null)
+            mediaPlayer.release();
         mediaPlayer = null;
         Log.d(LOG_TAG, "ClockService onDestroy");
-        dao.onEndSession();
-        dao.onDestroy();
+        if (dao != null) {
+            dao.onEndSession();
+            dao.onDestroy();
+        }
     }
 
     public int subscriber = SUBSCRIBER_CLOCK;
