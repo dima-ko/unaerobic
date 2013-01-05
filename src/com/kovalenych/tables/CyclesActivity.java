@@ -71,9 +71,12 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         if (!_preferedSettings.getBoolean("shown_update_dialog", false)) {
             _preferedSettings.edit().putBoolean("shown_update_dialog", true).commit();
             Dialog updateDialog = new Dialog(this);
+            updateDialog.setTitle("Oximeters");
             updateDialog.setContentView(R.layout.update_dialog);
             updateDialog.show();
         }
+
+        ((TextView)findViewById(R.id.cycles_ab_name)).setText(name);
 
         stopButton = (RelativeLayout) findViewById(R.id.stop_button_cycles);
         statButton = (RelativeLayout) findViewById(R.id.stats_button_cycles);
@@ -285,11 +288,20 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
     public void setListeners() {
 
+        findViewById(R.id.cycles_all_delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                multiCycles.clear();
+                multiCyclesToCycles();
+                invalidateList();
+            }
+        });
+
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-//                stopService(new Intent(ptr, ClockService.class));
 
                 Intent intent = new Intent(lv.getContext(), ClockActivity.class);
                 Bundle bun = new Bundle();

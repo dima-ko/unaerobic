@@ -28,6 +28,18 @@
             />
 
     <com.kovalenych.roboto.TextViewRoboto
+                            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/cycles_ab_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:singleLine="true"
+            android:layout_toLeftOf="@id/cycles_all_delete"
+            />
+
+    <com.kovalenych.roboto.TextViewRoboto
             android:layout_marginTop="8dp"
             android:id="@+id/holdtime"
             android:layout_width="wrap_content"
