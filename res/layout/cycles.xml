@@ -12,25 +12,41 @@
             android:layout_height="wrap_content"
             />
 
+    <LinearLayout
+            android:background="@drawable/action_bar_bg"
+            android:id="@+id/top_plane"
+            android:layout_height="50dp"
+            android:layout_width="fill_parent"
+            />
+    <Button
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/cycles_all_delete"
+            android:background="@drawable/trash_inv"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            />
 
     <com.kovalenych.roboto.TextViewRoboto
+            android:layout_marginTop="8dp"
             android:id="@+id/holdtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="6pt"
             android:text="@string/hold_time"
-            android:layout_alignParentTop="true"
+            android:layout_below="@id/cycles_all_delete"
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:padding="2pt"
             />
     <com.kovalenych.roboto.TextViewRoboto
+            android:layout_marginTop="8dp"
             android:id="@+id/breathtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="6pt"
             android:text="@string/breathe_time"
-            android:layout_alignParentTop="true"
+            android:layout_below="@id/cycles_all_delete"
             android:layout_alignParentLeft="true"
             android:gravity="left"
             android:padding="2pt"
@@ -149,11 +165,11 @@
     </LinearLayout>
 
     <ListView
+            android:layout_below="@id/cycles_all_delete"
             android:listSelector="@drawable/list_bg"
             android:id="@+id/cycles_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="10pt"
             android:layout_above="@id/tab_bar"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="dark_blue">#ff0a161e</color>
     <color name="blue">#aa0044aa</color>
     <color name="light_blue">#dd00cccc</color>
     <color name="roboto_blue">#ff11ccff</color>

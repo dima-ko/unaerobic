@@ -6,17 +6,22 @@ import android.app.PendingIntent;
 import android.content.*;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.*;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.kovalenych.*;
+import com.kovalenych.Const;
+import com.kovalenych.R;
+import com.kovalenych.Table;
+import com.kovalenych.Utils;
 import com.kovalenych.stats.SessionChooserActivity;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public class CyclesActivity extends SherlockFragmentActivity implements Soundable, Const {
+public class CyclesActivity extends Activity implements Soundable, Const {
 
     ListView lv;
 
@@ -63,7 +68,7 @@ public class CyclesActivity extends SherlockFragmentActivity implements Soundabl
         isvibro = _preferedSettings.getBoolean("vibro", true);
         volume = _preferedSettings.getInt("volume", 15);
 
-        if(!_preferedSettings.getBoolean("shown_update_dialog", false)){
+        if (!_preferedSettings.getBoolean("shown_update_dialog", false)) {
             _preferedSettings.edit().putBoolean("shown_update_dialog", true).commit();
             Dialog updateDialog = new Dialog(this);
             updateDialog.setContentView(R.layout.update_dialog);
@@ -104,6 +109,7 @@ public class CyclesActivity extends SherlockFragmentActivity implements Soundabl
             Log.d(LOG_TAG, "onResume GONE");
         }
     }
+
 
     public void initViews() {
 
