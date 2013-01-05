@@ -21,7 +21,10 @@
     <string name="new_version_info">
         Hi, guys!
         I am developing a new version of app - with heart rate monitoring.
-        I've already made
+        I've already made camera monitoring, like in Instant Heart Rate app.
+        Now I am looking for oximeter to connect to via bluetooth.
+        If you have one with bluetooth (especially Zephyr or ChoiceMmed MDC300C318) -
+        please, contact me.
     </string>
 
     <string name="translated">
