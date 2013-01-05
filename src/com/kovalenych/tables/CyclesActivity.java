@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.kovalenych.*;
 import com.kovalenych.stats.SessionChooserActivity;
 
@@ -15,7 +16,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public class CyclesActivity extends Activity implements Soundable, Const {
+public class CyclesActivity extends SherlockFragmentActivity implements Soundable, Const {
 
     ListView lv;
 
@@ -61,6 +62,13 @@ public class CyclesActivity extends Activity implements Soundable, Const {
 
         isvibro = _preferedSettings.getBoolean("vibro", true);
         volume = _preferedSettings.getInt("volume", 15);
+
+        if(!_preferedSettings.getBoolean("shown_update_dialog", false)){
+            _preferedSettings.edit().putBoolean("shown_update_dialog", true).commit();
+            Dialog updateDialog = new Dialog(this);
+            updateDialog.setContentView(R.layout.update_dialog);
+            updateDialog.show();
+        }
 
         stopButton = (RelativeLayout) findViewById(R.id.stop_button_cycles);
         statButton = (RelativeLayout) findViewById(R.id.stats_button_cycles);
