@@ -168,12 +168,11 @@ public class StatsDAO implements Const {
 
     public void clearHistoryOfTable() {
 
-
         while (sessionsCursor.moveToNext()) {
             long id = sessionsCursor.getLong(0);
-
+            database.delete(StatsDBHelper.CYCLE_EVENTS_TABLE, C_SESSION + "=?",
+                    new String[]{id+""});
         }
-
         database.delete(StatsDBHelper.SESSIONS_TABLE, C_ATABLE_NAME + "=?",
                 new String[]{tableName});
         refresh();
