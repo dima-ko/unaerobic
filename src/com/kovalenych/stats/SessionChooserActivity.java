@@ -3,11 +3,9 @@ package com.kovalenych.stats;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.*;
@@ -16,7 +14,6 @@ import com.kovalenych.R;
 import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * this class was made
@@ -56,7 +53,7 @@ public class SessionChooserActivity extends Activity implements Const {
         findViewById(R.id.cycles_all_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dao.clearHistoryOfCycle();
+                dao.clearHistoryOfTable();
             }
         });
 

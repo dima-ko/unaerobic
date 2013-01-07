@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 import com.kovalenych.Const;
 
@@ -167,8 +166,17 @@ public class StatsDAO implements Const {
         return sessionsCursor.getCount();
     }
 
-    public void clearHistoryOfCycle() {
+    public void clearHistoryOfTable() {
 
+
+        while (sessionsCursor.moveToNext()) {
+            long id = sessionsCursor.getLong(0);
+
+        }
+
+        database.delete(StatsDBHelper.SESSIONS_TABLE, C_ATABLE_NAME + "=?",
+                new String[]{tableName});
+        refresh();
 
     }
 
