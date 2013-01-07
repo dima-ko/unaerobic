@@ -19,7 +19,7 @@
             />
     <com.kovalenych.roboto.TextViewRoboto
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="8dp"
             android:id="@+id/cycles_hist_ab_name"
             android:layout_width="wrap_content"
@@ -39,11 +39,10 @@
             />
 
     <ListView
+            android:layout_below="@id/top_plane"
             android:id="@+id/session_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
 
             android:cacheColorHint="#00000000"
             />

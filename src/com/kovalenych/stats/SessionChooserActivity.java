@@ -54,6 +54,7 @@ public class SessionChooserActivity extends Activity implements Const {
             @Override
             public void onClick(View v) {
                 dao.clearHistoryOfTable();
+                adapter.notifyDataSetChanged();
             }
         });
 
