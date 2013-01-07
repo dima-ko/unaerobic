@@ -167,6 +167,11 @@ public class StatsDAO implements Const {
         return sessionsCursor.getCount();
     }
 
+    public void clearHistoryOfCycle() {
+
+
+    }
+
 
 //    public int getCyclesNumber(long sessioId) {
 //        Cursor cursor = database.query(StatsDBHelper.CYCLE_EVENTS_TABLE,

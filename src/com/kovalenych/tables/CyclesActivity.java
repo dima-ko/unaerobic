@@ -610,7 +610,11 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(LOG_TAG, "onActivityResult" + resultCode);
 
-        if (name.equals(data.getStringExtra(PARAM_TABLE))) {
+        String stringExtra = data.getStringExtra(PARAM_TABLE);
+        if (stringExtra==null)
+           return;
+
+        if (name.equals(stringExtra)) {
             curCycle = data.getIntExtra(PARAM_M_CYCLE, 0);
             curMultiCycle = cyclesMap.get(curCycle);
         } else {

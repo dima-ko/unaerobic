@@ -3,8 +3,35 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
         >
+    <LinearLayout
+            android:background="@drawable/action_bar_bg"
+            android:id="@+id/top_plane"
+            android:layout_height="50dp"
+            android:layout_width="fill_parent"
+            />
+    <Button
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/cycles_all_delete"
+            android:background="@drawable/trash_inv"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            />
+    <com.kovalenych.roboto.TextViewRoboto
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/cycles_hist_ab_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:singleLine="true"
+            android:layout_toLeftOf="@id/cycles_all_delete"
+            />
 
     <TextView
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/top_plane"
             android:text="@string/no_history"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"

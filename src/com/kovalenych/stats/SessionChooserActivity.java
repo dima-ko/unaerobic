@@ -10,10 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.*;
 import com.kovalenych.Const;
 import com.kovalenych.R;
 import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
@@ -55,6 +52,14 @@ public class SessionChooserActivity extends Activity implements Const {
         });
         Toast.makeText(this, "long click to add comment", Toast.LENGTH_LONG).show();
 
+        ((TextView)findViewById(R.id.cycles_hist_ab_name)).setText(tableName);
+        findViewById(R.id.cycles_all_delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dao.clearHistoryOfCycle();
+            }
+        });
+
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -87,6 +92,7 @@ public class SessionChooserActivity extends Activity implements Const {
         });
 
     }
+
 
     private void showPlot(int position) {
         SalesStackedBarChart chart = new SalesStackedBarChart();
