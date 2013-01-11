@@ -62,7 +62,7 @@ public class TableTest extends GeneralTest {
                 EditText holdEdit = (EditText) solo.getView(R.id.hold_edit);
                 solo.clearEditText(holdEdit);
                 solo.enterText(holdEdit, "10");
-                solo.clickOnText("add");
+                solo.clickOnText("save");
             }
 
             Assert.assertTrue(solo.searchText("x2"));

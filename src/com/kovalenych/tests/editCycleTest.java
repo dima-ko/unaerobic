@@ -49,7 +49,7 @@ public class editCycleTest extends GeneralTest {
             solo.enterText(holdEdit, "10");
             solo.clearEditText(timesEdit);
             solo.enterText(timesEdit, "2");
-            solo.clickOnText("add");
+            solo.clickOnText("save");
 
             clickOnViewByID(R.id.add_cycle);
             solo.clearEditText(breathEdit);
