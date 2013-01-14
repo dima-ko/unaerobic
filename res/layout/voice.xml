@@ -1,316 +1,377 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:background="#FF000000"
         >
+
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="9"
-            android:padding="2dp"
+            android:orientation="vertical"
             android:baselineAligned="false">
 
         <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                >
-            <com.kovalenych.roboto.TextViewRoboto
-                    android:gravity="center"
-                    android:text="@string/tostart"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:baselineAligned="false">
 
             <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox
-                        android:button="@drawable/btn_radio"
-                        android:id="@+id/voice2to"
-                        android:layout_height="fill_parent"
-                        android:layout_width="wrap_content"
-
-                        />
-                <com.kovalenych.roboto.TextViewRoboto
-                        android:gravity="center"
-                        android:text="@string/minutes2"
-                        android:layout_height="fill_parent"
-                        android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox
-                        android:button="@drawable/btn_radio"
-                        android:id="@+id/voice1to"
-                        android:layout_height="fill_parent"
-                        android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto
-                        android:gravity="center"
-                        android:text="@string/minutes1"
-                        android:layout_height="fill_parent"
-                        android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voice30to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/seconds30"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voice10to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/seconds10"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voice5to"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/seconds5"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voicestart"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/start"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="4"
+                    android:gravity="center_horizontal"
                     >
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/vibro"
-                          android:layout_height="wrap_content"
-                          android:layout_width="wrap_content"
-                        />
+
                 <com.kovalenych.roboto.TextViewRoboto
                         android:gravity="center"
-                        android:text="@string/vibro"
-                        android:layout_height="fill_parent"
-                        android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-
-        </LinearLayout>
-        <LinearLayout
-                android:layout_height="fill_parent"
-                android:layout_width="0dp"
-                android:layout_weight="4"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                >
-            <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                  android:text="@string/afterstart"
-                                                  android:layout_height="wrap_content"
-                                                  android:layout_width="wrap_content"
-                    />
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voice1after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/minutes1"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox
-                        android:button="@drawable/btn_radio"
-                        android:id="@+id/voice2after"
-                        android:layout_height="fill_parent"
+                        android:text="@string/tostart"
+                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         />
-                <com.kovalenych.roboto.TextViewRoboto android:gravity="center"
-                                                      android:text="@string/minutes2"
-                                                      android:layout_height="fill_parent"
-                                                      android:layout_width="fill_parent"
-                        />
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice2to"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/minutes2"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice1to"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/minutes1"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice30to"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/seconds30"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice10to"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/seconds10"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice5to"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/seconds5"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voicestart"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/start"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        >
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/vibro"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/vibro"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voice3after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
+                    android:layout_height="fill_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    >
+
                 <com.kovalenych.roboto.TextViewRoboto
                         android:gravity="center"
-                        android:text="@string/minutes3"
-                        android:layout_height="fill_parent"
-                        android:layout_width="fill_parent"
+                        android:text="@string/afterstart"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
                         />
-            </LinearLayout>
 
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voice4after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice1after"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/minutes1"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice2after"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/minutes2"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice3after"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/minutes3"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice4after"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/minutes4"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voice5after"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/minutes5"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:button="@drawable/btn_radio"
+                            android:id="@+id/voicebreathe"
+                            android:layout_height="fill_parent"
+                            android:layout_width="wrap_content"
+                            />
+
+                    <com.kovalenych.roboto.TextViewRoboto
+                            android:gravity="center"
+                            android:text="@string/breathe"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent"
+                            />
+                </LinearLayout>
+
+                <com.kovalenych.roboto.ButtonRoboto
+                        android:layout_marginTop="1pt"
+                        android:background="@drawable/roboto_button"
+                        android:textColor="#FFFFFFFF"
                         android:gravity="center"
-                        android:text="@string/minutes4"
-                        android:layout_height="fill_parent"
+                        android:padding="2pt"
+                        android:id="@+id/edit_sounds"
+                        android:text="@string/edit_sounds"
+                        android:layout_height="19pt"
                         android:layout_width="fill_parent"
                         />
-            </LinearLayout>
 
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voice5after"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
+                <LinearLayout
+                        android:background="#00000000"
+                        android:layout_height="6pt"
+                        android:layout_width="1dp"
                         />
-                <com.kovalenych.roboto.TextViewRoboto
-                        android:gravity="center"
-                        android:text="@string/minutes5"
-                        android:layout_height="fill_parent"
-                        android:layout_width="fill_parent"
-                        />
-            </LinearLayout>
 
-            <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:orientation="horizontal">
-                <CheckBox android:button="@drawable/btn_radio"
-                          android:id="@+id/voicebreathe"
-                          android:layout_height="fill_parent"
-                          android:layout_width="wrap_content"
-                        />
-                <com.kovalenych.roboto.TextViewRoboto
-                        android:gravity="center"
-                        android:text="@string/breathe"
-                        android:layout_height="fill_parent"
-                        android:layout_width="fill_parent"
-                        />
             </LinearLayout>
-
-            <com.kovalenych.roboto.ButtonRoboto
-                    android:layout_marginTop="1pt"
-                    android:background="@drawable/roboto_button"
-                    android:textColor="#FFFFFFFF"
-                    android:gravity="center"
-                    android:padding="2pt"
-                    android:id="@+id/edit_sounds"
-                    android:text="@string/edit_sounds"
-                    android:layout_height="19pt"
-                    android:layout_width="fill_parent"
-                    />
-            <LinearLayout
-                    android:background="#00000000"
-                    android:layout_height="6pt"
-                    android:layout_width="1dp"
-                    />
 
         </LinearLayout>
-        <RelativeLayout
-                android:layout_height="fill_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                >
-            <TextView
-                    android:textSize="10pt"
-                    android:text="+"
-                    android:id="@+id/plus"
-                    android:layout_centerHorizontal="true"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    />
-            <TextView
-                    android:textSize="12pt"
-                    android:text="-"
-                    android:id="@+id/minus"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    />
 
-            <com.kovalenych.roboto.VerticalSeekBar
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/plus"
-                    android:layout_above="@id/minus"
+        <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                >
+            <SeekBar
+                    android:padding="7dp"
+                    android:layout_centerVertical="true"
                     android:progressDrawable="@drawable/blue_progress"
                     android:id="@+id/volume_seekbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
                     android:max="30"
+
+                    />
+            <TextView
+                    android:layout_marginTop="3dp"
+                    android:textSize="10pt"
+                    android:layout_marginRight="8dp"
+                    android:text="+"
+                    android:id="@+id/plus"
+                    android:padding="4dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    />
+
+            <TextView
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:padding="4dp"
+                    android:textSize="12pt"
+                    android:text="–"
+                    android:id="@+id/minus"
+                    android:layout_alignParentLeft="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     />
 
         </RelativeLayout>
