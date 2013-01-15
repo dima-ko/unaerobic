@@ -33,11 +33,11 @@ public class ClockView extends SurfaceView {
         super(context, attrs, defStyle);
     }
 
-    public void invalidateClock(boolean isDark) {
+    public void invalidateClock(int bgId) {
 
         if (bg == null) {
-            int id = isDark ? R.drawable.progress_dark_blue : R.drawable.progress_blue;
-            Bitmap src = BitmapFactory.decodeResource(getResources(), id);
+//            int id = isDark ? R.drawable.progress_dark_blue : R.drawable.progress_blue;
+            Bitmap src = BitmapFactory.decodeResource(getResources(), bgId);
             bg = Bitmap.createScaledBitmap(src, dim, dim, true);
         }
 
