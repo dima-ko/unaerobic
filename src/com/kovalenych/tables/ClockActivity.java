@@ -30,6 +30,8 @@ public class ClockActivity extends Activity implements Const {
     private SharedPreferences _preferences;
     private TextView holdTimeTextHint;
     private TextView smallTimeText;
+    private TextView breathTimeTextWhole;
+    private TextView holdTimeTextWhole;
 
 
     @Override
@@ -173,9 +175,12 @@ public class ClockActivity extends Activity implements Const {
         smallBar.setDimensions(w/3);
 
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
-        smallTimeText = (TextView) smallCircle.findViewById(R.id.small_text);
+        breathTimeTextWhole = (TextView) leftCircle.findViewById(R.id.run_time_breath_whole);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
+        holdTimeTextWhole = (TextView) rightCircle.findViewById(R.id.run_time_hold_whole);
         holdTimeTextHint = (TextView) rightCircle.findViewById(R.id.run_time_hold_hint);
+        smallTimeText = (TextView) smallCircle.findViewById(R.id.small_text);
+
     }
 
     private static final String LOG_TAG = "CO2 ClockActivity";
@@ -240,6 +245,7 @@ public class ClockActivity extends Activity implements Const {
                 breathTimeText.setVisibility(View.VISIBLE);
                 holdBar.angle = 0;
                 holdBar.invalidateClock(R.drawable.progress_dark_blue);
+
             }
             if (holdTimeText.getVisibility() == View.VISIBLE) {
                 holdTimeText.setVisibility(View.INVISIBLE);
@@ -248,6 +254,7 @@ public class ClockActivity extends Activity implements Const {
             breathBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
             breathBar.invalidateClock(R.drawable.progress_blue);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
+            breathTimeTextWhole.setText("/ "+Utils.timeToString(wholeTime));
             breathTimeText.setText(showTime);
         } else if (resultCode == STATUS_HOLD) {
             contrButton.setVisibility(View.VISIBLE);
@@ -256,11 +263,13 @@ public class ClockActivity extends Activity implements Const {
                 holdTimeTextHint.setVisibility(View.VISIBLE);
                 breathBar.angle = (float) (2 * Math.PI);
                 breathBar.invalidateClock(R.drawable.progress_blue);
+
             }
             if (breathTimeText.getVisibility() == View.VISIBLE)
                 breathTimeText.setVisibility(View.INVISIBLE);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
             holdTimeText.setText(showTime);
+            holdTimeTextWhole.setText("/ "+Utils.timeToString(wholeTime));
             holdBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
             holdBar.invalidateClock(R.drawable.progress_dark_blue);
         } else if (resultCode == STATUS_FINISH) {
