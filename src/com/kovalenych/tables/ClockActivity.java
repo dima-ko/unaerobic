@@ -8,14 +8,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.*;
-import android.widget.*;
-import com.kovalenych.*;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.kovalenych.Const;
+import com.kovalenych.R;
+import com.kovalenych.Utils;
 
 public class ClockActivity extends Activity implements Const {
     public static final int STOP_CLOCK_ID = 500;
     public static final int TOP_CIRCLE_ID = 234;
     private static final int BOTTOM_CIRCLE_ID = 4123;
     private static final int SMALL_CIRCLE_ID = 4124;
+    public static final float PI = (float) Math.PI;
     ClockView smallBar;
     ClockView breathBar;
     ClockView holdBar;
@@ -32,6 +37,7 @@ public class ClockActivity extends Activity implements Const {
     private TextView smallTimeText;
     private TextView breathTimeTextWhole;
     private TextView holdTimeTextWhole;
+    private boolean showAddInfo;
 
 
     @Override
@@ -43,6 +49,7 @@ public class ClockActivity extends Activity implements Const {
         _preferences = getSharedPreferences("clockPrefs", MODE_PRIVATE);
         prefTray = _preferences.getBoolean("ShowTray", true);
         countDown = _preferences.getBoolean("countdown", false);
+        showAddInfo = _preferences.getBoolean("showAddInfo", false);
 
         initViews();
         Log.d(LOG_TAG, "onCreate");
@@ -63,9 +70,20 @@ public class ClockActivity extends Activity implements Const {
                 createService(bun);
             }
         } else {
+            calculateWholeTime(bun);
             createService(bun);
+            wholeTimeStarts = System.currentTimeMillis();
         }
 
+    }
+
+    private void calculateWholeTime(Bundle bun) {
+        int size = bun.getInt("tablesize");
+        int position = bun.getInt("number");
+        for (int i = position; i < size; i++) {
+            wholeTableTime += bun.getInt("breathe" + Integer.toString(i));
+            wholeTableTime += bun.getInt("hold" + Integer.toString(i));
+        }
     }
 
 
@@ -91,13 +109,17 @@ public class ClockActivity extends Activity implements Const {
     RelativeLayout stopButton;
     RelativeLayout contrButton;
 
+    long wholeTableTime;
+    long wholeTimeStarts;
+    RelativeLayout smallCircle;
+
     public void initViews() {
 
         parent = new RelativeLayout(this);
         LayoutInflater inflater = getLayoutInflater();
         RelativeLayout leftCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_left, null, false);
         RelativeLayout rightCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_right, null, false);
-        RelativeLayout smallCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_small, null, false);
+        smallCircle = (RelativeLayout) inflater.inflate(R.layout.clocks_small, null, false);
 
         int w = (int) (Utils.height * 0.4);
 
@@ -114,7 +136,7 @@ public class ClockActivity extends Activity implements Const {
         paramsBottom.setMargins(0, 0, 0, (int) (Utils.smaller2dim * 0.04));
         parent.addView(rightCircle, paramsBottom);
 
-        RelativeLayout.LayoutParams paramsSmall = new RelativeLayout.LayoutParams(w/3, w/3);
+        RelativeLayout.LayoutParams paramsSmall = new RelativeLayout.LayoutParams(w / 3, w / 3);
         smallCircle.setId(SMALL_CIRCLE_ID);
         parent.addView(smallCircle, paramsSmall);
 
@@ -172,7 +194,7 @@ public class ClockActivity extends Activity implements Const {
         breathBar = (ClockView) leftCircle.findViewById(R.id.run_ventilate_progress);
         breathBar.setDimensions(w);
         smallBar = (ClockView) smallCircle.findViewById(R.id.whole_time);
-        smallBar.setDimensions(w/3);
+        smallBar.setDimensions(w / 3);
 
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
         breathTimeTextWhole = (TextView) leftCircle.findViewById(R.id.run_time_breath_whole);
@@ -180,6 +202,14 @@ public class ClockActivity extends Activity implements Const {
         holdTimeTextWhole = (TextView) rightCircle.findViewById(R.id.run_time_hold_whole);
         holdTimeTextHint = (TextView) rightCircle.findViewById(R.id.run_time_hold_hint);
         smallTimeText = (TextView) smallCircle.findViewById(R.id.small_text);
+        updateAddInfo();
+
+    }
+
+    private void updateAddInfo() {
+        smallCircle.setVisibility(showAddInfo ? View.VISIBLE : View.GONE);
+        holdTimeTextWhole.setVisibility(showAddInfo ? View.VISIBLE : View.GONE);
+        breathTimeTextWhole.setVisibility(showAddInfo ? View.VISIBLE : View.GONE);
 
     }
 
@@ -219,6 +249,7 @@ public class ClockActivity extends Activity implements Const {
         SharedPreferences.Editor editor = _preferences.edit();
         editor.putBoolean("ShowTray", prefTray);
         editor.putBoolean("countdown", countDown);
+        editor.putBoolean("showAddInfo", showAddInfo);
         editor.commit();
 
     }
@@ -237,15 +268,18 @@ public class ClockActivity extends Activity implements Const {
         int time = data.getIntExtra(ClockActivity.PARAM_TIME, 0);
         int wholeTime = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
         Log.d("zzzzzzz", wholeTime + "percent");
-        smallBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
+        smallBar.angle = ((float) (System.currentTimeMillis() - wholeTimeStarts) / 1000 * 2 * PI) / wholeTableTime;
+        Log.d("zzzzzzzangel", "angel " + smallBar.angle);
         smallBar.invalidateClock(R.drawable.progress_grey);
+        int time1 = (int) (System.currentTimeMillis() - wholeTimeStarts) / 1000;
+        if(countDown) time1 = (int) wholeTableTime - time1 ;
+        smallTimeText.setText(Utils.timeToString(time1));
         if (resultCode == STATUS_BREATH) {
             contrButton.setVisibility(View.GONE);
             if (breathTimeText.getVisibility() != View.VISIBLE) {
                 breathTimeText.setVisibility(View.VISIBLE);
                 holdBar.angle = 0;
                 holdBar.invalidateClock(R.drawable.progress_dark_blue);
-
             }
             if (holdTimeText.getVisibility() == View.VISIBLE) {
                 holdTimeText.setVisibility(View.INVISIBLE);
@@ -254,7 +288,7 @@ public class ClockActivity extends Activity implements Const {
             breathBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
             breathBar.invalidateClock(R.drawable.progress_blue);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
-            breathTimeTextWhole.setText("/ "+Utils.timeToString(wholeTime));
+            breathTimeTextWhole.setText("/ " + Utils.timeToString(wholeTime));
             breathTimeText.setText(showTime);
         } else if (resultCode == STATUS_HOLD) {
             contrButton.setVisibility(View.VISIBLE);
@@ -263,13 +297,12 @@ public class ClockActivity extends Activity implements Const {
                 holdTimeTextHint.setVisibility(View.VISIBLE);
                 breathBar.angle = (float) (2 * Math.PI);
                 breathBar.invalidateClock(R.drawable.progress_blue);
-
             }
             if (breathTimeText.getVisibility() == View.VISIBLE)
                 breathTimeText.setVisibility(View.INVISIBLE);
             String showTime = Utils.timeToString(countDown ? (wholeTime - time) : time);
             holdTimeText.setText(showTime);
-            holdTimeTextWhole.setText("/ "+Utils.timeToString(wholeTime));
+            holdTimeTextWhole.setText("/ " + Utils.timeToString(wholeTime));
             holdBar.angle = (float) (time * 2 * Math.PI) / wholeTime;
             holdBar.invalidateClock(R.drawable.progress_dark_blue);
         } else if (resultCode == STATUS_FINISH) {
@@ -299,6 +332,10 @@ public class ClockActivity extends Activity implements Const {
         // Handle item selection
 
         switch (item.getItemId()) {
+            case R.id.add_info:
+                showAddInfo = !showAddInfo;
+                updateAddInfo();
+                return true;
             case R.id.countdown:
                 countDown = !countDown;
                 return true;

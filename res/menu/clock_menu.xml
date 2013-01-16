@@ -8,5 +8,8 @@
     <item android:id="@+id/countdown"
           android:icon="@drawable/menu_clock"
           android:title="Countdown on/off"/>
+    <item android:id="@+id/add_info"
+          android:icon="@drawable/menu_clock"
+          android:title="More counters"/>
 
 </menu>

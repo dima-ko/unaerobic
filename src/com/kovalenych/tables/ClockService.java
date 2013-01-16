@@ -51,6 +51,7 @@ public class ClockService extends Service implements Soundable, Const {
     private int volume;
     private String cachePath;
 
+
     public void onCreate() {
         super.onCreate();
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
