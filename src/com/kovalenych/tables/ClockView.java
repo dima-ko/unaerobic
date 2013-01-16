@@ -18,7 +18,7 @@ public class ClockView extends SurfaceView {
     public static final float pi = (float) Math.PI;
     float angle;
     Bitmap bg = null;
-    private int dim;
+    private int dim=40;
 
 
     public ClockView(Context context) {

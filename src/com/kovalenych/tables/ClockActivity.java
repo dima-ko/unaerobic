@@ -29,6 +29,7 @@ public class ClockActivity extends Activity implements Const {
     public boolean prefTray;
     private SharedPreferences _preferences;
     private TextView holdTimeTextHint;
+    private TextView smallTimeText;
 
 
     @Override
@@ -172,6 +173,7 @@ public class ClockActivity extends Activity implements Const {
         smallBar.setDimensions(w/3);
 
         breathTimeText = (TextView) leftCircle.findViewById(R.id.run_time_breath);
+        smallTimeText = (TextView) smallCircle.findViewById(R.id.small_text);
         holdTimeText = (TextView) rightCircle.findViewById(R.id.run_time_hold);
         holdTimeTextHint = (TextView) rightCircle.findViewById(R.id.run_time_hold_hint);
     }

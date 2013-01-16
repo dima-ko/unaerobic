@@ -190,7 +190,7 @@ public class RankingManager {
             cv.put(DBHelper.C_COUNTRY, recordsList.get(i).getCountry());
             cv.put(DBHelper.C_RESULT, recordsList.get(i).getResult());
             cv.put(DBHelper.C_FILTER, filter);
-            db.insert(DBHelper.RECORDS_TABLE, null, cv);
+            db.insertWithOnConflict(DBHelper.RECORDS_TABLE, null, cv,SQLiteDatabase.CONFLICT_REPLACE);
         }
 
         db.close();

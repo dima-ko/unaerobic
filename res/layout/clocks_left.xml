@@ -21,4 +21,15 @@
             android:text="00:00"
             android:layout_centerInParent="true"
             />
+    <com.kovalenych.roboto.TextViewRoboto
+
+            android:layout_below="@id/run_time_breath"
+            android:id="@+id/run_time_breath_whole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:gravity="center"
+            android:text="of 00:00"
+            android:layout_centerHorizontal="true"
+            />
 </RelativeLayout>
