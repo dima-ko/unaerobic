@@ -141,11 +141,12 @@ public class ClockService extends Service implements Soundable, Const {
             Log.d(LOG_TAG, "set volume " + volume);
             int size = cyclesBundle.getInt("tablesize");
             table = new Table();
+            ArrayList<Cycle> cycles = table.getCycles();
             for (int i = 0; i < size; i++) {
-                table.getCycles().add(
+                cycles.add(
                         new Cycle(cyclesBundle.getInt("breathe" + Integer.toString(i)), cyclesBundle.getInt("hold" + Integer.toString(i)))
                 );
-                Log.d(LOG_TAG, "new cycle" + table.getCycles().get(i).convertToString());
+                Log.d(LOG_TAG, "new cycle" + cycles.get(i).convertToString());
             }
             int position = cyclesBundle.getInt("number");
             vibrationEnabled = cyclesBundle.getBoolean("vibro");
@@ -154,6 +155,11 @@ public class ClockService extends Service implements Soundable, Const {
             task.execute(position);
             dao = new StatsDAO(this, name, true);
             dao.onStartSession();
+            wholeTimeStarts = System.currentTimeMillis();
+            for (Cycle cycle : cycles) {
+                wholeTableTime += cycle.breathe*1000;
+                wholeTableTime += cycle.hold*1000;    // todo start from position
+            }
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
             Log.d(LOG_TAG, FLAG_SHOW_TRAY);
@@ -210,6 +216,9 @@ public class ClockService extends Service implements Soundable, Const {
     boolean isBreathing;
     ClockTask task;
     int curCycle = -1;
+    long wholeTableTime;
+    long wholeTimeStarts;
+
 
     private void onTic(int time, int cycle, boolean breathing) {
         isBreathing = breathing;
@@ -219,11 +228,14 @@ public class ClockService extends Service implements Soundable, Const {
         int hold = table.getCycles().get(cycle).hold;
         int all = breathing ? breathe : hold;
         Log.d(LOG_TAG, "zzzzonTic  time: " + time);
+        long elapsed = System.currentTimeMillis() - wholeTimeStarts;
         Intent intent = new Intent()
                 .putExtra(ClockActivity.PARAM_TIME, time)
                 .putExtra(ClockActivity.PARAM_PROGRESS, all)
                 .putExtra(ClockActivity.PARAM_BREATHING, breathing)
                 .putExtra(ClockActivity.PARAM_TABLE, name)
+                .putExtra(ClockActivity.PARAM_WHOLE_TABLE_ELAPSED, elapsed)
+                .putExtra(ClockActivity.PARAM_WHOLE_TABLE_REMAINS, wholeTableTime - elapsed)
                 .putExtra(ClockActivity.PARAM_M_CYCLE, cycle);
         try {
             int stat = breathing ? STATUS_BREATH : STATUS_HOLD;

@@ -52,13 +52,6 @@ public final class TablesFragment extends Fragment implements Const {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View tables = inflater.inflate(R.layout.tables, null);
         _preferedTables = getActivity().getSharedPreferences("sharedTables", Context.MODE_PRIVATE);
         mapa = _preferedTables.getAll();
 
@@ -70,6 +63,16 @@ public final class TablesFragment extends Fragment implements Const {
         } else
             tableList.addAll(tableSet);
         Collections.sort(tableList);
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View tables = inflater.inflate(R.layout.tables, null);
+
+
 
         initDialogs();
 
@@ -266,14 +269,15 @@ public final class TablesFragment extends Fragment implements Const {
     }
 
     @Override
-    public void onDestroyView() {
+    public void onDestroy() {
+        super.onDestroy();
         SharedPreferences.Editor editor = _preferedTables.edit();
         editor.clear();
         for (String s : tableList)
             editor.putString(s, "");
         editor.commit();
-        super.onDestroyView();
     }
+
 
     private void subscribeToService() {
         PendingIntent pi;

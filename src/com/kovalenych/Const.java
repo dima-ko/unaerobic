@@ -26,6 +26,8 @@ public interface Const {
     public final static String PARAM_VOLUME = "volume";
     public final static String PARAM_M_CYCLE = "multi_cycles_number";
     public final static String PARAM_PROGRESS = "progress";
+    public final static String PARAM_WHOLE_TABLE_ELAPSED = "whole_table_last";
+    public final static String PARAM_WHOLE_TABLE_REMAINS= "whole_table_remains";
     public static final String PARAM_TIME = "time";
     public static final String PARAM_BREATHING = "breathing";
 
