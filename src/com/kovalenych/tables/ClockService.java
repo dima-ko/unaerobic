@@ -157,8 +157,8 @@ public class ClockService extends Service implements Soundable, Const {
             dao.onStartSession();
             wholeTimeStarts = System.currentTimeMillis();
             for (Cycle cycle : cycles) {
-                wholeTableTime += cycle.breathe*1000;
-                wholeTableTime += cycle.hold*1000;    // todo start from position
+                wholeTableTime += cycle.breathe * 1000;
+                wholeTableTime += cycle.hold * 1000;    // todo start from position
             }
 
         } else if (destination.equals(FLAG_SHOW_TRAY)) {
@@ -282,26 +282,35 @@ public class ClockService extends Service implements Soundable, Const {
 
     private void playSound(int key) {
         Object obj = soundPool.get(key);
-        if (obj instanceof Integer) {
+        if (obj instanceof Integer) {      //if it is my sound
             mediaPlayer = MediaPlayer.create(getApplicationContext(), (Integer) obj);
             float log1 = (float) (Math.log(MAX_VOLUME - volume) / Math.log(MAX_VOLUME));
-            if (mediaPlayer != null)
+            if (mediaPlayer != null) {
                 mediaPlayer.setVolume(1 - log1, 1 - log1);
+                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.start();
+                    }
+                });
+            }
 
-        } else
+        } else                             //if it is external sound
             try {
                 if (cachePath == null)
                     return;
                 mediaPlayer = new MediaPlayer();
                 mediaPlayer.setDataSource(cachePath + soundPool.get(key));
-                mediaPlayer.prepare();
                 float log1 = (float) (Math.log(MAX_VOLUME - volume) / Math.log(MAX_VOLUME));
                 mediaPlayer.setVolume(1 - log1, 1 - log1);
+                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.start();
+                    }
+                });
+                mediaPlayer.prepareAsync();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        if (mediaPlayer != null)
-            mediaPlayer.start();
     }
 
 

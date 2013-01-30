@@ -9,7 +9,7 @@
           android:icon="@drawable/menu_clock"
           android:title="Countdown on/off"/>
     <item android:id="@+id/add_info"
-          android:icon="@drawable/menu_clock"
+          android:icon="@drawable/menu_clock_many"
           android:title="More counters"/>
 
 </menu>
