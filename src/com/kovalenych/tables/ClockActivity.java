@@ -15,78 +15,7 @@ import com.kovalenych.Const;
 import com.kovalenych.R;
 import com.kovalenych.Utils;
 
-/**
- *
- 1. The addition of the hold/breath (per set) time in “circle mode”
- maid it much more easier to intuitively read the time.
 
- 2. The addition of total time per routine (“Countdown on/off”)
- is great as well with some minor flaw
- -ones you escape to previous window (were the routine hold/breath time is presented)
- or exit the program and then RETURN to the “Circle count screen”
- the “Countdown on/off” of the routine is represented
- with some “junk value”. ex:  22485:25 , -22485:-33 , …
-
- 3. Will you be able to add: “total time of the routine” in the TABLES  screen ?
- -ex:      CO2 Table                              20:15
- O2 Table                                 12:48
- My_costume _routine            16:55
- Short breathes                           5:45
-
- 4. The SOUND BUG
- If I build a routine that repeats itself,
- ex:       0:15     1:05     *100    [100 repetitions]
- there is NO SOUND AT ALL.
-
- When I customize my routine the sound sometimes activated and sometimes doesn’t.
- Below I made a tables of:  1).  my routine    2). the output of sound
-
- //___________________________________________________________________________
- My custom build apnea routine:
-
- |cycle   |breath |hold
- 1          35        1:05
- 2          30        1:05
- 3          25        1:05
- 4          20        1:05
- 5          15        1:05
- 6          10        1:05
- 7          10        1:05
- 8          5          1:05
- 9          5          1:05
-
- row       =>  voice alerts
- column =>  cycles
- -            =>  voice alert not activated
- +           =>  voice alert activated
- *            =>  no need to activate voice alert
-
- output first use:
- |     1    |     2    |     3    |     4    |     5    |     6    |     7    |     8    |     9    |
- breath   |     +    |     +    |     -     |     +    |     +    |     -     |     -     |     +    |     +    |
- 10 sec  |     +    |     +    |     -     |     +    |     -     |     *     |     *     |     *    |     *     |
- 5 sec    |     +    |     -     |     -     |     +    |     -     |     -     |     +    |     *     |     *     |
- start      |     +    |     -     |     -     |     +    |     -     |     -     |     +    |     +    |     -     |
- 1 min    |     +    |     -     |     +    |     +    |     -     |     -     |     +    |     +    |     -     |
-
- output second use:
- |     1    |     2    |     3    |     4    |     5    |     6    |     7    |     8    |     9    |
- breath   |     +    |     +    |     +    |     -     |     -     |     +    |     +    |     -     |     -     |
- 10 sec  |     +    |     +    |     +    |     -     |     -     |     *     |     *     |     *    |     *     |
- 5 sec    |     +    |     +    |     +    |     -     |     -     |     +    |     -     |     *     |     *     |
- start      |     +    |     +    |     -     |     -     |     +    |     +    |     -     |     -     |     -     |
- 1 min    |     +    |     +    |     -     |     -     |     +    |     +    |     -     |     -     |     +    |
-
- output third use:
- |     1    |     2    |     3    |     4    |     5    |     6    |     7    |     8    |     9    |
- breath   |     +    |     +    |     -     |     +    |     +    |     -     |     -     |     +    |     +    |
- 10 sec  |     +    |     +    |     -     |     +    |     +    |     *     |     *     |     *    |     *     |
- 5 sec    |     +    |     -     |     -     |     +    |     -     |     -     |     -     |     *     |     *     |
- start      |     +    |     -     |     -     |     +    |     -     |     -     |     -     |     +    |     +    |
- 1 min    |     +    |     -     |     -     |     +    |     -     |     -     |     +    |     +    |     +    |
-
- Thank you.
- */
 
 public class ClockActivity extends Activity implements Const {
     public static final int STOP_CLOCK_ID = 500;

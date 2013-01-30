@@ -54,6 +54,7 @@ public class ClockService extends Service implements Soundable, Const {
 
     public void onCreate() {
         super.onCreate();
+
         v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(LOG_TAG, "ClockService onCreate");
         mediaPlayer = new MediaPlayer();

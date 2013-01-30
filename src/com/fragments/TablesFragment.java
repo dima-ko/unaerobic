@@ -21,10 +21,12 @@ import com.kovalenych.Utils;
 import com.kovalenych.tables.ClockService;
 import com.kovalenych.tables.CyclesActivity;
 import com.kovalenych.tables.TablesArrayAdapter;
-import org.achartengine.chartdemo.demo.chart.SalesStackedBarChart;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 
 public final class TablesFragment extends Fragment implements Const {
 
@@ -71,7 +73,6 @@ public final class TablesFragment extends Fragment implements Const {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View tables = inflater.inflate(R.layout.tables, null);
-
 
 
         initDialogs();
@@ -154,6 +155,8 @@ public final class TablesFragment extends Fragment implements Const {
 
     private void invalidateList() {
         TablesArrayAdapter adapter = new TablesArrayAdapter(getActivity(), tableList);
+        boolean showTotalTime = getActivity().getSharedPreferences("clockPrefs", Context.MODE_PRIVATE).getBoolean("showAddInfo", false);
+        adapter.setShowTotalTIme(showTotalTime);
         lv.setAdapter(adapter);
         lv.setVisibility(View.VISIBLE);
     }
