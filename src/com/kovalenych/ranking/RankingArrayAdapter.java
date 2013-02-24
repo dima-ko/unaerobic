@@ -63,25 +63,6 @@ public class RankingArrayAdapter extends ArrayAdapter<Record> {
 
 
         ViewHolder viewHolder;
-//
-//        if (convertView == null) {
-//            LayoutInflater inflater = context.getLayoutInflater();
-//            convertView = inflater.inflate(R.layout.task_item, null, true);
-//            viewHolder = new TViewHolder();
-//            viewHolder.textView = (TextView) convertView.findViewById(R.id.task_text);
-//            viewHolder.dateView = (TextView) convertView.findViewById(R.id.date_text);
-//            viewHolder.position= position;
-//            convertView.setTag(viewHolder);
-//
-//        } else {
-//            viewHolder = (TViewHolder) convertView.getTag();
-//        }
-//
-//        viewHolder.textView .setText(tasks.get(tasks.size()-1 - position).text);
-//        viewHolder.dateView .setText(tasks.get(tasks.size()-1 - position).dateString);
-//        viewHolder.position= position;
-//
-//        return convertView;
 
         if (convertView == null) {
             LayoutInflater inflater = context.getLayoutInflater();

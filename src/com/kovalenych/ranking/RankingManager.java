@@ -121,12 +121,10 @@ public class RankingManager {
             return;
         BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
         String line = "";
-        int i = 0;
         while ((line = in.readLine()) != null) {
             if (line.contains("rankRow")) {
                 htmlList.add(line);
             }
-            i++;
         }
         in.close();
         recordsList.clear();
@@ -239,7 +237,6 @@ public class RankingManager {
 
         int altFlagStartIndex = fullString.indexOf("flag") - 13;
         String country = fullString.substring(altFlagStartIndex, altFlagStartIndex + 2);
-
 
         int resultStartIndex = fullString.indexOf("<b>") + 3;
         int resultEndIndex = fullString.indexOf("</b>", resultStartIndex);
