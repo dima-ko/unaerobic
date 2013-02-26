@@ -2,30 +2,12 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="wrap_content"
+              android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:padding="10dp"
               android:background="#FF000000"
+              android:gravity="center"
         >
-    <LinearLayout
-            android:gravity="center"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            >
-        <ImageView
-                android:src="@drawable/zephyr"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                />
-
-        <ImageView
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/md300c318"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                />
-
-    </LinearLayout>
 
     <com.kovalenych.roboto.TextViewRoboto
             android:gravity="center"
@@ -35,6 +17,91 @@
             android:text="@string/new_version_info"
             android:textSize="16dp"
             />
+
+    <LinearLayout
+            android:id="@+id/mode_azumio"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:background="@drawable/list_bg"
+            >
+
+        <ImageView
+                android:background="@drawable/azum"
+                android:layout_height="90dp"
+                android:layout_width="90dp"
+                />
+
+        <com.kovalenych.roboto.TextViewRoboto
+                android:layout_marginLeft="10dp"
+                android:text="\tCamera HxR\n Just put your finger on the camera and app will get your pulse, like in Instant Heart Rate app"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:background="@drawable/list_bg"
+            android:layout_below="@id/mode_azumio"
+            android:id="@+id/mode_zephyr"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            >
+
+        <ImageView
+
+                android:background="@drawable/zephyr"
+                android:layout_height="90dp"
+                android:layout_width="90dp"
+                />
+
+        <com.kovalenych.roboto.TextViewRoboto
+                android:layout_marginLeft="10dp"
+                android:text="\tZephyr HxR\n Connects to Zephyr HxM Monitor via Bluetooth"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:background="@drawable/list_bg"
+            android:layout_below="@id/mode_azumio"
+            android:id="@+id/mode_zephyr"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            >
+
+        <ImageView
+
+                android:background="@drawable/filter_demo"
+                android:layout_height="90dp"
+                android:layout_width="90dp"
+                />
+
+        <com.kovalenych.roboto.TextViewRoboto
+                android:layout_marginLeft="10dp"
+                android:text="Improved ranking with gender, country, personal best and year filters "
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                />
+    </LinearLayout>
+
+    <com.kovalenych.roboto.ButtonRoboto
+          android:text="Try"
+          android:layout_width="250dp"
+          android:layout_height="50dp"
+          android:textColor="@android:color/white"
+          android:background="@drawable/roboto_button"
+        />
 
 
 </LinearLayout>

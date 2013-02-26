@@ -47,6 +47,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
     private EditText holdEditPerc;
     private EditText breathEditPerc;
     private RelativeLayout statButton;
+    final static String shown_update_dialog = "shown_plus_dialog";
+
 
 
     @Override
@@ -68,10 +70,10 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         isvibro = _preferedSettings.getBoolean("vibro", true);
         volume = _preferedSettings.getInt("volume", 15);
 
-        if (!_preferedSettings.getBoolean("shown_update_dialog", false)) {
-            _preferedSettings.edit().putBoolean("shown_update_dialog", true).commit();
+        if (!_preferedSettings.getBoolean(shown_update_dialog, false)) {
+            _preferedSettings.edit().putBoolean(shown_update_dialog, true).commit();
             Dialog updateDialog = new Dialog(this);
-            updateDialog.setTitle("Oximeters");
+            updateDialog.setTitle("Heart rate");
             updateDialog.setContentView(R.layout.update_dialog);
             updateDialog.show();
         }

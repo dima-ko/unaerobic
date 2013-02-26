@@ -16,7 +16,6 @@ import com.kovalenych.R;
 import com.kovalenych.Utils;
 
 
-
 public class ClockActivity extends Activity implements Const {
     public static final int STOP_CLOCK_ID = 500;
     public static final int TOP_CIRCLE_ID = 234;
@@ -78,7 +77,6 @@ public class ClockActivity extends Activity implements Const {
     }
 
 
-
     private void createService(Bundle bun) {
         PendingIntent pi;
         Intent intent;
@@ -88,14 +86,19 @@ public class ClockActivity extends Activity implements Const {
         pi = createPendingResult(1, new Intent(), 0);
         // Создаем Intent для вызова сервиса, кладем туда параметр времени
         // и созданный PendingIntent
-        intent = new Intent(this, ClockService.class)
-                .putExtra(FLAG, FLAG_CREATE)
-                .putExtra(PARAM_CYCLES, bun)
-                .putExtra(PARAM_PINTENT, pi)
-                .putExtra(PARAM_VOLUME, bun.getInt(PARAM_VOLUME))
-                .putExtra(PARAM_TABLE, bun.getString("table_name"));
-        // стартуем сервис
-        startService(intent);
+        try {
+
+            intent = new Intent(this, ClockService.class)
+                    .putExtra(FLAG, FLAG_CREATE)
+                    .putExtra(PARAM_CYCLES, bun)
+                    .putExtra(PARAM_PINTENT, pi)
+                    .putExtra(PARAM_VOLUME, bun.getInt(PARAM_VOLUME))
+                    .putExtra(PARAM_TABLE, bun.getString("table_name"));
+            // стартуем сервис
+            startService(intent);
+        } catch (NullPointerException e) {
+            finish();
+        }
     }
 
     RelativeLayout stopButton;
@@ -260,10 +263,10 @@ public class ClockActivity extends Activity implements Const {
         int currentCircleTime = data.getIntExtra(ClockActivity.PARAM_PROGRESS, 0);
         long elapsed = data.getLongExtra(ClockActivity.PARAM_WHOLE_TABLE_ELAPSED, 0);
         long remains = data.getLongExtra(ClockActivity.PARAM_WHOLE_TABLE_REMAINS, 0);
-        int globalIndicator = (int) ((countDown? remains : elapsed)/ 1000) + 1;
+        int globalIndicator = (int) ((countDown ? remains : elapsed) / 1000) + 1;
         Log.d("zzzzzzzela ", elapsed + "  remains    " + remains + "   " + globalIndicator);
 
-        smallBar.angle = elapsed * 2.f * PI / (elapsed+remains);
+        smallBar.angle = elapsed * 2.f * PI / (elapsed + remains);
         smallBar.invalidateClock(R.drawable.progress_grey);
         smallTimeText.setText(Utils.timeToString(globalIndicator));
         if (resultCode == STATUS_BREATH) {

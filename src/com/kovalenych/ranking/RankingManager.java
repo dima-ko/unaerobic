@@ -203,7 +203,7 @@ public class RankingManager {
         Cursor cursor = db.query(DBHelper.RECORDS_TABLE, new String[]{DBHelper.C_ID, DBHelper.C_NAME, DBHelper.C_COUNTRY, DBHelper.C_RESULT, DBHelper.C_FILTER},
                 DBHelper.C_FILTER + " like " + "'%"
                         + filter + "%'", null, null, null, null);
-        int nameColumn = cursor.getColumnIndex(DBHelper.C_NAME);
+        int nameColumn = cursor.getColumnIndex(DBHelper.C_NAME);           //todo aida text
         int resultColumn = cursor.getColumnIndex(DBHelper.C_RESULT);
         int countryColumn = cursor.getColumnIndex(DBHelper.C_COUNTRY);
 

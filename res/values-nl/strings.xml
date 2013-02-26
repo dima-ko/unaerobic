@@ -7,15 +7,6 @@
     <string name="info_title">Info</string>
     <string name="heart">Hart</string>
     <string name="tables">Tabellen</string>
-    <string name="new_version_info">
-        Beste Lezer,
-
-        Op dit moment ben ik een nieuwe versie van deze app aan het ontwikkelen met ondersteuning van een hartslag meting.
-        Ik heb al op dit moment een camera monitor functie gemaakt zoals in de “Instant Heart rate” app.
-
-        Alleen nu ben ik alleen opzoek naar een iemand die een bluetooth oximeter heeft zoals de Zephyr of de ChoiceMmed MDC300C318.
-        Dus bent u in het bezit van 1 van deze oximeters en wilt u me helpen met het door ontwikkelen van deze app neem dan contact met me op.
-    </string>
     <string name="info">
         - Druk op de volume icoon voor het aanpassen van de geluids bestanden.\n
         - Lang drukken op cyclus of tabel voor het verwijderen.\n
