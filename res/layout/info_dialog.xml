@@ -42,7 +42,6 @@
                 android:gravity="center"
                 >
             <ImageView
-                    android:background="@color/blue"
                     android:layout_marginLeft="5pt"
                     android:layout_height="20pt"
                     android:layout_width="20pt"
@@ -58,52 +57,24 @@
         </LinearLayout>
 
         <LinearLayout
-                android:id="@+id/stars"
+                android:id="@+id/una_plus"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 >
-            <LinearLayout
-
+            <ImageView
+                    android:layout_marginLeft="5pt"
                     android:layout_height="20pt"
-                    android:layout_width="fill_parent"
-                    android:gravity="center"
-                    >
-
-                <ImageView
-                        android:layout_marginLeft="5pt"
-                        android:layout_height="10pt"
-                        android:layout_width="10pt"
-                        android:src="@drawable/star"
-                        />
-                <ImageView
-                        android:layout_height="10pt"
-                        android:layout_width="10pt"
-                        android:src="@drawable/star"
-                        />
-                <ImageView
-                        android:layout_height="10pt"
-                        android:layout_width="10pt"
-                        android:src="@drawable/star"
-                        />
-                <ImageView
-                        android:layout_height="10pt"
-                        android:layout_width="10pt"
-                        android:src="@drawable/star"
-                        />
-                <ImageView
-                        android:layout_height="10pt"
-                        android:layout_width="10pt"
-                        android:src="@drawable/star"
-                        />
-            </LinearLayout>
+                    android:layout_width="20pt"
+                    android:src="@drawable/icon_plus"
+                    />
             <com.kovalenych.roboto.TextViewRoboto
                     android:id="@+id/rateus"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/rate_us"
+                    android:text="version with HxR"
                     />
         </LinearLayout>
 

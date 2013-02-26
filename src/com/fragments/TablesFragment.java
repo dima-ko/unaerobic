@@ -179,10 +179,10 @@ public final class TablesFragment extends Fragment implements Const {
         infoDialog.setCancelable(true);
         infoDialog.setContentView(R.layout.info_dialog);
 
-        infoDialog.findViewById(R.id.stars).setOnClickListener(new View.OnClickListener() {
+        infoDialog.findViewById(R.id.una_plus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String APP_PNAME = "com.kovalenych";
+                final String APP_PNAME = "com.insomniacpro.unaerobic";
                 getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
             }
         });

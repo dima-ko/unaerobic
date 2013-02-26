@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.*;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -73,8 +74,15 @@ public class CyclesActivity extends Activity implements Soundable, Const {
         if (!_preferedSettings.getBoolean(shown_update_dialog, false)) {
             _preferedSettings.edit().putBoolean(shown_update_dialog, true).commit();
             Dialog updateDialog = new Dialog(this);
-            updateDialog.setTitle("Heart rate");
+            updateDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             updateDialog.setContentView(R.layout.update_dialog);
+            updateDialog.findViewById(R.id.upgrade_butt).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String APP_PNAME = "com.insomniacpro.unaerobic";
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
+                }
+            });
             updateDialog.show();
         }
 

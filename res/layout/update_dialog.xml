@@ -4,14 +4,14 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:padding="10dp"
+              android:padding="5dp"
               android:background="#FF000000"
               android:gravity="center"
         >
 
     <com.kovalenych.roboto.TextViewRoboto
             android:gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/new_version_info"
@@ -20,7 +20,7 @@
 
     <LinearLayout
             android:id="@+id/mode_azumio"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:orientation="horizontal"
@@ -83,7 +83,7 @@
         <ImageView
 
                 android:background="@drawable/filter_demo"
-                android:layout_height="90dp"
+                android:layout_height="80dp"
                 android:layout_width="90dp"
                 />
 
@@ -96,6 +96,8 @@
     </LinearLayout>
 
     <com.kovalenych.roboto.ButtonRoboto
+
+            android:id="@+id/upgrade_butt"
           android:text="Try"
           android:layout_width="250dp"
           android:layout_height="50dp"
