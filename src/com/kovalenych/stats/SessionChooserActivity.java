@@ -49,7 +49,7 @@ public class SessionChooserActivity extends Activity implements Const {
         });
         Toast.makeText(this, "long click to add comment", Toast.LENGTH_LONG).show();
 
-        ((TextView)findViewById(R.id.cycles_hist_ab_name)).setText(tableName);
+        ((TextView) findViewById(R.id.cycles_hist_ab_name)).setText(tableName);
         findViewById(R.id.cycles_all_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,7 +147,13 @@ public class SessionChooserActivity extends Activity implements Const {
         }
 
         chart.colors = new int[numberOfLayersMax];
+        if (chart.colors.length == 0) {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         chart.colors[0] = Color.CYAN;
+
         if (chart.colors.length > 1)
             chart.colors[1] = Color.BLUE;
 

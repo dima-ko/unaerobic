@@ -151,11 +151,6 @@ public class ClockActivity extends Activity implements Const {
                 Log.d(LOG_TAG, "stopButt");
                 stopService(new Intent(ptr, ClockService.class));
                 addTray = false;
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 finish();
             }
         });

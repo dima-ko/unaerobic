@@ -89,12 +89,13 @@ public final class ArticlesFragment extends Fragment {
     };
 
     private void fillList() {
-        artList.add(new Article("breath-hold divers (Ama)", "Tamaki H & co", "http://www.ncbi.nlm.nih.gov/pubmed/20737928?dopt=Abstract"));
+        artList.add(new Article("The Frenzel Technique, Step-by-Step", "by Eric Fattah", "http://folk.uio.no/gardot/frenzel.pdf"));
+        artList.add(new Article("breath-hold divers (Ama)", "by Tamaki H & co", "http://www.ncbi.nlm.nih.gov/pubmed/20737928?dopt=Abstract"));
         artList.add(new Article("Apnea.cz", "", "http://www.apnea.cz"));
         artList.add(new Article("Breath-holding on pure O2", "by Sina Schieweck", "http://www.freediveinternational.com/allarticles/breath-holdiingonpureO2.htm"));
         artList.add(new Article("Hydrodinamics in finning and gliding", "by Jeremy Meyer", "http://www.freediveinternational.com/allarticles/Hydrodynamic.htm"));
         artList.add(new Article("Static Tables", "by anonymous", "http://freedivingexplained.blogspot.com/2008/03/freediving-training-static-tables.html"));
-        artList.add(new Article("Alkaline diet for freedivers", "by William Trubridge", "http://www.anneliepompe.com/articles/alkaline_diet.htm"));
+        artList.add(new Article("Alkaline diet for freedivers", "by Annelie", "http://www.anneliepompe.com/articles/alkaline_diet.htm"));
         artList.add(new Article("Patrick Musimu and Herbert Nitsch", "By Jimmy Muzzone", "http://www.patrykkruk.com/2011/02/interviews-with-patrick-musimu-and.html"));
 
     }
