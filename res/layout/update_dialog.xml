@@ -63,7 +63,7 @@
 
         <com.kovalenych.roboto.TextViewRoboto
                 android:layout_marginLeft="10dp"
-                android:text="\tZephyr HxR\n Connects to Zephyr HxM Monitor via Bluetooth"
+                android:text="\tZephyr or Polar HxR\n Connects to Zephyr or Polar HxM Monitor via Bluetooth"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
                 />

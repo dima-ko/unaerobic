@@ -49,7 +49,8 @@ public class ClockView extends SurfaceView {
             Canvas canvas = surfaceHolder.lockCanvas();
             //... actual drawing on canvas
 //            canvas.drawColor(Color.WHITE);
-            canvas.drawBitmap(bg, 0, 0, paint);
+            if (bg != null)
+                canvas.drawBitmap(bg, 0, 0, paint);
             final int verticesColors[] = {
                     Color.BLACK, Color.BLACK, Color.BLACK,
                     0xFF000000, 0xFF000000, 0xFF000000
