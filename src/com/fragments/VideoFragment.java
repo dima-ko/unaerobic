@@ -92,7 +92,7 @@ public final class VideoFragment extends Fragment {
     }
 
     private void fillList() {
-        videoList.add(new Video("7 Things Freedivers Never Do", " http://www.youtube.com/watch?v=-lG9vi1Jwgo"));
+        videoList.add(new Video("7 Things Freedivers Never Do", "http://www.youtube.com/watch?v=-lG9vi1Jwgo"));
         videoList.add(new Video("Goran Colak freediving world record dynamic", "http://www.youtube.com/watch?v=_wZtzAI3I3g"));
         videoList.add(new Video("Natalia Molchanova freediving world record DNF", "http://www.youtube.com/watch?v=B2L0dgd8K0c"));
 
