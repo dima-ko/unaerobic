@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -69,7 +70,9 @@ public class RankingManager {
         });
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         lv = mPullToRefreshListView.getRefreshableView();
+        try{
         unpackSavedTables();
+        } catch (SQLiteException e){}
     }
 
 
@@ -164,7 +167,7 @@ public class RankingManager {
         requestsDBHelper.close();
     }
 
-    private void unpackSavedTables() {
+    private void unpackSavedTables() throws SQLiteException {
         requestsDBHelper = new DBHelper(context, DBHelper.REQUESTS_DB);
         SQLiteDatabase db = requestsDBHelper.getWritableDatabase();
         Cursor cursor = db.query(DBHelper.REQUESTS_TABLE, new String[]{DBHelper.C_ID, DBHelper.C_TABLENAME, DBHelper.C_LASTUPD},
