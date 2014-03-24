@@ -131,7 +131,8 @@ public class ClockService extends Service implements Soundable, Const {
         Log.d(LOG_TAG, "ClockService onStartCommand" + flags);
 
         String destination = intent.getStringExtra(FLAG);
-
+        if (destination == null)
+            return super.onStartCommand(intent, flags, startId);
         if (destination.equals(FLAG_CREATE)) {
             Log.d(LOG_TAG, FLAG_CREATE);
             Bundle cyclesBundle = intent.getBundleExtra(ClockActivity.PARAM_CYCLES);

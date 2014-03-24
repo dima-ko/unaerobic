@@ -173,5 +173,6 @@ public class ClockView extends SurfaceView {
 
     public void setDimensions(int w) {
         dim = w;
+        if (dim<40) dim = 100;
     }
 }
