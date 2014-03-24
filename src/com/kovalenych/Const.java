@@ -42,6 +42,8 @@ public interface Const {
     public static final String C_EVENT_TYPE = "event_type";
     public static final String C_EVENT_TIME = "event_time";
 
+    public static final int NOTIFY_ID = 1;
+
     public static final int BREATH_FINISHED = 0;
     public static final int HOLD_FINISHED = 1;
     public static final int CONTRACTION = 2;

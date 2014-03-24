@@ -39,6 +39,7 @@ public class ClockActivity extends Activity implements Const {
     private TextView breathTimeTextWhole;
     private TextView holdTimeTextWhole;
     private boolean showAddInfo;
+    private long lastUpdTime;
 
 
     @Override
@@ -261,41 +262,48 @@ public class ClockActivity extends Activity implements Const {
         int globalIndicator = (int) ((countDown ? remains : elapsed) / 1000) + 1;
         Log.d("zzzzzzzela ", elapsed + "  remains    " + remains + "   " + globalIndicator);
 
-        smallBar.angle = elapsed * 2.f * PI / (elapsed + remains);
-        smallBar.invalidateClock(R.drawable.progress_grey);
-        smallTimeText.setText(Utils.timeToString(globalIndicator));
-        if (resultCode == STATUS_BREATH) {
-            contrButton.setVisibility(View.GONE);
-            if (breathTimeText.getVisibility() != View.VISIBLE) {
-                breathTimeText.setVisibility(View.VISIBLE);
-                holdBar.angle = 0;
+        if(System.currentTimeMillis() - lastUpdTime > 500) {
+            smallBar.angle = elapsed * 2.f * PI / (elapsed + remains);
+            smallBar.invalidateClock(R.drawable.progress_grey);
+            smallTimeText.setText(Utils.timeToString(globalIndicator));
+            if (resultCode == STATUS_BREATH) {
+                contrButton.setVisibility(View.GONE);
+                if (breathTimeText.getVisibility() != View.VISIBLE) {
+                    breathTimeText.setVisibility(View.VISIBLE);
+                    holdBar.angle = 0;
+                    holdBar.invalidateClock(R.drawable.progress_dark_blue);
+                }
+                if (holdTimeText.getVisibility() == View.VISIBLE) {
+                    holdTimeText.setVisibility(View.INVISIBLE);
+                    holdTimeTextHint.setVisibility(View.INVISIBLE);
+                }
+                breathBar.angle = (float) (time * 2 * Math.PI) / currentCircleTime;
+                breathBar.invalidateClock(R.drawable.progress_blue);
+                String showTime = Utils.timeToString(countDown ? (currentCircleTime - time) : time);
+                breathTimeTextWhole.setText("/ " + Utils.timeToString(currentCircleTime));
+                breathTimeText.setText(showTime);
+            } else if (resultCode == STATUS_HOLD) {
+                contrButton.setVisibility(View.VISIBLE);
+                if (holdTimeText.getVisibility() != View.VISIBLE) {
+                    holdTimeText.setVisibility(View.VISIBLE);
+                    holdTimeTextHint.setVisibility(View.VISIBLE);
+                    breathBar.angle = (float) (2 * Math.PI);
+                    breathBar.invalidateClock(R.drawable.progress_blue);
+                }
+                if (breathTimeText.getVisibility() == View.VISIBLE)
+                    breathTimeText.setVisibility(View.INVISIBLE);
+                String showTime = Utils.timeToString(countDown ? (currentCircleTime - time) : time);
+                holdTimeText.setText(showTime);
+                holdTimeTextWhole.setText("/ " + Utils.timeToString(currentCircleTime));
+                holdBar.angle = (float) (time * 2 * Math.PI) / currentCircleTime;
                 holdBar.invalidateClock(R.drawable.progress_dark_blue);
             }
-            if (holdTimeText.getVisibility() == View.VISIBLE) {
-                holdTimeText.setVisibility(View.INVISIBLE);
-                holdTimeTextHint.setVisibility(View.INVISIBLE);
-            }
-            breathBar.angle = (float) (time * 2 * Math.PI) / currentCircleTime;
-            breathBar.invalidateClock(R.drawable.progress_blue);
-            String showTime = Utils.timeToString(countDown ? (currentCircleTime - time) : time);
-            breathTimeTextWhole.setText("/ " + Utils.timeToString(currentCircleTime));
-            breathTimeText.setText(showTime);
-        } else if (resultCode == STATUS_HOLD) {
-            contrButton.setVisibility(View.VISIBLE);
-            if (holdTimeText.getVisibility() != View.VISIBLE) {
-                holdTimeText.setVisibility(View.VISIBLE);
-                holdTimeTextHint.setVisibility(View.VISIBLE);
-                breathBar.angle = (float) (2 * Math.PI);
-                breathBar.invalidateClock(R.drawable.progress_blue);
-            }
-            if (breathTimeText.getVisibility() == View.VISIBLE)
-                breathTimeText.setVisibility(View.INVISIBLE);
-            String showTime = Utils.timeToString(countDown ? (currentCircleTime - time) : time);
-            holdTimeText.setText(showTime);
-            holdTimeTextWhole.setText("/ " + Utils.timeToString(currentCircleTime));
-            holdBar.angle = (float) (time * 2 * Math.PI) / currentCircleTime;
-            holdBar.invalidateClock(R.drawable.progress_dark_blue);
-        } else if (resultCode == STATUS_FINISH) {
+
+        }
+
+        lastUpdTime = System.currentTimeMillis();
+
+        if (resultCode == STATUS_FINISH) {
             Log.d(LOG_TAG, "onActivityResult STATUS_FINISH");
             addTray = false;
             new Handler().postDelayed(new Runnable() {

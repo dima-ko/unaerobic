@@ -1,8 +1,6 @@
 package com.kovalenych.tables;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.PendingIntent;
+import android.app.*;
 import android.content.*;
 import android.net.Uri;
 import android.os.Bundle;
@@ -99,6 +97,8 @@ public class CyclesActivity extends Activity implements Soundable, Const {
                 curCycle = -1;
                 curMultiCycle = -1;
                 invalidateList();
+                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
+                mNotificationManager.cancel(NOTIFY_ID); // Выводим уведомление в строку
             }
         });
         statButton.setOnClickListener(new View.OnClickListener() {

@@ -38,7 +38,7 @@ public class ClockService extends Service implements Soundable, Const {
     PendingIntent pi;
 
     final String LOG_TAG = "CO2 ClockService";
-    private static final int NOTIFY_ID = 1;
+
     private boolean vibrationEnabled;
     private ArrayList<Integer> voices;
     String name;

@@ -1,132 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:padding="5dp"
-              android:background="#FF000000"
-              android:gravity="center"
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         >
 
-    <com.kovalenych.roboto.TextViewRoboto
-            android:gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/new_version_info"
-            android:textSize="16dp"
-            />
-
-    <LinearLayout
-            android:id="@+id/mode_azumio"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:background="@drawable/list_bg"
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:background="#FF000000"
+                  android:gravity="center"
             >
-
-        <ImageView
-                android:background="@drawable/azum"
-                android:layout_height="90dp"
-                android:layout_width="90dp"
-                />
 
         <com.kovalenych.roboto.TextViewRoboto
-                android:layout_marginLeft="10dp"
-                android:text="\tCamera HxR\n Just put your finger on the camera and app will get your pulse, like in Instant Heart Rate app"
+                android:gravity="center"
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_version_info"
+                android:textSize="16dp"
+                />
+
+        <LinearLayout
+                android:id="@+id/mode_azumio"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
-                />
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:background="@drawable/list_bg"
+                >
 
-    </LinearLayout>
+            <ImageView
+                    android:background="@drawable/azum"
+                    android:layout_height="90dp"
+                    android:layout_width="90dp"
+                    />
 
-    <LinearLayout
-            android:background="@drawable/list_bg"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            >
+            <com.kovalenych.roboto.TextViewRoboto
+                    android:layout_marginLeft="10dp"
+                    android:text="\tCamera HxR\n Just put your finger on the camera and app will get your pulse, like in Instant Heart Rate app"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    />
 
-        <ImageView
+        </LinearLayout>
 
-                android:background="@drawable/zephyr"
-                android:layout_height="90dp"
-                android:layout_width="90dp"
-                />
-
-        <com.kovalenych.roboto.TextViewRoboto
-                android:layout_marginLeft="10dp"
-                android:text="\tZephyr or Polar HxR\n Connects to Zephyr or Polar HxM Monitor via Bluetooth"
+        <LinearLayout
+                android:background="@drawable/list_bg"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
-                />
-    </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                >
 
-    <LinearLayout
-            android:background="@drawable/list_bg"
-            android:id="@+id/mode_ant"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            >
+            <ImageView
 
-        <ImageView
+                    android:background="@drawable/zephyr"
+                    android:layout_height="90dp"
+                    android:layout_width="90dp"
+                    />
 
-                android:background="@drawable/ant"
-                android:layout_height="90dp"
-                android:layout_width="90dp"
-                />
+            <com.kovalenych.roboto.TextViewRoboto
+                    android:layout_marginLeft="10dp"
+                    android:text="\tZephyr or Polar HxR\n Connects to Zephyr or Polar HxM Monitor via Bluetooth"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    />
+        </LinearLayout>
 
-        <TextView
-                android:layout_marginLeft="10dp"
-                android:text="\tAnt+ compatible belt\n Ant+ HxR belt. Works only on Ant+ compatible phones"
+        <LinearLayout
+                android:background="@drawable/list_bg"
+                android:id="@+id/mode_ant"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
-                />
-    </LinearLayout>
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                >
 
-    <LinearLayout
-            android:background="@drawable/list_bg"
-            android:layout_below="@id/mode_azumio"
-            android:id="@+id/mode_zephyr"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            >
+            <ImageView
 
-        <ImageView
+                    android:background="@drawable/ant"
+                    android:layout_height="90dp"
+                    android:layout_width="90dp"
+                    />
 
-                android:background="@drawable/filter_demo"
-                android:layout_height="80dp"
-                android:layout_width="90dp"
-                />
+            <TextView
+                    android:layout_marginLeft="10dp"
+                    android:text="\tAnt+ compatible belt\n Ant+ HxR belt. Works only on Ant+ compatible phones"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    />
+        </LinearLayout>
 
-        <com.kovalenych.roboto.TextViewRoboto
-                android:layout_marginLeft="10dp"
-                android:text="Improved ranking with gender, country, personal best and year filters "
+        <LinearLayout
+                android:background="@drawable/list_bg"
+                android:layout_below="@id/mode_azumio"
+                android:id="@+id/mode_zephyr"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                >
+
+            <ImageView
+
+                    android:background="@drawable/filter_demo"
+                    android:layout_height="80dp"
+                    android:layout_width="90dp"
+                    />
+
+            <com.kovalenych.roboto.TextViewRoboto
+                    android:layout_marginLeft="10dp"
+                    android:text="Improved ranking with gender, country, personal best and year filters "
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    />
+        </LinearLayout>
+
+        <com.kovalenych.roboto.ButtonRoboto
+
+                android:id="@+id/upgrade_butt"
+                android:text="Try"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/roboto_button"
                 />
+
+
     </LinearLayout>
-
-    <com.kovalenych.roboto.ButtonRoboto
-
-            android:id="@+id/upgrade_butt"
-          android:text="Try"
-          android:layout_width="250dp"
-          android:layout_height="50dp"
-          android:textColor="@android:color/white"
-          android:background="@drawable/roboto_button"
-        />
-
-
-</LinearLayout>
+</ScrollView>

@@ -2,9 +2,6 @@ package com.kovalenych.stats;
 
 import android.app.Activity;
 import android.content.Context;
-
-import java.text.DateFormat;
-
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.kovalenych.R;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -68,7 +66,9 @@ public class StatsAdapter extends BaseAdapter {
         Date startDate = new Date(item.start);
         String dayMonth = (startDate.getDate() == now.getDate()) ? context.getString(R.string.today) : dateFormat.format(startDate);
         holder.startView.setText(dayMonth + "\n" + timeFormat.format(startDate));
-        holder.lengthView.setText((item.end - item.start) / 1000 + " s");
+        long l = (item.end - item.start) / 1000;
+        if (l < 10000 && l > 0)
+            holder.lengthView.setText(l + " s");
         holder.commentView.setText((item.comment));
         if (item.comment.equals("no comment"))
             holder.commentView.setTextColor(Color.GRAY);

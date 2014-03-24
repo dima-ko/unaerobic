@@ -1,6 +1,7 @@
 package com.fragments;
 
 import android.app.Dialog;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -85,6 +86,9 @@ public final class TablesFragment extends Fragment implements Const {
                 stopButton.setVisibility(View.GONE);
                 posOfCurTable = -1;
                 invalidateList();
+                NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE); // Создаем экземпляр менеджера уведомлений
+                mNotificationManager.cancel(NOTIFY_ID); // Выводим уведомление в строку
+
             }
         });
         if (Utils.isMyServiceRunning(getActivity()))
