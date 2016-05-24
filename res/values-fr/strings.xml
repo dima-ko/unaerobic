@@ -4,7 +4,7 @@
     <string name="info_title">Informations</string>
 
 
-    <string name="under_construction">Endéveloppement</string>
+    <string name="under_construction">En cours de développement</string>
     <string name="minutes1"> minute </string>
     <string name="minutes2"> 2 minutes </string>
     <string name="minutes3"> 3 minutes </string>
@@ -14,20 +14,20 @@
     <string name="seconds10"> 10 secondes </string>
     <string name="seconds5"> 5 secondes </string>
     <string name="start"> début </string>
-    <string name="tostart"> avant le début </string>
+    <string name="tostart"> avant le démarrage </string>
     <string name="afterstart"> après le démarrage </string>
-    <string  name="breathe">souffle </string>
-    <string name="voices"> sonore </string>
+    <string  name="breathe"> respirer </string>
+    <string name="voices"> voix </string>
     <string name="new_table"> nouvelle table </string>
     <string name="new_cycle"> nouveau cycle </string>
-    <string  name="hold_s">  retard </string>
-    <string  name="breath_s"> souffle </string>
-    <string  name="breathe_time">temps \ n souffle </string>
-    <string name="hold_time"> temps \ n retard </string>
+    <string  name="hold_s"> apnée, s </string>
+    <string  name="breath_s"> respiration, s </string>
+    <string  name="breathe_time"> temps\n respiration </string>
+    <string name="hold_time"> temps\n apnée </string>
     <string name="new_query"> recherche </string>
-    <string name="sendingRequest">téléchargé …</string>
+    <string name="sendingRequest"> téléchargement … </string>
     <string name="today"> "Aujourd\'hui" </string>
-    <string name="updated"> "mise à jour" </string>
+    <string name="updated"> "mise à jour: " </string>
 
     <string name="show">Montrer</string>
     <string name="discipline">Discipline:</string>
@@ -46,20 +46,20 @@
     <string name="delete">Supprimer</string>
     <string name="powered_by">accordée</string>
     <string name="repeat">répétition</string>
-    <string name="rate_us">Taux de nous!</string>
-    <string name="x_times">temps</string>
+    <string name="rate_us">Votez pour nous!</string>
+    <string name="x_times">fois</string>
     <string name="gen_cycles">générer des cycles, chacun correspondant à x% de la précédente</string>
     <string name="vibro">vibrations</string>
     <string name="no_history">pas encore de statistiques</string>
     <string name="comment">commentaire</string>
     <string name="sounds">sons</string>
     <string name="how_it_works">comment cela fonctionne</string>
-    <string name="stop_timer">Minuterie d\'arrêt</string>
+    <string name="stop_timer">Arrêter minuterie</string>
     <string name="add_table">ajouter une table</string>
-    <string name="add_cycle">ajouter boucle</string>
+    <string name="add_cycle">ajouter un cycle</string>
     <string name="statistics">statistiques</string>
     <string name="cycles">Cycles</string>
     <string name="time_s">Temps, s</string>
     <string name="save">sauver</string>
-    <string name="hold_hint">can\'t hold anymore \n long press here</string>
+    <string name="hold_hint">impossible de tenir \n presser longuement ici</string>
 </resources>
